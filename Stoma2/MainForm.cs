@@ -43,10 +43,10 @@ namespace Stoma2
 			radioButton5.BackgroundImageLayout = ImageLayout.Tile;
 
 			panel6.Location = panel12.Location;
-            panel5.Size = new Size(601, 300);
-            panel11.Size = new Size(601, 75);
-            panel12.Size = new Size(601, 156);
-			panel6.Size = new Size(601, 260);
+           // panel5.Size = new Size(601, 300);
+            //panel11.Size = new Size(601, 75);
+            //panel12.Size = new Size(601, 156);
+			//panel6.Size = new Size(601, 260);
 			
 			panel1.Dock = DockStyle.Fill;
 			panel2.Dock = DockStyle.Fill;
@@ -115,7 +115,7 @@ namespace Stoma2
 		private void radioButton1_CheckedChanged(object sender, EventArgs e)
 		{
 			panel5.Visible = true;
-            panel11.Visible = true;
+            //panel11.Visible = true;
             panel12.Visible = true;
 			panel6.Visible = false;
 
@@ -125,7 +125,7 @@ namespace Stoma2
 		{
 			panel6.Visible = true;
 			panel5.Visible = false;
-            panel11.Visible = false;
+            //panel11.Visible = false;
             panel12.Visible = false;
 		}
 

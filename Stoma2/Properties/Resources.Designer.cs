@@ -183,6 +183,16 @@ namespace Stoma2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap navicon {
+            get {
+                object obj = ResourceManager.GetObject("navicon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pencil {
             get {
                 object obj = ResourceManager.GetObject("pencil", resourceCulture);
@@ -296,6 +306,16 @@ namespace Stoma2.Properties {
         internal static System.Drawing.Bitmap user_md_s {
             get {
                 object obj = ResourceManager.GetObject("user-md-s", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap user_md1 {
+            get {
+                object obj = ResourceManager.GetObject("user-md1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
