@@ -42,9 +42,11 @@ namespace Stoma2
 			radioButton5.BackgroundImage = bitmap;
 			radioButton5.BackgroundImageLayout = ImageLayout.Tile;
 
-			panel6.Location = panel5.Location;
-			panel5.Size = new Size(601, 411);
-			panel6.Size = new Size(601, 411);
+			panel6.Location = panel12.Location;
+            panel5.Size = new Size(601, 300);
+            panel11.Size = new Size(601, 75);
+            panel12.Size = new Size(601, 156);
+			panel6.Size = new Size(601, 260);
 			
 			panel1.Dock = DockStyle.Fill;
 			panel2.Dock = DockStyle.Fill;
@@ -67,6 +69,8 @@ namespace Stoma2
 			ToolTip.SetToolTip(this.button1, "Закрыть");
 
 			radioButton3_MouseDown(null, null);
+
+            this.Size = new Size(900, 720);
 		}
 
 		private void button1_Click(object sender, EventArgs e)
@@ -111,6 +115,8 @@ namespace Stoma2
 		private void radioButton1_CheckedChanged(object sender, EventArgs e)
 		{
 			panel5.Visible = true;
+            panel11.Visible = true;
+            panel12.Visible = true;
 			panel6.Visible = false;
 
 		}
@@ -119,6 +125,8 @@ namespace Stoma2
 		{
 			panel6.Visible = true;
 			panel5.Visible = false;
+            panel11.Visible = false;
+            panel12.Visible = false;
 		}
 
 		private void panel6_Paint(object sender, PaintEventArgs e)
