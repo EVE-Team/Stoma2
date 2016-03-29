@@ -235,5 +235,10 @@ namespace Stoma2
 			HidePanels2();
 			panel10.Visible = true;
 		}
+
+        private void panel13_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
 	}
 }
