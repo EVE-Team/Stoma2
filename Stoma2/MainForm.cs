@@ -23,6 +23,8 @@ namespace Stoma2
 		[DllImportAttribute("user32.dll")]
 		public static extern bool ReleaseCapture();
 
+		Control appointmentForm = Program.SetupForm(new Appointment());
+
 		public MainForm()
 		{
 			InitializeComponent();
@@ -42,16 +44,12 @@ namespace Stoma2
 			radioButton5.BackgroundImage = bitmap;
 			radioButton5.BackgroundImageLayout = ImageLayout.Tile;
 
-			panel6.Location = panel12.Location;
-           // panel5.Size = new Size(601, 300);
-            //panel11.Size = new Size(601, 75);
-            //panel12.Size = new Size(601, 156);
-			//panel6.Size = new Size(601, 260);
-			
+			Program.SetPanelForm(pnlAppointment, appointmentForm);
+
 			panel1.Dock = DockStyle.Fill;
 			panel2.Dock = DockStyle.Fill;
 			panel3.Dock = DockStyle.Fill;
-			panel4.Dock = DockStyle.Fill;
+			pnlAppointment.Dock = DockStyle.Fill;
 			pnlRemainder.Dock = DockStyle.Fill;
 			pnlVisits.Dock = DockStyle.Fill;
 			panel7.Dock = DockStyle.Fill;
@@ -114,19 +112,13 @@ namespace Stoma2
 
 		private void radioButton1_CheckedChanged(object sender, EventArgs e)
 		{
-			panel5.Visible = true;
-            //panel11.Visible = true;
-            panel12.Visible = true;
-			panel6.Visible = false;
+			
 
 		}
 
 		private void radioButton2_CheckedChanged(object sender, EventArgs e)
 		{
-			panel6.Visible = true;
-			panel5.Visible = false;
-            //panel11.Visible = false;
-            panel12.Visible = false;
+			
 		}
 
 		private void panel6_Paint(object sender, PaintEventArgs e)
@@ -136,7 +128,7 @@ namespace Stoma2
 
 		private void HidePanels()
 		{
-			panel4.Visible = false;
+			pnlAppointment.Visible = false;
 			pnlRemainder.Visible = false;
 			pnlVisits.Visible = false;
 			panel7.Visible = false;
@@ -166,7 +158,7 @@ namespace Stoma2
 		private void radioButton3_MouseDown(object sender, MouseEventArgs e)
 		{
 			HidePanels();
-			panel4.Visible = true;
+			pnlAppointment.Visible = true;
 		}
 
 		private void radioButton4_CheckedChanged(object sender, EventArgs e)
@@ -240,5 +232,18 @@ namespace Stoma2
         {
 
         }
+
+		private void button8_Click(object sender, EventArgs e)
+		{
+			if (WindowState == FormWindowState.Maximized)
+			{
+				WindowState = FormWindowState.Normal;
+			}
+			else
+			{
+				WindowState = FormWindowState.Maximized;
+			}
+			
+		}
 	}
 }
