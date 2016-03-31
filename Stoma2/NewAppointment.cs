@@ -16,5 +16,10 @@ namespace Stoma2
 		{
 			InitializeComponent();
 		}
+
+		private void Appointment_Load(object sender, EventArgs e)
+		{
+			Program.SetPanelForm(pnlContents, Program.SetupForm(new Appointment()));
+		}
 	}
 }

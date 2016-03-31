@@ -12,27 +12,15 @@ namespace Stoma2
 {
 	public partial class Appointment : Form
 	{
-		Control firstAppoinmentForm = Program.SetupForm(new NewPatient());
-		Control secondAppointmentForm = Program.SetupForm(new NewAppointment());
-
 		public Appointment()
 		{
 			InitializeComponent();
 		}
 
-		private void Appointment_Load(object sender, EventArgs e)
+		private void button1_Click(object sender, EventArgs e)
 		{
-			Program.SetPanelForm(pnlContents, firstAppoinmentForm);
-		}
-
-		private void radioButton1_CheckedChanged(object sender, EventArgs e)
-		{
-			Program.SetPanelForm(pnlContents, firstAppoinmentForm);
-		}
-
-		private void radioButton2_CheckedChanged(object sender, EventArgs e)
-		{
-			Program.SetPanelForm(pnlContents, secondAppointmentForm);
+			var form = new NewPatient();
+			form.ShowDialog(this);
 		}
 	}
 }

@@ -154,6 +154,7 @@
 			this.button8.Text = "Добавить";
 			this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			this.button8.UseVisualStyleBackColor = false;
+			this.button8.Click += new System.EventHandler(this.button8_Click);
 			// 
 			// label24
 			// 
@@ -398,12 +399,12 @@
 			this.pnlExtra.Size = new System.Drawing.Size(414, 307);
 			this.pnlExtra.TabIndex = 91;
 			// 
-			// FirstAppointment
+			// NewPatient
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
-			this.ClientSize = new System.Drawing.Size(941, 552);
+			this.ClientSize = new System.Drawing.Size(814, 360);
 			this.Controls.Add(this.pnlExtra);
 			this.Controls.Add(this.maskedTextBox1);
 			this.Controls.Add(this.textBox1);
@@ -416,9 +417,11 @@
 			this.Controls.Add(this.label8);
 			this.Controls.Add(this.textBox3);
 			this.Controls.Add(this.label13);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-			this.Name = "FirstAppointment";
-			this.Text = "FirstAppointment";
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+			this.MaximizeBox = false;
+			this.Name = "NewPatient";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+			this.Text = "Добавить нового пациента";
 			this.Load += new System.EventHandler(this.FirstAppointment_Load);
 			this.pnlExtra.ResumeLayout(false);
 			this.pnlExtra.PerformLayout();

@@ -24,7 +24,7 @@ namespace Stoma2
 		public static extern bool ReleaseCapture();
 
 		// Panel forms
-		Control appointmentForm = Program.SetupForm(new Appointment());
+		Control appointmentForm = Program.SetupForm(new NewAppointment());
 		Control treatmentForm = Program.SetupForm(new Treatment());
 		Control inviteForm = Program.SetupForm(new Invite());
 		Control otherForm = Program.SetupForm(new Other());

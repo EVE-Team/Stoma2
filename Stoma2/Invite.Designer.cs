@@ -32,6 +32,7 @@
             "Скаков",
             "Михаил"}, -1);
 			this.panel13 = new System.Windows.Forms.Panel();
+			this.button8 = new System.Windows.Forms.Button();
 			this.textBox29 = new System.Windows.Forms.TextBox();
 			this.label14 = new System.Windows.Forms.Label();
 			this.textBox16 = new System.Windows.Forms.TextBox();
@@ -54,7 +55,6 @@
 			this.columnHeader27 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.rectangleShape3 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
 			this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-			this.button8 = new System.Windows.Forms.Button();
 			this.panel13.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -85,9 +85,25 @@
 			this.panel13.Size = new System.Drawing.Size(391, 447);
 			this.panel13.TabIndex = 8;
 			// 
+			// button8
+			// 
+			this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(211)))), ((int)(((byte)(124)))));
+			this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.button8.ForeColor = System.Drawing.Color.White;
+			this.button8.Image = global::Stoma2.Properties.Resources.plus;
+			this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.button8.Location = new System.Drawing.Point(103, 397);
+			this.button8.Name = "button8";
+			this.button8.Size = new System.Drawing.Size(281, 41);
+			this.button8.TabIndex = 26;
+			this.button8.Text = "Отметить как приглашенного";
+			this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.button8.UseVisualStyleBackColor = false;
+			// 
 			// textBox29
 			// 
-			this.textBox29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			this.textBox29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
 			this.textBox29.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.textBox29.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.textBox29.Location = new System.Drawing.Point(136, 4);
@@ -109,7 +125,7 @@
 			// 
 			// textBox16
 			// 
-			this.textBox16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			this.textBox16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
 			this.textBox16.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.textBox16.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.textBox16.Location = new System.Drawing.Point(136, 298);
@@ -132,7 +148,7 @@
 			// 
 			// textBox39
 			// 
-			this.textBox39.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			this.textBox39.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
 			this.textBox39.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.textBox39.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.textBox39.Location = new System.Drawing.Point(136, 266);
@@ -154,7 +170,7 @@
 			// 
 			// textBox38
 			// 
-			this.textBox38.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			this.textBox38.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
 			this.textBox38.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.textBox38.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.textBox38.Location = new System.Drawing.Point(136, 234);
@@ -166,7 +182,7 @@
 			// 
 			// textBox37
 			// 
-			this.textBox37.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			this.textBox37.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
 			this.textBox37.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.textBox37.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.textBox37.Location = new System.Drawing.Point(136, 202);
@@ -178,7 +194,7 @@
 			// 
 			// textBox32
 			// 
-			this.textBox32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			this.textBox32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
 			this.textBox32.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.textBox32.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.textBox32.Location = new System.Drawing.Point(136, 100);
@@ -191,7 +207,7 @@
 			// 
 			// textBox31
 			// 
-			this.textBox31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			this.textBox31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
 			this.textBox31.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.textBox31.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.textBox31.Location = new System.Drawing.Point(136, 68);
@@ -203,7 +219,7 @@
 			// 
 			// textBox30
 			// 
-			this.textBox30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			this.textBox30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
 			this.textBox30.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.textBox30.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.textBox30.Location = new System.Drawing.Point(136, 36);
@@ -331,22 +347,6 @@
 			this.shapeContainer1.Size = new System.Drawing.Size(883, 586);
 			this.shapeContainer1.TabIndex = 9;
 			this.shapeContainer1.TabStop = false;
-			// 
-			// button8
-			// 
-			this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(211)))), ((int)(((byte)(124)))));
-			this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.button8.ForeColor = System.Drawing.Color.White;
-			this.button8.Image = global::Stoma2.Properties.Resources.plus;
-			this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.button8.Location = new System.Drawing.Point(103, 397);
-			this.button8.Name = "button8";
-			this.button8.Size = new System.Drawing.Size(281, 41);
-			this.button8.TabIndex = 26;
-			this.button8.Text = "Отметить как приглашенного";
-			this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.button8.UseVisualStyleBackColor = false;
 			// 
 			// Invite
 			// 

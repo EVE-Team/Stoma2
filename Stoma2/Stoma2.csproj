@@ -55,11 +55,11 @@
     <Compile Include="Accordion.Designer.cs">
       <DependentUpon>Accordion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Appointment.cs">
+    <Compile Include="NewAppointment.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Appointment.Designer.cs">
-      <DependentUpon>Appointment.cs</DependentUpon>
+    <Compile Include="NewAppointment.Designer.cs">
+      <DependentUpon>NewAppointment.cs</DependentUpon>
     </Compile>
     <Compile Include="BackUp.cs">
       <SubType>Form</SubType>
@@ -129,11 +129,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="NewAppointment.cs">
+    <Compile Include="Appointment.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewAppointment.Designer.cs">
-      <DependentUpon>NewAppointment.cs</DependentUpon>
+    <Compile Include="Appointment.Designer.cs">
+      <DependentUpon>Appointment.cs</DependentUpon>
     </Compile>
     <Compile Include="TextBoxEx.cs">
       <SubType>Component</SubType>
@@ -153,8 +153,8 @@
     <Compile Include="Visit.Designer.cs">
       <DependentUpon>Visit.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Appointment.resx">
-      <DependentUpon>Appointment.cs</DependentUpon>
+    <EmbeddedResource Include="NewAppointment.resx">
+      <DependentUpon>NewAppointment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BackUp.resx">
       <DependentUpon>BackUp.cs</DependentUpon>
@@ -196,8 +196,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="NewAppointment.resx">
-      <DependentUpon>NewAppointment.cs</DependentUpon>
+    <EmbeddedResource Include="Appointment.resx">
+      <DependentUpon>Appointment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Treatment.resx">
       <DependentUpon>Treatment.cs</DependentUpon>
