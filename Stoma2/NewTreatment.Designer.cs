@@ -46,31 +46,31 @@
 			// 
 			this.label1.AutoSize = true;
 			this.label1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.label1.Location = new System.Drawing.Point(82, 182);
+			this.label1.Location = new System.Drawing.Point(87, 182);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(70, 19);
+			this.label1.Size = new System.Drawing.Size(64, 19);
 			this.label1.TabIndex = 40;
-			this.label1.Text = "№ зуба:";
+			this.label1.Text = "№ зуба";
 			// 
 			// label2
 			// 
 			this.label2.AutoSize = true;
 			this.label2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.label2.Location = new System.Drawing.Point(16, 224);
+			this.label2.Location = new System.Drawing.Point(21, 224);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(136, 19);
+			this.label2.Size = new System.Drawing.Size(130, 19);
 			this.label2.TabIndex = 41;
-			this.label2.Text = "Название услуги:";
+			this.label2.Text = "Название услуги";
 			// 
 			// label3
 			// 
 			this.label3.AutoSize = true;
 			this.label3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.label3.Location = new System.Drawing.Point(51, 266);
+			this.label3.Location = new System.Drawing.Point(56, 266);
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(101, 19);
+			this.label3.Size = new System.Drawing.Size(95, 19);
 			this.label3.TabIndex = 42;
-			this.label3.Text = "Количество:";
+			this.label3.Text = "Количество";
 			// 
 			// textBox1
 			// 
@@ -120,7 +120,7 @@
 			this.btnCancel.ForeColor = System.Drawing.Color.White;
 			this.btnCancel.Image = global::Stoma2.Properties.Resources.plus;
 			this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnCancel.Location = new System.Drawing.Point(148, 300);
+			this.btnCancel.Location = new System.Drawing.Point(153, 300);
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Size = new System.Drawing.Size(125, 37);
 			this.btnCancel.TabIndex = 73;

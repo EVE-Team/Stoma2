@@ -1,6 +1,6 @@
 ﻿namespace Stoma2
 {
-	partial class SecondAppointment
+	partial class NewAppointment
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -28,7 +28,6 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.button8 = new System.Windows.Forms.Button();
 			this.label1 = new System.Windows.Forms.Label();
 			this.textBox1 = new System.Windows.Forms.TextBox();
 			this.textBox28 = new System.Windows.Forms.TextBox();
@@ -37,39 +36,25 @@
 			this.label31 = new System.Windows.Forms.Label();
 			this.textBox10 = new System.Windows.Forms.TextBox();
 			this.label25 = new System.Windows.Forms.Label();
+			this.button1 = new System.Windows.Forms.Button();
+			this.button8 = new System.Windows.Forms.Button();
 			this.SuspendLayout();
-			// 
-			// button8
-			// 
-			this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(211)))), ((int)(((byte)(124)))));
-			this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.button8.ForeColor = System.Drawing.Color.White;
-			this.button8.Image = global::Stoma2.Properties.Resources.plus;
-			this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.button8.Location = new System.Drawing.Point(234, 231);
-			this.button8.Name = "button8";
-			this.button8.Size = new System.Drawing.Size(138, 41);
-			this.button8.TabIndex = 24;
-			this.button8.Text = "Добавить";
-			this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.button8.UseVisualStyleBackColor = false;
 			// 
 			// label1
 			// 
 			this.label1.AutoSize = true;
 			this.label1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.label1.Location = new System.Drawing.Point(13, 119);
+			this.label1.Location = new System.Drawing.Point(383, 52);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(99, 19);
+			this.label1.Size = new System.Drawing.Size(203, 19);
 			this.label1.TabIndex = 32;
-			this.label1.Text = "Примечания";
+			this.label1.Text = "Примечания для пациента";
 			// 
 			// textBox1
 			// 
 			this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.textBox1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.textBox1.Location = new System.Drawing.Point(118, 119);
+			this.textBox1.Location = new System.Drawing.Point(387, 82);
 			this.textBox1.Multiline = true;
 			this.textBox1.Name = "textBox1";
 			this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -133,12 +118,45 @@
 			this.label25.TabIndex = 25;
 			this.label25.Text = "ФИО";
 			// 
-			// SecondAppointment
+			// button1
+			// 
+			this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(211)))), ((int)(((byte)(124)))));
+			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.button1.ForeColor = System.Drawing.Color.White;
+			this.button1.Image = global::Stoma2.Properties.Resources.plus;
+			this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.button1.Location = new System.Drawing.Point(387, 6);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(169, 41);
+			this.button1.TabIndex = 33;
+			this.button1.Text = "Новый пациент";
+			this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.button1.UseVisualStyleBackColor = false;
+			// 
+			// button8
+			// 
+			this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(211)))), ((int)(((byte)(124)))));
+			this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.button8.ForeColor = System.Drawing.Color.White;
+			this.button8.Image = global::Stoma2.Properties.Resources.plus;
+			this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.button8.Location = new System.Drawing.Point(234, 147);
+			this.button8.Name = "button8";
+			this.button8.Size = new System.Drawing.Size(138, 41);
+			this.button8.TabIndex = 24;
+			this.button8.Text = "Добавить";
+			this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.button8.UseVisualStyleBackColor = false;
+			// 
+			// NewAppointment
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
-			this.ClientSize = new System.Drawing.Size(773, 315);
+			this.ClientSize = new System.Drawing.Size(840, 292);
+			this.Controls.Add(this.button1);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.textBox1);
 			this.Controls.Add(this.textBox28);
@@ -149,7 +167,7 @@
 			this.Controls.Add(this.label25);
 			this.Controls.Add(this.button8);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-			this.Name = "SecondAppointment";
+			this.Name = "NewAppointment";
 			this.Text = "SecondAppointment";
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -167,5 +185,6 @@
 		private System.Windows.Forms.Label label31;
 		private System.Windows.Forms.TextBox textBox10;
 		private System.Windows.Forms.Label label25;
+		private System.Windows.Forms.Button button1;
 	}
 }

@@ -23,219 +23,70 @@ namespace Stoma2
 		[DllImportAttribute("user32.dll")]
 		public static extern bool ReleaseCapture();
 
+		// Panel forms
 		Control appointmentForm = Program.SetupForm(new Appointment());
 		Control treatmentForm = Program.SetupForm(new Treatment());
+		Control inviteForm = Program.SetupForm(new Invite());
+		Control otherForm = Program.SetupForm(new Other());
+		//
 
 		public MainForm()
 		{
 			InitializeComponent();
 
+			// Draw invite count
 			var bitmap = new Bitmap(100, 100);
 			using (var graphics = Graphics.FromImage(bitmap))
 			{
 				var icon = Stoma2.Properties.Resources.bell;
 				graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-				graphics.DrawImage(icon, (radioButton5.Width - icon.Width) / 2, 10, 64, 64);
+				graphics.DrawImage(icon, (rbInvite.Width - icon.Width) / 2, 10, 64, 64);
 				var notification = new Rectangle(60, 50, 25, 25);
 				graphics.FillEllipse(new SolidBrush(Color.White), notification);
 				graphics.DrawEllipse(new Pen(Color.Black, 2), notification);
-				graphics.DrawString("3", radioButton5.Font, new SolidBrush(Color.Black),
+				graphics.DrawString("3", rbInvite.Font, new SolidBrush(Color.Black),
 					new Point(notification.Location.X + 5, notification.Location.Y + 1));
 			}
-			radioButton5.BackgroundImage = bitmap;
-			radioButton5.BackgroundImageLayout = ImageLayout.Tile;
+			rbInvite.BackgroundImage = bitmap;
+			rbInvite.BackgroundImageLayout = ImageLayout.Tile;
+			//
 
-			Program.SetPanelForm(pnlAppointment, appointmentForm);
-			Program.SetPanelForm(pnlTreatment, treatmentForm);
-
-			panel1.Dock = DockStyle.Fill;
-			panel2.Dock = DockStyle.Fill;
-			panel3.Dock = DockStyle.Fill;
-			pnlAppointment.Dock = DockStyle.Fill;
-			pnlRemainder.Dock = DockStyle.Fill;
-			pnlTreatment.Dock = DockStyle.Fill;
-			panel7.Dock = DockStyle.Fill;
-			panel9.Dock = DockStyle.Fill;
-			panel10.Dock = DockStyle.Fill;
-
+			// Set tool tips
 			var ToolTip = new System.Windows.Forms.ToolTip();
 			ToolTip.BackColor = System.Drawing.Color.AntiqueWhite;
-			ToolTip.SetToolTip(this.radioButton3, "Добавить новый визит");
-			ToolTip.SetToolTip(this.radioButton5, "Напоминания о повторном осмотре");
-			ToolTip.SetToolTip(this.radioButton4, "Оказанные за визит услуги");
-			ToolTip.SetToolTip(this.radioButton6, "Дополнительные возможности");
+			ToolTip.SetToolTip(this.rbAppointment, "Добавить новый визит");
+			ToolTip.SetToolTip(this.rbInvite, "Напоминания о повторном осмотре");
+			ToolTip.SetToolTip(this.rbTreatment, "Оказанные за визит услуги");
+			ToolTip.SetToolTip(this.rbOther, "Дополнительные возможности");
+			ToolTip.SetToolTip(this.btnMinimize, "Свернуть");
+			ToolTip.SetToolTip(this.btnClose, "Закрыть");
+			//
 
-			ToolTip.SetToolTip(this.button2, "Свернуть");
-			ToolTip.SetToolTip(this.button1, "Закрыть");
-
-			radioButton3_MouseDown(null, null);
-
-            this.Size = new Size(900, 720);
+			// New appointment selected by default
+			rbAppointment_CheckedChanged(null, null);
 		}
 
-		private void button1_Click(object sender, EventArgs e)
+		private void rbOther_CheckedChanged(object sender, EventArgs e)
 		{
-			this.Close();
+			Program.SetPanelForm(pnlContent, otherForm);
 		}
 
-		private void label1_MouseDown(object sender, MouseEventArgs e)
+		private void rbInvite_CheckedChanged(object sender, EventArgs e)
 		{
-			if (e.Button == MouseButtons.Left)
-			{
-				ReleaseCapture();
-				SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-			}
+			Program.SetPanelForm(pnlContent, inviteForm);
 		}
 
-		private void button2_Click(object sender, EventArgs e)
+		private void rbAppointment_CheckedChanged(object sender, EventArgs e)
 		{
-			this.WindowState = FormWindowState.Minimized;
+			Program.SetPanelForm(pnlContent, appointmentForm);
 		}
 
-		private void button3_Click(object sender, EventArgs e)
+		private void rbTreatment_CheckedChanged(object sender, EventArgs e)
 		{
-			
+			Program.SetPanelForm(pnlContent, treatmentForm);
 		}
 
-		private void button4_Click(object sender, EventArgs e)
-		{
-			
-		}
-
-		private void button5_Click(object sender, EventArgs e)
-		{
-			
-		}
-
-		private void panel4_Paint(object sender, PaintEventArgs e)
-		{
-
-		}
-
-		private void radioButton1_CheckedChanged(object sender, EventArgs e)
-		{
-			
-
-		}
-
-		private void radioButton2_CheckedChanged(object sender, EventArgs e)
-		{
-			
-		}
-
-		private void panel6_Paint(object sender, PaintEventArgs e)
-		{
-
-		}
-
-		private void HidePanels()
-		{
-			pnlAppointment.Visible = false;
-			pnlRemainder.Visible = false;
-			pnlTreatment.Visible = false;
-			panel7.Visible = false;
-		}
-
-		private void MainForm_Load(object sender, EventArgs e)
-		{
-
-		}
-
-		private void button10_Click(object sender, EventArgs e)
-		{
-			label5.Visible = true;
-			button6.Visible = true;
-		}
-
-		private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
-		{
-
-		}
-
-		private void radioButton3_CheckedChanged(object sender, EventArgs e)
-		{
-
-		}
-
-		private void radioButton3_MouseDown(object sender, MouseEventArgs e)
-		{
-			HidePanels();
-			pnlAppointment.Visible = true;
-		}
-
-		private void radioButton4_CheckedChanged(object sender, EventArgs e)
-		{
-			
-		}
-
-		private void radioButton5_MouseDown(object sender, MouseEventArgs e)
-		{
-			HidePanels();
-			pnlRemainder.Visible = true;
-		}
-
-		private void radioButton4_MouseDown(object sender, MouseEventArgs e)
-		{
-			HidePanels();
-			pnlTreatment.Visible = true;
-		}
-
-		private void radioButton6_MouseDown(object sender, MouseEventArgs e)
-		{
-			HidePanels();
-			panel7.Visible = true;
-		}
-
-		private void radioButton7_CheckedChanged(object sender, EventArgs e)
-		{
-			
-		}
-
-		private void HidePanels2()
-		{
-			panel3.Visible = false;
-			panel2.Visible = false;
-			panel1.Visible = false;
-			panel9.Visible = false;
-			panel10.Visible = false;
-		}
-
-		private void radioButton7_MouseDown(object sender, MouseEventArgs e)
-		{
-			HidePanels2();
-			panel3.Visible = true;
-		}
-
-		private void radioButton8_MouseDown(object sender, MouseEventArgs e)
-		{
-			HidePanels2();
-			panel2.Visible = true;
-		}
-
-		private void radioButton9_MouseDown(object sender, MouseEventArgs e)
-		{
-			HidePanels2();
-			panel1.Visible = true;
-		}
-
-		private void radioButton10_MouseDown(object sender, MouseEventArgs e)
-		{
-			HidePanels2();
-			panel9.Visible = true;
-		}
-
-		private void radioButton11_MouseDown(object sender, MouseEventArgs e)
-		{
-			HidePanels2();
-			panel10.Visible = true;
-		}
-
-        private void panel13_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-		private void button8_Click(object sender, EventArgs e)
+		private void btnMaximize_Click(object sender, EventArgs e)
 		{
 			if (WindowState == FormWindowState.Maximized)
 			{
@@ -245,7 +96,25 @@ namespace Stoma2
 			{
 				WindowState = FormWindowState.Maximized;
 			}
-			
+		}
+
+		private void btnMinimize_Click(object sender, EventArgs e)
+		{
+			this.WindowState = FormWindowState.Minimized;
+		}
+
+		private void btnClose_Click(object sender, EventArgs e)
+		{
+			this.Close();
+		}
+
+		private void lblHeader_MouseDown(object sender, MouseEventArgs e)
+		{
+			if (e.Button == MouseButtons.Left)
+			{
+				ReleaseCapture();
+				SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+			}
 		}
 	}
 }

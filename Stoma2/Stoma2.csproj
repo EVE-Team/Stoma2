@@ -49,17 +49,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Accordion.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Accordion.Designer.cs">
+      <DependentUpon>Accordion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Appointment.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Appointment.Designer.cs">
       <DependentUpon>Appointment.cs</DependentUpon>
     </Compile>
-    <Compile Include="FirstAppointment.cs">
+    <Compile Include="Expander.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Expander.Designer.cs">
+      <DependentUpon>Expander.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Invite.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FirstAppointment.Designer.cs">
-      <DependentUpon>FirstAppointment.cs</DependentUpon>
+    <Compile Include="Invite.Designer.cs">
+      <DependentUpon>Invite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewPatient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewPatient.Designer.cs">
+      <DependentUpon>NewPatient.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -73,13 +91,19 @@
     <Compile Include="NewTreatment.Designer.cs">
       <DependentUpon>NewTreatment.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SecondAppointment.cs">
+    <Compile Include="Other.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SecondAppointment.Designer.cs">
-      <DependentUpon>SecondAppointment.cs</DependentUpon>
+    <Compile Include="Other.Designer.cs">
+      <DependentUpon>Other.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="NewAppointment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewAppointment.Designer.cs">
+      <DependentUpon>NewAppointment.cs</DependentUpon>
     </Compile>
     <Compile Include="TextBoxEx.cs">
       <SubType>Component</SubType>
@@ -102,14 +126,20 @@
     <EmbeddedResource Include="Appointment.resx">
       <DependentUpon>Appointment.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FirstAppointment.resx">
-      <DependentUpon>FirstAppointment.cs</DependentUpon>
+    <EmbeddedResource Include="Invite.resx">
+      <DependentUpon>Invite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewPatient.resx">
+      <DependentUpon>NewPatient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewTreatment.resx">
       <DependentUpon>NewTreatment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Other.resx">
+      <DependentUpon>Other.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -121,8 +151,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="SecondAppointment.resx">
-      <DependentUpon>SecondAppointment.cs</DependentUpon>
+    <EmbeddedResource Include="NewAppointment.resx">
+      <DependentUpon>NewAppointment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Treatment.resx">
       <DependentUpon>Treatment.cs</DependentUpon>
@@ -238,6 +268,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Teeth.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Collapse.png" />
+    <None Include="Resources\Expand1.png" />
+    <None Include="Resources\Collapse1.png" />
+    <Content Include="Resources\Expand.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Stoma2
 {
-	public partial class SecondAppointment : Form
+	public partial class NewAppointment : Form
 	{
-		public SecondAppointment()
+		public NewAppointment()
 		{
 			InitializeComponent();
 		}

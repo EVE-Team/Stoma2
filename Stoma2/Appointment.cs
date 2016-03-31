@@ -12,8 +12,8 @@ namespace Stoma2
 {
 	public partial class Appointment : Form
 	{
-		Control firstAppoinmentForm = Program.SetupForm(new FirstAppointment());
-		Control secondAppointmentForm = Program.SetupForm(new SecondAppointment());
+		Control firstAppoinmentForm = Program.SetupForm(new NewPatient());
+		Control secondAppointmentForm = Program.SetupForm(new NewAppointment());
 
 		public Appointment()
 		{
