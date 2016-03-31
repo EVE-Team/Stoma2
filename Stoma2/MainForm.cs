@@ -24,6 +24,7 @@ namespace Stoma2
 		public static extern bool ReleaseCapture();
 
 		Control appointmentForm = Program.SetupForm(new Appointment());
+		Control treatmentForm = Program.SetupForm(new Treatment());
 
 		public MainForm()
 		{
@@ -45,13 +46,14 @@ namespace Stoma2
 			radioButton5.BackgroundImageLayout = ImageLayout.Tile;
 
 			Program.SetPanelForm(pnlAppointment, appointmentForm);
+			Program.SetPanelForm(pnlTreatment, treatmentForm);
 
 			panel1.Dock = DockStyle.Fill;
 			panel2.Dock = DockStyle.Fill;
 			panel3.Dock = DockStyle.Fill;
 			pnlAppointment.Dock = DockStyle.Fill;
 			pnlRemainder.Dock = DockStyle.Fill;
-			pnlVisits.Dock = DockStyle.Fill;
+			pnlTreatment.Dock = DockStyle.Fill;
 			panel7.Dock = DockStyle.Fill;
 			panel9.Dock = DockStyle.Fill;
 			panel10.Dock = DockStyle.Fill;
@@ -130,7 +132,7 @@ namespace Stoma2
 		{
 			pnlAppointment.Visible = false;
 			pnlRemainder.Visible = false;
-			pnlVisits.Visible = false;
+			pnlTreatment.Visible = false;
 			panel7.Visible = false;
 		}
 
@@ -175,7 +177,7 @@ namespace Stoma2
 		private void radioButton4_MouseDown(object sender, MouseEventArgs e)
 		{
 			HidePanels();
-			pnlVisits.Visible = true;
+			pnlTreatment.Visible = true;
 		}
 
 		private void radioButton6_MouseDown(object sender, MouseEventArgs e)

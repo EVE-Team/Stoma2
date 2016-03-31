@@ -67,6 +67,12 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="NewTreatment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewTreatment.Designer.cs">
+      <DependentUpon>NewTreatment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SecondAppointment.cs">
@@ -81,6 +87,18 @@
     <Compile Include="TextBoxEx.Designer.cs">
       <DependentUpon>TextBoxEx.cs</DependentUpon>
     </Compile>
+    <Compile Include="Treatment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Treatment.Designer.cs">
+      <DependentUpon>Treatment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Visit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visit.Designer.cs">
+      <DependentUpon>Visit.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Appointment.resx">
       <DependentUpon>Appointment.cs</DependentUpon>
     </EmbeddedResource>
@@ -89,6 +107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewTreatment.resx">
+      <DependentUpon>NewTreatment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -102,6 +123,12 @@
     </Compile>
     <EmbeddedResource Include="SecondAppointment.resx">
       <DependentUpon>SecondAppointment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Treatment.resx">
+      <DependentUpon>Treatment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visit.resx">
+      <DependentUpon>Visit.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -208,6 +235,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\close2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Teeth.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
