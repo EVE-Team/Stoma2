@@ -61,6 +61,18 @@
     <Compile Include="Appointment.Designer.cs">
       <DependentUpon>Appointment.cs</DependentUpon>
     </Compile>
+    <Compile Include="BackUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BackUp.Designer.cs">
+      <DependentUpon>BackUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Doctor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Doctor.Designer.cs">
+      <DependentUpon>Doctor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Expander.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -72,6 +84,12 @@
     </Compile>
     <Compile Include="Invite.Designer.cs">
       <DependentUpon>Invite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MonthlyReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MonthlyReport.Designer.cs">
+      <DependentUpon>MonthlyReport.cs</DependentUpon>
     </Compile>
     <Compile Include="NewPatient.cs">
       <SubType>Form</SubType>
@@ -96,6 +114,18 @@
     </Compile>
     <Compile Include="Other.Designer.cs">
       <DependentUpon>Other.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Patient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Patient.Designer.cs">
+      <DependentUpon>Patient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PriceList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PriceList.Designer.cs">
+      <DependentUpon>PriceList.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -126,8 +156,17 @@
     <EmbeddedResource Include="Appointment.resx">
       <DependentUpon>Appointment.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BackUp.resx">
+      <DependentUpon>BackUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Doctor.resx">
+      <DependentUpon>Doctor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Invite.resx">
       <DependentUpon>Invite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MonthlyReport.resx">
+      <DependentUpon>MonthlyReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewPatient.resx">
       <DependentUpon>NewPatient.cs</DependentUpon>
@@ -140,6 +179,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Other.resx">
       <DependentUpon>Other.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Patient.resx">
+      <DependentUpon>Patient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PriceList.resx">
+      <DependentUpon>PriceList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

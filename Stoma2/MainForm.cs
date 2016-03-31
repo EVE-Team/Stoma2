@@ -54,11 +54,12 @@ namespace Stoma2
 			// Set tool tips
 			var ToolTip = new System.Windows.Forms.ToolTip();
 			ToolTip.BackColor = System.Drawing.Color.AntiqueWhite;
-			ToolTip.SetToolTip(this.rbAppointment, "Добавить новый визит");
+			ToolTip.SetToolTip(this.rbAppointment, "Добавить новый приём");
 			ToolTip.SetToolTip(this.rbInvite, "Напоминания о повторном осмотре");
-			ToolTip.SetToolTip(this.rbTreatment, "Оказанные за визит услуги");
+			ToolTip.SetToolTip(this.rbTreatment, "Оказанные за приём услуги");
 			ToolTip.SetToolTip(this.rbOther, "Дополнительные возможности");
 			ToolTip.SetToolTip(this.btnMinimize, "Свернуть");
+			ToolTip.SetToolTip(this.btnMaximize, "Развернуть на весь экран");
 			ToolTip.SetToolTip(this.btnClose, "Закрыть");
 			//
 
