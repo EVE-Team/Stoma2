@@ -17,6 +17,7 @@ namespace Stoma2
 		Control patientForm = Program.SetupForm(new Patient());
 		Control doctorForm = Program.SetupForm(new Doctor());
 		Control backupForm = Program.SetupForm(new BackUp());
+		Control visitForm = Program.SetupForm(new Visit());
 
 		public Other()
 		{
@@ -48,6 +49,11 @@ namespace Stoma2
 		private void radioButton10_CheckedChanged(object sender, EventArgs e)
 		{
 			Program.SetPanelForm(pnlContent, backupForm);
+		}
+
+		private void rbVisits_CheckedChanged(object sender, EventArgs e)
+		{
+			Program.SetPanelForm(pnlContent, visitForm);
 		}
 	}
 }

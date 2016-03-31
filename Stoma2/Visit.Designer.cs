@@ -65,7 +65,7 @@
             listViewItem3});
 			this.listView4.Location = new System.Drawing.Point(22, 21);
 			this.listView4.Name = "listView4";
-			this.listView4.Size = new System.Drawing.Size(659, 392);
+			this.listView4.Size = new System.Drawing.Size(711, 405);
 			this.listView4.TabIndex = 20;
 			this.listView4.UseCompatibleStateImageBehavior = false;
 			this.listView4.View = System.Windows.Forms.View.Details;
@@ -85,15 +85,15 @@
 			this.columnHeader16.Text = "Диагноз";
 			this.columnHeader16.Width = 199;
 			// 
-			// Visits
+			// Visit
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
-			this.ClientSize = new System.Drawing.Size(702, 435);
+			this.ClientSize = new System.Drawing.Size(754, 448);
 			this.Controls.Add(this.listView4);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-			this.Name = "Visits";
+			this.Name = "Visit";
 			this.Text = "Visits";
 			this.ResumeLayout(false);
 

@@ -36,6 +36,7 @@
 			this.radioButton7 = new System.Windows.Forms.RadioButton();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.pnlContent = new System.Windows.Forms.Panel();
+			this.rbVisits = new System.Windows.Forms.RadioButton();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.SuspendLayout();
@@ -44,8 +45,9 @@
 			// 
 			this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-			this.groupBox1.Controls.Add(this.radioButton11);
 			this.groupBox1.Controls.Add(this.radioButton10);
+			this.groupBox1.Controls.Add(this.rbVisits);
+			this.groupBox1.Controls.Add(this.radioButton11);
 			this.groupBox1.Controls.Add(this.radioButton9);
 			this.groupBox1.Controls.Add(this.radioButton8);
 			this.groupBox1.Controls.Add(this.radioButton7);
@@ -73,7 +75,7 @@
 			this.radioButton11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.radioButton11.ForeColor = System.Drawing.Color.White;
 			this.radioButton11.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-			this.radioButton11.Location = new System.Drawing.Point(10, 151);
+			this.radioButton11.Location = new System.Drawing.Point(10, 195);
 			this.radioButton11.Name = "radioButton11";
 			this.radioButton11.Size = new System.Drawing.Size(169, 61);
 			this.radioButton11.TabIndex = 22;
@@ -97,7 +99,7 @@
 			this.radioButton10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.radioButton10.ForeColor = System.Drawing.Color.White;
 			this.radioButton10.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-			this.radioButton10.Location = new System.Drawing.Point(10, 218);
+			this.radioButton10.Location = new System.Drawing.Point(10, 262);
 			this.radioButton10.Name = "radioButton10";
 			this.radioButton10.Size = new System.Drawing.Size(169, 61);
 			this.radioButton10.TabIndex = 21;
@@ -196,6 +198,28 @@
 			this.pnlContent.Size = new System.Drawing.Size(498, 509);
 			this.pnlContent.TabIndex = 10;
 			// 
+			// rbVisits
+			// 
+			this.rbVisits.Appearance = System.Windows.Forms.Appearance.Button;
+			this.rbVisits.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(74)))), ((int)(((byte)(73)))));
+			this.rbVisits.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+			this.rbVisits.CheckAlign = System.Drawing.ContentAlignment.BottomRight;
+			this.rbVisits.FlatAppearance.BorderSize = 0;
+			this.rbVisits.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(140)))), ((int)(((byte)(255)))));
+			this.rbVisits.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+			this.rbVisits.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+			this.rbVisits.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.rbVisits.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.rbVisits.ForeColor = System.Drawing.Color.White;
+			this.rbVisits.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+			this.rbVisits.Location = new System.Drawing.Point(10, 151);
+			this.rbVisits.Name = "rbVisits";
+			this.rbVisits.Size = new System.Drawing.Size(169, 38);
+			this.rbVisits.TabIndex = 23;
+			this.rbVisits.Text = "Визиты";
+			this.rbVisits.UseVisualStyleBackColor = false;
+			this.rbVisits.CheckedChanged += new System.EventHandler(this.rbVisits_CheckedChanged);
+			// 
 			// Other
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -223,5 +247,6 @@
 		private System.Windows.Forms.RadioButton radioButton7;
 		private System.Windows.Forms.GroupBox groupBox2;
 		private System.Windows.Forms.Panel pnlContent;
+		private System.Windows.Forms.RadioButton rbVisits;
 	}
 }
