@@ -315,9 +315,16 @@
     <None Include="Resources\Teeth.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\restore--.png" />
+    <None Include="Resources\usb-stick.png" />
+    <None Include="Resources\arrow.png" />
+    <None Include="Resources\arrow2.png" />
+    <None Include="Resources\check--.png" />
+    <None Include="Resources\cancel.png" />
     <Content Include="Resources\Collapse.png" />
     <None Include="Resources\Expand1.png" />
     <None Include="Resources\Collapse1.png" />
+    <None Include="Resources\copy.png" />
     <Content Include="Resources\Expand.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

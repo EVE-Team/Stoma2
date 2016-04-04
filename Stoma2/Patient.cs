@@ -16,5 +16,12 @@ namespace Stoma2
 		{
 			InitializeComponent();
 		}
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            var form = new NewPatient();
+            form.Text = "Редактирование пациента";
+            form.ShowDialog(this);
+        }
 	}
 }

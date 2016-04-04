@@ -51,7 +51,6 @@
 			this.columnHeader22 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader23 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader24 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.textBox1 = new System.Windows.Forms.TextBox();
 			this.textBox10 = new System.Windows.Forms.TextBox();
@@ -63,6 +62,8 @@
 			this.button9 = new System.Windows.Forms.Button();
 			this.button5 = new System.Windows.Forms.Button();
 			this.pictureBox5 = new System.Windows.Forms.PictureBox();
+			this.listView1 = new System.Windows.Forms.ListView();
+			this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -86,7 +87,7 @@
 			this.shapeContainer1.Name = "shapeContainer1";
 			this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.rectangleShape6});
-			this.shapeContainer1.Size = new System.Drawing.Size(873, 554);
+			this.shapeContainer1.Size = new System.Drawing.Size(845, 554);
 			this.shapeContainer1.TabIndex = 28;
 			this.shapeContainer1.TabStop = false;
 			// 
@@ -145,7 +146,7 @@
             listViewItem2});
 			this.listView7.Location = new System.Drawing.Point(15, 59);
 			this.listView7.Name = "listView7";
-			this.listView7.Size = new System.Drawing.Size(539, 427);
+			this.listView7.Size = new System.Drawing.Size(511, 427);
 			this.listView7.TabIndex = 36;
 			this.listView7.UseCompatibleStateImageBehavior = false;
 			this.listView7.View = System.Windows.Forms.View.Details;
@@ -175,13 +176,6 @@
 			this.columnHeader24.Text = "Итого";
 			this.columnHeader24.Width = 90;
 			// 
-			// monthCalendar1
-			// 
-			this.monthCalendar1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.monthCalendar1.Location = new System.Drawing.Point(38, 61);
-			this.monthCalendar1.Name = "monthCalendar1";
-			this.monthCalendar1.TabIndex = 41;
-			// 
 			// groupBox1
 			// 
 			this.groupBox1.BackColor = System.Drawing.Color.White;
@@ -190,7 +184,7 @@
 			this.groupBox1.Controls.Add(this.label2);
 			this.groupBox1.Controls.Add(this.label1);
 			this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.groupBox1.Location = new System.Drawing.Point(5, 287);
+			this.groupBox1.Location = new System.Drawing.Point(5, 394);
 			this.groupBox1.Margin = new System.Windows.Forms.Padding(0);
 			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.Padding = new System.Windows.Forms.Padding(0);
@@ -248,11 +242,11 @@
 			this.groupBox2.Controls.Add(this.button9);
 			this.groupBox2.Controls.Add(this.listView7);
 			this.groupBox2.Controls.Add(this.button5);
-			this.groupBox2.Location = new System.Drawing.Point(298, 5);
+			this.groupBox2.Location = new System.Drawing.Point(298, 1);
 			this.groupBox2.Margin = new System.Windows.Forms.Padding(0);
 			this.groupBox2.Name = "groupBox2";
 			this.groupBox2.Padding = new System.Windows.Forms.Padding(0);
-			this.groupBox2.Size = new System.Drawing.Size(566, 540);
+			this.groupBox2.Size = new System.Drawing.Size(538, 540);
 			this.groupBox2.TabIndex = 43;
 			this.groupBox2.TabStop = false;
 			// 
@@ -284,7 +278,7 @@
 			this.button7.ForeColor = System.Drawing.Color.White;
 			this.button7.Image = global::Stoma2.Properties.Resources.pencil;
 			this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.button7.Location = new System.Drawing.Point(146, 16);
+			this.button7.Location = new System.Drawing.Point(160, 16);
 			this.button7.Name = "button7";
 			this.button7.Size = new System.Drawing.Size(161, 37);
 			this.button7.TabIndex = 37;
@@ -302,7 +296,7 @@
 			this.button9.ForeColor = System.Drawing.Color.White;
 			this.button9.Image = global::Stoma2.Properties.Resources.trash;
 			this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.button9.Location = new System.Drawing.Point(313, 16);
+			this.button9.Location = new System.Drawing.Point(341, 16);
 			this.button9.Name = "button9";
 			this.button9.Size = new System.Drawing.Size(112, 37);
 			this.button9.TabIndex = 39;
@@ -339,13 +333,30 @@
 			this.pictureBox5.TabIndex = 29;
 			this.pictureBox5.TabStop = false;
 			// 
+			// listView1
+			// 
+			this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+			this.listView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.listView1.Location = new System.Drawing.Point(5, 60);
+			this.listView1.Name = "listView1";
+			this.listView1.Size = new System.Drawing.Size(286, 327);
+			this.listView1.TabIndex = 44;
+			this.listView1.UseCompatibleStateImageBehavior = false;
+			this.listView1.View = System.Windows.Forms.View.Details;
+			// 
+			// columnHeader1
+			// 
+			this.columnHeader1.Text = "Дата приема";
+			this.columnHeader1.Width = 182;
+			// 
 			// Treatment
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
-			this.ClientSize = new System.Drawing.Size(873, 554);
-			this.Controls.Add(this.monthCalendar1);
+			this.ClientSize = new System.Drawing.Size(845, 554);
+			this.Controls.Add(this.listView1);
 			this.Controls.Add(this.textBox18);
 			this.Controls.Add(this.pictureBox5);
 			this.Controls.Add(this.groupBox2);
@@ -381,14 +392,15 @@
 		private System.Windows.Forms.ColumnHeader columnHeader21;
 		private System.Windows.Forms.ColumnHeader columnHeader22;
 		private System.Windows.Forms.ColumnHeader columnHeader23;
-		private System.Windows.Forms.ColumnHeader columnHeader24;
-		private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.ColumnHeader columnHeader24;
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.GroupBox groupBox2;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.TextBox textBox1;
 		private System.Windows.Forms.TextBox textBox10;
-		private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
 	}
 }

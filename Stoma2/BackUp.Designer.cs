@@ -37,42 +37,12 @@
 			System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
             "19 марта 2016",
             "1 МБ"}, -1);
-			this.button4 = new System.Windows.Forms.Button();
-			this.button3 = new System.Windows.Forms.Button();
 			this.listView5 = new System.Windows.Forms.ListView();
 			this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.button4 = new System.Windows.Forms.Button();
+			this.button3 = new System.Windows.Forms.Button();
 			this.SuspendLayout();
-			// 
-			// button4
-			// 
-			this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-			this.button4.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-			this.button4.FlatAppearance.BorderSize = 2;
-			this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.button4.Location = new System.Drawing.Point(535, 57);
-			this.button4.Name = "button4";
-			this.button4.Size = new System.Drawing.Size(155, 77);
-			this.button4.TabIndex = 8;
-			this.button4.Text = "Скопировить на внешний носитель";
-			this.button4.UseVisualStyleBackColor = false;
-			// 
-			// button3
-			// 
-			this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-			this.button3.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-			this.button3.FlatAppearance.BorderSize = 2;
-			this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.button3.Location = new System.Drawing.Point(535, 12);
-			this.button3.Name = "button3";
-			this.button3.Size = new System.Drawing.Size(155, 37);
-			this.button3.TabIndex = 7;
-			this.button3.Text = "Восстановить";
-			this.button3.UseVisualStyleBackColor = false;
 			// 
 			// listView5
 			// 
@@ -92,7 +62,7 @@
             listViewItem3});
 			this.listView5.Location = new System.Drawing.Point(12, 12);
 			this.listView5.Name = "listView5";
-			this.listView5.Size = new System.Drawing.Size(507, 342);
+			this.listView5.Size = new System.Drawing.Size(603, 373);
 			this.listView5.TabIndex = 6;
 			this.listView5.UseCompatibleStateImageBehavior = false;
 			this.listView5.View = System.Windows.Forms.View.Details;
@@ -107,12 +77,48 @@
 			this.columnHeader17.Text = "Размер";
 			this.columnHeader17.Width = 132;
 			// 
+			// button4
+			// 
+			this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			this.button4.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+			this.button4.FlatAppearance.BorderSize = 2;
+			this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.button4.Image = global::Stoma2.Properties.Resources.usb_stick;
+			this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.button4.Location = new System.Drawing.Point(621, 55);
+			this.button4.Name = "button4";
+			this.button4.Size = new System.Drawing.Size(202, 55);
+			this.button4.TabIndex = 8;
+			this.button4.Text = "Скопировить на внешний носитель";
+			this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.button4.UseVisualStyleBackColor = false;
+			// 
+			// button3
+			// 
+			this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			this.button3.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+			this.button3.FlatAppearance.BorderSize = 2;
+			this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.button3.Image = global::Stoma2.Properties.Resources.restore__;
+			this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.button3.Location = new System.Drawing.Point(621, 12);
+			this.button3.Name = "button3";
+			this.button3.Size = new System.Drawing.Size(202, 37);
+			this.button3.TabIndex = 7;
+			this.button3.Text = "Восстановить";
+			this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.button3.UseVisualStyleBackColor = false;
+			// 
 			// BackUp
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
-			this.ClientSize = new System.Drawing.Size(702, 366);
+			this.ClientSize = new System.Drawing.Size(835, 397);
 			this.Controls.Add(this.button4);
 			this.Controls.Add(this.button3);
 			this.Controls.Add(this.listView5);

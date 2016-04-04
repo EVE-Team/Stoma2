@@ -60,8 +60,8 @@
 			this.lineShape4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
 			this.lineShape4.Enabled = false;
 			this.lineShape4.Name = "lineShape4";
-			this.lineShape4.X1 = 670;
-			this.lineShape4.X2 = 784;
+			this.lineShape4.X1 = 696;
+			this.lineShape4.X2 = 810;
 			this.lineShape4.Y1 = 103;
 			this.lineShape4.Y2 = 103;
 			// 
@@ -73,7 +73,7 @@
 			this.lineShape3.Enabled = false;
 			this.lineShape3.Name = "lineShape3";
 			this.lineShape3.X1 = 13;
-			this.lineShape3.X2 = 659;
+			this.lineShape3.X2 = 685;
 			this.lineShape3.Y1 = 103;
 			this.lineShape3.Y2 = 103;
 			// 
@@ -88,7 +88,7 @@
 			this.rectangleShape1.Enabled = false;
 			this.rectangleShape1.Location = new System.Drawing.Point(13, 13);
 			this.rectangleShape1.Name = "rectangleShape1";
-			this.rectangleShape1.Size = new System.Drawing.Size(828, 45);
+			this.rectangleShape1.Size = new System.Drawing.Size(854, 45);
 			// 
 			// shapeContainer1
 			// 
@@ -99,7 +99,7 @@
             this.rectangleShape1,
             this.lineShape3,
             this.lineShape4});
-			this.shapeContainer1.Size = new System.Drawing.Size(852, 449);
+			this.shapeContainer1.Size = new System.Drawing.Size(878, 490);
 			this.shapeContainer1.TabIndex = 0;
 			this.shapeContainer1.TabStop = false;
 			// 
@@ -121,7 +121,7 @@
             listViewItem3});
 			this.listView8.Location = new System.Drawing.Point(13, 118);
 			this.listView8.Name = "listView8";
-			this.listView8.Size = new System.Drawing.Size(654, 319);
+			this.listView8.Size = new System.Drawing.Size(680, 360);
 			this.listView8.TabIndex = 39;
 			this.listView8.UseCompatibleStateImageBehavior = false;
 			this.listView8.View = System.Windows.Forms.View.Details;
@@ -143,7 +143,7 @@
 			this.textBox14.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.textBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.textBox14.ForeColor = System.Drawing.Color.Silver;
-			this.textBox14.Location = new System.Drawing.Point(673, 73);
+			this.textBox14.Location = new System.Drawing.Point(699, 73);
 			this.textBox14.Name = "textBox14";
 			this.textBox14.Size = new System.Drawing.Size(125, 22);
 			this.textBox14.TabIndex = 37;
@@ -159,7 +159,7 @@
 			this.textBox12.ForeColor = System.Drawing.Color.Silver;
 			this.textBox12.Location = new System.Drawing.Point(13, 73);
 			this.textBox12.Name = "textBox12";
-			this.textBox12.Size = new System.Drawing.Size(654, 22);
+			this.textBox12.Size = new System.Drawing.Size(680, 22);
 			this.textBox12.TabIndex = 36;
 			this.textBox12.Text = "Введите название услуги";
 			// 
@@ -173,7 +173,7 @@
 			this.textBox11.ForeColor = System.Drawing.Color.Silver;
 			this.textBox11.Location = new System.Drawing.Point(52, 24);
 			this.textBox11.Name = "textBox11";
-			this.textBox11.Size = new System.Drawing.Size(776, 22);
+			this.textBox11.Size = new System.Drawing.Size(802, 22);
 			this.textBox11.TabIndex = 34;
 			this.textBox11.Text = "Введите слово для поиска по категории";
 			// 
@@ -188,7 +188,7 @@
 			this.button12.ForeColor = System.Drawing.Color.White;
 			this.button12.Image = global::Stoma2.Properties.Resources.trash;
 			this.button12.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.button12.Location = new System.Drawing.Point(679, 165);
+			this.button12.Location = new System.Drawing.Point(705, 165);
 			this.button12.Name = "button12";
 			this.button12.Size = new System.Drawing.Size(161, 37);
 			this.button12.TabIndex = 41;
@@ -206,7 +206,7 @@
 			this.button14.ForeColor = System.Drawing.Color.White;
 			this.button14.Image = global::Stoma2.Properties.Resources.pencil;
 			this.button14.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.button14.Location = new System.Drawing.Point(679, 118);
+			this.button14.Location = new System.Drawing.Point(705, 118);
 			this.button14.Name = "button14";
 			this.button14.Size = new System.Drawing.Size(161, 37);
 			this.button14.TabIndex = 40;
@@ -224,7 +224,7 @@
 			this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.button11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
 			this.button11.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.button11.Location = new System.Drawing.Point(804, 67);
+			this.button11.Location = new System.Drawing.Point(830, 67);
 			this.button11.Name = "button11";
 			this.button11.Size = new System.Drawing.Size(36, 36);
 			this.button11.TabIndex = 38;
@@ -246,7 +246,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
-			this.ClientSize = new System.Drawing.Size(852, 449);
+			this.ClientSize = new System.Drawing.Size(878, 490);
 			this.Controls.Add(this.button12);
 			this.Controls.Add(this.button14);
 			this.Controls.Add(this.listView8);

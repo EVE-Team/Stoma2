@@ -28,11 +28,10 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
+			System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
             "Скаков",
             "Михаил"}, -1);
 			this.panel13 = new System.Windows.Forms.Panel();
-			this.button8 = new System.Windows.Forms.Button();
 			this.textBox29 = new System.Windows.Forms.TextBox();
 			this.label14 = new System.Windows.Forms.Label();
 			this.textBox16 = new System.Windows.Forms.TextBox();
@@ -55,6 +54,7 @@
 			this.columnHeader27 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.rectangleShape3 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
 			this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
+			this.button8 = new System.Windows.Forms.Button();
 			this.panel13.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -63,7 +63,6 @@
 			this.panel13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.panel13.AutoSize = true;
 			this.panel13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.panel13.Controls.Add(this.button8);
 			this.panel13.Controls.Add(this.textBox29);
 			this.panel13.Controls.Add(this.label14);
 			this.panel13.Controls.Add(this.textBox16);
@@ -80,26 +79,10 @@
 			this.panel13.Controls.Add(this.label36);
 			this.panel13.Controls.Add(this.label35);
 			this.panel13.Controls.Add(this.label30);
-			this.panel13.Location = new System.Drawing.Point(480, 65);
+			this.panel13.Location = new System.Drawing.Point(475, 65);
 			this.panel13.Name = "panel13";
-			this.panel13.Size = new System.Drawing.Size(391, 447);
+			this.panel13.Size = new System.Drawing.Size(391, 397);
 			this.panel13.TabIndex = 8;
-			// 
-			// button8
-			// 
-			this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(211)))), ((int)(((byte)(124)))));
-			this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.button8.ForeColor = System.Drawing.Color.White;
-			this.button8.Image = global::Stoma2.Properties.Resources.plus;
-			this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.button8.Location = new System.Drawing.Point(103, 397);
-			this.button8.Name = "button8";
-			this.button8.Size = new System.Drawing.Size(281, 41);
-			this.button8.TabIndex = 26;
-			this.button8.Text = "Отметить как приглашенного";
-			this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.button8.UseVisualStyleBackColor = false;
 			// 
 			// textBox29
 			// 
@@ -288,7 +271,7 @@
 			this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(186)))), ((int)(((byte)(223)))));
 			this.label4.Location = new System.Drawing.Point(12, 8);
 			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(852, 43);
+			this.label4.Size = new System.Drawing.Size(847, 43);
 			this.label4.TabIndex = 7;
 			this.label4.Text = "3 пациента ожидают повторного приглашения";
 			this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -306,10 +289,10 @@
 			this.listView3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.listView3.FullRowSelect = true;
 			this.listView3.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
+            listViewItem2});
 			this.listView3.Location = new System.Drawing.Point(5, 65);
 			this.listView3.Name = "listView3";
-			this.listView3.Size = new System.Drawing.Size(469, 509);
+			this.listView3.Size = new System.Drawing.Size(464, 469);
 			this.listView3.TabIndex = 6;
 			this.listView3.UseCompatibleStateImageBehavior = false;
 			this.listView3.View = System.Windows.Forms.View.Details;
@@ -335,7 +318,7 @@
 			this.rectangleShape3.Enabled = false;
 			this.rectangleShape3.Location = new System.Drawing.Point(5, 4);
 			this.rectangleShape3.Name = "rectangleShape3";
-			this.rectangleShape3.Size = new System.Drawing.Size(863, 50);
+			this.rectangleShape3.Size = new System.Drawing.Size(858, 50);
 			// 
 			// shapeContainer1
 			// 
@@ -344,16 +327,34 @@
 			this.shapeContainer1.Name = "shapeContainer1";
 			this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.rectangleShape3});
-			this.shapeContainer1.Size = new System.Drawing.Size(883, 586);
+			this.shapeContainer1.Size = new System.Drawing.Size(878, 546);
 			this.shapeContainer1.TabIndex = 9;
 			this.shapeContainer1.TabStop = false;
+			// 
+			// button8
+			// 
+			this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(211)))), ((int)(((byte)(124)))));
+			this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.button8.ForeColor = System.Drawing.Color.White;
+			this.button8.Image = global::Stoma2.Properties.Resources.check__;
+			this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.button8.Location = new System.Drawing.Point(601, 469);
+			this.button8.Name = "button8";
+			this.button8.Size = new System.Drawing.Size(265, 37);
+			this.button8.TabIndex = 26;
+			this.button8.Text = "Отметить как приглашенного";
+			this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.button8.UseVisualStyleBackColor = false;
 			// 
 			// Invite
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
-			this.ClientSize = new System.Drawing.Size(883, 586);
+			this.ClientSize = new System.Drawing.Size(878, 546);
+			this.Controls.Add(this.button8);
 			this.Controls.Add(this.panel13);
 			this.Controls.Add(this.label4);
 			this.Controls.Add(this.listView3);
