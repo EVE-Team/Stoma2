@@ -62,7 +62,7 @@
             listViewItem3});
 			this.listView5.Location = new System.Drawing.Point(12, 12);
 			this.listView5.Name = "listView5";
-			this.listView5.Size = new System.Drawing.Size(603, 373);
+			this.listView5.Size = new System.Drawing.Size(657, 368);
 			this.listView5.TabIndex = 6;
 			this.listView5.UseCompatibleStateImageBehavior = false;
 			this.listView5.View = System.Windows.Forms.View.Details;
@@ -85,11 +85,11 @@
 			this.button4.FlatAppearance.BorderSize = 2;
 			this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.button4.Image = global::Stoma2.Properties.Resources.usb_stick;
+			this.button4.Image = global::Stoma2.Properties.Resources.usb;
 			this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.button4.Location = new System.Drawing.Point(621, 55);
+			this.button4.Location = new System.Drawing.Point(675, 55);
 			this.button4.Name = "button4";
-			this.button4.Size = new System.Drawing.Size(202, 55);
+			this.button4.Size = new System.Drawing.Size(189, 55);
 			this.button4.TabIndex = 8;
 			this.button4.Text = "Скопировить на внешний носитель";
 			this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -103,11 +103,11 @@
 			this.button3.FlatAppearance.BorderSize = 2;
 			this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.button3.Image = global::Stoma2.Properties.Resources.restore__;
+			this.button3.Image = global::Stoma2.Properties.Resources.restore_16;
 			this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.button3.Location = new System.Drawing.Point(621, 12);
+			this.button3.Location = new System.Drawing.Point(675, 12);
 			this.button3.Name = "button3";
-			this.button3.Size = new System.Drawing.Size(202, 37);
+			this.button3.Size = new System.Drawing.Size(189, 37);
 			this.button3.TabIndex = 7;
 			this.button3.Text = "Восстановить";
 			this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -118,7 +118,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
-			this.ClientSize = new System.Drawing.Size(835, 397);
+			this.ClientSize = new System.Drawing.Size(876, 392);
 			this.Controls.Add(this.button4);
 			this.Controls.Add(this.button3);
 			this.Controls.Add(this.listView5);

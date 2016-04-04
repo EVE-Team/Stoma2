@@ -363,6 +363,16 @@ namespace Stoma2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap restore_16 {
+            get {
+                object obj = ResourceManager.GetObject("restore-16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap search {
             get {
                 object obj = ResourceManager.GetObject("search", resourceCulture);
@@ -416,6 +426,16 @@ namespace Stoma2.Properties {
         internal static System.Drawing.Bitmap treatment_s {
             get {
                 object obj = ResourceManager.GetObject("treatment-s", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap usb {
+            get {
+                object obj = ResourceManager.GetObject("usb", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

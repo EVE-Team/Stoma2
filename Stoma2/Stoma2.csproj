@@ -315,6 +315,8 @@
     <None Include="Resources\Teeth.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\restore-16.png" />
+    <None Include="Resources\usb.png" />
     <None Include="Resources\restore--.png" />
     <None Include="Resources\usb-stick.png" />
     <None Include="Resources\arrow.png" />
