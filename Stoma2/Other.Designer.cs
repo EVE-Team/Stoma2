@@ -29,14 +29,14 @@
 		private void InitializeComponent()
 		{
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.radioButton11 = new System.Windows.Forms.RadioButton();
 			this.radioButton10 = new System.Windows.Forms.RadioButton();
+			this.rbVisits = new System.Windows.Forms.RadioButton();
+			this.radioButton11 = new System.Windows.Forms.RadioButton();
 			this.radioButton9 = new System.Windows.Forms.RadioButton();
 			this.radioButton8 = new System.Windows.Forms.RadioButton();
 			this.radioButton7 = new System.Windows.Forms.RadioButton();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.pnlContent = new System.Windows.Forms.Panel();
-			this.rbVisits = new System.Windows.Forms.RadioButton();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.SuspendLayout();
@@ -58,30 +58,6 @@
 			this.groupBox1.Size = new System.Drawing.Size(191, 528);
 			this.groupBox1.TabIndex = 14;
 			this.groupBox1.TabStop = false;
-			// 
-			// radioButton11
-			// 
-			this.radioButton11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.radioButton11.Appearance = System.Windows.Forms.Appearance.Button;
-			this.radioButton11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(74)))), ((int)(((byte)(73)))));
-			this.radioButton11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-			this.radioButton11.CheckAlign = System.Drawing.ContentAlignment.BottomRight;
-			this.radioButton11.FlatAppearance.BorderSize = 0;
-			this.radioButton11.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(140)))), ((int)(((byte)(255)))));
-			this.radioButton11.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-			this.radioButton11.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-			this.radioButton11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.radioButton11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.radioButton11.ForeColor = System.Drawing.Color.White;
-			this.radioButton11.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-			this.radioButton11.Location = new System.Drawing.Point(10, 195);
-			this.radioButton11.Name = "radioButton11";
-			this.radioButton11.Size = new System.Drawing.Size(169, 61);
-			this.radioButton11.TabIndex = 22;
-			this.radioButton11.Text = "Отчет по врачам";
-			this.radioButton11.UseVisualStyleBackColor = false;
-			this.radioButton11.CheckedChanged += new System.EventHandler(this.radioButton11_CheckedChanged);
 			// 
 			// radioButton10
 			// 
@@ -106,6 +82,52 @@
 			this.radioButton10.Text = "Резервное копирование";
 			this.radioButton10.UseVisualStyleBackColor = false;
 			this.radioButton10.CheckedChanged += new System.EventHandler(this.radioButton10_CheckedChanged);
+			// 
+			// rbVisits
+			// 
+			this.rbVisits.Appearance = System.Windows.Forms.Appearance.Button;
+			this.rbVisits.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(74)))), ((int)(((byte)(73)))));
+			this.rbVisits.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+			this.rbVisits.CheckAlign = System.Drawing.ContentAlignment.BottomRight;
+			this.rbVisits.FlatAppearance.BorderSize = 0;
+			this.rbVisits.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(140)))), ((int)(((byte)(255)))));
+			this.rbVisits.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+			this.rbVisits.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+			this.rbVisits.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.rbVisits.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.rbVisits.ForeColor = System.Drawing.Color.White;
+			this.rbVisits.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+			this.rbVisits.Location = new System.Drawing.Point(10, 151);
+			this.rbVisits.Name = "rbVisits";
+			this.rbVisits.Size = new System.Drawing.Size(169, 38);
+			this.rbVisits.TabIndex = 23;
+			this.rbVisits.Text = "Приёмы";
+			this.rbVisits.UseVisualStyleBackColor = false;
+			this.rbVisits.CheckedChanged += new System.EventHandler(this.rbVisits_CheckedChanged);
+			// 
+			// radioButton11
+			// 
+			this.radioButton11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.radioButton11.Appearance = System.Windows.Forms.Appearance.Button;
+			this.radioButton11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(74)))), ((int)(((byte)(73)))));
+			this.radioButton11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+			this.radioButton11.CheckAlign = System.Drawing.ContentAlignment.BottomRight;
+			this.radioButton11.FlatAppearance.BorderSize = 0;
+			this.radioButton11.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(140)))), ((int)(((byte)(255)))));
+			this.radioButton11.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+			this.radioButton11.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+			this.radioButton11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.radioButton11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.radioButton11.ForeColor = System.Drawing.Color.White;
+			this.radioButton11.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+			this.radioButton11.Location = new System.Drawing.Point(10, 195);
+			this.radioButton11.Name = "radioButton11";
+			this.radioButton11.Size = new System.Drawing.Size(169, 61);
+			this.radioButton11.TabIndex = 22;
+			this.radioButton11.Text = "Отчет по врачам";
+			this.radioButton11.UseVisualStyleBackColor = false;
+			this.radioButton11.CheckedChanged += new System.EventHandler(this.radioButton11_CheckedChanged);
 			// 
 			// radioButton9
 			// 
@@ -197,28 +219,6 @@
 			this.pnlContent.Name = "pnlContent";
 			this.pnlContent.Size = new System.Drawing.Size(498, 509);
 			this.pnlContent.TabIndex = 10;
-			// 
-			// rbVisits
-			// 
-			this.rbVisits.Appearance = System.Windows.Forms.Appearance.Button;
-			this.rbVisits.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(74)))), ((int)(((byte)(73)))));
-			this.rbVisits.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-			this.rbVisits.CheckAlign = System.Drawing.ContentAlignment.BottomRight;
-			this.rbVisits.FlatAppearance.BorderSize = 0;
-			this.rbVisits.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(140)))), ((int)(((byte)(255)))));
-			this.rbVisits.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-			this.rbVisits.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-			this.rbVisits.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.rbVisits.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.rbVisits.ForeColor = System.Drawing.Color.White;
-			this.rbVisits.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-			this.rbVisits.Location = new System.Drawing.Point(10, 151);
-			this.rbVisits.Name = "rbVisits";
-			this.rbVisits.Size = new System.Drawing.Size(169, 38);
-			this.rbVisits.TabIndex = 23;
-			this.rbVisits.Text = "Визиты";
-			this.rbVisits.UseVisualStyleBackColor = false;
-			this.rbVisits.CheckedChanged += new System.EventHandler(this.rbVisits_CheckedChanged);
 			// 
 			// Other
 			// 

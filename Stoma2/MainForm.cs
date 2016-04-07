@@ -82,6 +82,11 @@ namespace Stoma2
 			Program.SetPanelForm(pnlContent, appointmentForm);
 		}
 
+		public void goToNewAppointment()
+		{
+			rbAppointment.Checked = true;
+		}
+
 		private void rbTreatment_CheckedChanged(object sender, EventArgs e)
 		{
 			Program.SetPanelForm(pnlContent, treatmentForm);
@@ -116,6 +121,11 @@ namespace Stoma2
 				ReleaseCapture();
 				SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
 			}
+		}
+
+		private void lblHeader_DoubleClick(object sender, EventArgs e)
+		{
+			btnMaximize_Click(sender, e);
 		}
 	}
 }

@@ -22,6 +22,8 @@ namespace Stoma2
 			form.Show();
 		}
 
+		public static MainForm mainForm;
+
 		/// <summary>
 		/// The main entry point for the application.
 		/// </summary>
@@ -30,7 +32,9 @@ namespace Stoma2
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new MainForm());
+
+			mainForm = new MainForm();
+			Application.Run(mainForm);
 		}
 	}
 }

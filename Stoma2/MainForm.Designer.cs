@@ -55,6 +55,7 @@
 			this.lblHeader.TabIndex = 0;
 			this.lblHeader.Text = "Жемчужина";
 			this.lblHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.lblHeader.DoubleClick += new System.EventHandler(this.lblHeader_DoubleClick);
 			this.lblHeader.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblHeader_MouseDown);
 			// 
 			// lblSidePanel

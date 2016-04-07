@@ -47,10 +47,10 @@
 			this.textBox18 = new System.Windows.Forms.TextBox();
 			this.rectangleShape6 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
 			this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-			this.button5 = new System.Windows.Forms.Button();
-			this.button8 = new System.Windows.Forms.Button();
-			this.button7 = new System.Windows.Forms.Button();
-			this.button9 = new System.Windows.Forms.Button();
+			this.btnGoToTreatment = new System.Windows.Forms.Button();
+			this.btnAdd = new System.Windows.Forms.Button();
+			this.btnEdit = new System.Windows.Forms.Button();
+			this.btnRemove = new System.Windows.Forms.Button();
 			this.pictureBox5 = new System.Windows.Forms.PictureBox();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
 			this.SuspendLayout();
@@ -132,80 +132,81 @@
 			this.shapeContainer1.TabIndex = 33;
 			this.shapeContainer1.TabStop = false;
 			// 
-			// button5
+			// btnGoToTreatment
 			// 
-			this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(192)))), ((int)(((byte)(222)))));
-			this.button5.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(184)))), ((int)(((byte)(218)))));
-			this.button5.FlatAppearance.BorderSize = 2;
-			this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.button5.ForeColor = System.Drawing.Color.White;
-			this.button5.Image = global::Stoma2.Properties.Resources.arrow2;
-			this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.button5.Location = new System.Drawing.Point(680, 207);
-			this.button5.Name = "button5";
-			this.button5.Size = new System.Drawing.Size(161, 77);
-			this.button5.TabIndex = 75;
-			this.button5.Text = "Перейти к выполненым работам";
-			this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.button5.UseVisualStyleBackColor = false;
+			this.btnGoToTreatment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnGoToTreatment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(192)))), ((int)(((byte)(222)))));
+			this.btnGoToTreatment.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(184)))), ((int)(((byte)(218)))));
+			this.btnGoToTreatment.FlatAppearance.BorderSize = 2;
+			this.btnGoToTreatment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnGoToTreatment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.btnGoToTreatment.ForeColor = System.Drawing.Color.White;
+			this.btnGoToTreatment.Image = global::Stoma2.Properties.Resources.arrow2;
+			this.btnGoToTreatment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnGoToTreatment.Location = new System.Drawing.Point(680, 207);
+			this.btnGoToTreatment.Name = "btnGoToTreatment";
+			this.btnGoToTreatment.Size = new System.Drawing.Size(161, 77);
+			this.btnGoToTreatment.TabIndex = 75;
+			this.btnGoToTreatment.Text = "Перейти к выполненым работам";
+			this.btnGoToTreatment.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.btnGoToTreatment.UseVisualStyleBackColor = false;
 			// 
-			// button8
+			// btnAdd
 			// 
-			this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(211)))), ((int)(((byte)(124)))));
-			this.button8.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-			this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.button8.ForeColor = System.Drawing.Color.White;
-			this.button8.Image = global::Stoma2.Properties.Resources.plus;
-			this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.button8.Location = new System.Drawing.Point(680, 72);
-			this.button8.Name = "button8";
-			this.button8.Size = new System.Drawing.Size(161, 37);
-			this.button8.TabIndex = 74;
-			this.button8.Text = "Добавить";
-			this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.button8.UseVisualStyleBackColor = false;
+			this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(211)))), ((int)(((byte)(124)))));
+			this.btnAdd.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+			this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.btnAdd.ForeColor = System.Drawing.Color.White;
+			this.btnAdd.Image = global::Stoma2.Properties.Resources.plus;
+			this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnAdd.Location = new System.Drawing.Point(680, 72);
+			this.btnAdd.Name = "btnAdd";
+			this.btnAdd.Size = new System.Drawing.Size(161, 37);
+			this.btnAdd.TabIndex = 74;
+			this.btnAdd.Text = "Добавить";
+			this.btnAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.btnAdd.UseVisualStyleBackColor = false;
+			this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
 			// 
-			// button7
+			// btnEdit
 			// 
-			this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(192)))), ((int)(((byte)(222)))));
-			this.button7.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(184)))), ((int)(((byte)(218)))));
-			this.button7.FlatAppearance.BorderSize = 2;
-			this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.button7.ForeColor = System.Drawing.Color.White;
-			this.button7.Image = global::Stoma2.Properties.Resources.pencil;
-			this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.button7.Location = new System.Drawing.Point(680, 118);
-			this.button7.Name = "button7";
-			this.button7.Size = new System.Drawing.Size(161, 37);
-			this.button7.TabIndex = 72;
-			this.button7.Text = "Редактировать";
-			this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.button7.UseVisualStyleBackColor = false;
+			this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(192)))), ((int)(((byte)(222)))));
+			this.btnEdit.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(184)))), ((int)(((byte)(218)))));
+			this.btnEdit.FlatAppearance.BorderSize = 2;
+			this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.btnEdit.ForeColor = System.Drawing.Color.White;
+			this.btnEdit.Image = global::Stoma2.Properties.Resources.pencil;
+			this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnEdit.Location = new System.Drawing.Point(680, 118);
+			this.btnEdit.Name = "btnEdit";
+			this.btnEdit.Size = new System.Drawing.Size(161, 37);
+			this.btnEdit.TabIndex = 72;
+			this.btnEdit.Text = "Редактировать";
+			this.btnEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.btnEdit.UseVisualStyleBackColor = false;
 			// 
-			// button9
+			// btnRemove
 			// 
-			this.button9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.button9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(83)))), ((int)(((byte)(79)))));
-			this.button9.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(63)))), ((int)(((byte)(58)))));
-			this.button9.FlatAppearance.BorderSize = 2;
-			this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.button9.ForeColor = System.Drawing.Color.White;
-			this.button9.Image = global::Stoma2.Properties.Resources.trash;
-			this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.button9.Location = new System.Drawing.Point(680, 164);
-			this.button9.Name = "button9";
-			this.button9.Size = new System.Drawing.Size(161, 37);
-			this.button9.TabIndex = 73;
-			this.button9.Text = "Удалить";
-			this.button9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.button9.UseVisualStyleBackColor = false;
+			this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnRemove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(83)))), ((int)(((byte)(79)))));
+			this.btnRemove.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(63)))), ((int)(((byte)(58)))));
+			this.btnRemove.FlatAppearance.BorderSize = 2;
+			this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.btnRemove.ForeColor = System.Drawing.Color.White;
+			this.btnRemove.Image = global::Stoma2.Properties.Resources.trash;
+			this.btnRemove.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnRemove.Location = new System.Drawing.Point(680, 164);
+			this.btnRemove.Name = "btnRemove";
+			this.btnRemove.Size = new System.Drawing.Size(161, 37);
+			this.btnRemove.TabIndex = 73;
+			this.btnRemove.Text = "Удалить";
+			this.btnRemove.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.btnRemove.UseVisualStyleBackColor = false;
 			// 
 			// pictureBox5
 			// 
@@ -224,10 +225,10 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
 			this.ClientSize = new System.Drawing.Size(851, 361);
-			this.Controls.Add(this.button5);
-			this.Controls.Add(this.button8);
-			this.Controls.Add(this.button7);
-			this.Controls.Add(this.button9);
+			this.Controls.Add(this.btnGoToTreatment);
+			this.Controls.Add(this.btnAdd);
+			this.Controls.Add(this.btnEdit);
+			this.Controls.Add(this.btnRemove);
 			this.Controls.Add(this.textBox18);
 			this.Controls.Add(this.pictureBox5);
 			this.Controls.Add(this.listView4);
@@ -251,9 +252,9 @@
 		private System.Windows.Forms.PictureBox pictureBox5;
 		private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape6;
 		private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
-		private System.Windows.Forms.Button button8;
-		private System.Windows.Forms.Button button7;
-		private System.Windows.Forms.Button button9;
-		private System.Windows.Forms.Button button5;
+		private System.Windows.Forms.Button btnAdd;
+		private System.Windows.Forms.Button btnEdit;
+		private System.Windows.Forms.Button btnRemove;
+		private System.Windows.Forms.Button btnGoToTreatment;
 	}
 }

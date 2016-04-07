@@ -16,5 +16,10 @@ namespace Stoma2
 		{
 			InitializeComponent();
 		}
+
+		private void btnAdd_Click(object sender, EventArgs e)
+		{
+			Program.mainForm.goToNewAppointment();
+		}
 	}
 }

@@ -166,7 +166,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
-			this.ClientSize = new System.Drawing.Size(1035, 504);
+			this.ClientSize = new System.Drawing.Size(970, 420);
 			this.Controls.Add(this.pnlPatientInfo);
 			this.Controls.Add(this.button1);
 			this.Controls.Add(this.label1);

@@ -87,7 +87,7 @@
 			this.shapeContainer1.Name = "shapeContainer1";
 			this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.rectangleShape6});
-			this.shapeContainer1.Size = new System.Drawing.Size(845, 554);
+			this.shapeContainer1.Size = new System.Drawing.Size(842, 474);
 			this.shapeContainer1.TabIndex = 28;
 			this.shapeContainer1.TabStop = false;
 			// 
@@ -108,7 +108,7 @@
 			this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.label7.AutoSize = true;
 			this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.label7.Location = new System.Drawing.Point(355, 501);
+			this.label7.Location = new System.Drawing.Point(355, 421);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(103, 20);
 			this.label7.TabIndex = 40;
@@ -120,7 +120,7 @@
 			this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.label6.AutoSize = true;
 			this.label6.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.label6.Location = new System.Drawing.Point(204, 501);
+			this.label6.Location = new System.Drawing.Point(204, 421);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(145, 19);
 			this.label6.TabIndex = 38;
@@ -146,7 +146,7 @@
             listViewItem2});
 			this.listView7.Location = new System.Drawing.Point(15, 59);
 			this.listView7.Name = "listView7";
-			this.listView7.Size = new System.Drawing.Size(511, 427);
+			this.listView7.Size = new System.Drawing.Size(508, 347);
 			this.listView7.TabIndex = 36;
 			this.listView7.UseCompatibleStateImageBehavior = false;
 			this.listView7.View = System.Windows.Forms.View.Details;
@@ -178,13 +178,14 @@
 			// 
 			// groupBox1
 			// 
+			this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.groupBox1.BackColor = System.Drawing.Color.White;
 			this.groupBox1.Controls.Add(this.textBox1);
 			this.groupBox1.Controls.Add(this.textBox10);
 			this.groupBox1.Controls.Add(this.label2);
 			this.groupBox1.Controls.Add(this.label1);
 			this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.groupBox1.Location = new System.Drawing.Point(5, 394);
+			this.groupBox1.Location = new System.Drawing.Point(5, 310);
 			this.groupBox1.Margin = new System.Windows.Forms.Padding(0);
 			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.Padding = new System.Windows.Forms.Padding(0);
@@ -246,7 +247,7 @@
 			this.groupBox2.Margin = new System.Windows.Forms.Padding(0);
 			this.groupBox2.Name = "groupBox2";
 			this.groupBox2.Padding = new System.Windows.Forms.Padding(0);
-			this.groupBox2.Size = new System.Drawing.Size(538, 540);
+			this.groupBox2.Size = new System.Drawing.Size(535, 460);
 			this.groupBox2.TabIndex = 43;
 			this.groupBox2.TabStop = false;
 			// 
@@ -278,7 +279,7 @@
 			this.button7.ForeColor = System.Drawing.Color.White;
 			this.button7.Image = global::Stoma2.Properties.Resources.pencil;
 			this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.button7.Location = new System.Drawing.Point(160, 16);
+			this.button7.Location = new System.Drawing.Point(153, 16);
 			this.button7.Name = "button7";
 			this.button7.Size = new System.Drawing.Size(161, 37);
 			this.button7.TabIndex = 37;
@@ -296,7 +297,7 @@
 			this.button9.ForeColor = System.Drawing.Color.White;
 			this.button9.Image = global::Stoma2.Properties.Resources.trash;
 			this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.button9.Location = new System.Drawing.Point(341, 16);
+			this.button9.Location = new System.Drawing.Point(327, 16);
 			this.button9.Name = "button9";
 			this.button9.Size = new System.Drawing.Size(112, 37);
 			this.button9.TabIndex = 39;
@@ -314,7 +315,7 @@
 			this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.button5.Image = global::Stoma2.Properties.Resources.print_bw;
 			this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.button5.Location = new System.Drawing.Point(15, 492);
+			this.button5.Location = new System.Drawing.Point(15, 412);
 			this.button5.Name = "button5";
 			this.button5.Size = new System.Drawing.Size(183, 37);
 			this.button5.TabIndex = 27;
@@ -335,12 +336,15 @@
 			// 
 			// listView1
 			// 
+			this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+			this.listView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1});
 			this.listView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.listView1.Location = new System.Drawing.Point(5, 60);
 			this.listView1.Name = "listView1";
-			this.listView1.Size = new System.Drawing.Size(286, 327);
+			this.listView1.Size = new System.Drawing.Size(286, 247);
 			this.listView1.TabIndex = 44;
 			this.listView1.UseCompatibleStateImageBehavior = false;
 			this.listView1.View = System.Windows.Forms.View.Details;
@@ -355,7 +359,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
-			this.ClientSize = new System.Drawing.Size(845, 554);
+			this.ClientSize = new System.Drawing.Size(842, 474);
 			this.Controls.Add(this.listView1);
 			this.Controls.Add(this.textBox18);
 			this.Controls.Add(this.pictureBox5);
