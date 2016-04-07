@@ -10,13 +10,11 @@ using System.Windows.Forms;
 
 namespace Stoma2
 {
-	public partial class Invite : Form
+	public partial class PatientInfo : Form
 	{
-		public Invite()
+		public PatientInfo()
 		{
 			InitializeComponent();
-
-			Program.SetPanelForm(pnlPatientInfo, Program.SetupForm(new PatientInfo()));
 		}
 	}
 }

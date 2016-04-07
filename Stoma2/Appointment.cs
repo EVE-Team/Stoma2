@@ -15,6 +15,8 @@ namespace Stoma2
 		public Appointment()
 		{
 			InitializeComponent();
+
+			Program.SetPanelForm(pnlPatientInfo, Program.SetupForm(new PatientInfo()));
 		}
 
 		private void button1_Click(object sender, EventArgs e)

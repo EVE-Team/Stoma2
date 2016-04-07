@@ -15,12 +15,15 @@ namespace Stoma2
 		public Patient()
 		{
 			InitializeComponent();
+
+			Program.SetPanelForm(pnlPatientInfo, Program.SetupForm(new PatientInfo()));
 		}
 
         private void button7_Click(object sender, EventArgs e)
         {
             var form = new NewPatient();
             form.Text = "Редактирование пациента";
+			form.btnApply.Text = "Сохранить";
             form.ShowDialog(this);
         }
 	}
