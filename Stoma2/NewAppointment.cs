@@ -15,11 +15,14 @@ namespace Stoma2
 		public NewAppointment()
 		{
 			InitializeComponent();
+
+			Program.SetPanelForm(pnlPatientInfo, Program.SetupForm(new PatientInfo()));
 		}
 
-		private void Appointment_Load(object sender, EventArgs e)
+		private void btnNewPatient_Click(object sender, EventArgs e)
 		{
-			Program.SetPanelForm(pnlContents, Program.SetupForm(new Appointment()));
+			var form = new NewPatient();
+			form.ShowDialog(this);
 		}
 	}
 }

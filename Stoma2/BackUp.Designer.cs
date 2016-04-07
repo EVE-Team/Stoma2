@@ -54,7 +54,7 @@
 			this.listView5.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader9,
             this.columnHeader17});
-			this.listView5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.listView5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.listView5.FullRowSelect = true;
 			this.listView5.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1,
@@ -62,7 +62,7 @@
             listViewItem3});
 			this.listView5.Location = new System.Drawing.Point(12, 12);
 			this.listView5.Name = "listView5";
-			this.listView5.Size = new System.Drawing.Size(657, 368);
+			this.listView5.Size = new System.Drawing.Size(596, 432);
 			this.listView5.TabIndex = 6;
 			this.listView5.UseCompatibleStateImageBehavior = false;
 			this.listView5.View = System.Windows.Forms.View.Details;
@@ -70,7 +70,7 @@
 			// columnHeader9
 			// 
 			this.columnHeader9.Text = "Дата";
-			this.columnHeader9.Width = 244;
+			this.columnHeader9.Width = 120;
 			// 
 			// columnHeader17
 			// 
@@ -87,7 +87,7 @@
 			this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.button4.Image = global::Stoma2.Properties.Resources.usb;
 			this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.button4.Location = new System.Drawing.Point(675, 55);
+			this.button4.Location = new System.Drawing.Point(614, 55);
 			this.button4.Name = "button4";
 			this.button4.Size = new System.Drawing.Size(189, 55);
 			this.button4.TabIndex = 8;
@@ -105,7 +105,7 @@
 			this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.button3.Image = global::Stoma2.Properties.Resources.restore_16;
 			this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.button3.Location = new System.Drawing.Point(675, 12);
+			this.button3.Location = new System.Drawing.Point(614, 12);
 			this.button3.Name = "button3";
 			this.button3.Size = new System.Drawing.Size(189, 37);
 			this.button3.TabIndex = 7;
@@ -118,7 +118,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
-			this.ClientSize = new System.Drawing.Size(876, 392);
+			this.ClientSize = new System.Drawing.Size(815, 456);
 			this.Controls.Add(this.button4);
 			this.Controls.Add(this.button3);
 			this.Controls.Add(this.listView5);

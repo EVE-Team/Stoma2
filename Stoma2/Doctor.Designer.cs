@@ -46,10 +46,8 @@
 			this.button8 = new System.Windows.Forms.Button();
 			this.button7 = new System.Windows.Forms.Button();
 			this.button9 = new System.Windows.Forms.Button();
-			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
 			this.panel1.SuspendLayout();
-			this.groupBox2.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// rectangleShape4
@@ -63,7 +61,7 @@
 			this.rectangleShape4.Enabled = false;
 			this.rectangleShape4.Location = new System.Drawing.Point(13, 10);
 			this.rectangleShape4.Name = "rectangleShape4";
-			this.rectangleShape4.Size = new System.Drawing.Size(662, 44);
+			this.rectangleShape4.Size = new System.Drawing.Size(611, 44);
 			// 
 			// shapeContainer1
 			// 
@@ -72,7 +70,7 @@
 			this.shapeContainer1.Name = "shapeContainer1";
 			this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.rectangleShape4});
-			this.shapeContainer1.Size = new System.Drawing.Size(888, 437);
+			this.shapeContainer1.Size = new System.Drawing.Size(823, 493);
 			this.shapeContainer1.TabIndex = 0;
 			this.shapeContainer1.TabStop = false;
 			// 
@@ -82,11 +80,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
 			this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.textBox1.ForeColor = System.Drawing.Color.Silver;
-			this.textBox1.Location = new System.Drawing.Point(57, 22);
+			this.textBox1.Location = new System.Drawing.Point(57, 25);
 			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(607, 22);
+			this.textBox1.Size = new System.Drawing.Size(509, 15);
 			this.textBox1.TabIndex = 23;
 			this.textBox1.Text = "Поиск врачей";
 			// 
@@ -111,13 +109,13 @@
 			this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader3,
             this.columnHeader6});
-			this.listView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.listView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.listView1.FullRowSelect = true;
 			this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1});
 			this.listView1.Location = new System.Drawing.Point(13, 63);
 			this.listView1.Name = "listView1";
-			this.listView1.Size = new System.Drawing.Size(664, 284);
+			this.listView1.Size = new System.Drawing.Size(612, 340);
 			this.listView1.TabIndex = 22;
 			this.listView1.UseCompatibleStateImageBehavior = false;
 			this.listView1.View = System.Windows.Forms.View.Details;
@@ -125,7 +123,7 @@
 			// columnHeader3
 			// 
 			this.columnHeader3.Text = "Фамилия";
-			this.columnHeader3.Width = 159;
+			this.columnHeader3.Width = 103;
 			// 
 			// columnHeader6
 			// 
@@ -140,9 +138,9 @@
 			this.panel1.Controls.Add(this.textBox50);
 			this.panel1.Controls.Add(this.label53);
 			this.panel1.Controls.Add(this.label54);
-			this.panel1.Location = new System.Drawing.Point(13, 355);
+			this.panel1.Location = new System.Drawing.Point(13, 411);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(664, 72);
+			this.panel1.Size = new System.Drawing.Size(612, 72);
 			this.panel1.TabIndex = 28;
 			// 
 			// textBox49
@@ -151,11 +149,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.textBox49.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
 			this.textBox49.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.textBox49.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.textBox49.Location = new System.Drawing.Point(139, 40);
+			this.textBox49.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.textBox49.Location = new System.Drawing.Point(109, 40);
 			this.textBox49.Name = "textBox49";
 			this.textBox49.ReadOnly = true;
-			this.textBox49.Size = new System.Drawing.Size(512, 20);
+			this.textBox49.Size = new System.Drawing.Size(489, 16);
 			this.textBox49.TabIndex = 15;
 			this.textBox49.Text = "Ортопед";
 			// 
@@ -165,21 +163,21 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.textBox50.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
 			this.textBox50.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.textBox50.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.textBox50.Location = new System.Drawing.Point(139, 9);
+			this.textBox50.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.textBox50.Location = new System.Drawing.Point(109, 9);
 			this.textBox50.Name = "textBox50";
 			this.textBox50.ReadOnly = true;
-			this.textBox50.Size = new System.Drawing.Size(512, 20);
+			this.textBox50.Size = new System.Drawing.Size(489, 16);
 			this.textBox50.TabIndex = 14;
 			this.textBox50.Text = "Бастраков Сергей Геннадьевич";
 			// 
 			// label53
 			// 
 			this.label53.AutoSize = true;
-			this.label53.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.label53.Location = new System.Drawing.Point(8, 40);
+			this.label53.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label53.Location = new System.Drawing.Point(4, 40);
 			this.label53.Name = "label53";
-			this.label53.Size = new System.Drawing.Size(120, 19);
+			this.label53.Size = new System.Drawing.Size(98, 16);
 			this.label53.TabIndex = 13;
 			this.label53.Text = "Специальность";
 			this.label53.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -187,31 +185,34 @@
 			// label54
 			// 
 			this.label54.AutoSize = true;
-			this.label54.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.label54.Location = new System.Drawing.Point(84, 9);
+			this.label54.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label54.Location = new System.Drawing.Point(67, 9);
 			this.label54.Name = "label54";
-			this.label54.Size = new System.Drawing.Size(44, 19);
+			this.label54.Size = new System.Drawing.Size(35, 16);
 			this.label54.TabIndex = 12;
 			this.label54.Text = "ФИО";
 			// 
 			// button8
 			// 
+			this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(211)))), ((int)(((byte)(124)))));
 			this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.button8.ForeColor = System.Drawing.Color.White;
 			this.button8.Image = global::Stoma2.Properties.Resources.plus;
 			this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.button8.Location = new System.Drawing.Point(11, 19);
+			this.button8.Location = new System.Drawing.Point(640, 10);
 			this.button8.Name = "button8";
 			this.button8.Size = new System.Drawing.Size(171, 37);
 			this.button8.TabIndex = 29;
 			this.button8.Text = "Добавить";
 			this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			this.button8.UseVisualStyleBackColor = false;
+			this.button8.Click += new System.EventHandler(this.button8_Click);
 			// 
 			// button7
 			// 
+			this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(192)))), ((int)(((byte)(222)))));
 			this.button7.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(184)))), ((int)(((byte)(218)))));
 			this.button7.FlatAppearance.BorderSize = 2;
@@ -220,16 +221,18 @@
 			this.button7.ForeColor = System.Drawing.Color.White;
 			this.button7.Image = global::Stoma2.Properties.Resources.pencil;
 			this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.button7.Location = new System.Drawing.Point(11, 70);
+			this.button7.Location = new System.Drawing.Point(640, 53);
 			this.button7.Name = "button7";
 			this.button7.Size = new System.Drawing.Size(171, 37);
 			this.button7.TabIndex = 42;
 			this.button7.Text = "Редактировать";
 			this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			this.button7.UseVisualStyleBackColor = false;
+			this.button7.Click += new System.EventHandler(this.button7_Click);
 			// 
 			// button9
 			// 
+			this.button9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.button9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(83)))), ((int)(((byte)(79)))));
 			this.button9.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(63)))), ((int)(((byte)(58)))));
 			this.button9.FlatAppearance.BorderSize = 2;
@@ -238,7 +241,7 @@
 			this.button9.ForeColor = System.Drawing.Color.White;
 			this.button9.Image = global::Stoma2.Properties.Resources.trash;
 			this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.button9.Location = new System.Drawing.Point(11, 121);
+			this.button9.Location = new System.Drawing.Point(640, 96);
 			this.button9.Name = "button9";
 			this.button9.Size = new System.Drawing.Size(171, 37);
 			this.button9.TabIndex = 43;
@@ -246,26 +249,16 @@
 			this.button9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			this.button9.UseVisualStyleBackColor = false;
 			// 
-			// groupBox2
-			// 
-			this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.groupBox2.Controls.Add(this.button8);
-			this.groupBox2.Controls.Add(this.button7);
-			this.groupBox2.Controls.Add(this.button9);
-			this.groupBox2.Location = new System.Drawing.Point(683, 6);
-			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new System.Drawing.Size(193, 172);
-			this.groupBox2.TabIndex = 44;
-			this.groupBox2.TabStop = false;
-			// 
 			// Doctor
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
-			this.ClientSize = new System.Drawing.Size(888, 437);
+			this.ClientSize = new System.Drawing.Size(823, 493);
+			this.Controls.Add(this.button8);
+			this.Controls.Add(this.button7);
+			this.Controls.Add(this.button9);
 			this.Controls.Add(this.panel1);
-			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.textBox1);
 			this.Controls.Add(this.pictureBox2);
 			this.Controls.Add(this.listView1);
@@ -276,7 +269,6 @@
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
-			this.groupBox2.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -298,7 +290,6 @@
         private System.Windows.Forms.Label label54;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button9;
-		private System.Windows.Forms.GroupBox groupBox2;
+		private System.Windows.Forms.Button button9;
 	}
 }

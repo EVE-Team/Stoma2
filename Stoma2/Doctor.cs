@@ -16,5 +16,19 @@ namespace Stoma2
 		{
 			InitializeComponent();
 		}
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            AddDoctor form = new AddDoctor();
+            form.ShowDialog();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            AddDoctor form = new AddDoctor();
+            form.Text = "Редактировать доктора";
+			form.btnApply.Text = "Сохранить";
+            form.ShowDialog();
+        }
 	}
 }

@@ -113,7 +113,7 @@
 			this.listView8.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader25,
             this.columnHeader26});
-			this.listView8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.listView8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.listView8.FullRowSelect = true;
 			this.listView8.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1,
@@ -129,7 +129,7 @@
 			// columnHeader25
 			// 
 			this.columnHeader25.Text = "Название услуги";
-			this.columnHeader25.Width = 338;
+			this.columnHeader25.Width = 175;
 			// 
 			// columnHeader26
 			// 

@@ -54,7 +54,7 @@
 			this.listView6.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader18,
             this.columnHeader19});
-			this.listView6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.listView6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.listView6.FullRowSelect = true;
 			this.listView6.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1,
@@ -70,12 +70,12 @@
 			// columnHeader18
 			// 
 			this.columnHeader18.Text = "ФИО";
-			this.columnHeader18.Width = 286;
+			this.columnHeader18.Width = 157;
 			// 
 			// columnHeader19
 			// 
 			this.columnHeader19.Text = "Кол-во уникальных посетителей";
-			this.columnHeader19.Width = 321;
+			this.columnHeader19.Width = 237;
 			// 
 			// button1
 			// 

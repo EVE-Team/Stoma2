@@ -28,7 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
+			System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
             "Соколов",
             " Алексей"}, -1);
 			this.rectangleShape2 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
@@ -55,7 +55,7 @@
 			this.rectangleShape2.Enabled = false;
 			this.rectangleShape2.Location = new System.Drawing.Point(10, 12);
 			this.rectangleShape2.Name = "rectangleShape2";
-			this.rectangleShape2.Size = new System.Drawing.Size(918, 45);
+			this.rectangleShape2.Size = new System.Drawing.Size(745, 45);
 			// 
 			// shapeContainer1
 			// 
@@ -64,7 +64,7 @@
 			this.shapeContainer1.Name = "shapeContainer1";
 			this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.rectangleShape2});
-			this.shapeContainer1.Size = new System.Drawing.Size(941, 447);
+			this.shapeContainer1.Size = new System.Drawing.Size(768, 549);
 			this.shapeContainer1.TabIndex = 0;
 			this.shapeContainer1.TabStop = false;
 			// 
@@ -75,9 +75,9 @@
 			this.pnlPatientInfo.AutoScroll = true;
 			this.pnlPatientInfo.AutoSize = true;
 			this.pnlPatientInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.pnlPatientInfo.Location = new System.Drawing.Point(538, 66);
+			this.pnlPatientInfo.Location = new System.Drawing.Point(365, 66);
 			this.pnlPatientInfo.Name = "pnlPatientInfo";
-			this.pnlPatientInfo.Size = new System.Drawing.Size(391, 369);
+			this.pnlPatientInfo.Size = new System.Drawing.Size(391, 471);
 			this.pnlPatientInfo.TabIndex = 21;
 			// 
 			// listView2
@@ -90,13 +90,13 @@
 			this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2});
-			this.listView2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.listView2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.listView2.FullRowSelect = true;
 			this.listView2.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem2});
+            listViewItem1});
 			this.listView2.Location = new System.Drawing.Point(10, 66);
 			this.listView2.Name = "listView2";
-			this.listView2.Size = new System.Drawing.Size(518, 283);
+			this.listView2.Size = new System.Drawing.Size(345, 385);
 			this.listView2.TabIndex = 20;
 			this.listView2.UseCompatibleStateImageBehavior = false;
 			this.listView2.View = System.Windows.Forms.View.Details;
@@ -104,12 +104,11 @@
 			// columnHeader1
 			// 
 			this.columnHeader1.Text = "Фамилия";
-			this.columnHeader1.Width = 206;
+			this.columnHeader1.Width = 99;
 			// 
 			// columnHeader2
 			// 
 			this.columnHeader2.Text = "Имя";
-			this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			this.columnHeader2.Width = 113;
 			// 
 			// textBox2
@@ -122,7 +121,7 @@
 			this.textBox2.ForeColor = System.Drawing.Color.Silver;
 			this.textBox2.Location = new System.Drawing.Point(52, 25);
 			this.textBox2.Name = "textBox2";
-			this.textBox2.Size = new System.Drawing.Size(863, 22);
+			this.textBox2.Size = new System.Drawing.Size(690, 22);
 			this.textBox2.TabIndex = 18;
 			this.textBox2.Text = "Введите данные для поиска пациента";
 			// 
@@ -148,11 +147,11 @@
 			this.button7.ForeColor = System.Drawing.Color.White;
 			this.button7.Image = global::Stoma2.Properties.Resources.pencil;
 			this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.button7.Location = new System.Drawing.Point(10, 355);
+			this.button7.Location = new System.Drawing.Point(10, 457);
 			this.button7.Name = "button7";
-			this.button7.Size = new System.Drawing.Size(236, 37);
+			this.button7.Size = new System.Drawing.Size(158, 37);
 			this.button7.TabIndex = 40;
-			this.button7.Text = "Редактировать пациента";
+			this.button7.Text = "Редактировать";
 			this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			this.button7.UseVisualStyleBackColor = false;
 			this.button7.Click += new System.EventHandler(this.button7_Click);
@@ -168,11 +167,11 @@
 			this.button9.ForeColor = System.Drawing.Color.White;
 			this.button9.Image = global::Stoma2.Properties.Resources.trash;
 			this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.button9.Location = new System.Drawing.Point(10, 398);
+			this.button9.Location = new System.Drawing.Point(10, 500);
 			this.button9.Name = "button9";
-			this.button9.Size = new System.Drawing.Size(186, 37);
+			this.button9.Size = new System.Drawing.Size(158, 37);
 			this.button9.TabIndex = 41;
-			this.button9.Text = "Удалить пациента";
+			this.button9.Text = "Удалить";
 			this.button9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			this.button9.UseVisualStyleBackColor = false;
 			// 
@@ -181,7 +180,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
-			this.ClientSize = new System.Drawing.Size(941, 447);
+			this.ClientSize = new System.Drawing.Size(768, 549);
 			this.Controls.Add(this.button7);
 			this.Controls.Add(this.button9);
 			this.Controls.Add(this.pnlPatientInfo);

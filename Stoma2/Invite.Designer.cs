@@ -46,11 +46,11 @@
 			this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(231)))), ((int)(((byte)(231)))));
-			this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(186)))), ((int)(((byte)(223)))));
 			this.label4.Location = new System.Drawing.Point(20, 8);
 			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(763, 43);
+			this.label4.Size = new System.Drawing.Size(754, 43);
 			this.label4.TabIndex = 7;
 			this.label4.Text = "3 пациента ожидают повторного приглашения";
 			this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -65,13 +65,13 @@
 			this.listView3.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader7,
             this.columnHeader27});
-			this.listView3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.listView3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.listView3.FullRowSelect = true;
 			this.listView3.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1});
 			this.listView3.Location = new System.Drawing.Point(12, 65);
 			this.listView3.Name = "listView3";
-			this.listView3.Size = new System.Drawing.Size(383, 380);
+			this.listView3.Size = new System.Drawing.Size(374, 396);
 			this.listView3.TabIndex = 6;
 			this.listView3.UseCompatibleStateImageBehavior = false;
 			this.listView3.View = System.Windows.Forms.View.Details;
@@ -79,7 +79,7 @@
 			// columnHeader7
 			// 
 			this.columnHeader7.Text = "Фамилия";
-			this.columnHeader7.Width = 167;
+			this.columnHeader7.Width = 88;
 			// 
 			// columnHeader27
 			// 
@@ -97,7 +97,7 @@
 			this.rectangleShape3.Enabled = false;
 			this.rectangleShape3.Location = new System.Drawing.Point(13, 4);
 			this.rectangleShape3.Name = "rectangleShape3";
-			this.rectangleShape3.Size = new System.Drawing.Size(776, 50);
+			this.rectangleShape3.Size = new System.Drawing.Size(767, 50);
 			// 
 			// shapeContainer1
 			// 
@@ -106,7 +106,7 @@
 			this.shapeContainer1.Name = "shapeContainer1";
 			this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.rectangleShape3});
-			this.shapeContainer1.Size = new System.Drawing.Size(804, 500);
+			this.shapeContainer1.Size = new System.Drawing.Size(795, 516);
 			this.shapeContainer1.TabIndex = 9;
 			this.shapeContainer1.TabStop = false;
 			// 
@@ -119,7 +119,7 @@
 			this.button8.ForeColor = System.Drawing.Color.White;
 			this.button8.Image = global::Stoma2.Properties.Resources.check__;
 			this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.button8.Location = new System.Drawing.Point(12, 451);
+			this.button8.Location = new System.Drawing.Point(12, 467);
 			this.button8.Name = "button8";
 			this.button8.Size = new System.Drawing.Size(265, 37);
 			this.button8.TabIndex = 26;
@@ -132,7 +132,7 @@
 			this.pnlPatientInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.pnlPatientInfo.AutoSize = true;
 			this.pnlPatientInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.pnlPatientInfo.Location = new System.Drawing.Point(401, 65);
+			this.pnlPatientInfo.Location = new System.Drawing.Point(392, 65);
 			this.pnlPatientInfo.Name = "pnlPatientInfo";
 			this.pnlPatientInfo.Size = new System.Drawing.Size(391, 397);
 			this.pnlPatientInfo.TabIndex = 8;
@@ -142,7 +142,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
-			this.ClientSize = new System.Drawing.Size(804, 500);
+			this.ClientSize = new System.Drawing.Size(795, 516);
 			this.Controls.Add(this.button8);
 			this.Controls.Add(this.pnlPatientInfo);
 			this.Controls.Add(this.label4);
