@@ -54,5 +54,10 @@ namespace Stoma2
 		{
 			Close();
 		}
+
+		private void btnCancel_Click(object sender, EventArgs e)
+		{
+			Close();
+		}
 	}
 }

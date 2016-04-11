@@ -39,8 +39,10 @@
 			this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.textBox2 = new System.Windows.Forms.TextBox();
 			this.pictureBox3 = new System.Windows.Forms.PictureBox();
-			this.button7 = new System.Windows.Forms.Button();
-			this.button9 = new System.Windows.Forms.Button();
+			this.btnEdit = new System.Windows.Forms.Button();
+			this.btnDelete = new System.Windows.Forms.Button();
+			this.btnAdd = new System.Windows.Forms.Button();
+			this.btnAddAppointment = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -55,7 +57,7 @@
 			this.rectangleShape2.Enabled = false;
 			this.rectangleShape2.Location = new System.Drawing.Point(10, 12);
 			this.rectangleShape2.Name = "rectangleShape2";
-			this.rectangleShape2.Size = new System.Drawing.Size(745, 45);
+			this.rectangleShape2.Size = new System.Drawing.Size(806, 45);
 			// 
 			// shapeContainer1
 			// 
@@ -64,20 +66,19 @@
 			this.shapeContainer1.Name = "shapeContainer1";
 			this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.rectangleShape2});
-			this.shapeContainer1.Size = new System.Drawing.Size(768, 549);
+			this.shapeContainer1.Size = new System.Drawing.Size(829, 474);
 			this.shapeContainer1.TabIndex = 0;
 			this.shapeContainer1.TabStop = false;
 			// 
 			// pnlPatientInfo
 			// 
-			this.pnlPatientInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+			this.pnlPatientInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.pnlPatientInfo.AutoScroll = true;
 			this.pnlPatientInfo.AutoSize = true;
 			this.pnlPatientInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.pnlPatientInfo.Location = new System.Drawing.Point(365, 66);
+			this.pnlPatientInfo.Location = new System.Drawing.Point(426, 66);
 			this.pnlPatientInfo.Name = "pnlPatientInfo";
-			this.pnlPatientInfo.Size = new System.Drawing.Size(391, 471);
+			this.pnlPatientInfo.Size = new System.Drawing.Size(391, 397);
 			this.pnlPatientInfo.TabIndex = 21;
 			// 
 			// listView2
@@ -96,7 +97,7 @@
             listViewItem1});
 			this.listView2.Location = new System.Drawing.Point(10, 66);
 			this.listView2.Name = "listView2";
-			this.listView2.Size = new System.Drawing.Size(345, 385);
+			this.listView2.Size = new System.Drawing.Size(406, 267);
 			this.listView2.TabIndex = 20;
 			this.listView2.UseCompatibleStateImageBehavior = false;
 			this.listView2.View = System.Windows.Forms.View.Details;
@@ -121,7 +122,7 @@
 			this.textBox2.ForeColor = System.Drawing.Color.Silver;
 			this.textBox2.Location = new System.Drawing.Point(52, 25);
 			this.textBox2.Name = "textBox2";
-			this.textBox2.Size = new System.Drawing.Size(690, 22);
+			this.textBox2.Size = new System.Drawing.Size(751, 22);
 			this.textBox2.TabIndex = 18;
 			this.textBox2.Text = "Введите данные для поиска пациента";
 			// 
@@ -136,53 +137,95 @@
 			this.pictureBox3.TabIndex = 19;
 			this.pictureBox3.TabStop = false;
 			// 
-			// button7
+			// btnEdit
 			// 
-			this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(192)))), ((int)(((byte)(222)))));
-			this.button7.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(184)))), ((int)(((byte)(218)))));
-			this.button7.FlatAppearance.BorderSize = 2;
-			this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.button7.ForeColor = System.Drawing.Color.White;
-			this.button7.Image = global::Stoma2.Properties.Resources.pencil;
-			this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.button7.Location = new System.Drawing.Point(10, 457);
-			this.button7.Name = "button7";
-			this.button7.Size = new System.Drawing.Size(158, 37);
-			this.button7.TabIndex = 40;
-			this.button7.Text = "Редактировать";
-			this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.button7.UseVisualStyleBackColor = false;
-			this.button7.Click += new System.EventHandler(this.button7_Click);
+			this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(192)))), ((int)(((byte)(222)))));
+			this.btnEdit.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(184)))), ((int)(((byte)(218)))));
+			this.btnEdit.FlatAppearance.BorderSize = 2;
+			this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.btnEdit.ForeColor = System.Drawing.Color.White;
+			this.btnEdit.Image = global::Stoma2.Properties.Resources.pencil;
+			this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnEdit.Location = new System.Drawing.Point(10, 382);
+			this.btnEdit.Name = "btnEdit";
+			this.btnEdit.Size = new System.Drawing.Size(158, 37);
+			this.btnEdit.TabIndex = 40;
+			this.btnEdit.Text = "Редактировать";
+			this.btnEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.btnEdit.UseVisualStyleBackColor = false;
+			this.btnEdit.Click += new System.EventHandler(this.button7_Click);
 			// 
-			// button9
+			// btnDelete
 			// 
-			this.button9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.button9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(83)))), ((int)(((byte)(79)))));
-			this.button9.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(63)))), ((int)(((byte)(58)))));
-			this.button9.FlatAppearance.BorderSize = 2;
-			this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.button9.ForeColor = System.Drawing.Color.White;
-			this.button9.Image = global::Stoma2.Properties.Resources.trash;
-			this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.button9.Location = new System.Drawing.Point(10, 500);
-			this.button9.Name = "button9";
-			this.button9.Size = new System.Drawing.Size(158, 37);
-			this.button9.TabIndex = 41;
-			this.button9.Text = "Удалить";
-			this.button9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.button9.UseVisualStyleBackColor = false;
+			this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(83)))), ((int)(((byte)(79)))));
+			this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(63)))), ((int)(((byte)(58)))));
+			this.btnDelete.FlatAppearance.BorderSize = 2;
+			this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.btnDelete.ForeColor = System.Drawing.Color.White;
+			this.btnDelete.Image = global::Stoma2.Properties.Resources.trash;
+			this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnDelete.Location = new System.Drawing.Point(10, 425);
+			this.btnDelete.Name = "btnDelete";
+			this.btnDelete.Size = new System.Drawing.Size(158, 37);
+			this.btnDelete.TabIndex = 41;
+			this.btnDelete.Text = "Удалить";
+			this.btnDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.btnDelete.UseVisualStyleBackColor = false;
+			// 
+			// btnAdd
+			// 
+			this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(211)))), ((int)(((byte)(124)))));
+			this.btnAdd.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+			this.btnAdd.FlatAppearance.BorderSize = 2;
+			this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.btnAdd.ForeColor = System.Drawing.Color.White;
+			this.btnAdd.Image = global::Stoma2.Properties.Resources.plus;
+			this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnAdd.Location = new System.Drawing.Point(10, 339);
+			this.btnAdd.Name = "btnAdd";
+			this.btnAdd.Size = new System.Drawing.Size(158, 37);
+			this.btnAdd.TabIndex = 73;
+			this.btnAdd.Text = "Добавить";
+			this.btnAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.btnAdd.UseVisualStyleBackColor = false;
+			this.btnAdd.Click += new System.EventHandler(this.btnOk_Click);
+			// 
+			// btnAddAppointment
+			// 
+			this.btnAddAppointment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnAddAppointment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(211)))), ((int)(((byte)(124)))));
+			this.btnAddAppointment.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+			this.btnAddAppointment.FlatAppearance.BorderSize = 2;
+			this.btnAddAppointment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnAddAppointment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.btnAddAppointment.ForeColor = System.Drawing.Color.White;
+			this.btnAddAppointment.Image = global::Stoma2.Properties.Resources.plus;
+			this.btnAddAppointment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnAddAppointment.Location = new System.Drawing.Point(236, 339);
+			this.btnAddAppointment.Name = "btnAddAppointment";
+			this.btnAddAppointment.Size = new System.Drawing.Size(180, 37);
+			this.btnAddAppointment.TabIndex = 74;
+			this.btnAddAppointment.Text = "Добавить приём";
+			this.btnAddAppointment.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.btnAddAppointment.UseVisualStyleBackColor = false;
+			this.btnAddAppointment.Click += new System.EventHandler(this.button1_Click);
 			// 
 			// Patient
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
-			this.ClientSize = new System.Drawing.Size(768, 549);
-			this.Controls.Add(this.button7);
-			this.Controls.Add(this.button9);
+			this.ClientSize = new System.Drawing.Size(829, 474);
+			this.Controls.Add(this.btnAddAppointment);
+			this.Controls.Add(this.btnAdd);
+			this.Controls.Add(this.btnEdit);
+			this.Controls.Add(this.btnDelete);
 			this.Controls.Add(this.pnlPatientInfo);
 			this.Controls.Add(this.listView2);
 			this.Controls.Add(this.textBox2);
@@ -207,7 +250,9 @@
 		private System.Windows.Forms.ColumnHeader columnHeader2;
 		private System.Windows.Forms.TextBox textBox2;
 		private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnDelete;
+		private System.Windows.Forms.Button btnAdd;
+		private System.Windows.Forms.Button btnAddAppointment;
 	}
 }

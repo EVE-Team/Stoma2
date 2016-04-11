@@ -14,7 +14,6 @@ namespace Stoma2
 	{
 		Control priceListForm = Program.SetupForm(new PriceList());
 		Control reportForm = Program.SetupForm(new MonthlyReport());
-		Control patientForm = Program.SetupForm(new Patient());
 		Control doctorForm = Program.SetupForm(new Doctor());
 		Control backupForm = Program.SetupForm(new BackUp());
 		Control visitForm = Program.SetupForm(new Visit());
@@ -29,11 +28,6 @@ namespace Stoma2
 		private void radioButton7_CheckedChanged(object sender, EventArgs e)
 		{
 			Program.SetPanelForm(pnlContent, priceListForm);
-		}
-
-		private void radioButton8_CheckedChanged(object sender, EventArgs e)
-		{
-			Program.SetPanelForm(pnlContent, patientForm);
 		}
 
 		private void radioButton9_CheckedChanged(object sender, EventArgs e)

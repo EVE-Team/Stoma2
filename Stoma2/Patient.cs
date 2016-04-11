@@ -26,5 +26,17 @@ namespace Stoma2
 			form.btnApply.Text = "Сохранить";
             form.ShowDialog(this);
         }
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			var form = new NewAppointment();
+			form.ShowDialog(this);
+		}
+
+		private void btnOk_Click(object sender, EventArgs e)
+		{
+			var form = new NewPatient();
+			form.ShowDialog(this);
+		}
 	}
 }

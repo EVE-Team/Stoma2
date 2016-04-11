@@ -24,7 +24,7 @@ namespace Stoma2
 		public static extern bool ReleaseCapture();
 
 		// Panel forms
-		Control appointmentForm = Program.SetupForm(new NewAppointment());
+		Control patientForm = Program.SetupForm(new Patient());
 		Control treatmentForm = Program.SetupForm(new Treatment());
 		Control inviteForm = Program.SetupForm(new Invite());
 		Control otherForm = Program.SetupForm(new Other());
@@ -79,7 +79,7 @@ namespace Stoma2
 
 		private void rbAppointment_CheckedChanged(object sender, EventArgs e)
 		{
-			Program.SetPanelForm(pnlContent, appointmentForm);
+			Program.SetPanelForm(pnlContent, patientForm);
 		}
 
 		public void goToNewAppointment()
