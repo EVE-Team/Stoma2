@@ -325,6 +325,9 @@
     <None Include="Resources\Teeth.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="sqlite3.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\restore-16.png" />
     <None Include="Resources\usb.png" />
     <None Include="Resources\restore--.png" />
