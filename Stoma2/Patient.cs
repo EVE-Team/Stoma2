@@ -38,10 +38,17 @@ namespace Stoma2
 		{
 			var form = new NewPatient();
 			form.ShowDialog(this);
+
+            if (form.BaseModified)
+            {
+                UpdatePatientList();
+            }
+
 		}
 
         private void UpdatePatientList()
         {
+            listView2.Items.Clear();
             var reader = StomaDB.Instance.GetClientsReader();
 
             while (reader.Read())

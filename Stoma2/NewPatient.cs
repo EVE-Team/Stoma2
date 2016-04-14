@@ -12,7 +12,9 @@ namespace Stoma2
 {
 	public partial class NewPatient : Form
 	{
-		public NewPatient()
+        private bool m_baseModified = false;
+
+        public NewPatient()
 		{
 			InitializeComponent();
 		}
@@ -68,6 +70,7 @@ namespace Stoma2
             clientData["notes"] = notesBox.Text;
             StomaDB.Instance.AddClient(clientData);
 
+            m_baseModified = true;
 			Close();
 		}
 
@@ -75,5 +78,10 @@ namespace Stoma2
 		{
 			Close();
 		}
+
+        public bool BaseModified
+        {
+            get { return m_baseModified; }
+        }
 	}
 }
