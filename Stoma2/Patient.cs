@@ -15,6 +15,7 @@ namespace Stoma2
 		public Patient()
 		{
 			InitializeComponent();
+            UpdatePatientList();
 
 			Program.SetPanelForm(pnlPatientInfo, Program.SetupForm(new PatientInfo()));
 		}
@@ -38,5 +39,18 @@ namespace Stoma2
 			var form = new NewPatient();
 			form.ShowDialog(this);
 		}
+
+        private void UpdatePatientList()
+        {
+            var reader = StomaDB.Instance.GetClientsReader();
+
+            while (reader.Read())
+            {
+                listView2.Items.Add(new ListViewItem(new string[] {
+                    reader["name_first"].ToString(),
+                    reader["name_last"].ToString()
+                }));
+            }
+        }
 	}
 }

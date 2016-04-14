@@ -10,7 +10,19 @@ namespace Stoma2
 {
     class StomaDB : IDisposable
     {
-        public static StomaDB instance;
+        private static StomaDB instance = null;
+
+        public static StomaDB Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new StomaDB();
+                }
+                return instance;
+            }
+        }
 
         private static readonly string DB_FILE_NAME = "Stoma2.db";
         private readonly SQLiteConnection m_dbConnection;

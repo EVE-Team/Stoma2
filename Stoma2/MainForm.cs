@@ -128,14 +128,9 @@ namespace Stoma2
 			btnMaximize_Click(sender, e);
 		}
 
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            StomaDB.instance = new StomaDB();
-        }
-
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            StomaDB.instance.Dispose();
+            StomaDB.Instance.Dispose();
         }
 	}
 }
