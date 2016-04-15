@@ -127,5 +127,10 @@ namespace Stoma2
 		{
 			btnMaximize_Click(sender, e);
 		}
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            StomaDB.Instance.Dispose();
+        }
 	}
 }

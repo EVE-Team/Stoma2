@@ -12,7 +12,9 @@ namespace Stoma2
 {
 	public partial class NewPatient : Form
 	{
-		public NewPatient()
+        private bool m_baseModified = false;
+
+        public NewPatient()
 		{
 			InitializeComponent();
 		}
@@ -52,6 +54,23 @@ namespace Stoma2
 
 		private void button8_Click(object sender, EventArgs e)
 		{
+            Dictionary<string, string> clientData = new Dictionary<string, string>();
+            clientData["name_first"] = nameFirstBox.Text;
+            clientData["name_last"] = nameLastBox.Text;
+            clientData["name_patronymic"] = patronymicBox.Text;
+            //clientData["birthday"] = ;
+            clientData["address_subject"] = addressSubjectBox.Text;
+            clientData["address_city"] = addressCityBox.Text;
+            clientData["address_street"] = addressStreetBox.Text;
+            clientData["address_building"] = addressBuildingBox.Text;
+            clientData["address_apartment"] = addressApartmentBox.Text;
+            clientData["workplace"] = workplaceBox.Text;
+            clientData["position"] = positionBox.Text;
+            clientData["phone"] = phoneBox.Text;
+            clientData["notes"] = notesBox.Text;
+            StomaDB.Instance.AddClient(clientData);
+
+            m_baseModified = true;
 			Close();
 		}
 
@@ -59,5 +78,10 @@ namespace Stoma2
 		{
 			Close();
 		}
+
+        public bool BaseModified
+        {
+            get { return m_baseModified; }
+        }
 	}
 }

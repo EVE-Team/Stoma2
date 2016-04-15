@@ -28,9 +28,6 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
-            "Соколов",
-            " Алексей"}, -1);
             this.rectangleShape2 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.pnlPatientInfo = new System.Windows.Forms.Panel();
@@ -93,8 +90,6 @@
             this.columnHeader2});
             this.listView2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.listView2.FullRowSelect = true;
-            this.listView2.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
             this.listView2.Location = new System.Drawing.Point(10, 66);
             this.listView2.Name = "listView2";
             this.listView2.Size = new System.Drawing.Size(406, 267);

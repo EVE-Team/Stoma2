@@ -36,6 +36,9 @@
     <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\System.Data.SQLite.DLL</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -138,6 +141,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StomaDB.cs" />
     <Compile Include="TextBoxEx.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -321,6 +325,9 @@
     <None Include="Resources\Teeth.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="sqlite3.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\restore-16.png" />
     <None Include="Resources\usb.png" />
     <None Include="Resources\restore--.png" />
