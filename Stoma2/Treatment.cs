@@ -22,5 +22,11 @@ namespace Stoma2
 			var form = new NewTreatment();
 			form.ShowDialog(this);
 		}
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var form = new NewAppointment();
+            form.ShowDialog(this);
+        }
 	}
 }

@@ -78,7 +78,7 @@
             this.rbInvite.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
             this.rbInvite.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
             this.rbInvite.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rbInvite.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.rbInvite.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.rbInvite.ForeColor = System.Drawing.Color.White;
             this.rbInvite.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.rbInvite.Location = new System.Drawing.Point(0, 242);
@@ -120,7 +120,7 @@
             this.rbOther.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
             this.rbOther.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
             this.rbOther.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rbOther.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.rbOther.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.rbOther.ForeColor = System.Drawing.Color.White;
             this.rbOther.Image = global::Stoma2.Properties.Resources.navicon;
             this.rbOther.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -144,7 +144,7 @@
             this.rbTreatment.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
             this.rbTreatment.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
             this.rbTreatment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rbTreatment.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.rbTreatment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.rbTreatment.ForeColor = System.Drawing.Color.White;
             this.rbTreatment.Image = global::Stoma2.Properties.Resources.treatment;
             this.rbTreatment.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -169,16 +169,16 @@
             this.rbAppointment.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
             this.rbAppointment.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
             this.rbAppointment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rbAppointment.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.rbAppointment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.rbAppointment.ForeColor = System.Drawing.Color.White;
-            this.rbAppointment.Image = global::Stoma2.Properties.Resources.user_md1;
+            this.rbAppointment.Image = global::Stoma2.Properties.Resources.users;
             this.rbAppointment.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.rbAppointment.Location = new System.Drawing.Point(0, 42);
             this.rbAppointment.Name = "rbAppointment";
             this.rbAppointment.Size = new System.Drawing.Size(100, 100);
             this.rbAppointment.TabIndex = 17;
             this.rbAppointment.TabStop = true;
-            this.rbAppointment.Text = "Приём";
+            this.rbAppointment.Text = "Пациенты";
             this.rbAppointment.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.rbAppointment.UseVisualStyleBackColor = false;
             this.rbAppointment.CheckedChanged += new System.EventHandler(this.rbAppointment_CheckedChanged);
