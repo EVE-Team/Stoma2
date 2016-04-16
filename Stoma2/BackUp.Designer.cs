@@ -28,112 +28,112 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
             "22 марта 2016",
             "1,75 МБ"}, -1);
-			System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
             "20 марта 2016",
             "1,5 МБ"}, -1);
-			System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
             "19 марта 2016",
             "1 МБ"}, -1);
-			this.listView5 = new System.Windows.Forms.ListView();
-			this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.button4 = new System.Windows.Forms.Button();
-			this.button3 = new System.Windows.Forms.Button();
-			this.SuspendLayout();
-			// 
-			// listView5
-			// 
-			this.listView5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.backupListView = new System.Windows.Forms.ListView();
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.offloadBtn = new System.Windows.Forms.Button();
+            this.restoreBtn = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // backupListView
+            // 
+            this.backupListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.listView5.BackColor = System.Drawing.Color.White;
-			this.listView5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.listView5.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.backupListView.BackColor = System.Drawing.Color.White;
+            this.backupListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.backupListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader9,
             this.columnHeader17});
-			this.listView5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.listView5.FullRowSelect = true;
-			this.listView5.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            this.backupListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.backupListView.FullRowSelect = true;
+            this.backupListView.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1,
             listViewItem2,
             listViewItem3});
-			this.listView5.Location = new System.Drawing.Point(12, 12);
-			this.listView5.Name = "listView5";
-			this.listView5.Size = new System.Drawing.Size(596, 432);
-			this.listView5.TabIndex = 6;
-			this.listView5.UseCompatibleStateImageBehavior = false;
-			this.listView5.View = System.Windows.Forms.View.Details;
-			// 
-			// columnHeader9
-			// 
-			this.columnHeader9.Text = "Дата";
-			this.columnHeader9.Width = 120;
-			// 
-			// columnHeader17
-			// 
-			this.columnHeader17.Text = "Размер";
-			this.columnHeader17.Width = 132;
-			// 
-			// button4
-			// 
-			this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-			this.button4.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-			this.button4.FlatAppearance.BorderSize = 2;
-			this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.button4.Image = global::Stoma2.Properties.Resources.usb;
-			this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.button4.Location = new System.Drawing.Point(614, 55);
-			this.button4.Name = "button4";
-			this.button4.Size = new System.Drawing.Size(189, 55);
-			this.button4.TabIndex = 8;
-			this.button4.Text = "Скопировить на внешний носитель";
-			this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.button4.UseVisualStyleBackColor = false;
-			// 
-			// button3
-			// 
-			this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-			this.button3.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-			this.button3.FlatAppearance.BorderSize = 2;
-			this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.button3.Image = global::Stoma2.Properties.Resources.restore_16;
-			this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.button3.Location = new System.Drawing.Point(614, 12);
-			this.button3.Name = "button3";
-			this.button3.Size = new System.Drawing.Size(189, 37);
-			this.button3.TabIndex = 7;
-			this.button3.Text = "Восстановить";
-			this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.button3.UseVisualStyleBackColor = false;
-			// 
-			// BackUp
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.BackColor = System.Drawing.Color.White;
-			this.ClientSize = new System.Drawing.Size(815, 456);
-			this.Controls.Add(this.button4);
-			this.Controls.Add(this.button3);
-			this.Controls.Add(this.listView5);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-			this.Name = "BackUp";
-			this.Text = "BackUp";
-			this.ResumeLayout(false);
+            this.backupListView.Location = new System.Drawing.Point(12, 12);
+            this.backupListView.Name = "backupListView";
+            this.backupListView.Size = new System.Drawing.Size(596, 432);
+            this.backupListView.TabIndex = 6;
+            this.backupListView.UseCompatibleStateImageBehavior = false;
+            this.backupListView.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "Дата";
+            this.columnHeader9.Width = 120;
+            // 
+            // columnHeader17
+            // 
+            this.columnHeader17.Text = "Размер";
+            this.columnHeader17.Width = 132;
+            // 
+            // offloadBtn
+            // 
+            this.offloadBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.offloadBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.offloadBtn.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.offloadBtn.FlatAppearance.BorderSize = 2;
+            this.offloadBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.offloadBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.offloadBtn.Image = global::Stoma2.Properties.Resources.usb;
+            this.offloadBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.offloadBtn.Location = new System.Drawing.Point(614, 55);
+            this.offloadBtn.Name = "offloadBtn";
+            this.offloadBtn.Size = new System.Drawing.Size(189, 55);
+            this.offloadBtn.TabIndex = 8;
+            this.offloadBtn.Text = "Скопировить на внешний носитель";
+            this.offloadBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.offloadBtn.UseVisualStyleBackColor = false;
+            // 
+            // restoreBtn
+            // 
+            this.restoreBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.restoreBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.restoreBtn.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.restoreBtn.FlatAppearance.BorderSize = 2;
+            this.restoreBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.restoreBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.restoreBtn.Image = global::Stoma2.Properties.Resources.restore_16;
+            this.restoreBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.restoreBtn.Location = new System.Drawing.Point(614, 12);
+            this.restoreBtn.Name = "restoreBtn";
+            this.restoreBtn.Size = new System.Drawing.Size(189, 37);
+            this.restoreBtn.TabIndex = 7;
+            this.restoreBtn.Text = "Восстановить";
+            this.restoreBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.restoreBtn.UseVisualStyleBackColor = false;
+            // 
+            // BackUp
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(815, 456);
+            this.Controls.Add(this.offloadBtn);
+            this.Controls.Add(this.restoreBtn);
+            this.Controls.Add(this.backupListView);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "BackUp";
+            this.Text = "BackUp";
+            this.ResumeLayout(false);
 
 		}
 
 		#endregion
 
-		private System.Windows.Forms.Button button4;
-		private System.Windows.Forms.Button button3;
-		private System.Windows.Forms.ListView listView5;
+		private System.Windows.Forms.Button offloadBtn;
+		private System.Windows.Forms.Button restoreBtn;
+		private System.Windows.Forms.ListView backupListView;
 		private System.Windows.Forms.ColumnHeader columnHeader9;
 		private System.Windows.Forms.ColumnHeader columnHeader17;
 	}
