@@ -48,12 +48,12 @@ namespace Stoma2
 
         private void UpdatePatientList()
         {
-            listView2.Items.Clear();
+            patientListView.Items.Clear();
             var reader = StomaDB.Instance.GetClientsReader();
 
             while (reader.Read())
             {
-                listView2.Items.Add(new ListViewItem(new string[] {
+                patientListView.Items.Add(new ListViewItem(new string[] {
                     reader["name_first"].ToString(),
                     reader["name_last"].ToString()
                 }));

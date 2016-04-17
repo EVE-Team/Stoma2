@@ -31,10 +31,10 @@
             this.rectangleShape2 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.pnlPatientInfo = new System.Windows.Forms.Panel();
-            this.listView2 = new System.Windows.Forms.ListView();
+            this.patientListView = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.searchBox = new System.Windows.Forms.TextBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -78,24 +78,24 @@
             this.pnlPatientInfo.Size = new System.Drawing.Size(391, 397);
             this.pnlPatientInfo.TabIndex = 21;
             // 
-            // listView2
+            // patientListView
             // 
-            this.listView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.patientListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listView2.BackColor = System.Drawing.Color.White;
-            this.listView2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.patientListView.BackColor = System.Drawing.Color.White;
+            this.patientListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.patientListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2});
-            this.listView2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.listView2.FullRowSelect = true;
-            this.listView2.Location = new System.Drawing.Point(10, 66);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(406, 267);
-            this.listView2.TabIndex = 20;
-            this.listView2.UseCompatibleStateImageBehavior = false;
-            this.listView2.View = System.Windows.Forms.View.Details;
+            this.patientListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.patientListView.FullRowSelect = true;
+            this.patientListView.Location = new System.Drawing.Point(10, 66);
+            this.patientListView.Name = "patientListView";
+            this.patientListView.Size = new System.Drawing.Size(406, 267);
+            this.patientListView.TabIndex = 20;
+            this.patientListView.UseCompatibleStateImageBehavior = false;
+            this.patientListView.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader1
             // 
@@ -107,19 +107,19 @@
             this.columnHeader2.Text = "Имя";
             this.columnHeader2.Width = 113;
             // 
-            // textBox2
+            // searchBox
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.searchBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox2.ForeColor = System.Drawing.Color.Silver;
-            this.textBox2.Location = new System.Drawing.Point(52, 29);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(751, 15);
-            this.textBox2.TabIndex = 18;
-            this.textBox2.Text = "Введите данные для поиска пациента";
+            this.searchBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.searchBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.searchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.searchBox.ForeColor = System.Drawing.Color.Silver;
+            this.searchBox.Location = new System.Drawing.Point(52, 29);
+            this.searchBox.Name = "searchBox";
+            this.searchBox.Size = new System.Drawing.Size(751, 15);
+            this.searchBox.TabIndex = 18;
+            this.searchBox.Text = "Введите данные для поиска пациента";
             // 
             // pictureBox3
             // 
@@ -222,8 +222,8 @@
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.pnlPatientInfo);
-            this.Controls.Add(this.listView2);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.patientListView);
+            this.Controls.Add(this.searchBox);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.shapeContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -240,10 +240,10 @@
 		private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape2;
 		private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
 		private System.Windows.Forms.Panel pnlPatientInfo;
-		private System.Windows.Forms.ListView listView2;
+		private System.Windows.Forms.ListView patientListView;
 		private System.Windows.Forms.ColumnHeader columnHeader1;
 		private System.Windows.Forms.ColumnHeader columnHeader2;
-		private System.Windows.Forms.TextBox textBox2;
+		private System.Windows.Forms.TextBox searchBox;
 		private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnDelete;
