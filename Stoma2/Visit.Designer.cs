@@ -40,11 +40,11 @@
             "12.03.2016",
             "Батрудинов Тимур",
             "Острый пульпит"}, -1);
-            this.listView4 = new System.Windows.Forms.ListView();
+            this.visitListView = new System.Windows.Forms.ListView();
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.textBox18 = new System.Windows.Forms.TextBox();
+            this.searchBox = new System.Windows.Forms.TextBox();
             this.rectangleShape6 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.btnGoToTreatment = new System.Windows.Forms.Button();
@@ -55,29 +55,29 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
-            // listView4
+            // visitListView
             // 
-            this.listView4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.visitListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listView4.BackColor = System.Drawing.Color.White;
-            this.listView4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listView4.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.visitListView.BackColor = System.Drawing.Color.White;
+            this.visitListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.visitListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader10,
             this.columnHeader15,
             this.columnHeader16});
-            this.listView4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.listView4.FullRowSelect = true;
-            this.listView4.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            this.visitListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.visitListView.FullRowSelect = true;
+            this.visitListView.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1,
             listViewItem2,
             listViewItem3});
-            this.listView4.Location = new System.Drawing.Point(10, 72);
-            this.listView4.Name = "listView4";
-            this.listView4.Size = new System.Drawing.Size(701, 337);
-            this.listView4.TabIndex = 20;
-            this.listView4.UseCompatibleStateImageBehavior = false;
-            this.listView4.View = System.Windows.Forms.View.Details;
+            this.visitListView.Location = new System.Drawing.Point(10, 72);
+            this.visitListView.Name = "visitListView";
+            this.visitListView.Size = new System.Drawing.Size(701, 337);
+            this.visitListView.TabIndex = 20;
+            this.visitListView.UseCompatibleStateImageBehavior = false;
+            this.visitListView.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader10
             // 
@@ -94,19 +94,19 @@
             this.columnHeader16.Text = "Диагноз";
             this.columnHeader16.Width = 154;
             // 
-            // textBox18
+            // searchBox
             // 
-            this.textBox18.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.searchBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.textBox18.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox18.ForeColor = System.Drawing.Color.Silver;
-            this.textBox18.Location = new System.Drawing.Point(53, 26);
-            this.textBox18.Name = "textBox18";
-            this.textBox18.Size = new System.Drawing.Size(819, 15);
-            this.textBox18.TabIndex = 32;
-            this.textBox18.Text = "ФИО пациента";
+            this.searchBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.searchBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.searchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.searchBox.ForeColor = System.Drawing.Color.Silver;
+            this.searchBox.Location = new System.Drawing.Point(53, 26);
+            this.searchBox.Name = "searchBox";
+            this.searchBox.Size = new System.Drawing.Size(819, 15);
+            this.searchBox.TabIndex = 32;
+            this.searchBox.Text = "ФИО пациента";
             // 
             // rectangleShape6
             // 
@@ -229,9 +229,9 @@
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnRemove);
-            this.Controls.Add(this.textBox18);
+            this.Controls.Add(this.searchBox);
             this.Controls.Add(this.pictureBox5);
-            this.Controls.Add(this.listView4);
+            this.Controls.Add(this.visitListView);
             this.Controls.Add(this.shapeContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Visit";
@@ -244,11 +244,11 @@
 
 		#endregion
 
-		private System.Windows.Forms.ListView listView4;
+		private System.Windows.Forms.ListView visitListView;
 		private System.Windows.Forms.ColumnHeader columnHeader10;
 		private System.Windows.Forms.ColumnHeader columnHeader15;
 		private System.Windows.Forms.ColumnHeader columnHeader16;
-		private System.Windows.Forms.TextBox textBox18;
+		private System.Windows.Forms.TextBox searchBox;
 		private System.Windows.Forms.PictureBox pictureBox5;
 		private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape6;
 		private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
