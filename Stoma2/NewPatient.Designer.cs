@@ -124,7 +124,6 @@
             // 
             this.nameLastBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.nameLastBox.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.nameLastBox.ForeColor = System.Drawing.Color.Gray;
             this.nameLastBox.Location = new System.Drawing.Point(90, 6);
             this.nameLastBox.Name = "nameLastBox";
             this.nameLastBox.Size = new System.Drawing.Size(254, 23);
