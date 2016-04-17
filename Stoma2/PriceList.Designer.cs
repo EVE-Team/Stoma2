@@ -41,15 +41,15 @@
             this.lineShape3 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-            this.listView8 = new System.Windows.Forms.ListView();
+            this.treatmentListView = new System.Windows.Forms.ListView();
             this.columnHeader25 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader26 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
+            this.priceTextBox = new System.Windows.Forms.TextBox();
+            this.treatmentTextBox = new System.Windows.Forms.TextBox();
+            this.searchBox = new System.Windows.Forms.TextBox();
+            this.btnRemove = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
@@ -103,28 +103,28 @@
             this.shapeContainer1.TabIndex = 0;
             this.shapeContainer1.TabStop = false;
             // 
-            // listView8
+            // treatmentListView
             // 
-            this.listView8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.treatmentListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listView8.BackColor = System.Drawing.Color.White;
-            this.listView8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listView8.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.treatmentListView.BackColor = System.Drawing.Color.White;
+            this.treatmentListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.treatmentListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader25,
             this.columnHeader26});
-            this.listView8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.listView8.FullRowSelect = true;
-            this.listView8.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            this.treatmentListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.treatmentListView.FullRowSelect = true;
+            this.treatmentListView.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1,
             listViewItem2,
             listViewItem3});
-            this.listView8.Location = new System.Drawing.Point(13, 118);
-            this.listView8.Name = "listView8";
-            this.listView8.Size = new System.Drawing.Size(680, 360);
-            this.listView8.TabIndex = 39;
-            this.listView8.UseCompatibleStateImageBehavior = false;
-            this.listView8.View = System.Windows.Forms.View.Details;
+            this.treatmentListView.Location = new System.Drawing.Point(13, 118);
+            this.treatmentListView.Name = "treatmentListView";
+            this.treatmentListView.Size = new System.Drawing.Size(680, 360);
+            this.treatmentListView.TabIndex = 39;
+            this.treatmentListView.UseCompatibleStateImageBehavior = false;
+            this.treatmentListView.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader25
             // 
@@ -136,99 +136,99 @@
             this.columnHeader26.Text = "Цена";
             this.columnHeader26.Width = 95;
             // 
-            // textBox14
+            // priceTextBox
             // 
-            this.textBox14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox14.BackColor = System.Drawing.Color.White;
-            this.textBox14.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox14.ForeColor = System.Drawing.Color.Silver;
-            this.textBox14.Location = new System.Drawing.Point(699, 79);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(125, 15);
-            this.textBox14.TabIndex = 37;
-            this.textBox14.Text = "Цена";
+            this.priceTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.priceTextBox.BackColor = System.Drawing.Color.White;
+            this.priceTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.priceTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.priceTextBox.ForeColor = System.Drawing.Color.Silver;
+            this.priceTextBox.Location = new System.Drawing.Point(699, 79);
+            this.priceTextBox.Name = "priceTextBox";
+            this.priceTextBox.Size = new System.Drawing.Size(125, 15);
+            this.priceTextBox.TabIndex = 37;
+            this.priceTextBox.Text = "Цена";
             // 
-            // textBox12
+            // treatmentTextBox
             // 
-            this.textBox12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.treatmentTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox12.BackColor = System.Drawing.Color.White;
-            this.textBox12.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox12.ForeColor = System.Drawing.Color.Silver;
-            this.textBox12.Location = new System.Drawing.Point(13, 79);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(680, 15);
-            this.textBox12.TabIndex = 36;
-            this.textBox12.Text = "Введите название услуги";
+            this.treatmentTextBox.BackColor = System.Drawing.Color.White;
+            this.treatmentTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.treatmentTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.treatmentTextBox.ForeColor = System.Drawing.Color.Silver;
+            this.treatmentTextBox.Location = new System.Drawing.Point(13, 79);
+            this.treatmentTextBox.Name = "treatmentTextBox";
+            this.treatmentTextBox.Size = new System.Drawing.Size(680, 15);
+            this.treatmentTextBox.TabIndex = 36;
+            this.treatmentTextBox.Text = "Введите название услуги";
             // 
-            // textBox11
+            // searchBox
             // 
-            this.textBox11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.searchBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.textBox11.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox11.ForeColor = System.Drawing.Color.Silver;
-            this.textBox11.Location = new System.Drawing.Point(52, 28);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(802, 15);
-            this.textBox11.TabIndex = 34;
-            this.textBox11.Text = "Введите слово для поиска по категории";
+            this.searchBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.searchBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.searchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.searchBox.ForeColor = System.Drawing.Color.Silver;
+            this.searchBox.Location = new System.Drawing.Point(52, 28);
+            this.searchBox.Name = "searchBox";
+            this.searchBox.Size = new System.Drawing.Size(802, 15);
+            this.searchBox.TabIndex = 34;
+            this.searchBox.Text = "Введите слово для поиска по категории";
             // 
-            // button12
+            // btnRemove
             // 
-            this.button12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(83)))), ((int)(((byte)(79)))));
-            this.button12.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(63)))), ((int)(((byte)(58)))));
-            this.button12.FlatAppearance.BorderSize = 2;
-            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button12.ForeColor = System.Drawing.Color.White;
-            this.button12.Image = global::Stoma2.Properties.Resources.trash;
-            this.button12.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button12.Location = new System.Drawing.Point(705, 165);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(161, 37);
-            this.button12.TabIndex = 41;
-            this.button12.Text = "Удалить";
-            this.button12.UseVisualStyleBackColor = false;
+            this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRemove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(83)))), ((int)(((byte)(79)))));
+            this.btnRemove.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(63)))), ((int)(((byte)(58)))));
+            this.btnRemove.FlatAppearance.BorderSize = 2;
+            this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnRemove.ForeColor = System.Drawing.Color.White;
+            this.btnRemove.Image = global::Stoma2.Properties.Resources.trash;
+            this.btnRemove.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRemove.Location = new System.Drawing.Point(705, 165);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(161, 37);
+            this.btnRemove.TabIndex = 41;
+            this.btnRemove.Text = "Удалить";
+            this.btnRemove.UseVisualStyleBackColor = false;
             // 
-            // button14
+            // btnEdit
             // 
-            this.button14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(192)))), ((int)(((byte)(222)))));
-            this.button14.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(184)))), ((int)(((byte)(218)))));
-            this.button14.FlatAppearance.BorderSize = 2;
-            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button14.ForeColor = System.Drawing.Color.White;
-            this.button14.Image = global::Stoma2.Properties.Resources.pencil;
-            this.button14.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button14.Location = new System.Drawing.Point(705, 118);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(161, 37);
-            this.button14.TabIndex = 40;
-            this.button14.Text = "Редактировать";
-            this.button14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button14.UseVisualStyleBackColor = false;
+            this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(192)))), ((int)(((byte)(222)))));
+            this.btnEdit.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(184)))), ((int)(((byte)(218)))));
+            this.btnEdit.FlatAppearance.BorderSize = 2;
+            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnEdit.ForeColor = System.Drawing.Color.White;
+            this.btnEdit.Image = global::Stoma2.Properties.Resources.pencil;
+            this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEdit.Location = new System.Drawing.Point(705, 118);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(161, 37);
+            this.btnEdit.TabIndex = 40;
+            this.btnEdit.Text = "Редактировать";
+            this.btnEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEdit.UseVisualStyleBackColor = false;
             // 
-            // button11
+            // btnAdd
             // 
-            this.button11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button11.BackColor = System.Drawing.Color.White;
-            this.button11.BackgroundImage = global::Stoma2.Properties.Resources.plus_s;
-            this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.button11.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button11.Location = new System.Drawing.Point(830, 67);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(36, 36);
-            this.button11.TabIndex = 38;
-            this.button11.UseVisualStyleBackColor = false;
+            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAdd.BackColor = System.Drawing.Color.White;
+            this.btnAdd.BackgroundImage = global::Stoma2.Properties.Resources.plus_s;
+            this.btnAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnAdd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdd.Location = new System.Drawing.Point(830, 67);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(36, 36);
+            this.btnAdd.TabIndex = 38;
+            this.btnAdd.UseVisualStyleBackColor = false;
             // 
             // pictureBox4
             // 
@@ -247,13 +247,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(878, 490);
-            this.Controls.Add(this.button12);
-            this.Controls.Add(this.button14);
-            this.Controls.Add(this.listView8);
-            this.Controls.Add(this.button11);
-            this.Controls.Add(this.textBox14);
-            this.Controls.Add(this.textBox12);
-            this.Controls.Add(this.textBox11);
+            this.Controls.Add(this.btnRemove);
+            this.Controls.Add(this.btnEdit);
+            this.Controls.Add(this.treatmentListView);
+            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.priceTextBox);
+            this.Controls.Add(this.treatmentTextBox);
+            this.Controls.Add(this.searchBox);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.shapeContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -271,15 +271,15 @@
 		private Microsoft.VisualBasic.PowerPacks.LineShape lineShape3;
 		private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape1;
 		private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
-		private System.Windows.Forms.Button button12;
-		private System.Windows.Forms.Button button14;
-		private System.Windows.Forms.ListView listView8;
+		private System.Windows.Forms.Button btnRemove;
+		private System.Windows.Forms.Button btnEdit;
+		private System.Windows.Forms.ListView treatmentListView;
 		private System.Windows.Forms.ColumnHeader columnHeader25;
 		private System.Windows.Forms.ColumnHeader columnHeader26;
-		private System.Windows.Forms.Button button11;
-		private System.Windows.Forms.TextBox textBox14;
-		private System.Windows.Forms.TextBox textBox12;
-		private System.Windows.Forms.TextBox textBox11;
+		private System.Windows.Forms.Button btnAdd;
+		private System.Windows.Forms.TextBox priceTextBox;
+		private System.Windows.Forms.TextBox treatmentTextBox;
+		private System.Windows.Forms.TextBox searchBox;
 		private System.Windows.Forms.PictureBox pictureBox4;
 	}
 }
