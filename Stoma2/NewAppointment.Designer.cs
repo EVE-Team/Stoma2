@@ -28,31 +28,31 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-            this.textBox28 = new System.Windows.Forms.TextBox();
-            this.textBox27 = new System.Windows.Forms.TextBox();
+            this.diagnosisTextBox = new System.Windows.Forms.TextBox();
+            this.doctorTextBox = new System.Windows.Forms.TextBox();
             this.label32 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
-            this.button8 = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox28
+            // diagnosisTextBox
             // 
-            this.textBox28.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox28.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox28.Location = new System.Drawing.Point(78, 46);
-            this.textBox28.Name = "textBox28";
-            this.textBox28.Size = new System.Drawing.Size(277, 23);
-            this.textBox28.TabIndex = 41;
+            this.diagnosisTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.diagnosisTextBox.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.diagnosisTextBox.Location = new System.Drawing.Point(78, 46);
+            this.diagnosisTextBox.Name = "diagnosisTextBox";
+            this.diagnosisTextBox.Size = new System.Drawing.Size(277, 23);
+            this.diagnosisTextBox.TabIndex = 41;
             // 
-            // textBox27
+            // doctorTextBox
             // 
-            this.textBox27.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox27.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox27.Location = new System.Drawing.Point(78, 8);
-            this.textBox27.Name = "textBox27";
-            this.textBox27.Size = new System.Drawing.Size(277, 23);
-            this.textBox27.TabIndex = 40;
+            this.doctorTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.doctorTextBox.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.doctorTextBox.Location = new System.Drawing.Point(78, 8);
+            this.doctorTextBox.Name = "doctorTextBox";
+            this.doctorTextBox.Size = new System.Drawing.Size(277, 23);
+            this.doctorTextBox.TabIndex = 40;
             // 
             // label32
             // 
@@ -74,22 +74,22 @@
             this.label31.TabIndex = 38;
             this.label31.Text = "Врач";
             // 
-            // button8
+            // btnAdd
             // 
-            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(211)))), ((int)(((byte)(124)))));
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button8.ForeColor = System.Drawing.Color.White;
-            this.button8.Image = global::Stoma2.Properties.Resources.plus;
-            this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button8.Location = new System.Drawing.Point(12, 93);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(179, 41);
-            this.button8.TabIndex = 35;
-            this.button8.Text = "Добавить прием";
-            this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button8.UseVisualStyleBackColor = false;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(211)))), ((int)(((byte)(124)))));
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnAdd.ForeColor = System.Drawing.Color.White;
+            this.btnAdd.Image = global::Stoma2.Properties.Resources.plus;
+            this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdd.Location = new System.Drawing.Point(12, 93);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(179, 41);
+            this.btnAdd.TabIndex = 35;
+            this.btnAdd.Text = "Добавить прием";
+            this.btnAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.button8_Click);
             // 
             // btnCancel
             // 
@@ -117,11 +117,11 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(361, 140);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.textBox28);
-            this.Controls.Add(this.textBox27);
+            this.Controls.Add(this.diagnosisTextBox);
+            this.Controls.Add(this.doctorTextBox);
             this.Controls.Add(this.label32);
             this.Controls.Add(this.label31);
-            this.Controls.Add(this.button8);
+            this.Controls.Add(this.btnAdd);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -135,11 +135,11 @@
 
 		#endregion
 
-		private System.Windows.Forms.TextBox textBox28;
-		private System.Windows.Forms.TextBox textBox27;
+		private System.Windows.Forms.TextBox diagnosisTextBox;
+		private System.Windows.Forms.TextBox doctorTextBox;
 		private System.Windows.Forms.Label label32;
 		private System.Windows.Forms.Label label31;
-		private System.Windows.Forms.Button button8;
+		private System.Windows.Forms.Button btnAdd;
 		private System.Windows.Forms.Button btnCancel;
 
 
