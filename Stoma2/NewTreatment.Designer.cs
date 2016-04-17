@@ -31,14 +31,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.treatmentTextBox = new System.Windows.Forms.TextBox();
+            this.countNum = new System.Windows.Forms.NumericUpDown();
+            this.toothNum = new System.Windows.Forms.NumericUpDown();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOk = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.countNum)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toothNum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,55 +72,55 @@
             this.label3.TabIndex = 42;
             this.label3.Text = "Количество";
             // 
-            // textBox1
+            // treatmentTextBox
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(160, 224);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(367, 23);
-            this.textBox1.TabIndex = 75;
+            this.treatmentTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.treatmentTextBox.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.treatmentTextBox.Location = new System.Drawing.Point(160, 224);
+            this.treatmentTextBox.Name = "treatmentTextBox";
+            this.treatmentTextBox.Size = new System.Drawing.Size(367, 23);
+            this.treatmentTextBox.TabIndex = 75;
             // 
-            // numericUpDown1
+            // countNum
             // 
-            this.numericUpDown1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numericUpDown1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.numericUpDown1.Location = new System.Drawing.Point(160, 261);
-            this.numericUpDown1.Minimum = new decimal(new int[] {
+            this.countNum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.countNum.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.countNum.Location = new System.Drawing.Point(160, 261);
+            this.countNum.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(83, 23);
-            this.numericUpDown1.TabIndex = 76;
-            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.countNum.Name = "countNum";
+            this.countNum.Size = new System.Drawing.Size(83, 23);
+            this.countNum.TabIndex = 76;
+            this.countNum.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.countNum.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
             // 
-            // numericUpDown2
+            // toothNum
             // 
-            this.numericUpDown2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numericUpDown2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.numericUpDown2.Location = new System.Drawing.Point(160, 184);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
+            this.toothNum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.toothNum.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.toothNum.Location = new System.Drawing.Point(160, 184);
+            this.toothNum.Maximum = new decimal(new int[] {
             48,
             0,
             0,
             0});
-            this.numericUpDown2.Minimum = new decimal(new int[] {
+            this.toothNum.Minimum = new decimal(new int[] {
             11,
             0,
             0,
             0});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(83, 23);
-            this.numericUpDown2.TabIndex = 78;
-            this.numericUpDown2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDown2.Value = new decimal(new int[] {
+            this.toothNum.Name = "toothNum";
+            this.toothNum.Size = new System.Drawing.Size(83, 23);
+            this.toothNum.TabIndex = 78;
+            this.toothNum.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.toothNum.Value = new decimal(new int[] {
             11,
             0,
             0,
@@ -180,9 +180,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(535, 349);
-            this.Controls.Add(this.numericUpDown2);
-            this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.toothNum);
+            this.Controls.Add(this.countNum);
+            this.Controls.Add(this.treatmentTextBox);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.label3);
@@ -195,8 +195,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Новая работа";
             this.Load += new System.EventHandler(this.NewTreatment_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.countNum)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toothNum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -210,9 +210,9 @@
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Button btnOk;
 		private System.Windows.Forms.Button btnCancel;
-		private System.Windows.Forms.TextBox textBox1;
-		private System.Windows.Forms.NumericUpDown numericUpDown1;
+		private System.Windows.Forms.TextBox treatmentTextBox;
+		private System.Windows.Forms.NumericUpDown countNum;
 		private System.Windows.Forms.PictureBox pictureBox1;
-		private System.Windows.Forms.NumericUpDown numericUpDown2;
+		private System.Windows.Forms.NumericUpDown toothNum;
 	}
 }
