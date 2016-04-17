@@ -29,11 +29,11 @@
 		private void InitializeComponent()
 		{
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton10 = new System.Windows.Forms.RadioButton();
+            this.rbDoctorReport = new System.Windows.Forms.RadioButton();
+            this.rbBackup = new System.Windows.Forms.RadioButton();
             this.rbVisits = new System.Windows.Forms.RadioButton();
-            this.radioButton11 = new System.Windows.Forms.RadioButton();
-            this.radioButton9 = new System.Windows.Forms.RadioButton();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
+            this.rbDoctors = new System.Windows.Forms.RadioButton();
+            this.rbPriceList = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
@@ -44,11 +44,11 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox1.Controls.Add(this.radioButton11);
-            this.groupBox1.Controls.Add(this.radioButton10);
+            this.groupBox1.Controls.Add(this.rbDoctorReport);
+            this.groupBox1.Controls.Add(this.rbBackup);
             this.groupBox1.Controls.Add(this.rbVisits);
-            this.groupBox1.Controls.Add(this.radioButton9);
-            this.groupBox1.Controls.Add(this.radioButton7);
+            this.groupBox1.Controls.Add(this.rbDoctors);
+            this.groupBox1.Controls.Add(this.rbPriceList);
             this.groupBox1.Location = new System.Drawing.Point(5, 0);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(0);
             this.groupBox1.Name = "groupBox1";
@@ -57,29 +57,53 @@
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             // 
-            // radioButton10
+            // rbDoctorReport
             // 
-            this.radioButton10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.rbDoctorReport.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.radioButton10.Appearance = System.Windows.Forms.Appearance.Button;
-            this.radioButton10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(74)))), ((int)(((byte)(73)))));
-            this.radioButton10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.radioButton10.CheckAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.radioButton10.FlatAppearance.BorderSize = 0;
-            this.radioButton10.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(140)))), ((int)(((byte)(255)))));
-            this.radioButton10.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-            this.radioButton10.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-            this.radioButton10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.radioButton10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radioButton10.ForeColor = System.Drawing.Color.White;
-            this.radioButton10.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radioButton10.Location = new System.Drawing.Point(10, 195);
-            this.radioButton10.Name = "radioButton10";
-            this.radioButton10.Size = new System.Drawing.Size(169, 61);
-            this.radioButton10.TabIndex = 21;
-            this.radioButton10.Text = "Резервное копирование";
-            this.radioButton10.UseVisualStyleBackColor = false;
-            this.radioButton10.CheckedChanged += new System.EventHandler(this.radioButton10_CheckedChanged);
+            this.rbDoctorReport.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rbDoctorReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(74)))), ((int)(((byte)(73)))));
+            this.rbDoctorReport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.rbDoctorReport.CheckAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.rbDoctorReport.FlatAppearance.BorderSize = 0;
+            this.rbDoctorReport.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(140)))), ((int)(((byte)(255)))));
+            this.rbDoctorReport.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.rbDoctorReport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.rbDoctorReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rbDoctorReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.rbDoctorReport.ForeColor = System.Drawing.Color.White;
+            this.rbDoctorReport.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.rbDoctorReport.Location = new System.Drawing.Point(10, 151);
+            this.rbDoctorReport.Name = "rbDoctorReport";
+            this.rbDoctorReport.Size = new System.Drawing.Size(169, 38);
+            this.rbDoctorReport.TabIndex = 22;
+            this.rbDoctorReport.Text = "Отчет по врачам";
+            this.rbDoctorReport.UseVisualStyleBackColor = false;
+            this.rbDoctorReport.CheckedChanged += new System.EventHandler(this.radioButton11_CheckedChanged);
+            // 
+            // rbBackup
+            // 
+            this.rbBackup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rbBackup.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rbBackup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(74)))), ((int)(((byte)(73)))));
+            this.rbBackup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.rbBackup.CheckAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.rbBackup.FlatAppearance.BorderSize = 0;
+            this.rbBackup.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(140)))), ((int)(((byte)(255)))));
+            this.rbBackup.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.rbBackup.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.rbBackup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rbBackup.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.rbBackup.ForeColor = System.Drawing.Color.White;
+            this.rbBackup.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.rbBackup.Location = new System.Drawing.Point(10, 195);
+            this.rbBackup.Name = "rbBackup";
+            this.rbBackup.Size = new System.Drawing.Size(169, 61);
+            this.rbBackup.TabIndex = 21;
+            this.rbBackup.Text = "Резервное копирование";
+            this.rbBackup.UseVisualStyleBackColor = false;
+            this.rbBackup.CheckedChanged += new System.EventHandler(this.radioButton10_CheckedChanged);
             // 
             // rbVisits
             // 
@@ -103,77 +127,53 @@
             this.rbVisits.UseVisualStyleBackColor = false;
             this.rbVisits.CheckedChanged += new System.EventHandler(this.rbVisits_CheckedChanged);
             // 
-            // radioButton11
+            // rbDoctors
             // 
-            this.radioButton11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.rbDoctors.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.radioButton11.Appearance = System.Windows.Forms.Appearance.Button;
-            this.radioButton11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(74)))), ((int)(((byte)(73)))));
-            this.radioButton11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.radioButton11.CheckAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.radioButton11.FlatAppearance.BorderSize = 0;
-            this.radioButton11.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(140)))), ((int)(((byte)(255)))));
-            this.radioButton11.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-            this.radioButton11.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-            this.radioButton11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.radioButton11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radioButton11.ForeColor = System.Drawing.Color.White;
-            this.radioButton11.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radioButton11.Location = new System.Drawing.Point(10, 151);
-            this.radioButton11.Name = "radioButton11";
-            this.radioButton11.Size = new System.Drawing.Size(169, 38);
-            this.radioButton11.TabIndex = 22;
-            this.radioButton11.Text = "Отчет по врачам";
-            this.radioButton11.UseVisualStyleBackColor = false;
-            this.radioButton11.CheckedChanged += new System.EventHandler(this.radioButton11_CheckedChanged);
+            this.rbDoctors.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rbDoctors.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(74)))), ((int)(((byte)(73)))));
+            this.rbDoctors.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.rbDoctors.CheckAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.rbDoctors.FlatAppearance.BorderSize = 0;
+            this.rbDoctors.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(140)))), ((int)(((byte)(255)))));
+            this.rbDoctors.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.rbDoctors.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.rbDoctors.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rbDoctors.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.rbDoctors.ForeColor = System.Drawing.Color.White;
+            this.rbDoctors.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.rbDoctors.Location = new System.Drawing.Point(10, 63);
+            this.rbDoctors.Name = "rbDoctors";
+            this.rbDoctors.Size = new System.Drawing.Size(169, 38);
+            this.rbDoctors.TabIndex = 20;
+            this.rbDoctors.Text = "Врачи";
+            this.rbDoctors.UseVisualStyleBackColor = false;
+            this.rbDoctors.CheckedChanged += new System.EventHandler(this.radioButton9_CheckedChanged);
             // 
-            // radioButton9
+            // rbPriceList
             // 
-            this.radioButton9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.radioButton9.Appearance = System.Windows.Forms.Appearance.Button;
-            this.radioButton9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(74)))), ((int)(((byte)(73)))));
-            this.radioButton9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.radioButton9.CheckAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.radioButton9.FlatAppearance.BorderSize = 0;
-            this.radioButton9.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(140)))), ((int)(((byte)(255)))));
-            this.radioButton9.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-            this.radioButton9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-            this.radioButton9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.radioButton9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radioButton9.ForeColor = System.Drawing.Color.White;
-            this.radioButton9.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radioButton9.Location = new System.Drawing.Point(10, 63);
-            this.radioButton9.Name = "radioButton9";
-            this.radioButton9.Size = new System.Drawing.Size(169, 38);
-            this.radioButton9.TabIndex = 20;
-            this.radioButton9.Text = "Врачи";
-            this.radioButton9.UseVisualStyleBackColor = false;
-            this.radioButton9.CheckedChanged += new System.EventHandler(this.radioButton9_CheckedChanged);
-            // 
-            // radioButton7
-            // 
-            this.radioButton7.Appearance = System.Windows.Forms.Appearance.Button;
-            this.radioButton7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(74)))), ((int)(((byte)(73)))));
-            this.radioButton7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.radioButton7.CheckAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.radioButton7.Checked = true;
-            this.radioButton7.FlatAppearance.BorderSize = 0;
-            this.radioButton7.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(140)))), ((int)(((byte)(255)))));
-            this.radioButton7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-            this.radioButton7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-            this.radioButton7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.radioButton7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radioButton7.ForeColor = System.Drawing.Color.White;
-            this.radioButton7.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radioButton7.Location = new System.Drawing.Point(10, 19);
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(169, 38);
-            this.radioButton7.TabIndex = 18;
-            this.radioButton7.TabStop = true;
-            this.radioButton7.Text = "Прайс-лист";
-            this.radioButton7.UseVisualStyleBackColor = false;
-            this.radioButton7.CheckedChanged += new System.EventHandler(this.radioButton7_CheckedChanged);
+            this.rbPriceList.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rbPriceList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(74)))), ((int)(((byte)(73)))));
+            this.rbPriceList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.rbPriceList.CheckAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.rbPriceList.Checked = true;
+            this.rbPriceList.FlatAppearance.BorderSize = 0;
+            this.rbPriceList.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(140)))), ((int)(((byte)(255)))));
+            this.rbPriceList.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.rbPriceList.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.rbPriceList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rbPriceList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.rbPriceList.ForeColor = System.Drawing.Color.White;
+            this.rbPriceList.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.rbPriceList.Location = new System.Drawing.Point(10, 19);
+            this.rbPriceList.Name = "rbPriceList";
+            this.rbPriceList.Size = new System.Drawing.Size(169, 38);
+            this.rbPriceList.TabIndex = 18;
+            this.rbPriceList.TabStop = true;
+            this.rbPriceList.Text = "Прайс-лист";
+            this.rbPriceList.UseVisualStyleBackColor = false;
+            this.rbPriceList.CheckedChanged += new System.EventHandler(this.radioButton7_CheckedChanged);
             // 
             // groupBox2
             // 
@@ -216,10 +216,10 @@
 		#endregion
 
 		private System.Windows.Forms.GroupBox groupBox1;
-		private System.Windows.Forms.RadioButton radioButton11;
-		private System.Windows.Forms.RadioButton radioButton10;
-		private System.Windows.Forms.RadioButton radioButton9;
-		private System.Windows.Forms.RadioButton radioButton7;
+		private System.Windows.Forms.RadioButton rbDoctorReport;
+		private System.Windows.Forms.RadioButton rbBackup;
+		private System.Windows.Forms.RadioButton rbDoctors;
+		private System.Windows.Forms.RadioButton rbPriceList;
 		private System.Windows.Forms.GroupBox groupBox2;
 		private System.Windows.Forms.Panel pnlContent;
 		private System.Windows.Forms.RadioButton rbVisits;
