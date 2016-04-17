@@ -15,12 +15,18 @@ namespace Stoma2
 		public Doctor()
 		{
 			InitializeComponent();
+            UpdateDoctorList();
 		}
 
         private void button8_Click(object sender, EventArgs e)
         {
             AddDoctor form = new AddDoctor();
             form.ShowDialog();
+
+            if (form.BaseModified)
+            {
+                UpdateDoctorList();
+            }
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -30,5 +36,19 @@ namespace Stoma2
 			form.btnApply.Text = "Сохранить";
             form.ShowDialog();
         }
-	}
+
+        private void UpdateDoctorList()
+        {
+            doctorListView.Items.Clear();
+            var reader = StomaDB.Instance.GetDoctorsReader();
+
+            while (reader.Read())
+            {
+                doctorListView.Items.Add(new ListViewItem(new string[] {
+                    reader["name_last"].ToString(),
+                    reader["name_first"].ToString()
+                }));
+            }
+        }
+    }
 }
