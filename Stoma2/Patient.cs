@@ -54,8 +54,8 @@ namespace Stoma2
             while (reader.Read())
             {
                 patientListView.Items.Add(new ListViewItem(new string[] {
-                    reader["name_first"].ToString(),
-                    reader["name_last"].ToString()
+                    reader["name_last"].ToString(),
+                    reader["name_first"].ToString()
                 }));
             }
         }
