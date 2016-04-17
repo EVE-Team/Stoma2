@@ -28,17 +28,17 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-            this.textBox29 = new System.Windows.Forms.TextBox();
+            this.nameTextBox = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.textBox16 = new System.Windows.Forms.TextBox();
+            this.notesTextBox = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox39 = new System.Windows.Forms.TextBox();
+            this.lastInviteTextBox = new System.Windows.Forms.TextBox();
             this.label43 = new System.Windows.Forms.Label();
-            this.textBox38 = new System.Windows.Forms.TextBox();
-            this.textBox37 = new System.Windows.Forms.TextBox();
-            this.textBox32 = new System.Windows.Forms.TextBox();
-            this.textBox31 = new System.Windows.Forms.TextBox();
-            this.textBox30 = new System.Windows.Forms.TextBox();
+            this.positionTextBox = new System.Windows.Forms.TextBox();
+            this.workplaceTextBox = new System.Windows.Forms.TextBox();
+            this.addressTextBox = new System.Windows.Forms.TextBox();
+            this.phoneTextBox = new System.Windows.Forms.TextBox();
+            this.birthdayTextBox = new System.Windows.Forms.TextBox();
             this.label42 = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
@@ -46,17 +46,17 @@
             this.label30 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // textBox29
+            // nameTextBox
             // 
-            this.textBox29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.textBox29.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox29.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox29.Location = new System.Drawing.Point(109, 6);
-            this.textBox29.Name = "textBox29";
-            this.textBox29.ReadOnly = true;
-            this.textBox29.Size = new System.Drawing.Size(248, 16);
-            this.textBox29.TabIndex = 41;
-            this.textBox29.Text = "Скаков Михаил Андреевич";
+            this.nameTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.nameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.nameTextBox.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.nameTextBox.Location = new System.Drawing.Point(109, 6);
+            this.nameTextBox.Name = "nameTextBox";
+            this.nameTextBox.ReadOnly = true;
+            this.nameTextBox.Size = new System.Drawing.Size(248, 16);
+            this.nameTextBox.TabIndex = 41;
+            this.nameTextBox.Text = "Скаков Михаил Андреевич";
             // 
             // label14
             // 
@@ -68,18 +68,18 @@
             this.label14.TabIndex = 40;
             this.label14.Text = "ФИО";
             // 
-            // textBox16
+            // notesTextBox
             // 
-            this.textBox16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.textBox16.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox16.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox16.Location = new System.Drawing.Point(109, 273);
-            this.textBox16.Multiline = true;
-            this.textBox16.Name = "textBox16";
-            this.textBox16.ReadOnly = true;
-            this.textBox16.Size = new System.Drawing.Size(248, 90);
-            this.textBox16.TabIndex = 39;
-            this.textBox16.Text = "Аллергия на обезболивающее";
+            this.notesTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.notesTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.notesTextBox.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.notesTextBox.Location = new System.Drawing.Point(109, 273);
+            this.notesTextBox.Multiline = true;
+            this.notesTextBox.Name = "notesTextBox";
+            this.notesTextBox.ReadOnly = true;
+            this.notesTextBox.Size = new System.Drawing.Size(248, 90);
+            this.notesTextBox.TabIndex = 39;
+            this.notesTextBox.Text = "Аллергия на обезболивающее";
             // 
             // label11
             // 
@@ -91,17 +91,17 @@
             this.label11.TabIndex = 38;
             this.label11.Text = "Примечание";
             // 
-            // textBox39
+            // lastInviteTextBox
             // 
-            this.textBox39.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.textBox39.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox39.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox39.Location = new System.Drawing.Point(109, 246);
-            this.textBox39.Name = "textBox39";
-            this.textBox39.ReadOnly = true;
-            this.textBox39.Size = new System.Drawing.Size(248, 16);
-            this.textBox39.TabIndex = 37;
-            this.textBox39.Text = "14.09.2015";
+            this.lastInviteTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.lastInviteTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lastInviteTextBox.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lastInviteTextBox.Location = new System.Drawing.Point(109, 246);
+            this.lastInviteTextBox.Name = "lastInviteTextBox";
+            this.lastInviteTextBox.ReadOnly = true;
+            this.lastInviteTextBox.Size = new System.Drawing.Size(248, 16);
+            this.lastInviteTextBox.TabIndex = 37;
+            this.lastInviteTextBox.Text = "14.09.2015";
             // 
             // label43
             // 
@@ -113,66 +113,66 @@
             this.label43.TabIndex = 36;
             this.label43.Text = "Посл. визит";
             // 
-            // textBox38
+            // positionTextBox
             // 
-            this.textBox38.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.textBox38.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox38.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox38.Location = new System.Drawing.Point(109, 219);
-            this.textBox38.Name = "textBox38";
-            this.textBox38.ReadOnly = true;
-            this.textBox38.Size = new System.Drawing.Size(248, 16);
-            this.textBox38.TabIndex = 35;
-            this.textBox38.Text = "Охранник";
+            this.positionTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.positionTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.positionTextBox.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.positionTextBox.Location = new System.Drawing.Point(109, 219);
+            this.positionTextBox.Name = "positionTextBox";
+            this.positionTextBox.ReadOnly = true;
+            this.positionTextBox.Size = new System.Drawing.Size(248, 16);
+            this.positionTextBox.TabIndex = 35;
+            this.positionTextBox.Text = "Охранник";
             // 
-            // textBox37
+            // workplaceTextBox
             // 
-            this.textBox37.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.textBox37.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox37.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox37.Location = new System.Drawing.Point(109, 191);
-            this.textBox37.Name = "textBox37";
-            this.textBox37.ReadOnly = true;
-            this.textBox37.Size = new System.Drawing.Size(248, 16);
-            this.textBox37.TabIndex = 34;
-            this.textBox37.Text = "БауМаркет";
+            this.workplaceTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.workplaceTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.workplaceTextBox.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.workplaceTextBox.Location = new System.Drawing.Point(109, 191);
+            this.workplaceTextBox.Name = "workplaceTextBox";
+            this.workplaceTextBox.ReadOnly = true;
+            this.workplaceTextBox.Size = new System.Drawing.Size(248, 16);
+            this.workplaceTextBox.TabIndex = 34;
+            this.workplaceTextBox.Text = "БауМаркет";
             // 
-            // textBox32
+            // addressTextBox
             // 
-            this.textBox32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.textBox32.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox32.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox32.Location = new System.Drawing.Point(109, 89);
-            this.textBox32.Multiline = true;
-            this.textBox32.Name = "textBox32";
-            this.textBox32.ReadOnly = true;
-            this.textBox32.Size = new System.Drawing.Size(248, 90);
-            this.textBox32.TabIndex = 33;
-            this.textBox32.Text = "РМЭ, г. Йошкар-Ола ул. Соловьева 19-6";
+            this.addressTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.addressTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.addressTextBox.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.addressTextBox.Location = new System.Drawing.Point(109, 89);
+            this.addressTextBox.Multiline = true;
+            this.addressTextBox.Name = "addressTextBox";
+            this.addressTextBox.ReadOnly = true;
+            this.addressTextBox.Size = new System.Drawing.Size(248, 90);
+            this.addressTextBox.TabIndex = 33;
+            this.addressTextBox.Text = "РМЭ, г. Йошкар-Ола ул. Соловьева 19-6";
             // 
-            // textBox31
+            // phoneTextBox
             // 
-            this.textBox31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.textBox31.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox31.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox31.Location = new System.Drawing.Point(109, 61);
-            this.textBox31.Name = "textBox31";
-            this.textBox31.ReadOnly = true;
-            this.textBox31.Size = new System.Drawing.Size(248, 16);
-            this.textBox31.TabIndex = 32;
-            this.textBox31.Text = "54-28-13";
+            this.phoneTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.phoneTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.phoneTextBox.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.phoneTextBox.Location = new System.Drawing.Point(109, 61);
+            this.phoneTextBox.Name = "phoneTextBox";
+            this.phoneTextBox.ReadOnly = true;
+            this.phoneTextBox.Size = new System.Drawing.Size(248, 16);
+            this.phoneTextBox.TabIndex = 32;
+            this.phoneTextBox.Text = "54-28-13";
             // 
-            // textBox30
+            // birthdayTextBox
             // 
-            this.textBox30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.textBox30.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox30.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox30.Location = new System.Drawing.Point(109, 33);
-            this.textBox30.Name = "textBox30";
-            this.textBox30.ReadOnly = true;
-            this.textBox30.Size = new System.Drawing.Size(248, 16);
-            this.textBox30.TabIndex = 31;
-            this.textBox30.Text = "24.07.1974";
+            this.birthdayTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.birthdayTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.birthdayTextBox.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.birthdayTextBox.Location = new System.Drawing.Point(109, 33);
+            this.birthdayTextBox.Name = "birthdayTextBox";
+            this.birthdayTextBox.ReadOnly = true;
+            this.birthdayTextBox.Size = new System.Drawing.Size(248, 16);
+            this.birthdayTextBox.TabIndex = 31;
+            this.birthdayTextBox.Text = "24.07.1974";
             // 
             // label42
             // 
@@ -230,17 +230,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(363, 369);
-            this.Controls.Add(this.textBox29);
+            this.Controls.Add(this.nameTextBox);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.textBox16);
+            this.Controls.Add(this.notesTextBox);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.textBox39);
+            this.Controls.Add(this.lastInviteTextBox);
             this.Controls.Add(this.label43);
-            this.Controls.Add(this.textBox38);
-            this.Controls.Add(this.textBox37);
-            this.Controls.Add(this.textBox32);
-            this.Controls.Add(this.textBox31);
-            this.Controls.Add(this.textBox30);
+            this.Controls.Add(this.positionTextBox);
+            this.Controls.Add(this.workplaceTextBox);
+            this.Controls.Add(this.addressTextBox);
+            this.Controls.Add(this.phoneTextBox);
+            this.Controls.Add(this.birthdayTextBox);
             this.Controls.Add(this.label42);
             this.Controls.Add(this.label41);
             this.Controls.Add(this.label36);
@@ -256,17 +256,17 @@
 
 		#endregion
 
-		private System.Windows.Forms.TextBox textBox29;
+		private System.Windows.Forms.TextBox nameTextBox;
 		private System.Windows.Forms.Label label14;
-		private System.Windows.Forms.TextBox textBox16;
+		private System.Windows.Forms.TextBox notesTextBox;
 		private System.Windows.Forms.Label label11;
-		private System.Windows.Forms.TextBox textBox39;
+		private System.Windows.Forms.TextBox lastInviteTextBox;
 		private System.Windows.Forms.Label label43;
-		private System.Windows.Forms.TextBox textBox38;
-		private System.Windows.Forms.TextBox textBox37;
-		private System.Windows.Forms.TextBox textBox32;
-		private System.Windows.Forms.TextBox textBox31;
-		private System.Windows.Forms.TextBox textBox30;
+		private System.Windows.Forms.TextBox positionTextBox;
+		private System.Windows.Forms.TextBox workplaceTextBox;
+		private System.Windows.Forms.TextBox addressTextBox;
+		private System.Windows.Forms.TextBox phoneTextBox;
+		private System.Windows.Forms.TextBox birthdayTextBox;
 		private System.Windows.Forms.Label label42;
 		private System.Windows.Forms.Label label41;
 		private System.Windows.Forms.Label label36;
