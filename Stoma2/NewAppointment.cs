@@ -32,5 +32,10 @@ namespace Stoma2
 		{
 			Close();
 		}
+
+		private void doctorTextBox_TextChanged(object sender, EventArgs e)
+		{
+
+		}
 	}
 }

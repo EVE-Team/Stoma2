@@ -31,5 +31,11 @@ namespace Stoma2
 		{
 
 		}
+
+		private void NewTreatment_Paint(object sender, PaintEventArgs e)
+		{
+			e.Graphics.DrawRectangle(new Pen(Color.Black), new Rectangle(cbCategory.Location.X - 1, cbCategory.Location.Y - 1,
+				cbCategory.Size.Width + 1, cbCategory.Size.Height + 1));
+		}
 	}
 }
