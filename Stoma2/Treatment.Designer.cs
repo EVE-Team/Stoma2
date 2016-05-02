@@ -29,24 +29,26 @@
 		private void InitializeComponent()
 		{
             System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
-            "25, 26",
-            "Снятие зубных отложений",
-            "100",
-            "2",
-            "200"}, -1);
+            "Пломба \"светового отверждения\" \"Витример\"",
+            "1200",
+            "1",
+            "1200"}, -1);
             System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
-            "31",
-            "Отбеливание",
+            "Отбеливание \"Opalescence Boost\"",
             "400",
             "1",
             "400"}, -1);
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
+            "Анестезия \"Артикаин\"",
+            "150",
+            "1",
+            "150"}, -1);
             this.rectangleShape6 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.searchBox = new System.Windows.Forms.TextBox();
             this.costLabel = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.visitListView = new System.Windows.Forms.ListView();
-            this.columnHeader20 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader21 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader22 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader23 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -65,6 +67,8 @@
             this.appointmentListView = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnAddAppointment = new System.Windows.Forms.Button();
+            this.toothtextBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -112,7 +116,7 @@
             this.costLabel.Name = "costLabel";
             this.costLabel.Size = new System.Drawing.Size(179, 20);
             this.costLabel.TabIndex = 40;
-            this.costLabel.Text = "600 рублей";
+            this.costLabel.Text = "1750 рублей";
             this.costLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label6
@@ -133,7 +137,6 @@
             this.visitListView.BackColor = System.Drawing.Color.White;
             this.visitListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.visitListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader20,
             this.columnHeader21,
             this.columnHeader22,
             this.columnHeader23,
@@ -142,23 +145,20 @@
             this.visitListView.FullRowSelect = true;
             this.visitListView.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1,
-            listViewItem2});
+            listViewItem2,
+            listViewItem3});
             this.visitListView.Location = new System.Drawing.Point(11, 59);
             this.visitListView.Name = "visitListView";
+            this.visitListView.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.visitListView.Size = new System.Drawing.Size(739, 334);
             this.visitListView.TabIndex = 36;
             this.visitListView.UseCompatibleStateImageBehavior = false;
             this.visitListView.View = System.Windows.Forms.View.Details;
             // 
-            // columnHeader20
-            // 
-            this.columnHeader20.Text = "№ зуба";
-            this.columnHeader20.Width = 86;
-            // 
             // columnHeader21
             // 
             this.columnHeader21.Text = "Название услуги";
-            this.columnHeader21.Width = 260;
+            this.columnHeader21.Width = 321;
             // 
             // columnHeader22
             // 
@@ -179,17 +179,19 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox1.BackColor = System.Drawing.Color.White;
+            this.groupBox1.Controls.Add(this.toothtextBox);
+            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.diagnosisTextBox);
             this.groupBox1.Controls.Add(this.doctorTextBox);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.groupBox1.Location = new System.Drawing.Point(5, 389);
+            this.groupBox1.Location = new System.Drawing.Point(5, 384);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(0);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(0);
-            this.groupBox1.Size = new System.Drawing.Size(286, 151);
+            this.groupBox1.Size = new System.Drawing.Size(286, 156);
             this.groupBox1.TabIndex = 42;
             this.groupBox1.TabStop = false;
             // 
@@ -200,7 +202,7 @@
             this.diagnosisTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.diagnosisTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.diagnosisTextBox.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.diagnosisTextBox.Location = new System.Drawing.Point(12, 110);
+            this.diagnosisTextBox.Location = new System.Drawing.Point(12, 76);
             this.diagnosisTextBox.Multiline = true;
             this.diagnosisTextBox.Name = "diagnosisTextBox";
             this.diagnosisTextBox.ReadOnly = true;
@@ -214,18 +216,18 @@
             this.doctorTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.doctorTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.doctorTextBox.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.doctorTextBox.Location = new System.Drawing.Point(12, 50);
+            this.doctorTextBox.Location = new System.Drawing.Point(12, 28);
             this.doctorTextBox.Multiline = true;
             this.doctorTextBox.Name = "doctorTextBox";
             this.doctorTextBox.ReadOnly = true;
-            this.doctorTextBox.Size = new System.Drawing.Size(262, 20);
+            this.doctorTextBox.Size = new System.Drawing.Size(262, 22);
             this.doctorTextBox.TabIndex = 43;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(9, 81);
+            this.label2.Location = new System.Drawing.Point(9, 55);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 16);
             this.label2.TabIndex = 40;
@@ -235,7 +237,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(9, 19);
+            this.label1.Location = new System.Drawing.Point(9, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 16);
             this.label1.TabIndex = 39;
@@ -356,7 +358,7 @@
             this.appointmentListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.appointmentListView.Location = new System.Drawing.Point(5, 60);
             this.appointmentListView.Name = "appointmentListView";
-            this.appointmentListView.Size = new System.Drawing.Size(286, 283);
+            this.appointmentListView.Size = new System.Drawing.Size(286, 278);
             this.appointmentListView.TabIndex = 44;
             this.appointmentListView.UseCompatibleStateImageBehavior = false;
             this.appointmentListView.View = System.Windows.Forms.View.Details;
@@ -376,13 +378,37 @@
             this.btnAddAppointment.ForeColor = System.Drawing.Color.White;
             this.btnAddAppointment.Image = global::Stoma2.Properties.Resources.plus;
             this.btnAddAppointment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddAppointment.Location = new System.Drawing.Point(5, 349);
+            this.btnAddAppointment.Location = new System.Drawing.Point(5, 344);
             this.btnAddAppointment.Name = "btnAddAppointment";
             this.btnAddAppointment.Size = new System.Drawing.Size(286, 37);
             this.btnAddAppointment.TabIndex = 72;
             this.btnAddAppointment.Text = "Добавить прием";
             this.btnAddAppointment.UseVisualStyleBackColor = false;
             this.btnAddAppointment.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // toothtextBox
+            // 
+            this.toothtextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.toothtextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.toothtextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toothtextBox.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.toothtextBox.Location = new System.Drawing.Point(12, 125);
+            this.toothtextBox.Multiline = true;
+            this.toothtextBox.Name = "toothtextBox";
+            this.toothtextBox.ReadOnly = true;
+            this.toothtextBox.Size = new System.Drawing.Size(262, 20);
+            this.toothtextBox.TabIndex = 46;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(9, 103);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(58, 16);
+            this.label3.TabIndex = 45;
+            this.label3.Text = "№ зуба:";
             // 
             // Treatment
             // 
@@ -421,8 +447,7 @@
 		private System.Windows.Forms.Button btnDelete;
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.Button btnEdit;
-		private System.Windows.Forms.ListView visitListView;
-		private System.Windows.Forms.ColumnHeader columnHeader20;
+        private System.Windows.Forms.ListView visitListView;
 		private System.Windows.Forms.ColumnHeader columnHeader21;
 		private System.Windows.Forms.ColumnHeader columnHeader22;
 		private System.Windows.Forms.ColumnHeader columnHeader23;
@@ -437,5 +462,7 @@
 		private System.Windows.Forms.TextBox diagnosisTextBox;
 		private System.Windows.Forms.TextBox doctorTextBox;
         private System.Windows.Forms.Button btnAddAppointment;
+        private System.Windows.Forms.TextBox toothtextBox;
+        private System.Windows.Forms.Label label3;
 	}
 }
