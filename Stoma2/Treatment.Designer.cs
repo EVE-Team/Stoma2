@@ -43,6 +43,7 @@
             "150",
             "1",
             "150"}, -1);
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("25.06.2016");
             this.rectangleShape6 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.searchBox = new System.Windows.Forms.TextBox();
@@ -54,6 +55,8 @@
             this.columnHeader23 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader24 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.toothtextBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.diagnosisTextBox = new System.Windows.Forms.TextBox();
             this.doctorTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -67,8 +70,6 @@
             this.appointmentListView = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnAddAppointment = new System.Windows.Forms.Button();
-            this.toothtextBox = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -195,6 +196,31 @@
             this.groupBox1.TabIndex = 42;
             this.groupBox1.TabStop = false;
             // 
+            // toothtextBox
+            // 
+            this.toothtextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.toothtextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.toothtextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.toothtextBox.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.toothtextBox.Location = new System.Drawing.Point(12, 125);
+            this.toothtextBox.Multiline = true;
+            this.toothtextBox.Name = "toothtextBox";
+            this.toothtextBox.ReadOnly = true;
+            this.toothtextBox.Size = new System.Drawing.Size(262, 20);
+            this.toothtextBox.TabIndex = 46;
+            this.toothtextBox.Text = "25";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(9, 103);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(58, 16);
+            this.label3.TabIndex = 45;
+            this.label3.Text = "№ зуба:";
+            // 
             // diagnosisTextBox
             // 
             this.diagnosisTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -208,6 +234,7 @@
             this.diagnosisTextBox.ReadOnly = true;
             this.diagnosisTextBox.Size = new System.Drawing.Size(262, 20);
             this.diagnosisTextBox.TabIndex = 44;
+            this.diagnosisTextBox.Text = "Кариес";
             // 
             // doctorTextBox
             // 
@@ -336,6 +363,7 @@
             this.btnPrint.Text = "Печать акта работ";
             this.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPrint.UseVisualStyleBackColor = false;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // pictureBox5
             // 
@@ -356,7 +384,10 @@
             this.appointmentListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1});
             this.appointmentListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.appointmentListView.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem4});
             this.appointmentListView.Location = new System.Drawing.Point(5, 60);
+            this.appointmentListView.MultiSelect = false;
             this.appointmentListView.Name = "appointmentListView";
             this.appointmentListView.Size = new System.Drawing.Size(286, 278);
             this.appointmentListView.TabIndex = 44;
@@ -385,30 +416,6 @@
             this.btnAddAppointment.Text = "Добавить прием";
             this.btnAddAppointment.UseVisualStyleBackColor = false;
             this.btnAddAppointment.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // toothtextBox
-            // 
-            this.toothtextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.toothtextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.toothtextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.toothtextBox.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.toothtextBox.Location = new System.Drawing.Point(12, 125);
-            this.toothtextBox.Multiline = true;
-            this.toothtextBox.Name = "toothtextBox";
-            this.toothtextBox.ReadOnly = true;
-            this.toothtextBox.Size = new System.Drawing.Size(262, 20);
-            this.toothtextBox.TabIndex = 46;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(9, 103);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 16);
-            this.label3.TabIndex = 45;
-            this.label3.Text = "№ зуба:";
             // 
             // Treatment
             // 
