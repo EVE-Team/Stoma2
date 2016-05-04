@@ -91,6 +91,7 @@
             this.patientListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.patientListView.FullRowSelect = true;
             this.patientListView.Location = new System.Drawing.Point(10, 66);
+            this.patientListView.MultiSelect = false;
             this.patientListView.Name = "patientListView";
             this.patientListView.Size = new System.Drawing.Size(406, 267);
             this.patientListView.TabIndex = 20;

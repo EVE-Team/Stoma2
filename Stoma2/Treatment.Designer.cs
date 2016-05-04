@@ -149,6 +149,7 @@
             listViewItem2,
             listViewItem3});
             this.visitListView.Location = new System.Drawing.Point(11, 59);
+            this.visitListView.MultiSelect = false;
             this.visitListView.Name = "visitListView";
             this.visitListView.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.visitListView.Size = new System.Drawing.Size(739, 334);

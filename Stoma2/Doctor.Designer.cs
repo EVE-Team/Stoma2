@@ -114,6 +114,7 @@
             this.doctorListView.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1});
             this.doctorListView.Location = new System.Drawing.Point(13, 63);
+            this.doctorListView.MultiSelect = false;
             this.doctorListView.Name = "doctorListView";
             this.doctorListView.Size = new System.Drawing.Size(612, 340);
             this.doctorListView.TabIndex = 22;

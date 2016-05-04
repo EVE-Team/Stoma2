@@ -220,6 +220,9 @@
     <EmbeddedResource Include="Visit.resx">
       <DependentUpon>Visit.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Example.docx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
