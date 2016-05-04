@@ -41,8 +41,29 @@ namespace Stoma2
 
             if (newDB)
             {
-                NonQuery("CREATE TABLE clients (id INTEGER PRIMARY KEY, name_first TEXT NOT NULL, name_last TEXT NOT NULL, name_patronymic TEXT, birthday DATE, address_subject TEXT, address_city TEXT, address_street TEXT, address_building TEXT, address_apartment TEXT, workplace TEXT, position TEXT, phone TEXT, notes TEXT, last_invite DATE);");
-                NonQuery("CREATE TABLE doctors (id INTEGER PRIMARY KEY, name_first TEXT NOT NULL, name_last TEXT NOT NULL, name_patronymic TEXT, speciality TEXT);");
+                NonQuery("CREATE TABLE clients (" +
+                    "id INTEGER PRIMARY KEY, " +
+                    "name_first TEXT NOT NULL, " +
+                    "name_last TEXT NOT NULL, " +
+                    "name_patronymic TEXT, " +
+                    "birthday DATE, " +
+                    "address_subject TEXT, " +
+                    "address_city TEXT, " +
+                    "address_street TEXT, " +
+                    "address_building TEXT, " +
+                    "address_apartment TEXT, " +
+                    "workplace TEXT, " +
+                    "position TEXT, " +
+                    "phone TEXT, " +
+                    "notes TEXT, " +
+                    "last_invite DATE);");
+
+                NonQuery("CREATE TABLE doctors (" +
+                    "id INTEGER PRIMARY KEY, " +
+                    "name_first TEXT NOT NULL, " +
+                    "name_last TEXT NOT NULL, " +
+                    "name_patronymic TEXT, " +
+                    "speciality TEXT);");
             }
         }
 
