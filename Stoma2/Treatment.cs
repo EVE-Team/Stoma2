@@ -52,7 +52,19 @@ namespace Stoma2
             object trueValue = true;
             object missing = Type.Missing;
 
-            Word.Application winApp = new Word.Application();
+			Word.Application winApp;
+
+			try
+			{
+				winApp = new Word.Application();
+			}
+			catch (System.Runtime.InteropServices.COMException ex)
+			{
+				MessageBox.Show(this, "Для работы данной функции необходимо наличие Microsoft Word", "Ошибка",
+					MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				return;
+			}
+
             Word.Document wordApp = new Word.Document();
             wordApp = winApp.Documents.Open(ref filePath, ref missing, ref trueValue,
                 ref missing, ref missing, ref missing, ref missing, ref missing,
