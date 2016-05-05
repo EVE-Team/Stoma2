@@ -12,11 +12,11 @@ namespace Stoma2
 {
 	public partial class Other : Form
 	{
-		Control priceListForm = Program.SetupForm(new PriceList());
-		Control reportForm = Program.SetupForm(new MonthlyReport());
-		Control doctorForm = Program.SetupForm(new Doctor());
-		Control backupForm = Program.SetupForm(new BackUp());
-		Control visitForm = Program.SetupForm(new Visit());
+		Control priceListForm = Utils.SetupForm(new PriceList());
+        Control reportForm = Utils.SetupForm(new MonthlyReport());
+        Control doctorForm = Utils.SetupForm(new Doctor());
+        Control backupForm = Utils.SetupForm(new BackUp());
+        Control visitForm = Utils.SetupForm(new Visit());
 
 		public Other()
 		{
@@ -27,27 +27,27 @@ namespace Stoma2
 
 		private void radioButton7_CheckedChanged(object sender, EventArgs e)
 		{
-			Program.SetPanelForm(pnlContent, priceListForm);
+            Utils.SetPanelForm(pnlContent, priceListForm);
 		}
 
 		private void radioButton9_CheckedChanged(object sender, EventArgs e)
 		{
-			Program.SetPanelForm(pnlContent, doctorForm);
+            Utils.SetPanelForm(pnlContent, doctorForm);
 		}
 
 		private void radioButton11_CheckedChanged(object sender, EventArgs e)
 		{
-			Program.SetPanelForm(pnlContent, reportForm);
+            Utils.SetPanelForm(pnlContent, reportForm);
 		}
 
 		private void radioButton10_CheckedChanged(object sender, EventArgs e)
 		{
-			Program.SetPanelForm(pnlContent, backupForm);
+            Utils.SetPanelForm(pnlContent, backupForm);
 		}
 
 		private void rbVisits_CheckedChanged(object sender, EventArgs e)
 		{
-			Program.SetPanelForm(pnlContent, visitForm);
+            Utils.SetPanelForm(pnlContent, visitForm);
 		}
 	}
 }

@@ -159,6 +159,7 @@
     <Compile Include="Treatment.Designer.cs">
       <DependentUpon>Treatment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils.cs" />
     <Compile Include="Visit.cs">
       <SubType>Form</SubType>
     </Compile>

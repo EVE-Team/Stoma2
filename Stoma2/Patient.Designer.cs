@@ -97,6 +97,7 @@
             this.patientListView.TabIndex = 20;
             this.patientListView.UseCompatibleStateImageBehavior = false;
             this.patientListView.View = System.Windows.Forms.View.Details;
+            this.patientListView.SelectedIndexChanged += new System.EventHandler(this.patientListView_SelectedIndexChanged);
             // 
             // columnHeader1
             // 

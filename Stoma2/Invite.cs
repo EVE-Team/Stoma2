@@ -16,7 +16,7 @@ namespace Stoma2
 		{
 			InitializeComponent();
 
-			Program.SetPanelForm(pnlPatientInfo, Program.SetupForm(new PatientInfo()));
+            Utils.SetPanelForm(pnlPatientInfo, Utils.SetupForm(new PatientInfo()));
 		}
 	}
 }

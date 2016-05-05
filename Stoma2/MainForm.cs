@@ -24,10 +24,10 @@ namespace Stoma2
 		public static extern bool ReleaseCapture();
 
 		// Panel forms
-		Control patientForm = Program.SetupForm(new Patient());
-		Control treatmentForm = Program.SetupForm(new Treatment());
-		Control inviteForm = Program.SetupForm(new Invite());
-		Control otherForm = Program.SetupForm(new Other());
+        Control patientForm = Utils.SetupForm(new Patient());
+        Control treatmentForm = Utils.SetupForm(new Treatment());
+        Control inviteForm = Utils.SetupForm(new Invite());
+        Control otherForm = Utils.SetupForm(new Other());
 		//
 
 		public MainForm()
@@ -69,17 +69,17 @@ namespace Stoma2
 
 		private void rbOther_CheckedChanged(object sender, EventArgs e)
 		{
-			Program.SetPanelForm(pnlContent, otherForm);
+            Utils.SetPanelForm(pnlContent, otherForm);
 		}
 
 		private void rbInvite_CheckedChanged(object sender, EventArgs e)
 		{
-			Program.SetPanelForm(pnlContent, inviteForm);
+            Utils.SetPanelForm(pnlContent, inviteForm);
 		}
 
 		private void rbAppointment_CheckedChanged(object sender, EventArgs e)
 		{
-			Program.SetPanelForm(pnlContent, patientForm);
+            Utils.SetPanelForm(pnlContent, patientForm);
 		}
 
 		public void goToNewAppointment()
@@ -89,7 +89,7 @@ namespace Stoma2
 
 		private void rbTreatment_CheckedChanged(object sender, EventArgs e)
 		{
-			Program.SetPanelForm(pnlContent, treatmentForm);
+            Utils.SetPanelForm(pnlContent, treatmentForm);
 		}
 
 		private void btnMaximize_Click(object sender, EventArgs e)

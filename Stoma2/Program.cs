@@ -8,23 +8,9 @@ namespace Stoma2
 {
 	static class Program
 	{
-		public static Control SetupForm(Form form)
-		{
-			form.TopLevel = false;
-			form.Dock = DockStyle.Fill;
-			return form;
-		}
-
-		public static void SetPanelForm(Panel panel, Control form)
-		{
-			panel.Controls.Clear();
-			panel.Controls.Add(form);
-			form.Show();
-		}
-
 		public static MainForm mainForm;
 
-		/// <summary>
+        /// <summary>
 		/// The main entry point for the application.
 		/// </summary>
 		[STAThread]

@@ -17,7 +17,7 @@ namespace Stoma2
 			InitializeComponent();
             UpdatePatientList();
 
-			Program.SetPanelForm(pnlPatientInfo, Program.SetupForm(new PatientInfo()));
+            Utils.SetPanelForm(pnlPatientInfo, Utils.SetupForm(new PatientInfo()));
 		}
 
         private void button7_Click(object sender, EventArgs e)
@@ -46,6 +46,16 @@ namespace Stoma2
 
 		}
 
+        private class IdObject
+        {
+            public int id;
+
+            public IdObject(int id)
+            {
+                this.id = id;
+            }
+        }
+
         private void UpdatePatientList()
         {
             patientListView.Items.Clear();
@@ -53,11 +63,27 @@ namespace Stoma2
 
             while (reader.Read())
             {
-                patientListView.Items.Add(new ListViewItem(new string[] {
+                var item = new ListViewItem(new string[] {
                     reader["name_last"].ToString(),
                     reader["name_first"].ToString()
-                }));
+                });
+                item.Tag = new IdObject(Convert.ToInt32(reader["id"].ToString()));
+                patientListView.Items.Add(item);
             }
+        }
+
+        private void patientListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PatientInfo piForm = (PatientInfo)Utils.GetPanelForm(pnlPatientInfo);
+
+            if (patientListView.SelectedItems.Count == 0)
+            {
+                piForm.ClearInfo();
+                return;
+            }
+
+            int id = ((IdObject)(patientListView.SelectedItems[0].Tag)).id;
+            piForm.SetInfo(id);
         }
 	}
 }
