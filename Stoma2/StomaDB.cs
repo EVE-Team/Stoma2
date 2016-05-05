@@ -68,6 +68,12 @@ namespace Stoma2
                 NonQuery("CREATE TABLE categories (" +
                     "id INTEGER PRIMARY KEY, " +
                     "name TEXT NOT NULL);");
+
+                NonQuery("CREATE TABLE service_list (" +
+                    "id INTEGER PRIMARY KEY, " +
+                    "name TEXT NOT NULL, " +
+                    "price INTEGER NOT NULL, " +
+                    "category_id INTEGER REFERENCES categories(id));");
             }
         }
 
@@ -126,6 +132,11 @@ namespace Stoma2
             NonQuery(QueryGen("insert into categories(", ") values(", ");", data));
         }
 
+        public void AddService(Dictionary<string, string> data)
+        {
+            NonQuery(QueryGen("insert into service_list(", ") values(", ");", data));
+        }
+
         public SQLiteDataReader GetClientsReader()
         {
             return Query("select * from clients");
@@ -139,6 +150,11 @@ namespace Stoma2
         public SQLiteDataReader GetCategoriesReader()
         {
             return Query("select * from categories");
+        }
+
+        public SQLiteDataReader GetServicesReader(int catId)
+        {
+            return Query("select * from service_list where category_id = " + catId + ";");
         }
 
         public SQLiteDataReader GetClientReader(int id)
@@ -168,6 +184,11 @@ namespace Stoma2
         public void DeleteCategory(int id)
         {
             NonQuery("delete from categories where id = " + id + ";");
+        }
+
+        public void DeleteService(int id)
+        {
+            NonQuery("delete from service_list where id = " + id + ";");
         }
     }
 }

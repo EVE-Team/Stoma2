@@ -37,7 +37,7 @@
             System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
             "Протезирование",
             "500 р"}, -1);
-            this.treatmentListView = new System.Windows.Forms.ListView();
+            this.serviceListView = new System.Windows.Forms.ListView();
             this.columnHeader25 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader26 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnRemove = new System.Windows.Forms.Button();
@@ -53,29 +53,30 @@
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // treatmentListView
+            // serviceListView
             // 
-            this.treatmentListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.serviceListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.treatmentListView.BackColor = System.Drawing.Color.White;
-            this.treatmentListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.treatmentListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.serviceListView.BackColor = System.Drawing.Color.White;
+            this.serviceListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.serviceListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader25,
             this.columnHeader26});
-            this.treatmentListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.treatmentListView.FullRowSelect = true;
-            this.treatmentListView.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            this.serviceListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.serviceListView.FullRowSelect = true;
+            this.serviceListView.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1,
             listViewItem2,
             listViewItem3});
-            this.treatmentListView.Location = new System.Drawing.Point(12, 20);
-            this.treatmentListView.MultiSelect = false;
-            this.treatmentListView.Name = "treatmentListView";
-            this.treatmentListView.Size = new System.Drawing.Size(409, 359);
-            this.treatmentListView.TabIndex = 39;
-            this.treatmentListView.UseCompatibleStateImageBehavior = false;
-            this.treatmentListView.View = System.Windows.Forms.View.Details;
+            this.serviceListView.Location = new System.Drawing.Point(12, 20);
+            this.serviceListView.MultiSelect = false;
+            this.serviceListView.Name = "serviceListView";
+            this.serviceListView.Size = new System.Drawing.Size(409, 359);
+            this.serviceListView.TabIndex = 39;
+            this.serviceListView.UseCompatibleStateImageBehavior = false;
+            this.serviceListView.View = System.Windows.Forms.View.Details;
+            this.serviceListView.SelectedIndexChanged += new System.EventHandler(this.serviceListView_SelectedIndexChanged);
             // 
             // columnHeader25
             // 
@@ -104,6 +105,7 @@
             this.btnRemove.TabIndex = 41;
             this.btnRemove.Text = "Удалить";
             this.btnRemove.UseVisualStyleBackColor = false;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnEdit
             // 
@@ -160,6 +162,7 @@
             this.btnAdd.TabIndex = 72;
             this.btnAdd.Text = "Добавить";
             this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnAddCat
             // 
@@ -175,7 +178,7 @@
             this.btnAddCat.Size = new System.Drawing.Size(40, 40);
             this.btnAddCat.TabIndex = 75;
             this.btnAddCat.UseVisualStyleBackColor = false;
-            this.btnAddCat.Click += new System.EventHandler(this.button1_Click);
+            this.btnAddCat.Click += new System.EventHandler(this.btnAddCat_Click);
             // 
             // btnDelCat
             // 
@@ -217,7 +220,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.BackColor = System.Drawing.Color.White;
-            this.groupBox1.Controls.Add(this.treatmentListView);
+            this.groupBox1.Controls.Add(this.serviceListView);
             this.groupBox1.Controls.Add(this.btnAdd);
             this.groupBox1.Controls.Add(this.btnEdit);
             this.groupBox1.Controls.Add(this.btnRemove);
@@ -271,7 +274,7 @@
 
 		private System.Windows.Forms.Button btnRemove;
 		private System.Windows.Forms.Button btnEdit;
-		private System.Windows.Forms.ListView treatmentListView;
+		private System.Windows.Forms.ListView serviceListView;
 		private System.Windows.Forms.ColumnHeader columnHeader25;
 		private System.Windows.Forms.ColumnHeader columnHeader26;
 		private System.Windows.Forms.ListBox categoryListBox;
