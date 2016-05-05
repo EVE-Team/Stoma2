@@ -58,7 +58,7 @@ namespace Stoma2
 			{
 				winApp = new Word.Application();
 			}
-			catch (System.Runtime.InteropServices.COMException ex)
+			catch (System.Runtime.InteropServices.COMException)
 			{
 				MessageBox.Show(this, "Для работы данной функции необходимо наличие Microsoft Word", "Ошибка",
 					MessageBoxButtons.OK, MessageBoxIcon.Exclamation);

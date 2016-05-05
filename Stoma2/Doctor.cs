@@ -20,7 +20,7 @@ namespace Stoma2
 
         private void button8_Click(object sender, EventArgs e)
         {
-            AddDoctor form = new AddDoctor();
+            NewDoctor form = new NewDoctor();
             form.ShowDialog();
 
             if (form.BaseModified)
@@ -31,26 +31,29 @@ namespace Stoma2
 
         private void button7_Click(object sender, EventArgs e)
         {
-            AddDoctor form = new AddDoctor();
-            form.Text = "Редактировать доктора";
-			form.btnApply.Text = "Сохранить";
+            NewDoctor form = new NewDoctor();
+			form.RecordForEditing = (DoctorRecord)doctorListView.SelectedItems[0].Tag;
             form.ShowDialog();
+
+			if (form.BaseModified)
+			{
+				UpdateDoctorList();
+			}
         }
 
         private void UpdateDoctorList()
         {
             doctorListView.Items.Clear();
-            var reader = StomaDB.Instance.GetDoctorsReader();
 
-            while (reader.Read())
-            {
-                var item = new ListViewItem(new string[] {
-                    reader["name_last"].ToString(),
-                    reader["name_first"].ToString()
+			foreach (DoctorRecord rec in StomaDB.Instance.GetDoctors(searchBox.Text))
+			{
+				var item = new ListViewItem(new string[] {
+                    rec.LastName,
+					rec.FirstName
                 });
-                item.Tag = new Utils.IdObject(Convert.ToInt32(reader["id"].ToString()));
-                doctorListView.Items.Add(item);
-            }
+				item.Tag = rec;
+				doctorListView.Items.Add(item);
+			}
         }
 
         private void doctorListView_SelectedIndexChanged(object sender, EventArgs e)
@@ -66,14 +69,9 @@ namespace Stoma2
                 return;
             }
 
-            int id = ((Utils.IdObject)(doctorListView.SelectedItems[0].Tag)).id;
-            var data = StomaDB.Instance.GetDoctorReader(id);
-
-            doctorName.Text = data["name_last"].ToString() +
-                data["name_first"].ToString() +
-                data["name_patronymic"].ToString();
-
-            doctorSpeciality.Text = data["speciality"].ToString();
+			DoctorRecord rec = (DoctorRecord)doctorListView.SelectedItems[0].Tag;
+			doctorName.Text = rec.GetFullName();
+			doctorSpeciality.Text = rec.Speciality;
 
             editBtn.Enabled = true;
             delBtn.Enabled = true;
@@ -81,9 +79,14 @@ namespace Stoma2
 
         private void delBtn_Click(object sender, EventArgs e)
         {
-            int id = ((Utils.IdObject)(doctorListView.SelectedItems[0].Tag)).id;
-            StomaDB.Instance.DeleteDoctor(id);
+			DoctorRecord rec = (DoctorRecord)doctorListView.SelectedItems[0].Tag;
+			rec.Delete();
             UpdateDoctorList();
         }
+
+		private void searchBox_TextChanged(object sender, EventArgs e)
+		{
+			UpdateDoctorList();
+		}
     }
 }

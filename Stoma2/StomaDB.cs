@@ -5,10 +5,249 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Data.SQLite;
+using System.Collections;
+using System.Windows.Forms;
 
 namespace Stoma2
 {
-    class StomaDB : IDisposable
+	public abstract class DatabaseIterator : IEnumerable
+	{
+		protected SQLiteDataReader m_reader;
+
+		public DatabaseIterator(string table_name, string search_query, string[] search_columns)
+		{
+			string query = "SELECT * FROM " + DatabaseUtils.SanitizeString(table_name);
+			if (search_query.Length > 0)
+			{
+				query += " WHERE ";
+				
+				for (int i = 0; i < search_columns.Length; i++)
+				{
+					if (i > 0 && i < search_columns.Length)
+					{
+						query += " OR ";
+					}
+
+					query += search_columns[i] + " LIKE '%" + DatabaseUtils.EncodeString(search_query) + "%'";
+				}
+			}
+			query += ";";
+
+			m_reader = StomaDB.Instance.Query(query);
+		}
+
+		abstract public IEnumerator GetEnumerator();
+	}
+
+	public abstract class DatabaseRecord
+	{
+		// every record has an ID
+		protected Int64 m_record_id;
+		public Int64 ID { get { return m_record_id; } }
+
+		abstract public void Save();
+		abstract public void Delete();
+	}
+
+	public class DoctorRecord : DatabaseRecord
+	{
+		// this constructor should be private, but C# lacks friend keyword
+		public DoctorRecord(Int64 id, string first_name, string last_name, string patronymic, string speciality)
+		{
+			m_record_id = id;
+			FirstName = DatabaseUtils.DecodeString(first_name);
+			LastName = DatabaseUtils.DecodeString(last_name);
+			Patronymic = DatabaseUtils.DecodeString(patronymic);
+			Speciality = DatabaseUtils.DecodeString(speciality);
+		}
+
+		// This will add a new doctor to DB
+		// It should return DoctorRecord, but good luck finding id of last inserted record
+		public static void Create(string first_name, string last_name, string patronymic, string speciality)
+		{
+			string query = String.Format("INSERT INTO doctors ('name_first', 'name_last', 'name_patronymic', 'speciality') " + 
+				"VALUES ('{0}', '{1}', '{2}', '{3}');",
+				DatabaseUtils.EncodeString(first_name),
+				DatabaseUtils.EncodeString(last_name),
+				DatabaseUtils.EncodeString(patronymic),
+				DatabaseUtils.EncodeString(speciality));
+			StomaDB.Instance.NonQuery(query);
+
+			// get ID of newly inserted record
+			// AND 'name_patronymic'='{2}' AND 'speciality'='{3}'
+			// , patronymic, speciality
+			//query = String.Format("SELECT * FROM doctors WHERE 'name_first'='{0}' AND 'name_last'='{1}';",
+			//	first_name, last_name);
+			//var reader = StomaDB.Instance.Query(query);
+			//reader.Read();
+
+			//return new DoctorRecord(reader.GetInt64(0), reader.GetString(1),
+			//		reader.GetString(2), reader.GetString(3), reader.GetString(4));
+		}
+
+		// Имя (name_first)
+		public string FirstName { get; set; }
+		// Фамилия (name_last)
+		public string LastName { get; set; }
+		// Отчество (name_patronymic)
+		public string Patronymic { get; set; }
+		// Специальность (терапевт, хирург, ортопед) (speciality)
+		public string Speciality { get; set; }
+
+		public string GetFullName()
+		{
+			return String.Format("{0} {1} {2}", LastName, FirstName, Patronymic);
+		}
+
+		public override void Save()
+		{
+			string query = String.Format("UPDATE doctors SET name_first='{0}', name_last='{1}', " +
+				"name_patronymic='{2}', speciality='{3}' WHERE id={4};",
+				DatabaseUtils.EncodeString(FirstName),
+				DatabaseUtils.EncodeString(LastName),
+				DatabaseUtils.EncodeString(Patronymic),
+				DatabaseUtils.EncodeString(Speciality),
+				ID);
+			StomaDB.Instance.NonQuery(query);
+		}
+
+		public override void Delete()
+		{
+			StomaDB.Instance.NonQuery("DELETE FROM doctors WHERE id=" + ID + ";");
+		}
+	}
+
+	public class DoctorIterator : DatabaseIterator
+	{
+		public DoctorIterator(string search_query = "")
+			: base("doctors", search_query, new string[] {"name_first", "name_last", "name_patronymic"})
+		{
+		}
+
+		public override IEnumerator GetEnumerator()
+		{
+			while (m_reader.Read())
+			{
+				yield return new DoctorRecord(m_reader.GetInt64(0), m_reader.GetString(1),
+					m_reader.GetString(2), m_reader.GetString(3), m_reader.GetString(4));
+			}
+		}
+	}
+
+	public class DatabaseUtils
+	{
+		public static string SanitizeString(string str)
+		{
+			// should also remove ' ; "
+			return str.Trim();
+		}
+
+		static Dictionary<char, string> translit = new Dictionary<char, string>
+		{
+			{ 'ё', "yo" },
+			{ 'й', "yy" },
+			{ 'ц', "ts" },
+			{ 'у', "uu" },
+			{ 'к', "kk" },
+			{ 'е', "ye" },
+			{ 'н', "nn" },
+			{ 'г', "gg" },
+			{ 'ш', "sh" },
+			{ 'щ', "sx" },
+			{ 'з', "zz" },
+			{ 'х', "hh" },
+			{ 'ъ', "xh" },
+			{ 'ф', "ff" },
+			{ 'ы', "xi" },
+			{ 'в', "vv" },
+			{ 'а', "aa" },
+			{ 'п', "pp" },
+			{ 'р', "rr" },
+			{ 'о', "oo" },
+			{ 'л', "ll" },
+			{ 'д', "dd" },
+			{ 'ж', "zh" },
+			{ 'э', "xe" },
+			{ 'я', "ya" },
+			{ 'ч', "ch" },
+			{ 'с', "ss" },
+			{ 'м', "mm" },
+			{ 'и', "ii" },
+			{ 'т', "tt" },
+			{ 'ь', "xs" },
+			{ 'б', "bb" },
+			{ 'ю', "yu" }
+		};
+
+		static Dictionary<string, char> itranslit = CreateReverseDictionary(translit);
+
+		private static Dictionary<string, char> CreateReverseDictionary(Dictionary<char, string> dict)
+		{
+			Dictionary<string, char> result = new Dictionary<string, char>();
+
+			foreach (char key in dict.Keys)
+			{
+				result[dict[key]] = key;
+			}
+
+			return result;
+		}
+
+		public static string EncodeString(string russian)
+		{
+			russian = SanitizeString(russian);
+
+			string result = "";
+			foreach (char ch in russian)
+			{
+				if (translit.ContainsKey(ch))
+				{
+					result += translit[ch];
+				} else if (translit.ContainsKey(ch.ToString().ToLower()[0])) {
+					result += translit[ch.ToString().ToLower()[0]].ToUpper();
+				} else {
+					result += ch.ToString() + "~";
+				}
+			}
+			return result;
+		}
+
+		public static string DecodeString(string encoded)
+		{
+			if (encoded.Length % 2 != 0)
+			{
+				throw new ArgumentException("DecodeString: invalid input");
+			}
+
+			string result = "";
+			for (int i = 0; i < encoded.Length; i += 2)
+			{
+				string pair = encoded[i].ToString() + encoded[i + 1].ToString();
+
+				if (encoded[i + 1] == '~')
+				{
+					result += encoded[i];
+				}
+				else if (itranslit.ContainsKey(pair))
+				{
+					result += itranslit[pair].ToString();
+				}
+				else if (itranslit.ContainsKey(pair.ToLower()))
+				{
+					result += itranslit[pair.ToLower()].ToString().ToUpper();
+				}
+				else
+				{
+					throw new ArgumentException("DecodeString: invalid input");
+				}
+			}
+			return result;
+		}
+	}
+
+	// -=-=-=-=-=-=-=-=-=-=-=-
+
+    public class StomaDB : IDisposable
     {
         private static StomaDB instance = null;
 
@@ -26,6 +265,11 @@ namespace Stoma2
 
         private static readonly string DB_FILE_NAME = "Stoma2.db";
         private readonly SQLiteConnection m_dbConnection;
+
+		public DoctorIterator GetDoctors(string search = "")
+		{
+			return new DoctorIterator(search);
+		}
 
         public StomaDB()
         {
@@ -82,13 +326,13 @@ namespace Stoma2
             m_dbConnection.Close();
         }
 
-        private int NonQuery(string query)
+        public int NonQuery(string query)
         {
             SQLiteCommand command = new SQLiteCommand(query, m_dbConnection);
             return command.ExecuteNonQuery();
         }
 
-        private SQLiteDataReader Query(string query)
+        public SQLiteDataReader Query(string query)
         {
             SQLiteCommand command = new SQLiteCommand(query, m_dbConnection);
             return command.ExecuteReader();

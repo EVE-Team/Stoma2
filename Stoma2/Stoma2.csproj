@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>.\Microsoft.Office.Interop.Word.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs">
@@ -60,11 +61,11 @@
     <Compile Include="Accordion.Designer.cs">
       <DependentUpon>Accordion.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddDoctor.cs">
+    <Compile Include="NewDoctor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddDoctor.Designer.cs">
-      <DependentUpon>AddDoctor.cs</DependentUpon>
+    <Compile Include="NewDoctor.Designer.cs">
+      <DependentUpon>NewDoctor.cs</DependentUpon>
     </Compile>
     <Compile Include="NewAppointment.cs">
       <SubType>Form</SubType>
@@ -178,8 +179,8 @@
     <Compile Include="Visit.Designer.cs">
       <DependentUpon>Visit.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AddDoctor.resx">
-      <DependentUpon>AddDoctor.cs</DependentUpon>
+    <EmbeddedResource Include="NewDoctor.resx">
+      <DependentUpon>NewDoctor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewAppointment.resx">
       <DependentUpon>NewAppointment.cs</DependentUpon>
