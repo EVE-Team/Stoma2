@@ -46,7 +46,7 @@
             System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("25.06.2016");
             this.rectangleShape6 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-            this.searchBox = new System.Windows.Forms.TextBox();
+            this.patientFIO = new System.Windows.Forms.TextBox();
             this.costLabel = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.visitListView = new System.Windows.Forms.ListView();
@@ -66,13 +66,12 @@
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.appointmentListView = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnAddAppointment = new System.Windows.Forms.Button();
+            this.patientLabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
             // rectangleShape6
@@ -97,17 +96,17 @@
             this.shapeContainer1.TabIndex = 28;
             this.shapeContainer1.TabStop = false;
             // 
-            // searchBox
+            // patientFIO
             // 
-            this.searchBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.searchBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.searchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.searchBox.ForeColor = System.Drawing.Color.Silver;
-            this.searchBox.Location = new System.Drawing.Point(49, 20);
-            this.searchBox.Name = "searchBox";
-            this.searchBox.Size = new System.Drawing.Size(235, 15);
-            this.searchBox.TabIndex = 30;
-            this.searchBox.Text = "ФИО пациента";
+            this.patientFIO.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.patientFIO.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.patientFIO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.patientFIO.ForeColor = System.Drawing.Color.Black;
+            this.patientFIO.Location = new System.Drawing.Point(17, 35);
+            this.patientFIO.Name = "patientFIO";
+            this.patientFIO.Size = new System.Drawing.Size(235, 15);
+            this.patientFIO.TabIndex = 30;
+            this.patientFIO.Text = "Скаков Михаил Сергеевич";
             // 
             // costLabel
             // 
@@ -366,17 +365,6 @@
             this.btnPrint.UseVisualStyleBackColor = false;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
-            // pictureBox5
-            // 
-            this.pictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.pictureBox5.BackgroundImage = global::Stoma2.Properties.Resources.search;
-            this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox5.Location = new System.Drawing.Point(14, 13);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(27, 29);
-            this.pictureBox5.TabIndex = 29;
-            this.pictureBox5.TabStop = false;
-            // 
             // appointmentListView
             // 
             this.appointmentListView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -418,16 +406,28 @@
             this.btnAddAppointment.UseVisualStyleBackColor = false;
             this.btnAddAppointment.Click += new System.EventHandler(this.button1_Click);
             // 
+            // patientLabel
+            // 
+            this.patientLabel.AutoSize = true;
+            this.patientLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.patientLabel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.patientLabel.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.patientLabel.Location = new System.Drawing.Point(14, 9);
+            this.patientLabel.Name = "patientLabel";
+            this.patientLabel.Size = new System.Drawing.Size(89, 16);
+            this.patientLabel.TabIndex = 73;
+            this.patientLabel.Text = "Лечение для:";
+            // 
             // Treatment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1063, 553);
+            this.Controls.Add(this.patientLabel);
             this.Controls.Add(this.btnAddAppointment);
             this.Controls.Add(this.appointmentListView);
-            this.Controls.Add(this.searchBox);
-            this.Controls.Add(this.pictureBox5);
+            this.Controls.Add(this.patientFIO);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.shapeContainer1);
@@ -438,7 +438,6 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -449,8 +448,7 @@
 		private System.Windows.Forms.Button btnPrint;
 		private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape6;
 		private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
-		private System.Windows.Forms.TextBox searchBox;
-		private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.TextBox patientFIO;
 		private System.Windows.Forms.Label costLabel;
 		private System.Windows.Forms.Button btnDelete;
 		private System.Windows.Forms.Label label6;
@@ -472,5 +470,6 @@
         private System.Windows.Forms.Button btnAddAppointment;
         private System.Windows.Forms.TextBox toothtextBox;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label patientLabel;
 	}
 }
