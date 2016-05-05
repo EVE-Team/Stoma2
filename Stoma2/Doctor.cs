@@ -44,11 +44,32 @@ namespace Stoma2
 
             while (reader.Read())
             {
-                doctorListView.Items.Add(new ListViewItem(new string[] {
+                var item = new ListViewItem(new string[] {
                     reader["name_last"].ToString(),
                     reader["name_first"].ToString()
-                }));
+                });
+                item.Tag = new Utils.IdObject(Convert.ToInt32(reader["id"].ToString()));
+                doctorListView.Items.Add(item);
             }
+        }
+
+        private void doctorListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (doctorListView.SelectedItems.Count == 0)
+            {
+                doctorName.Clear();
+                doctorSpeciality.Clear();
+                return;
+            }
+
+            int id = ((Utils.IdObject)(doctorListView.SelectedItems[0].Tag)).id;
+            var data = StomaDB.Instance.GetDoctorReader(id);
+
+            doctorName.Text = data["name_last"].ToString() +
+                data["name_first"].ToString() +
+                data["name_patronymic"].ToString();
+
+            doctorSpeciality.Text = data["speciality"].ToString();
         }
     }
 }

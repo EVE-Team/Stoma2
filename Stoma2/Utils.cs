@@ -28,5 +28,15 @@ namespace Stoma2
                 throw new Exception("Unexpected control count");
             return panel.Controls[0];
         }
+
+        public class IdObject
+        {
+            public int id;
+
+            public IdObject(int id)
+            {
+                this.id = id;
+            }
+        }
     }
 }

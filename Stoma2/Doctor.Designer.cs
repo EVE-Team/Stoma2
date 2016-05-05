@@ -120,6 +120,7 @@
             this.doctorListView.TabIndex = 22;
             this.doctorListView.UseCompatibleStateImageBehavior = false;
             this.doctorListView.View = System.Windows.Forms.View.Details;
+            this.doctorListView.SelectedIndexChanged += new System.EventHandler(this.doctorListView_SelectedIndexChanged);
             // 
             // columnHeader3
             // 

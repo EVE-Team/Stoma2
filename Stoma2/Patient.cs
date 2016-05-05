@@ -46,16 +46,6 @@ namespace Stoma2
 
 		}
 
-        private class IdObject
-        {
-            public int id;
-
-            public IdObject(int id)
-            {
-                this.id = id;
-            }
-        }
-
         private void UpdatePatientList()
         {
             patientListView.Items.Clear();
@@ -67,7 +57,7 @@ namespace Stoma2
                     reader["name_last"].ToString(),
                     reader["name_first"].ToString()
                 });
-                item.Tag = new IdObject(Convert.ToInt32(reader["id"].ToString()));
+                item.Tag = new Utils.IdObject(Convert.ToInt32(reader["id"].ToString()));
                 patientListView.Items.Add(item);
             }
         }
@@ -82,7 +72,7 @@ namespace Stoma2
                 return;
             }
 
-            int id = ((IdObject)(patientListView.SelectedItems[0].Tag)).id;
+            int id = ((Utils.IdObject)(patientListView.SelectedItems[0].Tag)).id;
             piForm.SetInfo(id);
         }
 	}

@@ -187,5 +187,12 @@ namespace Stoma2
             reader.Read();
             return reader;
         }
+
+        public SQLiteDataReader GetDoctorReader(int id)
+        {
+            var reader = Query("select * from doctors where id = " + id + ";");
+            reader.Read();
+            return reader;
+        }
     }
 }
