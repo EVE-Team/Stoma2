@@ -59,6 +59,10 @@ namespace Stoma2
             {
                 doctorName.Clear();
                 doctorSpeciality.Clear();
+
+                editBtn.Enabled = false;
+                delBtn.Enabled = false;
+
                 return;
             }
 
@@ -70,6 +74,16 @@ namespace Stoma2
                 data["name_patronymic"].ToString();
 
             doctorSpeciality.Text = data["speciality"].ToString();
+
+            editBtn.Enabled = true;
+            delBtn.Enabled = true;
+        }
+
+        private void delBtn_Click(object sender, EventArgs e)
+        {
+            int id = ((Utils.IdObject)(doctorListView.SelectedItems[0].Tag)).id;
+            StomaDB.Instance.DeleteDoctor(id);
+            UpdateDoctorList();
         }
     }
 }

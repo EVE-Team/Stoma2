@@ -194,5 +194,15 @@ namespace Stoma2
             reader.Read();
             return reader;
         }
+
+        public void DeleteClient(int id)
+        {
+            NonQuery("delete from clients where id = " + id + ";");
+        }
+
+        public void DeleteDoctor(int id)
+        {
+            NonQuery("delete from doctors where id = " + id + ";");
+        }
     }
 }

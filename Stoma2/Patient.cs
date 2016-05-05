@@ -69,11 +69,22 @@ namespace Stoma2
             if (patientListView.SelectedItems.Count == 0)
             {
                 piForm.ClearInfo();
+                btnEdit.Enabled = false;
+                btnDelete.Enabled = false;
                 return;
             }
 
             int id = ((Utils.IdObject)(patientListView.SelectedItems[0].Tag)).id;
             piForm.SetInfo(id);
+            btnEdit.Enabled = true;
+            btnDelete.Enabled = true;
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            int id = ((Utils.IdObject)(patientListView.SelectedItems[0].Tag)).id;
+            StomaDB.Instance.DeleteClient(id);
+            UpdatePatientList();
         }
 	}
 }

@@ -250,6 +250,7 @@
             this.delBtn.Text = "Удалить ";
             this.delBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.delBtn.UseVisualStyleBackColor = false;
+            this.delBtn.Click += new System.EventHandler(this.delBtn_Click);
             // 
             // Doctor
             // 
