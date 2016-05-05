@@ -42,11 +42,11 @@
             this.columnHeader26 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.categoryListBox = new System.Windows.Forms.ListBox();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnAddCat = new System.Windows.Forms.Button();
+            this.btnDelCat = new System.Windows.Forms.Button();
+            this.btnEditCat = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
@@ -124,24 +124,25 @@
             this.btnEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEdit.UseVisualStyleBackColor = false;
             // 
-            // listBox1
+            // categoryListBox
             // 
-            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.categoryListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.IntegralHeight = false;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Items.AddRange(new object[] {
+            this.categoryListBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.categoryListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.categoryListBox.FormattingEnabled = true;
+            this.categoryListBox.IntegralHeight = false;
+            this.categoryListBox.ItemHeight = 16;
+            this.categoryListBox.Items.AddRange(new object[] {
             "Ортопедия",
             "Хирургия",
             "Анестезия",
             "Прочие услуги"});
-            this.listBox1.Location = new System.Drawing.Point(14, 18);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(151, 315);
-            this.listBox1.TabIndex = 42;
+            this.categoryListBox.Location = new System.Drawing.Point(14, 18);
+            this.categoryListBox.Name = "categoryListBox";
+            this.categoryListBox.Size = new System.Drawing.Size(151, 315);
+            this.categoryListBox.TabIndex = 42;
+            this.categoryListBox.SelectedIndexChanged += new System.EventHandler(this.categoryListBox_SelectedIndexChanged);
             // 
             // btnAdd
             // 
@@ -160,53 +161,55 @@
             this.btnAdd.Text = "Добавить";
             this.btnAdd.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // btnAddCat
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(211)))), ((int)(((byte)(124)))));
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Image = global::Stoma2.Properties.Resources.plus;
-            this.button1.Location = new System.Drawing.Point(14, 339);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(40, 40);
-            this.button1.TabIndex = 75;
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnAddCat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAddCat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(211)))), ((int)(((byte)(124)))));
+            this.btnAddCat.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnAddCat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddCat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnAddCat.ForeColor = System.Drawing.Color.White;
+            this.btnAddCat.Image = global::Stoma2.Properties.Resources.plus;
+            this.btnAddCat.Location = new System.Drawing.Point(14, 339);
+            this.btnAddCat.Name = "btnAddCat";
+            this.btnAddCat.Size = new System.Drawing.Size(40, 40);
+            this.btnAddCat.TabIndex = 75;
+            this.btnAddCat.UseVisualStyleBackColor = false;
+            this.btnAddCat.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btnDelCat
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(83)))), ((int)(((byte)(79)))));
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(63)))), ((int)(((byte)(58)))));
-            this.button2.FlatAppearance.BorderSize = 2;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Image = global::Stoma2.Properties.Resources.trash;
-            this.button2.Location = new System.Drawing.Point(106, 339);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(40, 40);
-            this.button2.TabIndex = 74;
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnDelCat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnDelCat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(83)))), ((int)(((byte)(79)))));
+            this.btnDelCat.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(63)))), ((int)(((byte)(58)))));
+            this.btnDelCat.FlatAppearance.BorderSize = 2;
+            this.btnDelCat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelCat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnDelCat.ForeColor = System.Drawing.Color.White;
+            this.btnDelCat.Image = global::Stoma2.Properties.Resources.trash;
+            this.btnDelCat.Location = new System.Drawing.Point(106, 339);
+            this.btnDelCat.Name = "btnDelCat";
+            this.btnDelCat.Size = new System.Drawing.Size(40, 40);
+            this.btnDelCat.TabIndex = 74;
+            this.btnDelCat.UseVisualStyleBackColor = false;
+            this.btnDelCat.Click += new System.EventHandler(this.btnDelCat_Click);
             // 
-            // button3
+            // btnEditCat
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(192)))), ((int)(((byte)(222)))));
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(184)))), ((int)(((byte)(218)))));
-            this.button3.FlatAppearance.BorderSize = 2;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Image = global::Stoma2.Properties.Resources.pencil;
-            this.button3.Location = new System.Drawing.Point(60, 339);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(40, 40);
-            this.button3.TabIndex = 73;
-            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnEditCat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnEditCat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(192)))), ((int)(((byte)(222)))));
+            this.btnEditCat.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(184)))), ((int)(((byte)(218)))));
+            this.btnEditCat.FlatAppearance.BorderSize = 2;
+            this.btnEditCat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditCat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnEditCat.ForeColor = System.Drawing.Color.White;
+            this.btnEditCat.Image = global::Stoma2.Properties.Resources.pencil;
+            this.btnEditCat.Location = new System.Drawing.Point(60, 339);
+            this.btnEditCat.Name = "btnEditCat";
+            this.btnEditCat.Size = new System.Drawing.Size(40, 40);
+            this.btnEditCat.TabIndex = 73;
+            this.btnEditCat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEditCat.UseVisualStyleBackColor = false;
             // 
             // groupBox1
             // 
@@ -233,10 +236,10 @@
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox2.BackColor = System.Drawing.Color.White;
-            this.groupBox2.Controls.Add(this.listBox1);
-            this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Controls.Add(this.button3);
-            this.groupBox2.Controls.Add(this.button2);
+            this.groupBox2.Controls.Add(this.categoryListBox);
+            this.groupBox2.Controls.Add(this.btnAddCat);
+            this.groupBox2.Controls.Add(this.btnEditCat);
+            this.groupBox2.Controls.Add(this.btnDelCat);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.groupBox2.Location = new System.Drawing.Point(9, 9);
@@ -271,11 +274,11 @@
 		private System.Windows.Forms.ListView treatmentListView;
 		private System.Windows.Forms.ColumnHeader columnHeader25;
 		private System.Windows.Forms.ColumnHeader columnHeader26;
-		private System.Windows.Forms.ListBox listBox1;
+		private System.Windows.Forms.ListBox categoryListBox;
 		private System.Windows.Forms.Button btnAdd;
-		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.Button button2;
-		private System.Windows.Forms.Button button3;
+		private System.Windows.Forms.Button btnAddCat;
+		private System.Windows.Forms.Button btnDelCat;
+		private System.Windows.Forms.Button btnEditCat;
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.GroupBox groupBox2;
 	}

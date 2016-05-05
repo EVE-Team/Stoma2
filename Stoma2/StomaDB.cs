@@ -64,6 +64,10 @@ namespace Stoma2
                     "name_last TEXT NOT NULL, " +
                     "name_patronymic TEXT, " +
                     "speciality TEXT);");
+
+                NonQuery("CREATE TABLE categories (" +
+                    "id INTEGER PRIMARY KEY, " +
+                    "name TEXT NOT NULL);");
             }
         }
 
@@ -117,58 +121,9 @@ namespace Stoma2
             NonQuery(QueryGen("insert into doctors(", ") values(", ");", data));
         }
 
-        public static Dictionary<string, string> WrapClient(
-            string name_first,
-            string name_last,
-            string name_patronymic,
-            string birthday,
-            string address_subject,
-            string address_city,
-            string address_street,
-            string address_building,
-            string address_apartment,
-            string workplace,
-            string position,
-            string phone,
-            string notes,
-            string last_invite
-        )
+        public void AddCategory(Dictionary<string, string> data)
         {
-            Dictionary<string, string> result = new Dictionary<string, string>();
-
-            result["name_first"] = name_first;
-            result["name_last"] = name_last;
-            result["name_patronymic"] = name_patronymic;
-            result["birthday"] = birthday;
-            result["address_subject"] = address_subject;
-            result["address_city"] = address_city;
-            result["address_street"] = address_street;
-            result["address_building"] = address_building;
-            result["address_apartment"] = address_apartment;
-            result["workplace"] = workplace;
-            result["position"] = position;
-            result["phone"] = phone;
-            result["notes"] = notes;
-            result["last_invite"] = last_invite;
-
-            return result;
-        }
-
-        public static Dictionary<string, string> WrapDoctor(
-            string name_first,
-            string name_last,
-            string name_patronymic,
-            string speciality
-        )
-        {
-            Dictionary<string, string> result = new Dictionary<string, string>();
-
-            result["name_first"] = name_first;
-            result["name_last"] = name_last;
-            result["name_patronymic"] = name_patronymic;
-            result["speciality"] = speciality;
-
-            return result;
+            NonQuery(QueryGen("insert into categories(", ") values(", ");", data));
         }
 
         public SQLiteDataReader GetClientsReader()
@@ -179,6 +134,11 @@ namespace Stoma2
         public SQLiteDataReader GetDoctorsReader()
         {
             return Query("select * from doctors");
+        }
+
+        public SQLiteDataReader GetCategoriesReader()
+        {
+            return Query("select * from categories");
         }
 
         public SQLiteDataReader GetClientReader(int id)
@@ -203,6 +163,11 @@ namespace Stoma2
         public void DeleteDoctor(int id)
         {
             NonQuery("delete from doctors where id = " + id + ";");
+        }
+
+        public void DeleteCategory(int id)
+        {
+            NonQuery("delete from categories where id = " + id + ";");
         }
     }
 }
