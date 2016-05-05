@@ -26,8 +26,8 @@ namespace Stoma2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var form = new NewAppointment();
-            form.ShowDialog(this);
+            /*var form = new NewAppointment();
+            form.ShowDialog(this);*/
         }
 
         private void btnPrint_Click(object sender, EventArgs e)

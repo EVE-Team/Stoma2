@@ -12,9 +12,13 @@ namespace Stoma2
 {
 	public partial class NewAppointment : Form
 	{
-		public NewAppointment()
+        private List<int> idList = new List<int>();
+        private int patientId;
+
+        public NewAppointment(int patientId)
 		{
 			InitializeComponent();
+            this.patientId = patientId;
 		}
 
 		private void btnNewPatient_Click(object sender, EventArgs e)
@@ -33,9 +37,15 @@ namespace Stoma2
 			Close();
 		}
 
-		private void doctorTextBox_TextChanged(object sender, EventArgs e)
-		{
+        private void NewAppointment_Load(object sender, EventArgs e)
+        {
+            var reader = StomaDB.Instance.GetDoctorsReader();
 
-		}
+            while (reader.Read())
+            {
+                idList.Add(Convert.ToInt32(reader["id"].ToString()));
+                doctorCategory.Items.Add(reader["name_last"].ToString() + " " + reader["name_first"].ToString());
+            }
+        }
 	}
 }
