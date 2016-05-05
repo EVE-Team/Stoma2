@@ -39,7 +39,6 @@
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.btnAddAppointment = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
@@ -194,33 +193,12 @@
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnOk_Click);
             // 
-            // btnAddAppointment
-            // 
-            this.btnAddAppointment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddAppointment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(211)))), ((int)(((byte)(124)))));
-            this.btnAddAppointment.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btnAddAppointment.FlatAppearance.BorderSize = 2;
-            this.btnAddAppointment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddAppointment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnAddAppointment.ForeColor = System.Drawing.Color.White;
-            this.btnAddAppointment.Image = global::Stoma2.Properties.Resources.plus;
-            this.btnAddAppointment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddAppointment.Location = new System.Drawing.Point(236, 339);
-            this.btnAddAppointment.Name = "btnAddAppointment";
-            this.btnAddAppointment.Size = new System.Drawing.Size(180, 37);
-            this.btnAddAppointment.TabIndex = 74;
-            this.btnAddAppointment.Text = "Добавить приём";
-            this.btnAddAppointment.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAddAppointment.UseVisualStyleBackColor = false;
-            this.btnAddAppointment.Click += new System.EventHandler(this.button1_Click);
-            // 
             // Patient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(829, 474);
-            this.Controls.Add(this.btnAddAppointment);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnDelete);
@@ -250,7 +228,6 @@
 		private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnDelete;
-		private System.Windows.Forms.Button btnAdd;
-		private System.Windows.Forms.Button btnAddAppointment;
+        private System.Windows.Forms.Button btnAdd;
 	}
 }

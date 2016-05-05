@@ -28,13 +28,6 @@ namespace Stoma2
             form.ShowDialog(this);
         }
 
-		private void button1_Click(object sender, EventArgs e)
-		{
-            int id = ((Utils.IdObject)(patientListView.SelectedItems[0].Tag)).id;
-            var form = new NewAppointment(id);
-			form.ShowDialog(this);
-		}
-
 		private void btnOk_Click(object sender, EventArgs e)
 		{
 			var form = new NewPatient();
@@ -72,7 +65,7 @@ namespace Stoma2
                 piForm.ClearInfo();
                 btnEdit.Enabled = false;
                 btnDelete.Enabled = false;
-                btnAddAppointment.Enabled = false;
+                //btnAddAppointment.Enabled = false;
                 return;
             }
 
@@ -80,7 +73,7 @@ namespace Stoma2
             piForm.SetInfo(id);
             btnEdit.Enabled = true;
             btnDelete.Enabled = true;
-            btnAddAppointment.Enabled = true;
+            //btnAddAppointment.Enabled = true;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
