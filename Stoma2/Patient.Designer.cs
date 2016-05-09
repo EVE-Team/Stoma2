@@ -40,7 +40,7 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.toTreatmentBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
@@ -214,24 +214,24 @@
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button1.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // toTreatmentBtn
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(192)))), ((int)(((byte)(222)))));
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(184)))), ((int)(((byte)(218)))));
-            this.button2.FlatAppearance.BorderSize = 2;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(258, 339);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(158, 52);
-            this.button2.TabIndex = 74;
-            this.button2.Text = "Перейти к лечению";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.toTreatmentBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.toTreatmentBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(192)))), ((int)(((byte)(222)))));
+            this.toTreatmentBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(184)))), ((int)(((byte)(218)))));
+            this.toTreatmentBtn.FlatAppearance.BorderSize = 2;
+            this.toTreatmentBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.toTreatmentBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.toTreatmentBtn.ForeColor = System.Drawing.Color.White;
+            this.toTreatmentBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.toTreatmentBtn.Location = new System.Drawing.Point(258, 339);
+            this.toTreatmentBtn.Name = "toTreatmentBtn";
+            this.toTreatmentBtn.Size = new System.Drawing.Size(158, 52);
+            this.toTreatmentBtn.TabIndex = 74;
+            this.toTreatmentBtn.Text = "Перейти к лечению";
+            this.toTreatmentBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.toTreatmentBtn.UseVisualStyleBackColor = false;
+            this.toTreatmentBtn.Click += new System.EventHandler(this.button2_Click);
             // 
             // Patient
             // 
@@ -239,7 +239,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(829, 474);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.toTreatmentBtn);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnDelete);
@@ -271,6 +271,6 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button toTreatmentBtn;
 	}
 }

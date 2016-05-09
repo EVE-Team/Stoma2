@@ -87,6 +87,11 @@ namespace Stoma2
 			rbAppointment.Checked = true;
 		}
 
+        public void goToTreatment(string patientName)
+        {
+            rbTreatment.Checked = true;
+        }
+
 		private void rbTreatment_CheckedChanged(object sender, EventArgs e)
 		{
             Utils.SetPanelForm(pnlContent, treatmentForm);
