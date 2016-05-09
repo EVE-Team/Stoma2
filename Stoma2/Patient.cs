@@ -82,5 +82,10 @@ namespace Stoma2
             StomaDB.Instance.DeleteClient(id);
             UpdatePatientList();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
 	}
 }
