@@ -45,14 +45,26 @@ namespace Stoma2
 		protected Int64 m_record_id;
 		public Int64 ID { get { return m_record_id; } }
 
-		abstract public void Save();
-		abstract public void Delete();
+        protected string m_tableName;
+
+        public DatabaseRecord(string tableName)
+        {
+            m_tableName = tableName;
+        }
+
+        abstract public void Save();
+
+        public void Delete()
+        {
+            StomaDB.Instance.NonQuery("DELETE FROM " + m_tableName + " WHERE id=" + ID + ";");
+        }
 	}
 
 	public class DoctorRecord : DatabaseRecord
 	{
 		// this constructor should be private, but C# lacks friend keyword
 		public DoctorRecord(Int64 id, string first_name, string last_name, string patronymic, string speciality)
+            : base("doctors")
 		{
 			m_record_id = id;
 			FirstName = DatabaseUtils.DecodeString(first_name);
@@ -109,11 +121,6 @@ namespace Stoma2
 				DatabaseUtils.EncodeString(Speciality),
 				ID);
 			StomaDB.Instance.NonQuery(query);
-		}
-
-		public override void Delete()
-		{
-			StomaDB.Instance.NonQuery("DELETE FROM doctors WHERE id=" + ID + ";");
 		}
 	}
 
@@ -366,11 +373,6 @@ namespace Stoma2
             NonQuery(QueryGen("insert into clients(", ") values(", ");", data));
         }
 
-        public void AddDoctor(Dictionary<string, string> data)
-        {
-            NonQuery(QueryGen("insert into doctors(", ") values(", ");", data));
-        }
-
         public void AddCategory(Dictionary<string, string> data)
         {
             NonQuery(QueryGen("insert into categories(", ") values(", ");", data));
@@ -408,21 +410,9 @@ namespace Stoma2
             return reader;
         }
 
-        public SQLiteDataReader GetDoctorReader(int id)
-        {
-            var reader = Query("select * from doctors where id = " + id + ";");
-            reader.Read();
-            return reader;
-        }
-
         public void DeleteClient(int id)
         {
             NonQuery("delete from clients where id = " + id + ";");
-        }
-
-        public void DeleteDoctor(int id)
-        {
-            NonQuery("delete from doctors where id = " + id + ";");
         }
 
         public void DeleteCategory(int id)
