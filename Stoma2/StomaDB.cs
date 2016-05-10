@@ -257,6 +257,19 @@ namespace Stoma2
         public static readonly string[] DOCTOR_ROWS = Utils.SliceArray(DOCTOR_ROWS_ALL, new int[] { 1, 2, 3, 4 } );
         public static readonly string[] DOCTOR_TYPES = new string[] { "INTEGER PRIMARY KEY", "TEXT NOT NULL", "TEXT NOT NULL", "TEXT", "TEXT" };
 
+        public static readonly string CLIENT_TABLE = "clients";
+        public static readonly string[] CLIENT_ROWS_ALL = new string[] {
+            "id", "name_first", "name_last", "name_patronymic", "birthday",
+            "address_subject", "address_city", "address_street", "address_building", "address_apartment",
+            "workplace", "position", "phone", "notes", "last_invite"
+        };
+        public static readonly string[] CLIENT_ROWS = Utils.SliceArray(CLIENT_ROWS_ALL, new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 });
+        public static readonly string[] CLIENT_TYPES = new string[] {
+            "INTEGER PRIMARY KEY", "TEXT NOT NULL", "TEXT NOT NULL", "TEXT", "DATE", 
+            "TEXT", "TEXT", "TEXT", "TEXT", "TEXT", 
+            "TEXT", "TEXT", "TEXT", "TEXT", "DATE"
+        };
+
         private static StomaDB instance = null;
 
         public static StomaDB Instance
@@ -293,23 +306,7 @@ namespace Stoma2
 
             if (newDB)
             {
-                NonQuery("CREATE TABLE clients (" +
-                    "id INTEGER PRIMARY KEY, " +
-                    "name_first TEXT NOT NULL, " +
-                    "name_last TEXT NOT NULL, " +
-                    "name_patronymic TEXT, " +
-                    "birthday DATE, " +
-                    "address_subject TEXT, " +
-                    "address_city TEXT, " +
-                    "address_street TEXT, " +
-                    "address_building TEXT, " +
-                    "address_apartment TEXT, " +
-                    "workplace TEXT, " +
-                    "position TEXT, " +
-                    "phone TEXT, " +
-                    "notes TEXT, " +
-                    "last_invite DATE);");
-
+                NonQuery(CreateGen(CLIENT_TABLE, CLIENT_ROWS_ALL, CLIENT_TYPES));
                 NonQuery(CreateGen(DOCTOR_TABLE, DOCTOR_ROWS_ALL, DOCTOR_TYPES));
 
                 NonQuery("CREATE TABLE categories (" +
