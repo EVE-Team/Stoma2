@@ -196,9 +196,6 @@ namespace Stoma2
         public override void Save()
         {
             StomaDB.Instance.NonQuery(StomaDB.UpdateGen(TABLE_NAME, StomaDB.CLIENT_ROWS_ALL[0], ID, StomaDB.CLIENT_ROWS, new string[] {
-				DatabaseUtils.EncodeString(NameFirst),
-				DatabaseUtils.EncodeString(NameLast),
-				DatabaseUtils.EncodeString(NamePatronymic),
                 DatabaseUtils.EncodeString(NameFirst),
                 DatabaseUtils.EncodeString(NameLast),
                 DatabaseUtils.EncodeString(NamePatronymic),
