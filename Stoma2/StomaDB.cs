@@ -77,13 +77,12 @@ namespace Stoma2
 		// It should return DoctorRecord, but good luck finding id of last inserted record
 		public static void Create(string first_name, string last_name, string patronymic, string speciality)
 		{
-			string query = String.Format("INSERT INTO doctors ('name_first', 'name_last', 'name_patronymic', 'speciality') " + 
-				"VALUES ('{0}', '{1}', '{2}', '{3}');",
-				DatabaseUtils.EncodeString(first_name),
+            StomaDB.Instance.NonQuery(StomaDB.InsertGen("doctors", StomaDB.DOCTOR_ROWS, new string[] {
+                DatabaseUtils.EncodeString(first_name),
 				DatabaseUtils.EncodeString(last_name),
 				DatabaseUtils.EncodeString(patronymic),
-				DatabaseUtils.EncodeString(speciality));
-			StomaDB.Instance.NonQuery(query);
+				DatabaseUtils.EncodeString(speciality)
+            }));
 
 			// get ID of newly inserted record
 			// AND 'name_patronymic'='{2}' AND 'speciality'='{3}'
@@ -113,14 +112,12 @@ namespace Stoma2
 
 		public override void Save()
 		{
-			string query = String.Format("UPDATE doctors SET name_first='{0}', name_last='{1}', " +
-				"name_patronymic='{2}', speciality='{3}' WHERE id={4};",
+			StomaDB.Instance.NonQuery(StomaDB.UpdateGen("doctors", StomaDB.DOCTOR_ROWS_ALL[0], ID, StomaDB.DOCTOR_ROWS, new string[] {
 				DatabaseUtils.EncodeString(FirstName),
 				DatabaseUtils.EncodeString(LastName),
 				DatabaseUtils.EncodeString(Patronymic),
-				DatabaseUtils.EncodeString(Speciality),
-				ID);
-			StomaDB.Instance.NonQuery(query);
+				DatabaseUtils.EncodeString(Speciality)
+            }));
 		}
 	}
 
@@ -256,6 +253,11 @@ namespace Stoma2
 
     public class StomaDB : IDisposable
     {
+        public static readonly string DOCTOR_TABLE = "doctors";
+        public static readonly string[] DOCTOR_ROWS_ALL = new string[] { "id", "name_first", "name_last", "name_patronymic", "speciality" };
+        public static readonly string[] DOCTOR_ROWS = new string[] { DOCTOR_ROWS_ALL[1], DOCTOR_ROWS_ALL[2], DOCTOR_ROWS_ALL[3], DOCTOR_ROWS_ALL[4] };
+        public static readonly string[] DOCTOR_TYPES = new string[] { "INTEGER PRIMARY KEY", "TEXT NOT NULL", "TEXT NOT NULL", "TEXT", "TEXT" };
+
         private static StomaDB instance = null;
 
         public static StomaDB Instance
@@ -309,12 +311,7 @@ namespace Stoma2
                     "notes TEXT, " +
                     "last_invite DATE);");
 
-                NonQuery("CREATE TABLE doctors (" +
-                    "id INTEGER PRIMARY KEY, " +
-                    "name_first TEXT NOT NULL, " +
-                    "name_last TEXT NOT NULL, " +
-                    "name_patronymic TEXT, " +
-                    "speciality TEXT);");
+                NonQuery(CreateGen(DOCTOR_TABLE, DOCTOR_ROWS_ALL, DOCTOR_TYPES));
 
                 NonQuery("CREATE TABLE categories (" +
                     "id INTEGER PRIMARY KEY, " +
@@ -343,6 +340,88 @@ namespace Stoma2
         {
             SQLiteCommand command = new SQLiteCommand(query, m_dbConnection);
             return command.ExecuteReader();
+        }
+
+        private static string CreateGen(string tableName, string[] rows, string[] types)
+        {
+            if (rows.Length != types.Length)
+                throw new Exception("Incorrect data");
+
+            int length = rows.Length;
+
+            if (length == 0)
+                throw new Exception("No data");
+
+            StringBuilder result = new StringBuilder("CREATE TABLE " + tableName + " (");
+
+            for (int i = 0; i < length; ++i)
+            {
+                if (i != 0)
+                    result.Append(",");
+
+                result.Append(rows[i] + " " + types[i]);
+            }
+
+            result.Append(");");
+            return result.ToString();
+        }
+
+        public static string InsertGen(string tableName, string[] rows, string[] values)
+        {
+            if (rows.Length != values.Length)
+                throw new Exception("Incorrect data");
+
+            int length = rows.Length;
+
+            if (length == 0)
+                throw new Exception("No data");
+
+            StringBuilder result = new StringBuilder("INSERT INTO " + tableName + " (");
+
+            for (int i = 0; i < length; ++i)
+            {
+                if (i != 0)
+                    result.Append(",");
+
+                result.Append("'" + rows[i] + "'");
+            }
+
+            result.Append(") VALUES (");
+
+            for (int i = 0; i < length; ++i)
+            {
+                if (i != 0)
+                    result.Append(",");
+
+                result.Append("'" + values[i] + "'");
+            }
+
+            result.Append(");");
+            return result.ToString();
+        }
+
+        public static string UpdateGen(string tableName, string idRow, Int64 id, string[] rows, string[] values)
+        {
+            if (rows.Length != values.Length)
+                throw new Exception("Incorrect data");
+
+            int length = rows.Length;
+
+            if (length == 0)
+                throw new Exception("No data");
+
+            StringBuilder result = new StringBuilder("UPDATE " + tableName + " SET ");
+
+            for (int i = 0; i < length; ++i)
+            {
+                if (i != 0)
+                    result.Append(",");
+
+                result.Append(rows[i] + "='" + values[i] + "'");
+            }
+
+            result.Append(" WHERE " + idRow + "=" + id + ";");
+            return result.ToString();
         }
 
         private static string QueryGen(string prefix, string infix, string suffix, Dictionary<string, string> data)
