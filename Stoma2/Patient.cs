@@ -43,15 +43,14 @@ namespace Stoma2
         private void UpdatePatientList()
         {
             patientListView.Items.Clear();
-            var reader = StomaDB.Instance.GetClientsReader();
 
-            while (reader.Read())
+            foreach (ClientRecord rec in StomaDB.GetClients(searchBox.Text))
             {
                 var item = new ListViewItem(new string[] {
-                    reader["name_last"].ToString(),
-                    reader["name_first"].ToString()
+                    rec.NameLast,
+					rec.NameFirst
                 });
-                item.Tag = new Utils.IdObject(Convert.ToInt32(reader["id"].ToString()));
+                item.Tag = rec;
                 patientListView.Items.Add(item);
             }
         }
@@ -69,8 +68,8 @@ namespace Stoma2
                 return;
             }
 
-            int id = ((Utils.IdObject)(patientListView.SelectedItems[0].Tag)).id;
-            piForm.SetInfo(id);
+            ClientRecord rec = (ClientRecord)patientListView.SelectedItems[0].Tag;
+            piForm.SetInfo(rec);
             btnEdit.Enabled = true;
             btnDelete.Enabled = true;
             //btnAddAppointment.Enabled = true;
@@ -78,8 +77,8 @@ namespace Stoma2
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            int id = ((Utils.IdObject)(patientListView.SelectedItems[0].Tag)).id;
-            StomaDB.Instance.DeleteClient(id);
+            ClientRecord rec = (ClientRecord)patientListView.SelectedItems[0].Tag;
+            rec.Delete();
             UpdatePatientList();
         }
 
@@ -98,6 +97,11 @@ namespace Stoma2
                 string patient = pnlPatientInfo.Controls[0].Controls[0].Text.ToString();
                 Program.mainForm.goToTreatment(patient);
             }
+        }
+
+        private void searchBox_TextChanged(object sender, EventArgs e)
+        {
+            UpdatePatientList();
         }
 	}
 }

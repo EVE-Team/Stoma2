@@ -121,7 +121,103 @@ namespace Stoma2
 		}
 	}
 
-	public class DoctorIterator : DatabaseIterator
+    public class ClientRecord : DatabaseRecord
+    {
+        private static readonly string TABLE_NAME = StomaDB.CLIENT_TABLE;
+
+        public ClientRecord(Int64 id, string name_first, string name_last, string name_patronymic, string birthday,
+            string address_subject, string address_city, string address_street, string address_building, string address_apartment,
+            string workplace, string position, string phone, string notes, string last_invite)
+        {
+            m_record_id = id;
+            NameFirst = DatabaseUtils.DecodeString(name_first);
+            NameLast = DatabaseUtils.DecodeString(name_last);
+            NamePatronymic = DatabaseUtils.DecodeString(name_patronymic);
+            Birthday = DatabaseUtils.DecodeString(birthday);
+            AddressSubject = DatabaseUtils.DecodeString(address_subject);
+            AddressCity = DatabaseUtils.DecodeString(address_city);
+            AddressStreet = DatabaseUtils.DecodeString(address_street);
+            AddressBuilding = DatabaseUtils.DecodeString(address_building);
+            AddressApartment = DatabaseUtils.DecodeString(address_apartment);
+            Workplace = DatabaseUtils.DecodeString(workplace);
+            Position = DatabaseUtils.DecodeString(position);
+            Phone = DatabaseUtils.DecodeString(phone);
+            Notes = DatabaseUtils.DecodeString(notes);
+            LastInvite = DatabaseUtils.DecodeString(last_invite);
+        }
+
+        public static void Create(string name_first, string name_last, string name_patronymic, string birthday,
+            string address_subject, string address_city, string address_street, string address_building, string address_apartment,
+            string workplace, string position, string phone, string notes, string last_invite)
+        {
+            StomaDB.Instance.NonQuery(StomaDB.InsertGen(TABLE_NAME, StomaDB.CLIENT_ROWS, new string[] {
+                DatabaseUtils.EncodeString(name_first),
+				DatabaseUtils.EncodeString(name_last),
+				DatabaseUtils.EncodeString(name_patronymic),
+				DatabaseUtils.EncodeString(birthday),
+				DatabaseUtils.EncodeString(address_subject),
+				DatabaseUtils.EncodeString(address_city),
+				DatabaseUtils.EncodeString(address_street),
+				DatabaseUtils.EncodeString(address_building),
+				DatabaseUtils.EncodeString(address_apartment),
+				DatabaseUtils.EncodeString(workplace),
+				DatabaseUtils.EncodeString(position),
+				DatabaseUtils.EncodeString(phone),
+				DatabaseUtils.EncodeString(notes),
+				DatabaseUtils.EncodeString(last_invite)
+            }));
+        }
+
+        public string NameFirst { get; set; }
+        public string NameLast { get; set; }
+        public string NamePatronymic { get; set; }
+        public string Birthday { get; set; }
+        public string AddressSubject { get; set; }
+        public string AddressCity { get; set; }
+        public string AddressStreet { get; set; }
+        public string AddressBuilding { get; set; }
+        public string AddressApartment { get; set; }
+        public string Workplace { get; set; }
+        public string Position { get; set; }
+        public string Phone { get; set; }
+        public string Notes { get; set; }
+        public string LastInvite { get; set; }
+
+        public string GetFullName()
+        {
+            return String.Format("{0} {1} {2}", NameLast, NameFirst, NamePatronymic);
+        }
+
+        protected override string GetTableName()
+        {
+            return TABLE_NAME;
+        }
+
+        public override void Save()
+        {
+            StomaDB.Instance.NonQuery(StomaDB.UpdateGen(TABLE_NAME, StomaDB.CLIENT_ROWS_ALL[0], ID, StomaDB.CLIENT_ROWS, new string[] {
+				DatabaseUtils.EncodeString(NameFirst),
+				DatabaseUtils.EncodeString(NameLast),
+				DatabaseUtils.EncodeString(NamePatronymic),
+                DatabaseUtils.EncodeString(NameFirst),
+                DatabaseUtils.EncodeString(NameLast),
+                DatabaseUtils.EncodeString(NamePatronymic),
+                DatabaseUtils.EncodeString(Birthday),
+                DatabaseUtils.EncodeString(AddressSubject),
+                DatabaseUtils.EncodeString(AddressCity),
+                DatabaseUtils.EncodeString(AddressStreet),
+                DatabaseUtils.EncodeString(AddressBuilding),
+                DatabaseUtils.EncodeString(AddressApartment),
+                DatabaseUtils.EncodeString(Workplace),
+                DatabaseUtils.EncodeString(Position),
+                DatabaseUtils.EncodeString(Phone),
+                DatabaseUtils.EncodeString(Notes),
+                DatabaseUtils.EncodeString(LastInvite)
+            }));
+        }
+    }
+
+    public class DoctorIterator : DatabaseIterator
 	{
 		public DoctorIterator(string search_query = "")
             : base(StomaDB.DOCTOR_TABLE, search_query, Utils.SliceArray(StomaDB.DOCTOR_ROWS_ALL, new int[] { 1, 2, 3 }))
@@ -137,7 +233,24 @@ namespace Stoma2
 		}
 	}
 
-	public class DatabaseUtils
+    public class ClientIterator : DatabaseIterator
+    {
+        public ClientIterator(string search_query = "")
+            : base(StomaDB.CLIENT_TABLE, search_query, Utils.SliceArray(StomaDB.CLIENT_ROWS_ALL, new int[] { 1, 2, 3 }))
+        {}
+
+        public override IEnumerator GetEnumerator()
+        {
+            while (m_reader.Read())
+            {
+                yield return new ClientRecord(m_reader.GetInt64(0), m_reader.GetString(1), m_reader.GetString(2), m_reader.GetString(3), m_reader.GetString(4),
+                    m_reader.GetString(5), m_reader.GetString(6), m_reader.GetString(7), m_reader.GetString(8), m_reader.GetString(9),
+                    m_reader.GetString(10), m_reader.GetString(11), m_reader.GetString(12), m_reader.GetString(13), m_reader.GetString(14));
+            }
+        }
+    }
+
+    public class DatabaseUtils
 	{
 		public static string SanitizeString(string str)
 		{
@@ -287,10 +400,15 @@ namespace Stoma2
         private static readonly string DB_FILE_NAME = "Stoma2.db";
         private readonly SQLiteConnection m_dbConnection;
 
-		public DoctorIterator GetDoctors(string search = "")
+		public static DoctorIterator GetDoctors(string search = "")
 		{
 			return new DoctorIterator(search);
 		}
+
+        public static ClientIterator GetClients(string search = "")
+        {
+            return new ClientIterator(search);
+        }
 
         public StomaDB()
         {
@@ -443,11 +561,6 @@ namespace Stoma2
             return prefix + keys.ToString() + infix + values.ToString() + suffix;
         }
 
-        public void AddClient(Dictionary<string, string> data)
-        {
-            NonQuery(QueryGen("insert into clients(", ") values(", ");", data));
-        }
-
         public void AddCategory(Dictionary<string, string> data)
         {
             NonQuery(QueryGen("insert into categories(", ") values(", ");", data));
@@ -458,16 +571,6 @@ namespace Stoma2
             NonQuery(QueryGen("insert into service_list(", ") values(", ");", data));
         }
 
-        public SQLiteDataReader GetClientsReader()
-        {
-            return Query("select * from clients");
-        }
-
-        public SQLiteDataReader GetDoctorsReader()
-        {
-            return Query("select * from doctors");
-        }
-
         public SQLiteDataReader GetCategoriesReader()
         {
             return Query("select * from categories");
@@ -476,18 +579,6 @@ namespace Stoma2
         public SQLiteDataReader GetServicesReader(int catId)
         {
             return Query("select * from service_list where category_id = " + catId + ";");
-        }
-
-        public SQLiteDataReader GetClientReader(int id)
-        {
-            var reader = Query("select * from clients where id = " + id + ";");
-            reader.Read();
-            return reader;
-        }
-
-        public void DeleteClient(int id)
-        {
-            NonQuery("delete from clients where id = " + id + ";");
         }
 
         public void DeleteCategory(int id)

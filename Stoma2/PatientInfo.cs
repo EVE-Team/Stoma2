@@ -29,27 +29,23 @@ namespace Stoma2
             notesTextBox.Clear();
         }
 
-        public void SetInfo(int id)
+        public void SetInfo(ClientRecord rec)
         {
-            var data = StomaDB.Instance.GetClientReader(id);
-
-            nameTextBox.Text = data["name_last"].ToString() + " " +
-                data["name_first"].ToString() + " " +
-                data["name_patronymic"].ToString();
+            nameTextBox.Text = rec.GetFullName();
 
             //birthdayTextBox
-            phoneTextBox.Text = data["phone"].ToString();
+            phoneTextBox.Text = rec.Phone;
 
-            addressTextBox.Text = data["address_subject"].ToString() + ", " +
-                data["address_city"].ToString() + ", " +
-                data["address_street"].ToString() + ", " +
-                data["address_building"].ToString() + ", " +
-                data["address_apartment"].ToString();
+            addressTextBox.Text = rec.AddressSubject + ", " +
+                rec.AddressCity + ", " +
+                rec.AddressStreet + ", " +
+                rec.AddressBuilding + ", " +
+                rec.AddressApartment;
 
-            workplaceTextBox.Text = data["workplace"].ToString();
-            positionTextBox.Text = data["position"].ToString();
-            lastInviteTextBox.Text = data["last_invite"].ToString();
-            notesTextBox.Text = data["notes"].ToString();
+            workplaceTextBox.Text = rec.Workplace;
+            positionTextBox.Text = rec.Position;
+            lastInviteTextBox.Text = rec.LastInvite;
+            notesTextBox.Text = rec.Notes;
         }
 	}
 }

@@ -122,7 +122,7 @@
             this.searchBox.Name = "searchBox";
             this.searchBox.Size = new System.Drawing.Size(751, 15);
             this.searchBox.TabIndex = 18;
-            this.searchBox.Text = "Введите данные для поиска пациента";
+            this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged);
             // 
             // pictureBox3
             // 

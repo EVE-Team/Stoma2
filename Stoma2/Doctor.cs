@@ -45,7 +45,7 @@ namespace Stoma2
         {
             doctorListView.Items.Clear();
 
-			foreach (DoctorRecord rec in StomaDB.Instance.GetDoctors(searchBox.Text))
+			foreach (DoctorRecord rec in StomaDB.GetDoctors(searchBox.Text))
 			{
 				var item = new ListViewItem(new string[] {
                     rec.LastName,

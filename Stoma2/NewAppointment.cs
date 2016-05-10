@@ -39,13 +39,13 @@ namespace Stoma2
 
         private void NewAppointment_Load(object sender, EventArgs e)
         {
-            var reader = StomaDB.Instance.GetDoctorsReader();
+            /*var reader = StomaDB.Instance.GetDoctorsReader();
 
             while (reader.Read())
             {
                 idList.Add(Convert.ToInt32(reader["id"].ToString()));
                 doctorCategory.Items.Add(reader["name_last"].ToString() + " " + reader["name_first"].ToString());
-            }
+            }*/
         }
 	}
 }
