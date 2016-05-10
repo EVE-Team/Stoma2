@@ -29,6 +29,18 @@ namespace Stoma2
             return panel.Controls[0];
         }
 
+        public static string[] SliceArray(string[] array, int[] indices)
+        {
+            List<string> result = new List<string>();
+
+            foreach (int index in indices)
+            {
+                result.Add(array[index]);
+            }
+
+            return result.ToArray();
+        }
+
         public class IdObject
         {
             public int id;

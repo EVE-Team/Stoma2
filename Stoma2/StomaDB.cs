@@ -124,7 +124,7 @@ namespace Stoma2
 	public class DoctorIterator : DatabaseIterator
 	{
 		public DoctorIterator(string search_query = "")
-            : base(StomaDB.DOCTOR_TABLE, search_query, new string[] { StomaDB.DOCTOR_ROWS_ALL[1], StomaDB.DOCTOR_ROWS_ALL[2], StomaDB.DOCTOR_ROWS_ALL[3] })
+            : base(StomaDB.DOCTOR_TABLE, search_query, Utils.SliceArray(StomaDB.DOCTOR_ROWS_ALL, new int[] { 1, 2, 3 }))
 		{}
 
 		public override IEnumerator GetEnumerator()
@@ -254,7 +254,7 @@ namespace Stoma2
     {
         public static readonly string DOCTOR_TABLE = "doctors";
         public static readonly string[] DOCTOR_ROWS_ALL = new string[] { "id", "name_first", "name_last", "name_patronymic", "speciality" };
-        public static readonly string[] DOCTOR_ROWS = new string[] { DOCTOR_ROWS_ALL[1], DOCTOR_ROWS_ALL[2], DOCTOR_ROWS_ALL[3], DOCTOR_ROWS_ALL[4] };
+        public static readonly string[] DOCTOR_ROWS = Utils.SliceArray(DOCTOR_ROWS_ALL, new int[] { 1, 2, 3, 4 } );
         public static readonly string[] DOCTOR_TYPES = new string[] { "INTEGER PRIMARY KEY", "TEXT NOT NULL", "TEXT NOT NULL", "TEXT", "TEXT" };
 
         private static StomaDB instance = null;
