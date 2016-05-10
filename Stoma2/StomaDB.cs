@@ -45,26 +45,21 @@ namespace Stoma2
 		protected Int64 m_record_id;
 		public Int64 ID { get { return m_record_id; } }
 
-        protected string m_tableName;
-
-        public DatabaseRecord(string tableName)
-        {
-            m_tableName = tableName;
-        }
-
+        abstract protected string GetTableName();
         abstract public void Save();
 
         public void Delete()
         {
-            StomaDB.Instance.NonQuery("DELETE FROM " + m_tableName + " WHERE id=" + ID + ";");
+            StomaDB.Instance.NonQuery("DELETE FROM " + GetTableName() + " WHERE id=" + ID + ";");
         }
 	}
 
 	public class DoctorRecord : DatabaseRecord
 	{
+        private static readonly string TABLE_NAME = StomaDB.DOCTOR_TABLE;
+
 		// this constructor should be private, but C# lacks friend keyword
 		public DoctorRecord(Int64 id, string first_name, string last_name, string patronymic, string speciality)
-            : base("doctors")
 		{
 			m_record_id = id;
 			FirstName = DatabaseUtils.DecodeString(first_name);
@@ -77,7 +72,7 @@ namespace Stoma2
 		// It should return DoctorRecord, but good luck finding id of last inserted record
 		public static void Create(string first_name, string last_name, string patronymic, string speciality)
 		{
-            StomaDB.Instance.NonQuery(StomaDB.InsertGen("doctors", StomaDB.DOCTOR_ROWS, new string[] {
+            StomaDB.Instance.NonQuery(StomaDB.InsertGen(TABLE_NAME, StomaDB.DOCTOR_ROWS, new string[] {
                 DatabaseUtils.EncodeString(first_name),
 				DatabaseUtils.EncodeString(last_name),
 				DatabaseUtils.EncodeString(patronymic),
@@ -110,9 +105,14 @@ namespace Stoma2
 			return String.Format("{0} {1} {2}", LastName, FirstName, Patronymic);
 		}
 
+        protected override string GetTableName()
+        {
+            return TABLE_NAME;
+        }
+
 		public override void Save()
 		{
-			StomaDB.Instance.NonQuery(StomaDB.UpdateGen("doctors", StomaDB.DOCTOR_ROWS_ALL[0], ID, StomaDB.DOCTOR_ROWS, new string[] {
+            StomaDB.Instance.NonQuery(StomaDB.UpdateGen(TABLE_NAME, StomaDB.DOCTOR_ROWS_ALL[0], ID, StomaDB.DOCTOR_ROWS, new string[] {
 				DatabaseUtils.EncodeString(FirstName),
 				DatabaseUtils.EncodeString(LastName),
 				DatabaseUtils.EncodeString(Patronymic),
@@ -124,9 +124,8 @@ namespace Stoma2
 	public class DoctorIterator : DatabaseIterator
 	{
 		public DoctorIterator(string search_query = "")
-			: base("doctors", search_query, new string[] {"name_first", "name_last", "name_patronymic"})
-		{
-		}
+            : base(StomaDB.DOCTOR_TABLE, search_query, new string[] { StomaDB.DOCTOR_ROWS_ALL[1], StomaDB.DOCTOR_ROWS_ALL[2], StomaDB.DOCTOR_ROWS_ALL[3] })
+		{}
 
 		public override IEnumerator GetEnumerator()
 		{
