@@ -381,7 +381,7 @@ namespace Stoma2
     public class DoctorIterator : DatabaseIterator
 	{
 		public DoctorIterator(string search_query = "")
-            : base(StomaDB.DOCTOR_TABLE, search_query, Utils.SliceArray(StomaDB.DOCTOR_ROWS_ALL, new int[] { 1, 2, 3 }))
+            : base(StomaDB.DOCTOR_TABLE, search_query, Utils.SliceArray(StomaDB.DOCTOR_ROWS, new int[] { 0, 1, 2 }))
 		{}
 
         protected override DatabaseRecordFactory.Type GetFactoryType()
@@ -398,7 +398,7 @@ namespace Stoma2
     public class ClientIterator : DatabaseIterator
     {
         public ClientIterator(string search_query = "")
-            : base(StomaDB.CLIENT_TABLE, search_query, Utils.SliceArray(StomaDB.CLIENT_ROWS_ALL, new int[] { 1, 2, 3 }))
+            : base(StomaDB.CLIENT_TABLE, search_query, Utils.SliceArray(StomaDB.CLIENT_ROWS, new int[] { 0, 1, 2 }))
         {}
 
         protected override DatabaseRecordFactory.Type GetFactoryType()
@@ -415,7 +415,7 @@ namespace Stoma2
     public class ServiceListIterator : DatabaseIterator
     {
         public ServiceListIterator(Int64 categoryId)
-            : base(StomaDB.SERVICE_LIST_TABLE, "", null, StomaDB.SERVICE_LIST_ROWS_ALL[3] + "=" + categoryId)
+            : base(StomaDB.SERVICE_LIST_TABLE, "", null, StomaDB.SERVICE_LIST_ROWS[2] + "=" + categoryId)
         {}
 
         protected override DatabaseRecordFactory.Type GetFactoryType()
@@ -562,32 +562,28 @@ namespace Stoma2
     public class StomaDB : IDisposable
     {
         public static readonly string DOCTOR_TABLE = "doctors";
-        public static readonly string[] DOCTOR_ROWS_ALL = new string[] { "id", "name_first", "name_last", "name_patronymic", "speciality" };
-        public static readonly string[] DOCTOR_ROWS = Utils.SliceArray(DOCTOR_ROWS_ALL, new int[] { 1, 2, 3, 4 } );
-        public static readonly string[] DOCTOR_TYPES = new string[] { "INTEGER PRIMARY KEY", "TEXT NOT NULL", "TEXT NOT NULL", "TEXT", "TEXT" };
+        public static readonly string[] DOCTOR_ROWS = new string[] { "name_first", "name_last", "name_patronymic", "speciality" };
+        public static readonly string[] DOCTOR_TYPES = new string[] { "TEXT NOT NULL", "TEXT NOT NULL", "TEXT", "TEXT" };
 
         public static readonly string CLIENT_TABLE = "clients";
-        public static readonly string[] CLIENT_ROWS_ALL = new string[] {
-            "id", "name_first", "name_last", "name_patronymic", "birthday",
+        public static readonly string[] CLIENT_ROWS = new string[] {
+            "name_first", "name_last", "name_patronymic", "birthday",
             "address_subject", "address_city", "address_street", "address_building", "address_apartment",
             "workplace", "position", "phone", "notes", "last_invite"
         };
-        public static readonly string[] CLIENT_ROWS = Utils.SliceArray(CLIENT_ROWS_ALL, new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 });
         public static readonly string[] CLIENT_TYPES = new string[] {
-            "INTEGER PRIMARY KEY", "TEXT NOT NULL", "TEXT NOT NULL", "TEXT", "DATE", 
+            "TEXT NOT NULL", "TEXT NOT NULL", "TEXT", "DATE", 
             "TEXT", "TEXT", "TEXT", "TEXT", "TEXT", 
             "TEXT", "TEXT", "TEXT", "TEXT", "DATE"
         };
 
         public static readonly string SERVICE_LIST_TABLE = "service_list";
-        public static readonly string[] SERVICE_LIST_ROWS_ALL = new string[] { "id", "name", "price", "category_id" };
-        public static readonly string[] SERVICE_LIST_ROWS = Utils.SliceArray(SERVICE_LIST_ROWS_ALL, new int[] { 1, 2, 3 });
-        public static readonly string[] SERVICE_LIST_TYPES = new string[] { "INTEGER PRIMARY KEY", "TEXT NOT NULL", "INTEGER NOT NULL", "INTEGER REFERENCES categories(id)" };
+        public static readonly string[] SERVICE_LIST_ROWS = new string[] { "name", "price", "category_id" };
+        public static readonly string[] SERVICE_LIST_TYPES = new string[] { "TEXT NOT NULL", "INTEGER NOT NULL", "INTEGER REFERENCES categories(id)" };
 
         public static readonly string CATEGORY_TABLE = "categories";
-        public static readonly string[] CATEGORY_ROWS_ALL = new string[] { "id", "name" };
-        public static readonly string[] CATEGORY_ROWS = Utils.SliceArray(CATEGORY_ROWS_ALL, new int[] { 1 });
-        public static readonly string[] CATEGORY_TYPES = new string[] { "INTEGER PRIMARY KEY", "TEXT NOT NULL" };
+        public static readonly string[] CATEGORY_ROWS = new string[] { "name" };
+        public static readonly string[] CATEGORY_TYPES = new string[] { "TEXT NOT NULL" };
 
         private static StomaDB instance = null;
 
@@ -640,10 +636,10 @@ namespace Stoma2
 
             if (newDB)
             {
-                NonQuery(CreateGen(CLIENT_TABLE, CLIENT_ROWS_ALL, CLIENT_TYPES));
-                NonQuery(CreateGen(DOCTOR_TABLE, DOCTOR_ROWS_ALL, DOCTOR_TYPES));
-                NonQuery(CreateGen(CATEGORY_TABLE, CATEGORY_ROWS_ALL, CATEGORY_TYPES));
-                NonQuery(CreateGen(SERVICE_LIST_TABLE, SERVICE_LIST_ROWS_ALL, SERVICE_LIST_TYPES));
+                NonQuery(CreateGen(CLIENT_TABLE, CLIENT_ROWS, CLIENT_TYPES));
+                NonQuery(CreateGen(DOCTOR_TABLE, DOCTOR_ROWS, DOCTOR_TYPES));
+                NonQuery(CreateGen(CATEGORY_TABLE, CATEGORY_ROWS, CATEGORY_TYPES));
+                NonQuery(CreateGen(SERVICE_LIST_TABLE, SERVICE_LIST_ROWS, SERVICE_LIST_TYPES));
             }
         }
 
@@ -675,12 +671,11 @@ namespace Stoma2
                 throw new Exception("No data");
 
             StringBuilder result = new StringBuilder("CREATE TABLE " + tableName + " (");
+            result.Append(DatabaseRecord.ID_ROW + " INTEGER PRIMARY KEY");
 
             for (int i = 0; i < length; ++i)
             {
-                if (i != 0)
-                    result.Append(",");
-
+                result.Append(",");
                 result.Append(rows[i] + " " + types[i]);
             }
 
