@@ -33,11 +33,11 @@ namespace Stoma2
         public override string[] ToStrArray()
         {
             return new string[] {
-			    	DatabaseUtils.EncodeString(FirstName),
-    				DatabaseUtils.EncodeString(LastName),
-				    DatabaseUtils.EncodeString(Patronymic),
-				    DatabaseUtils.EncodeString(Speciality)
-                };
+                DatabaseUtils.EncodeString(FirstName),
+                DatabaseUtils.EncodeString(LastName),
+				DatabaseUtils.EncodeString(Patronymic),
+				Speciality
+            };
         }
 
         public override void FromStrArray(string[] strArray)
@@ -45,7 +45,7 @@ namespace Stoma2
             FirstName = DatabaseUtils.DecodeString(strArray[0]);
             LastName = DatabaseUtils.DecodeString(strArray[1]);
             Patronymic = DatabaseUtils.DecodeString(strArray[2]);
-            Speciality = DatabaseUtils.DecodeString(strArray[3]);
+            Speciality = strArray[3];
         }
 
         public override string GetTableName()
@@ -83,15 +83,15 @@ namespace Stoma2
                 DatabaseUtils.EncodeString(NameLast),
                 DatabaseUtils.EncodeString(NamePatronymic),
                 Birthday,
-                DatabaseUtils.EncodeString(AddressSubject),
-                DatabaseUtils.EncodeString(AddressCity),
-                DatabaseUtils.EncodeString(AddressStreet),
-                DatabaseUtils.EncodeString(AddressBuilding),
-                DatabaseUtils.EncodeString(AddressApartment),
-                DatabaseUtils.EncodeString(Workplace),
-                DatabaseUtils.EncodeString(Position),
-                DatabaseUtils.EncodeString(Phone),
-                DatabaseUtils.EncodeString(Notes),
+                AddressSubject,
+                AddressCity,
+                AddressStreet,
+                AddressBuilding,
+                AddressApartment,
+                Workplace,
+                Position,
+                Phone,
+                Notes,
                 LastInvite
             };
         }
@@ -102,15 +102,15 @@ namespace Stoma2
             NameLast = DatabaseUtils.DecodeString(strArray[1]);
             NamePatronymic = DatabaseUtils.DecodeString(strArray[2]);
             Birthday = strArray[3];
-            AddressSubject = DatabaseUtils.DecodeString(strArray[4]);
-            AddressCity = DatabaseUtils.DecodeString(strArray[5]);
-            AddressStreet = DatabaseUtils.DecodeString(strArray[6]);
-            AddressBuilding = DatabaseUtils.DecodeString(strArray[7]);
-            AddressApartment = DatabaseUtils.DecodeString(strArray[8]);
-            Workplace = DatabaseUtils.DecodeString(strArray[9]);
-            Position = DatabaseUtils.DecodeString(strArray[10]);
-            Phone = DatabaseUtils.DecodeString(strArray[11]);
-            Notes = DatabaseUtils.DecodeString(strArray[12]);
+            AddressSubject = strArray[4];
+            AddressCity = strArray[5];
+            AddressStreet = strArray[6];
+            AddressBuilding = strArray[7];
+            AddressApartment = strArray[8];
+            Workplace = strArray[9];
+            Position = strArray[10];
+            Phone = strArray[11];
+            Notes = strArray[12];
             LastInvite = strArray[13];
         }
 
@@ -171,7 +171,7 @@ namespace Stoma2
 
         public void Save()
         {
-            StomaDB.Instance.NonQuery(StomaDB.UpdateGen(GetData().GetTableName(), DatabaseRecord.ID_ROW, ID, GetData().GetRows(), GetData().ToStrArray()));
+            StomaDB.Instance.NonQuery(StomaDB.UpdateGen(GetData().GetTableName(), ID_ROW, ID, GetData().GetRows(), GetData().ToStrArray()));
         }
 
         public void Delete()
@@ -182,6 +182,8 @@ namespace Stoma2
 
 	public class DoctorRecord : DatabaseRecord
 	{
+        public DoctorFields data;
+
         protected override DataFields GetData()
         {
             return data;
@@ -195,12 +197,7 @@ namespace Stoma2
             this.data.FromStrArray(data);
 		}
 
-		// This will add a new doctor to DB
-		// It should return DoctorRecord, but good luck finding id of last inserted record
-        public DoctorFields data;
-        
-
-		public string GetFullName()
+        public string GetFullName()
 		{
             return String.Format("{0} {1} {2}", data.LastName, data.FirstName, data.Patronymic);
 		}
@@ -208,12 +205,12 @@ namespace Stoma2
 
     public class ClientRecord : DatabaseRecord
     {
+        public ClientFields data;
+
         protected override DataFields GetData()
         {
             return data;
         }
-
-        private static readonly string TABLE_NAME = StomaDB.CLIENT_TABLE;
 
         public ClientRecord(Int64 id, string[] data)
             : base(id)
@@ -221,8 +218,6 @@ namespace Stoma2
             this.data = new ClientFields();
             this.data.FromStrArray(data);
         }
-
-        public ClientFields data;
 
         public string GetFullName()
         {
