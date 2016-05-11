@@ -12,8 +12,8 @@ namespace Stoma2
 {
     public abstract class DataFields
     {
-        abstract public string[] ToStrArray();
-        abstract public void FromStrArray(string[] strArray);
+        abstract public object[] ToStrArray();
+        abstract public void FromStrArray(object[] strArray);
         abstract public string GetTableName();
         abstract public string[] GetRows();
 
@@ -30,9 +30,9 @@ namespace Stoma2
         public string Patronymic { get; set; }
         public string Speciality { get; set; }
 
-        public override string[] ToStrArray()
+        public override object[] ToStrArray()
         {
-            return new string[] {
+            return new object[] {
                 DatabaseUtils.EncodeString(FirstName),
                 DatabaseUtils.EncodeString(LastName),
 				DatabaseUtils.EncodeString(Patronymic),
@@ -40,12 +40,12 @@ namespace Stoma2
             };
         }
 
-        public override void FromStrArray(string[] strArray)
+        public override void FromStrArray(object[] strArray)
         {
-            FirstName = DatabaseUtils.DecodeString(strArray[0]);
-            LastName = DatabaseUtils.DecodeString(strArray[1]);
-            Patronymic = DatabaseUtils.DecodeString(strArray[2]);
-            Speciality = strArray[3];
+            FirstName = DatabaseUtils.DecodeString(strArray[0].ToString());
+            LastName = DatabaseUtils.DecodeString(strArray[1].ToString());
+            Patronymic = DatabaseUtils.DecodeString(strArray[2].ToString());
+            Speciality = strArray[3].ToString();
         }
 
         public override string GetTableName()
@@ -76,9 +76,9 @@ namespace Stoma2
         public string Notes { get; set; }
         public string LastInvite { get; set; }
 
-        public override string[] ToStrArray()
+        public override object[] ToStrArray()
         {
-            return new string[] {
+            return new object[] {
                 DatabaseUtils.EncodeString(NameFirst),
                 DatabaseUtils.EncodeString(NameLast),
                 DatabaseUtils.EncodeString(NamePatronymic),
@@ -96,22 +96,22 @@ namespace Stoma2
             };
         }
 
-        public override void FromStrArray(string[] strArray)
+        public override void FromStrArray(object[] strArray)
         {
-            NameFirst = DatabaseUtils.DecodeString(strArray[0]);
-            NameLast = DatabaseUtils.DecodeString(strArray[1]);
-            NamePatronymic = DatabaseUtils.DecodeString(strArray[2]);
-            Birthday = strArray[3];
-            AddressSubject = strArray[4];
-            AddressCity = strArray[5];
-            AddressStreet = strArray[6];
-            AddressBuilding = strArray[7];
-            AddressApartment = strArray[8];
-            Workplace = strArray[9];
-            Position = strArray[10];
-            Phone = strArray[11];
-            Notes = strArray[12];
-            LastInvite = strArray[13];
+            NameFirst = DatabaseUtils.DecodeString(strArray[0].ToString());
+            NameLast = DatabaseUtils.DecodeString(strArray[1].ToString());
+            NamePatronymic = DatabaseUtils.DecodeString(strArray[2].ToString());
+            Birthday = strArray[3].ToString();
+            AddressSubject = strArray[4].ToString();
+            AddressCity = strArray[5].ToString();
+            AddressStreet = strArray[6].ToString();
+            AddressBuilding = strArray[7].ToString();
+            AddressApartment = strArray[8].ToString();
+            Workplace = strArray[9].ToString();
+            Position = strArray[10].ToString();
+            Phone = strArray[11].ToString();
+            Notes = strArray[12].ToString();
+            LastInvite = strArray[13].ToString();
         }
 
         public override string GetTableName()
@@ -159,13 +159,24 @@ namespace Stoma2
             }
         }
 
-        protected string[] GetDataArray(int count)
+        protected object[] GetDataArray(int count)
         {
-            List<string> result = new List<string>();
+            List<object> result = new List<object>();
 
             for (int i = 1; i <= count; ++i)
             {
-                result.Add(m_reader.GetString(i));
+                // Do not remove this workaround yet
+                // http://stackoverflow.com/questions/11414399/sqlite-throwing-a-string-not-recognized-as-a-valid-datetime
+
+                string type = m_reader.GetDataTypeName(i);
+                if (type == "DATE")
+                {
+                    result.Add(m_reader.GetString(i));
+                }
+                else
+                {
+                    result.Add(m_reader.GetValue(i));
+                }
             }
 
             return result.ToArray();
@@ -188,7 +199,7 @@ namespace Stoma2
 		private Int64 m_record_id;
 		public Int64 ID { get { return m_record_id; } }
 
-        public DatabaseRecord(Int64 id, string[] data)
+        public DatabaseRecord(Int64 id, object[] data)
 		{
             m_record_id = id;
             this.data = CreateData();
@@ -217,7 +228,7 @@ namespace Stoma2
             return new DoctorFields();
         }
 
-        public DoctorRecord(Int64 id, string[] data)
+        public DoctorRecord(Int64 id, object[] data)
             : base(id, data)
 		{}
 
@@ -236,7 +247,7 @@ namespace Stoma2
             return new ClientFields();
         }
 
-        public ClientRecord(Int64 id, string[] data)
+        public ClientRecord(Int64 id, object[] data)
             : base(id, data)
 		{}
 
@@ -252,7 +263,7 @@ namespace Stoma2
     {
         public enum Type { DOCTOR, CLIENT };
 
-        public static DatabaseRecord Create(Type type, Int64 id, string[] data)
+        public static DatabaseRecord Create(Type type, Int64 id, object[] data)
         {
             switch (type)
             {
@@ -530,7 +541,7 @@ namespace Stoma2
             return result.ToString();
         }
 
-        public static string InsertGen(string tableName, string[] rows, string[] values)
+        public static string InsertGen(string tableName, string[] rows, object[] values)
         {
             if (rows.Length != values.Length)
                 throw new Exception("Incorrect data");
@@ -564,7 +575,7 @@ namespace Stoma2
             return result.ToString();
         }
 
-        public static string UpdateGen(string tableName, string idRow, Int64 id, string[] rows, string[] values)
+        public static string UpdateGen(string tableName, string idRow, Int64 id, string[] rows, object[] values)
         {
             if (rows.Length != values.Length)
                 throw new Exception("Incorrect data");
