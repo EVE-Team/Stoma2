@@ -151,8 +151,16 @@ namespace Stoma2
 			m_reader = StomaDB.Instance.Query(query);
 		}
 
-		abstract public IEnumerator GetEnumerator();
-	}
+        public IEnumerator GetEnumerator()
+        {
+            while (m_reader.Read())
+            {
+                yield return CreateRecord();
+            }
+        }
+
+        abstract protected DatabaseRecord CreateRecord();
+    }
 
 	public abstract class DatabaseRecord
 	{
@@ -180,7 +188,7 @@ namespace Stoma2
 
         public void Delete()
         {
-            StomaDB.Instance.NonQuery("DELETE FROM " + data.GetTableName() + " WHERE id=" + ID + ";");
+            StomaDB.Instance.NonQuery("DELETE FROM " + data.GetTableName() + " WHERE " + ID_ROW + "=" + ID + ";");
         }
 	}
 
@@ -228,14 +236,11 @@ namespace Stoma2
             : base(StomaDB.DOCTOR_TABLE, search_query, Utils.SliceArray(StomaDB.DOCTOR_ROWS_ALL, new int[] { 1, 2, 3 }))
 		{}
 
-		public override IEnumerator GetEnumerator()
-		{
-			while (m_reader.Read())
-			{
-				yield return new DoctorRecord(m_reader.GetInt64(0), new string[] { m_reader.GetString(1),
-					m_reader.GetString(2), m_reader.GetString(3), m_reader.GetString(4) });
-			}
-		}
+        protected override DatabaseRecord CreateRecord()
+        {
+            return new DoctorRecord(m_reader.GetInt64(0), new string[] { m_reader.GetString(1),
+                m_reader.GetString(2), m_reader.GetString(3), m_reader.GetString(4) });
+        }
 	}
 
     public class ClientIterator : DatabaseIterator
@@ -244,14 +249,11 @@ namespace Stoma2
             : base(StomaDB.CLIENT_TABLE, search_query, Utils.SliceArray(StomaDB.CLIENT_ROWS_ALL, new int[] { 1, 2, 3 }))
         {}
 
-        public override IEnumerator GetEnumerator()
+        protected override DatabaseRecord CreateRecord()
         {
-            while (m_reader.Read())
-            {
-                yield return new ClientRecord(m_reader.GetInt64(0), new string[] { m_reader.GetString(1), m_reader.GetString(2), m_reader.GetString(3), m_reader.GetString(4),
-                    m_reader.GetString(5), m_reader.GetString(6), m_reader.GetString(7), m_reader.GetString(8), m_reader.GetString(9),
-                    m_reader.GetString(10), m_reader.GetString(11), m_reader.GetString(12), m_reader.GetString(13), m_reader.GetString(14) });
-            }
+            return new ClientRecord(m_reader.GetInt64(0), new string[] { m_reader.GetString(1), m_reader.GetString(2), m_reader.GetString(3), m_reader.GetString(4),
+                m_reader.GetString(5), m_reader.GetString(6), m_reader.GetString(7), m_reader.GetString(8), m_reader.GetString(9),
+                m_reader.GetString(10), m_reader.GetString(11), m_reader.GetString(12), m_reader.GetString(13), m_reader.GetString(14) });
         }
     }
 
