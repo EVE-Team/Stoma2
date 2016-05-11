@@ -41,6 +41,11 @@ namespace Stoma2
             return result.ToArray();
         }
 
+        public static bool IsInt64(object obj)
+        {
+            return obj.GetType().FullName == "System.Int64";
+        }
+
         public class IdObject
         {
             public int id;

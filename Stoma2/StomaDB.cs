@@ -125,30 +125,72 @@ namespace Stoma2
         }
     }
 
+    public class ServiceListFields : DataFields
+    {
+        public string Name { get; set; }
+        public Int64 Price { get; set; }
+        public Int64 CategoryId { get; set; }
+
+        public override object[] ToStrArray()
+        {
+            return new object[] {
+                Name,
+                Price,
+                CategoryId
+            };
+        }
+
+        public override void FromStrArray(object[] strArray)
+        {
+            if (!Utils.IsInt64(strArray[1]) || !Utils.IsInt64(strArray[2]))
+            {
+                throw new Exception("Type mismatch");
+            }
+
+            Name = strArray[0].ToString();
+            Price = (Int64)strArray[1];
+            CategoryId = (Int64)strArray[2];
+        }
+
+        public override string GetTableName()
+        {
+            return StomaDB.SERVICE_LIST_TABLE;
+        }
+
+        public override string[] GetRows()
+        {
+            return StomaDB.SERVICE_LIST_ROWS;
+        }
+    }
+
     public abstract class DatabaseIterator : IEnumerable
 	{
 		protected SQLiteDataReader m_reader;
 
-		public DatabaseIterator(string table_name, string search_query, string[] search_columns)
+        public DatabaseIterator(string table_name, string search_query, string[] search_columns, string additional_where_statement = "1")
 		{
-			string query = "SELECT * FROM " + DatabaseUtils.SanitizeString(table_name);
-			if (search_query.Length > 0)
-			{
-				query += " WHERE ";
-				
-				for (int i = 0; i < search_columns.Length; i++)
-				{
-					if (i > 0 && i < search_columns.Length)
-					{
-						query += " OR ";
-					}
+			string query = "SELECT * FROM " + DatabaseUtils.SanitizeString(table_name) + " WHERE (";
 
-					query += search_columns[i] + " LIKE '%" + DatabaseUtils.EncodeString(search_query) + "%'";
-				}
-			}
-			query += ";";
+            if (search_query.Length > 0)
+            {
+                for (int i = 0; i < search_columns.Length; i++)
+                {
+                    if (i > 0 && i < search_columns.Length)
+                    {
+                        query += " OR ";
+                    }
 
-			m_reader = StomaDB.Instance.Query(query);
+                    query += search_columns[i] + " LIKE '%" + DatabaseUtils.EncodeString(search_query) + "%'";
+                }
+            }
+            else
+            {
+                query += "1";
+            }
+
+            query += ") AND (" + additional_where_statement + ");";
+
+            m_reader = StomaDB.Instance.Query(query);
 		}
 
         public IEnumerator GetEnumerator()
@@ -259,9 +301,23 @@ namespace Stoma2
         }
     }
 
+    public class ServiceListRecord : DatabaseRecord
+    {
+        protected override DataFields CreateData()
+        {
+            return new ServiceListFields();
+        }
+
+        public ServiceListRecord(Int64 id, object[] data)
+            : base(id, data)
+        {}
+
+        public ServiceListFields Data { get { return (ServiceListFields)data; } }
+    }
+
     public class DatabaseRecordFactory
     {
-        public enum Type { DOCTOR, CLIENT };
+        public enum Type { DOCTOR, CLIENT, SERVICE_LIST };
 
         public static DatabaseRecord Create(Type type, Int64 id, object[] data)
         {
@@ -271,6 +327,8 @@ namespace Stoma2
                     return new DoctorRecord(id, data);
                 case Type.CLIENT:
                     return new ClientRecord(id, data);
+                case Type.SERVICE_LIST:
+                    return new ServiceListRecord(id, data);
                 default:
                     throw new Exception("Unknown type");
             }
@@ -308,6 +366,23 @@ namespace Stoma2
         protected override int GetDataColumnCount()
         {
             return 14;
+        }
+    }
+
+    public class ServiceListIterator : DatabaseIterator
+    {
+        public ServiceListIterator(Int64 categoryId)
+            : base(StomaDB.SERVICE_LIST_TABLE, "", null, StomaDB.SERVICE_LIST_ROWS_ALL[3] + "=" + categoryId)
+        {}
+
+        protected override DatabaseRecordFactory.Type GetFactoryType()
+        {
+            return DatabaseRecordFactory.Type.SERVICE_LIST;
+        }
+
+        protected override int GetDataColumnCount()
+        {
+            return 3;
         }
     }
 
@@ -444,6 +519,11 @@ namespace Stoma2
             "TEXT", "TEXT", "TEXT", "TEXT", "DATE"
         };
 
+        public static readonly string SERVICE_LIST_TABLE = "service_list";
+        public static readonly string[] SERVICE_LIST_ROWS_ALL = new string[] { "id", "name", "price", "category_id" };
+        public static readonly string[] SERVICE_LIST_ROWS = Utils.SliceArray(SERVICE_LIST_ROWS_ALL, new int[] { 1, 2, 3 });
+        public static readonly string[] SERVICE_LIST_TYPES = new string[] { "INTEGER PRIMARY KEY", "TEXT NOT NULL", "INTEGER NOT NULL", "INTEGER REFERENCES categories(id)" };
+
         private static StomaDB instance = null;
 
         public static StomaDB Instance
@@ -471,6 +551,11 @@ namespace Stoma2
             return new ClientIterator(search);
         }
 
+        public static ServiceListIterator GetServiceList(Int64 categoryId)
+        {
+            return new ServiceListIterator(categoryId);
+        }
+
         public StomaDB()
         {
             bool newDB = !File.Exists(DB_FILE_NAME);
@@ -492,11 +577,7 @@ namespace Stoma2
                     "id INTEGER PRIMARY KEY, " +
                     "name TEXT NOT NULL);");
 
-                NonQuery("CREATE TABLE service_list (" +
-                    "id INTEGER PRIMARY KEY, " +
-                    "name TEXT NOT NULL, " +
-                    "price INTEGER NOT NULL, " +
-                    "category_id INTEGER REFERENCES categories(id));");
+                NonQuery(CreateGen(SERVICE_LIST_TABLE, SERVICE_LIST_ROWS_ALL, SERVICE_LIST_TYPES));
             }
         }
 
@@ -627,29 +708,14 @@ namespace Stoma2
             NonQuery(QueryGen("insert into categories(", ") values(", ");", data));
         }
 
-        public void AddService(Dictionary<string, string> data)
-        {
-            NonQuery(QueryGen("insert into service_list(", ") values(", ");", data));
-        }
-
         public SQLiteDataReader GetCategoriesReader()
         {
             return Query("select * from categories");
         }
 
-        public SQLiteDataReader GetServicesReader(int catId)
-        {
-            return Query("select * from service_list where category_id = " + catId + ";");
-        }
-
         public void DeleteCategory(int id)
         {
             NonQuery("delete from categories where id = " + id + ";");
-        }
-
-        public void DeleteService(int id)
-        {
-            NonQuery("delete from service_list where id = " + id + ";");
         }
     }
 }

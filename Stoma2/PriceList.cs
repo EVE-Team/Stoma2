@@ -48,16 +48,15 @@ namespace Stoma2
 
             if (categoryListBox.SelectedIndex >= 0)
             {
-                int id = categoryId[categoryListBox.SelectedIndex];
-                var reader = StomaDB.Instance.GetServicesReader(id);
+                Int64 id = categoryId[categoryListBox.SelectedIndex];
 
-                while (reader.Read())
+                foreach (ServiceListRecord rec in StomaDB.GetServiceList(id))
                 {
                     var item = new ListViewItem(new string[] {
-                        reader["name"].ToString(),
-                        reader["price"].ToString()
+                        rec.Data.Name,
+					    rec.Data.Price.ToString()
                     });
-                    item.Tag = new Utils.IdObject(Convert.ToInt32(reader["id"].ToString()));
+                    item.Tag = rec;
                     serviceListView.Items.Add(item);
                 }
             }
@@ -122,8 +121,8 @@ namespace Stoma2
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            int id = ((Utils.IdObject)(serviceListView.SelectedItems[0].Tag)).id;
-            StomaDB.Instance.DeleteService(id);
+            ServiceListRecord rec = (ServiceListRecord)serviceListView.SelectedItems[0].Tag;
+            rec.Delete();
             UpdateServiceList();
         }
 	}

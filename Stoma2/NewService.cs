@@ -12,9 +12,9 @@ namespace Stoma2
 {
     public partial class NewService : Form
     {
-        private int id;
+        private Int64 id;
 
-        public NewService(int id)
+        public NewService(Int64 id)
         {
             InitializeComponent();
             this.id = id;
@@ -22,11 +22,11 @@ namespace Stoma2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            StomaDB.Instance.AddService(new Dictionary<string, string> {
-                { "name", textBox1.Text },
-                { "price", Convert.ToInt32(numericUpDown1.Value).ToString() },
-                { "category_id", id.ToString() }
-            });
+            ServiceListFields f = new ServiceListFields();
+            f.Name = textBox1.Text;
+            f.Price = Convert.ToInt64(numericUpDown1.Value);
+            f.CategoryId = id;
+            f.Create();
             Close();
         }
     }
