@@ -163,6 +163,33 @@ namespace Stoma2
         }
     }
 
+    public class CategoryFields : DataFields
+    {
+        public string Name { get; set; }
+
+        public override object[] ToStrArray()
+        {
+            return new object[] {
+                Name
+            };
+        }
+
+        public override void FromStrArray(object[] strArray)
+        {
+            Name = strArray[0].ToString();
+        }
+
+        public override string GetTableName()
+        {
+            return StomaDB.CATEGORY_TABLE;
+        }
+
+        public override string[] GetRows()
+        {
+            return StomaDB.CATEGORY_ROWS;
+        }
+    }
+
     public abstract class DatabaseIterator : IEnumerable
 	{
 		protected SQLiteDataReader m_reader;
@@ -315,9 +342,23 @@ namespace Stoma2
         public ServiceListFields Data { get { return (ServiceListFields)data; } }
     }
 
+    public class CategoryRecord : DatabaseRecord
+    {
+        protected override DataFields CreateData()
+        {
+            return new CategoryFields();
+        }
+
+        public CategoryRecord(Int64 id, object[] data)
+            : base(id, data)
+        {}
+
+        public CategoryFields Data { get { return (CategoryFields)data; } }
+    }
+
     public class DatabaseRecordFactory
     {
-        public enum Type { DOCTOR, CLIENT, SERVICE_LIST };
+        public enum Type { DOCTOR, CLIENT, SERVICE_LIST, CATEGORY };
 
         public static DatabaseRecord Create(Type type, Int64 id, object[] data)
         {
@@ -329,6 +370,8 @@ namespace Stoma2
                     return new ClientRecord(id, data);
                 case Type.SERVICE_LIST:
                     return new ServiceListRecord(id, data);
+                case Type.CATEGORY:
+                    return new CategoryRecord(id, data);
                 default:
                     throw new Exception("Unknown type");
             }
@@ -383,6 +426,23 @@ namespace Stoma2
         protected override int GetDataColumnCount()
         {
             return 3;
+        }
+    }
+
+    public class CategoryIterator : DatabaseIterator
+    {
+        public CategoryIterator()
+            : base(StomaDB.CATEGORY_TABLE, "", null)
+        {}
+
+        protected override DatabaseRecordFactory.Type GetFactoryType()
+        {
+            return DatabaseRecordFactory.Type.CATEGORY;
+        }
+
+        protected override int GetDataColumnCount()
+        {
+            return 1;
         }
     }
 
@@ -524,6 +584,11 @@ namespace Stoma2
         public static readonly string[] SERVICE_LIST_ROWS = Utils.SliceArray(SERVICE_LIST_ROWS_ALL, new int[] { 1, 2, 3 });
         public static readonly string[] SERVICE_LIST_TYPES = new string[] { "INTEGER PRIMARY KEY", "TEXT NOT NULL", "INTEGER NOT NULL", "INTEGER REFERENCES categories(id)" };
 
+        public static readonly string CATEGORY_TABLE = "categories";
+        public static readonly string[] CATEGORY_ROWS_ALL = new string[] { "id", "name" };
+        public static readonly string[] CATEGORY_ROWS = Utils.SliceArray(CATEGORY_ROWS_ALL, new int[] { 1 });
+        public static readonly string[] CATEGORY_TYPES = new string[] { "INTEGER PRIMARY KEY", "TEXT NOT NULL" };
+
         private static StomaDB instance = null;
 
         public static StomaDB Instance
@@ -554,6 +619,11 @@ namespace Stoma2
         public static ServiceListIterator GetServiceList(Int64 categoryId)
         {
             return new ServiceListIterator(categoryId);
+        }
+
+        public static CategoryIterator GetCategories()
+        {
+            return new CategoryIterator();
         }
 
         public StomaDB()
@@ -701,21 +771,6 @@ namespace Stoma2
             }
 
             return prefix + keys.ToString() + infix + values.ToString() + suffix;
-        }
-
-        public void AddCategory(Dictionary<string, string> data)
-        {
-            NonQuery(QueryGen("insert into categories(", ") values(", ");", data));
-        }
-
-        public SQLiteDataReader GetCategoriesReader()
-        {
-            return Query("select * from categories");
-        }
-
-        public void DeleteCategory(int id)
-        {
-            NonQuery("delete from categories where id = " + id + ";");
         }
     }
 }

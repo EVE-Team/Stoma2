@@ -19,9 +19,9 @@ namespace Stoma2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            StomaDB.Instance.AddCategory(new Dictionary<string, string>{
-                { "name", textBox1.Text }
-            });
+            CategoryFields f = new CategoryFields();
+            f.Name = textBox1.Text;
+            f.Create();
             Close();
         }
     }

@@ -12,7 +12,7 @@ namespace Stoma2
 {
 	public partial class PriceList : Form
 	{
-        private List<int> categoryId = new List<int>();
+        private List<CategoryRecord> categoryRecords = new List<CategoryRecord>();
 
         public PriceList()
 		{
@@ -29,14 +29,12 @@ namespace Stoma2
         private void UpdateCategoryList()
         {
             categoryListBox.Items.Clear();
-            categoryId.Clear();
+            categoryRecords.Clear();
 
-            var reader = StomaDB.Instance.GetCategoriesReader();
-
-            while (reader.Read())
+            foreach (CategoryRecord rec in StomaDB.GetCategories())
             {
-                categoryListBox.Items.Add(reader["name"]);
-                categoryId.Add(Convert.ToInt32(reader["id"]));
+                categoryListBox.Items.Add(rec.Data.Name);
+                categoryRecords.Add(rec);
             }
 
             CategoryListOnIndexChange();
@@ -48,7 +46,7 @@ namespace Stoma2
 
             if (categoryListBox.SelectedIndex >= 0)
             {
-                Int64 id = categoryId[categoryListBox.SelectedIndex];
+                Int64 id = categoryRecords[categoryListBox.SelectedIndex].ID;
 
                 foreach (ServiceListRecord rec in StomaDB.GetServiceList(id))
                 {
@@ -89,8 +87,7 @@ namespace Stoma2
 
         private void btnDelCat_Click(object sender, EventArgs e)
         {
-            int id = categoryId[categoryListBox.SelectedIndex];
-            StomaDB.Instance.DeleteCategory(id);
+            categoryRecords[categoryListBox.SelectedIndex].Delete();
             UpdateCategoryList();
         }
 
@@ -114,7 +111,7 @@ namespace Stoma2
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            int id = categoryId[categoryListBox.SelectedIndex];
+            Int64 id = categoryRecords[categoryListBox.SelectedIndex].ID;
             new NewService(id).ShowDialog();
             UpdateServiceList();
         }
