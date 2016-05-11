@@ -224,7 +224,7 @@ namespace Stoma2
         {
             while (m_reader.Read())
             {
-                yield return CreateRecord();
+                yield return DatabaseRecordFactory.Create(GetFactoryType(), m_reader.GetInt64(0), GetDataArray(GetDataColumnCount()));
             }
         }
 
@@ -253,11 +253,6 @@ namespace Stoma2
 
         abstract protected DatabaseRecordFactory.Type GetFactoryType();
         abstract protected int GetDataColumnCount();
-
-        protected DatabaseRecord CreateRecord()
-        {
-            return DatabaseRecordFactory.Create(GetFactoryType(), m_reader.GetInt64(0), GetDataArray(GetDataColumnCount()));
-        }
     }
 
 	public abstract class DatabaseRecord
