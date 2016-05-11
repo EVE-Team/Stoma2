@@ -642,11 +642,7 @@ namespace Stoma2
             {
                 NonQuery(CreateGen(CLIENT_TABLE, CLIENT_ROWS_ALL, CLIENT_TYPES));
                 NonQuery(CreateGen(DOCTOR_TABLE, DOCTOR_ROWS_ALL, DOCTOR_TYPES));
-
-                NonQuery("CREATE TABLE categories (" +
-                    "id INTEGER PRIMARY KEY, " +
-                    "name TEXT NOT NULL);");
-
+                NonQuery(CreateGen(CATEGORY_TABLE, CATEGORY_ROWS_ALL, CATEGORY_TYPES));
                 NonQuery(CreateGen(SERVICE_LIST_TABLE, SERVICE_LIST_ROWS_ALL, SERVICE_LIST_TYPES));
             }
         }
@@ -748,29 +744,6 @@ namespace Stoma2
 
             result.Append(" WHERE " + idRow + "=" + id + ";");
             return result.ToString();
-        }
-
-        private static string QueryGen(string prefix, string infix, string suffix, Dictionary<string, string> data)
-        {
-            StringBuilder keys = new StringBuilder();
-            StringBuilder values = new StringBuilder();
-
-            foreach (var pair in data)
-            {
-                if (keys.Length != 0)
-                {
-                    keys.Append(',');
-                    values.Append(',');
-                }
-
-                keys.Append(pair.Key);
-
-                values.Append('"');
-                values.Append(pair.Value);
-                values.Append('"');
-            }
-
-            return prefix + keys.ToString() + infix + values.ToString() + suffix;
         }
     }
 }

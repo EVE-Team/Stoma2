@@ -45,15 +45,5 @@ namespace Stoma2
         {
             return obj.GetType().FullName == "System.Int64";
         }
-
-        public class IdObject
-        {
-            public int id;
-
-            public IdObject(int id)
-            {
-                this.id = id;
-            }
-        }
     }
 }
