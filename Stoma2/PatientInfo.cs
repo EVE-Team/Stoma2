@@ -34,18 +34,18 @@ namespace Stoma2
             nameTextBox.Text = rec.GetFullName();
 
             //birthdayTextBox
-            phoneTextBox.Text = rec.data.Phone;
+            phoneTextBox.Text = rec.Data.Phone;
 
-            addressTextBox.Text = rec.data.AddressSubject + ", " +
-                rec.data.AddressCity + ", " +
-                rec.data.AddressStreet + ", " +
-                rec.data.AddressBuilding + ", " +
-                rec.data.AddressApartment;
+            addressTextBox.Text = rec.Data.AddressSubject + ", " +
+                rec.Data.AddressCity + ", " +
+                rec.Data.AddressStreet + ", " +
+                rec.Data.AddressBuilding + ", " +
+                rec.Data.AddressApartment;
 
-            workplaceTextBox.Text = rec.data.Workplace;
-            positionTextBox.Text = rec.data.Position;
-            lastInviteTextBox.Text = rec.data.LastInvite;
-            notesTextBox.Text = rec.data.Notes;
+            workplaceTextBox.Text = rec.Data.Workplace;
+            positionTextBox.Text = rec.Data.Position;
+            lastInviteTextBox.Text = rec.Data.LastInvite;
+            notesTextBox.Text = rec.Data.Notes;
         }
 	}
 }

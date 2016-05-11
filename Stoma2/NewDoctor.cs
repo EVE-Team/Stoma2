@@ -33,10 +33,10 @@ namespace Stoma2
 			}
 			else
 			{
-                RecordForEditing.data.FirstName = nameFirstBox.Text;
-                RecordForEditing.data.LastName = nameLastBox.Text;
-                RecordForEditing.data.Patronymic = patronymicBox.Text;
-                RecordForEditing.data.Speciality = specialityBox.Text;
+                RecordForEditing.Data.FirstName = nameFirstBox.Text;
+                RecordForEditing.Data.LastName = nameLastBox.Text;
+                RecordForEditing.Data.Patronymic = patronymicBox.Text;
+                RecordForEditing.Data.Speciality = specialityBox.Text;
 				RecordForEditing.Save();
 			}
 
@@ -61,10 +61,10 @@ namespace Stoma2
 				Text = "Редактировать доктора";
 				btnApply.Text = "Сохранить";
 
-                nameFirstBox.Text = RecordForEditing.data.FirstName;
-                nameLastBox.Text = RecordForEditing.data.LastName;
-                patronymicBox.Text = RecordForEditing.data.Patronymic;
-                specialityBox.Text = RecordForEditing.data.Speciality;
+                nameFirstBox.Text = RecordForEditing.Data.FirstName;
+                nameLastBox.Text = RecordForEditing.Data.LastName;
+                patronymicBox.Text = RecordForEditing.Data.Patronymic;
+                specialityBox.Text = RecordForEditing.Data.Speciality;
 			}
 		}
     }

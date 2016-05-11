@@ -162,66 +162,63 @@ namespace Stoma2
 		private Int64 m_record_id;
 		public Int64 ID { get { return m_record_id; } }
 
-        public DatabaseRecord(Int64 record_id)
-        {
-            m_record_id = record_id;
-        }
+        public DatabaseRecord(Int64 id, string[] data)
+		{
+            m_record_id = id;
+            this.data = CreateData();
+            this.data.FromStrArray(data);
+		}
 
-        abstract protected DataFields GetData();
+        protected DataFields data;
+
+        abstract protected DataFields CreateData();
 
         public void Save()
         {
-            StomaDB.Instance.NonQuery(StomaDB.UpdateGen(GetData().GetTableName(), ID_ROW, ID, GetData().GetRows(), GetData().ToStrArray()));
+            StomaDB.Instance.NonQuery(StomaDB.UpdateGen(data.GetTableName(), ID_ROW, ID, data.GetRows(), data.ToStrArray()));
         }
 
         public void Delete()
         {
-            StomaDB.Instance.NonQuery("DELETE FROM " + GetData().GetTableName() + " WHERE id=" + ID + ";");
+            StomaDB.Instance.NonQuery("DELETE FROM " + data.GetTableName() + " WHERE id=" + ID + ";");
         }
 	}
 
 	public class DoctorRecord : DatabaseRecord
 	{
-        public DoctorFields data;
-
-        protected override DataFields GetData()
+        protected override DataFields CreateData()
         {
-            return data;
+            return new DoctorFields();
         }
 
-		// this constructor should be private, but C# lacks friend keyword
-		public DoctorRecord(Int64 id, string[] data)
-            : base(id)
-		{
-            this.data = new DoctorFields();
-            this.data.FromStrArray(data);
-		}
+        public DoctorRecord(Int64 id, string[] data)
+            : base(id, data)
+		{}
+
+        public DoctorFields Data { get { return (DoctorFields)data; } }
 
         public string GetFullName()
 		{
-            return String.Format("{0} {1} {2}", data.LastName, data.FirstName, data.Patronymic);
+            return String.Format("{0} {1} {2}", Data.LastName, Data.FirstName, Data.Patronymic);
 		}
 	}
 
     public class ClientRecord : DatabaseRecord
     {
-        public ClientFields data;
-
-        protected override DataFields GetData()
+        protected override DataFields CreateData()
         {
-            return data;
+            return new ClientFields();
         }
 
         public ClientRecord(Int64 id, string[] data)
-            : base(id)
-        {
-            this.data = new ClientFields();
-            this.data.FromStrArray(data);
-        }
+            : base(id, data)
+		{}
+
+        public ClientFields Data { get { return (ClientFields)data; } }
 
         public string GetFullName()
         {
-            return String.Format("{0} {1} {2}", data.NameLast, data.NameFirst, data.NamePatronymic);
+            return String.Format("{0} {1} {2}", Data.NameLast, Data.NameFirst, Data.NamePatronymic);
         }
     }
 

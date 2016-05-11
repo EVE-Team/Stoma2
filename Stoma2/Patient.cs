@@ -47,8 +47,8 @@ namespace Stoma2
             foreach (ClientRecord rec in StomaDB.GetClients(searchBox.Text))
             {
                 var item = new ListViewItem(new string[] {
-                    rec.data.NameLast,
-					rec.data.NameFirst
+                    rec.Data.NameLast,
+					rec.Data.NameFirst
                 });
                 item.Tag = rec;
                 patientListView.Items.Add(item);
