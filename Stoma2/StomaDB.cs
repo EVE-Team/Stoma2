@@ -159,7 +159,25 @@ namespace Stoma2
             }
         }
 
-        abstract protected DatabaseRecord CreateRecord();
+        protected string[] GetDataArray(int count)
+        {
+            List<string> result = new List<string>();
+
+            for (int i = 1; i <= count; ++i)
+            {
+                result.Add(m_reader.GetString(i));
+            }
+
+            return result.ToArray();
+        }
+
+        abstract protected DatabaseRecordFactory.Type GetFactoryType();
+        abstract protected int GetDataColumnCount();
+
+        protected DatabaseRecord CreateRecord()
+        {
+            return DatabaseRecordFactory.Create(GetFactoryType(), m_reader.GetInt64(0), GetDataArray(GetDataColumnCount()));
+        }
     }
 
 	public abstract class DatabaseRecord
@@ -230,16 +248,38 @@ namespace Stoma2
         }
     }
 
+    public class DatabaseRecordFactory
+    {
+        public enum Type { DOCTOR, CLIENT };
+
+        public static DatabaseRecord Create(Type type, Int64 id, string[] data)
+        {
+            switch (type)
+            {
+                case Type.DOCTOR:
+                    return new DoctorRecord(id, data);
+                case Type.CLIENT:
+                    return new ClientRecord(id, data);
+                default:
+                    throw new Exception("Unknown type");
+            }
+        }
+    }
+
     public class DoctorIterator : DatabaseIterator
 	{
 		public DoctorIterator(string search_query = "")
             : base(StomaDB.DOCTOR_TABLE, search_query, Utils.SliceArray(StomaDB.DOCTOR_ROWS_ALL, new int[] { 1, 2, 3 }))
 		{}
 
-        protected override DatabaseRecord CreateRecord()
+        protected override DatabaseRecordFactory.Type GetFactoryType()
         {
-            return new DoctorRecord(m_reader.GetInt64(0), new string[] { m_reader.GetString(1),
-                m_reader.GetString(2), m_reader.GetString(3), m_reader.GetString(4) });
+            return DatabaseRecordFactory.Type.DOCTOR;
+        }
+
+        protected override int GetDataColumnCount()
+        {
+            return 4;
         }
 	}
 
@@ -249,11 +289,14 @@ namespace Stoma2
             : base(StomaDB.CLIENT_TABLE, search_query, Utils.SliceArray(StomaDB.CLIENT_ROWS_ALL, new int[] { 1, 2, 3 }))
         {}
 
-        protected override DatabaseRecord CreateRecord()
+        protected override DatabaseRecordFactory.Type GetFactoryType()
         {
-            return new ClientRecord(m_reader.GetInt64(0), new string[] { m_reader.GetString(1), m_reader.GetString(2), m_reader.GetString(3), m_reader.GetString(4),
-                m_reader.GetString(5), m_reader.GetString(6), m_reader.GetString(7), m_reader.GetString(8), m_reader.GetString(9),
-                m_reader.GetString(10), m_reader.GetString(11), m_reader.GetString(12), m_reader.GetString(13), m_reader.GetString(14) });
+            return DatabaseRecordFactory.Type.CLIENT;
+        }
+
+        protected override int GetDataColumnCount()
+        {
+            return 14;
         }
     }
 
