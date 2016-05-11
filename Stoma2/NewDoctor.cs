@@ -24,14 +24,19 @@ namespace Stoma2
 		{
 			if (RecordForEditing == null)
 			{
-				DoctorRecord.Create(nameFirstBox.Text, nameLastBox.Text, patronymicBox.Text, specialityBox.Text);
+                DoctorFields f = new DoctorFields();
+                f.FirstName = nameFirstBox.Text;
+                f.LastName = nameLastBox.Text;
+                f.Patronymic = patronymicBox.Text;
+                f.Speciality = specialityBox.Text;
+                f.Create();
 			}
 			else
 			{
-				RecordForEditing.FirstName = nameFirstBox.Text;
-				RecordForEditing.LastName = nameLastBox.Text;
-				RecordForEditing.Patronymic = patronymicBox.Text;
-				RecordForEditing.Speciality = specialityBox.Text;
+                RecordForEditing.data.FirstName = nameFirstBox.Text;
+                RecordForEditing.data.LastName = nameLastBox.Text;
+                RecordForEditing.data.Patronymic = patronymicBox.Text;
+                RecordForEditing.data.Speciality = specialityBox.Text;
 				RecordForEditing.Save();
 			}
 
@@ -56,10 +61,10 @@ namespace Stoma2
 				Text = "Редактировать доктора";
 				btnApply.Text = "Сохранить";
 
-				nameFirstBox.Text = RecordForEditing.FirstName;
-				nameLastBox.Text = RecordForEditing.LastName;
-				patronymicBox.Text = RecordForEditing.Patronymic;
-				specialityBox.Text = RecordForEditing.Speciality;
+                nameFirstBox.Text = RecordForEditing.data.FirstName;
+                nameLastBox.Text = RecordForEditing.data.LastName;
+                patronymicBox.Text = RecordForEditing.data.Patronymic;
+                specialityBox.Text = RecordForEditing.data.Speciality;
 			}
 		}
     }

@@ -48,8 +48,8 @@ namespace Stoma2
 			foreach (DoctorRecord rec in StomaDB.GetDoctors(searchBox.Text))
 			{
 				var item = new ListViewItem(new string[] {
-                    rec.LastName,
-					rec.FirstName
+                    rec.data.LastName,
+					rec.data.FirstName
                 });
 				item.Tag = rec;
 				doctorListView.Items.Add(item);
@@ -71,7 +71,7 @@ namespace Stoma2
 
 			DoctorRecord rec = (DoctorRecord)doctorListView.SelectedItems[0].Tag;
 			doctorName.Text = rec.GetFullName();
-			doctorSpeciality.Text = rec.Speciality;
+            doctorSpeciality.Text = rec.data.Speciality;
 
             editBtn.Enabled = true;
             delBtn.Enabled = true;

@@ -10,7 +10,56 @@ using System.Windows.Forms;
 
 namespace Stoma2
 {
-	public abstract class DatabaseIterator : IEnumerable
+    public abstract class DataFields
+    {
+        abstract public string[] ToStrArray();
+        abstract public void FromStrArray(string[] strArray);
+        abstract public string GetTableName();
+        abstract public string[] GetRows();
+
+        public void Create()
+        {
+            StomaDB.Instance.NonQuery(StomaDB.InsertGen(GetTableName(), GetRows(), ToStrArray()));
+        }
+    }
+
+    public class DoctorFields : DataFields
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Patronymic { get; set; }
+        public string Speciality { get; set; }
+
+        public override string[] ToStrArray()
+        {
+            return new string[] {
+			    	DatabaseUtils.EncodeString(FirstName),
+    				DatabaseUtils.EncodeString(LastName),
+				    DatabaseUtils.EncodeString(Patronymic),
+				    DatabaseUtils.EncodeString(Speciality)
+                };
+        }
+
+        public override void FromStrArray(string[] strArray)
+        {
+            FirstName = DatabaseUtils.DecodeString(strArray[0]);
+            LastName = DatabaseUtils.DecodeString(strArray[1]);
+            Patronymic = DatabaseUtils.DecodeString(strArray[2]);
+            Speciality = DatabaseUtils.DecodeString(strArray[3]);
+        }
+
+        public override string GetTableName()
+        {
+            return StomaDB.DOCTOR_TABLE;
+        }
+
+        public override string[] GetRows()
+        {
+            return StomaDB.DOCTOR_ROWS;
+        }
+    }
+
+    public abstract class DatabaseIterator : IEnumerable
 	{
 		protected SQLiteDataReader m_reader;
 
@@ -41,95 +90,72 @@ namespace Stoma2
 
 	public abstract class DatabaseRecord
 	{
+        public static readonly string ID_ROW = "id";
+
 		// every record has an ID
-		protected Int64 m_record_id;
+		private Int64 m_record_id;
 		public Int64 ID { get { return m_record_id; } }
 
-        abstract protected string GetTableName();
+        public DatabaseRecord(Int64 record_id)
+        {
+            m_record_id = record_id;
+        }
+
+        abstract protected DataFields GetData();
+
         abstract public void Save();
 
         public void Delete()
         {
-            StomaDB.Instance.NonQuery("DELETE FROM " + GetTableName() + " WHERE id=" + ID + ";");
+            StomaDB.Instance.NonQuery("DELETE FROM " + GetData().GetTableName() + " WHERE id=" + ID + ";");
         }
 	}
 
 	public class DoctorRecord : DatabaseRecord
 	{
-        private static readonly string TABLE_NAME = StomaDB.DOCTOR_TABLE;
+        protected override DataFields GetData()
+        {
+            return data;
+        }
 
 		// this constructor should be private, but C# lacks friend keyword
-		public DoctorRecord(Int64 id, string first_name, string last_name, string patronymic, string speciality)
+		public DoctorRecord(Int64 id, string[] data)
+            : base(id)
 		{
-			m_record_id = id;
-			FirstName = DatabaseUtils.DecodeString(first_name);
-			LastName = DatabaseUtils.DecodeString(last_name);
-			Patronymic = DatabaseUtils.DecodeString(patronymic);
-			Speciality = DatabaseUtils.DecodeString(speciality);
+            this.data = new DoctorFields();
+            this.data.FromStrArray(data);
 		}
 
 		// This will add a new doctor to DB
 		// It should return DoctorRecord, but good luck finding id of last inserted record
-		public static void Create(string first_name, string last_name, string patronymic, string speciality)
-		{
-            StomaDB.Instance.NonQuery(StomaDB.InsertGen(TABLE_NAME, StomaDB.DOCTOR_ROWS, new string[] {
-                DatabaseUtils.EncodeString(first_name),
-				DatabaseUtils.EncodeString(last_name),
-				DatabaseUtils.EncodeString(patronymic),
-				DatabaseUtils.EncodeString(speciality)
-            }));
-
-			// get ID of newly inserted record
-			// AND 'name_patronymic'='{2}' AND 'speciality'='{3}'
-			// , patronymic, speciality
-			//query = String.Format("SELECT * FROM doctors WHERE 'name_first'='{0}' AND 'name_last'='{1}';",
-			//	first_name, last_name);
-			//var reader = StomaDB.Instance.Query(query);
-			//reader.Read();
-
-			//return new DoctorRecord(reader.GetInt64(0), reader.GetString(1),
-			//		reader.GetString(2), reader.GetString(3), reader.GetString(4));
-		}
-
-		// Имя (name_first)
-		public string FirstName { get; set; }
-		// Фамилия (name_last)
-		public string LastName { get; set; }
-		// Отчество (name_patronymic)
-		public string Patronymic { get; set; }
-		// Специальность (терапевт, хирург, ортопед) (speciality)
-		public string Speciality { get; set; }
+        public DoctorFields data;
+        
 
 		public string GetFullName()
 		{
-			return String.Format("{0} {1} {2}", LastName, FirstName, Patronymic);
+            return String.Format("{0} {1} {2}", data.LastName, data.FirstName, data.Patronymic);
 		}
-
-        protected override string GetTableName()
-        {
-            return TABLE_NAME;
-        }
 
 		public override void Save()
 		{
-            StomaDB.Instance.NonQuery(StomaDB.UpdateGen(TABLE_NAME, StomaDB.DOCTOR_ROWS_ALL[0], ID, StomaDB.DOCTOR_ROWS, new string[] {
-				DatabaseUtils.EncodeString(FirstName),
-				DatabaseUtils.EncodeString(LastName),
-				DatabaseUtils.EncodeString(Patronymic),
-				DatabaseUtils.EncodeString(Speciality)
-            }));
+            StomaDB.Instance.NonQuery(StomaDB.UpdateGen(data.GetTableName(), DatabaseRecord.ID_ROW, ID, data.GetRows(), data.ToStrArray()));
 		}
 	}
 
     public class ClientRecord : DatabaseRecord
     {
+        protected override DataFields GetData()
+        {
+            throw new NotImplementedException();
+        }
+
         private static readonly string TABLE_NAME = StomaDB.CLIENT_TABLE;
 
         public ClientRecord(Int64 id, string name_first, string name_last, string name_patronymic, string birthday,
             string address_subject, string address_city, string address_street, string address_building, string address_apartment,
             string workplace, string position, string phone, string notes, string last_invite)
+            : base(id)
         {
-            m_record_id = id;
             NameFirst = DatabaseUtils.DecodeString(name_first);
             NameLast = DatabaseUtils.DecodeString(name_last);
             NamePatronymic = DatabaseUtils.DecodeString(name_patronymic);
@@ -188,11 +214,6 @@ namespace Stoma2
             return String.Format("{0} {1} {2}", NameLast, NameFirst, NamePatronymic);
         }
 
-        protected override string GetTableName()
-        {
-            return TABLE_NAME;
-        }
-
         public override void Save()
         {
             StomaDB.Instance.NonQuery(StomaDB.UpdateGen(TABLE_NAME, StomaDB.CLIENT_ROWS_ALL[0], ID, StomaDB.CLIENT_ROWS, new string[] {
@@ -224,8 +245,8 @@ namespace Stoma2
 		{
 			while (m_reader.Read())
 			{
-				yield return new DoctorRecord(m_reader.GetInt64(0), m_reader.GetString(1),
-					m_reader.GetString(2), m_reader.GetString(3), m_reader.GetString(4));
+				yield return new DoctorRecord(m_reader.GetInt64(0), new string[] { m_reader.GetString(1),
+					m_reader.GetString(2), m_reader.GetString(3), m_reader.GetString(4) });
 			}
 		}
 	}
