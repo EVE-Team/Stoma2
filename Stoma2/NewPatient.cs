@@ -54,9 +54,22 @@ namespace Stoma2
 
 		private void button8_Click(object sender, EventArgs e)
 		{
-            ClientRecord.Create(nameFirstBox.Text, nameLastBox.Text, patronymicBox.Text, "birthday_data",
-                addressSubjectBox.Text, addressCityBox.Text, addressStreetBox.Text, addressBuildingBox.Text, addressApartmentBox.Text,
-                workplaceBox.Text, positionBox.Text, phoneBox.Text, notesBox.Text,"last_invite");
+            ClientFields f = new ClientFields();
+            f.NameFirst = nameFirstBox.Text;
+            f.NameLast = nameLastBox.Text;
+            f.NamePatronymic = patronymicBox.Text;
+            //f.Birthday
+            f.AddressSubject = addressSubjectBox.Text;
+            f.AddressCity = addressCityBox.Text;
+            f.AddressStreet = addressStreetBox.Text;
+            f.AddressBuilding = addressBuildingBox.Text;
+            f.AddressApartment = addressApartmentBox.Text;
+            f.Workplace = workplaceBox.Text;
+            f.Position = positionBox.Text;
+            f.Phone = phoneBox.Text;
+            f.Notes = notesBox.Text;
+            //f.LastInvite
+            f.Create();
 
             m_baseModified = true;
 			Close();

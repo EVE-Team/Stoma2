@@ -59,6 +59,72 @@ namespace Stoma2
         }
     }
 
+    public class ClientFields : DataFields
+    {
+        public string NameFirst { get; set; }
+        public string NameLast { get; set; }
+        public string NamePatronymic { get; set; }
+        public string Birthday { get; set; }
+        public string AddressSubject { get; set; }
+        public string AddressCity { get; set; }
+        public string AddressStreet { get; set; }
+        public string AddressBuilding { get; set; }
+        public string AddressApartment { get; set; }
+        public string Workplace { get; set; }
+        public string Position { get; set; }
+        public string Phone { get; set; }
+        public string Notes { get; set; }
+        public string LastInvite { get; set; }
+
+        public override string[] ToStrArray()
+        {
+            return new string[] {
+                DatabaseUtils.EncodeString(NameFirst),
+                DatabaseUtils.EncodeString(NameLast),
+                DatabaseUtils.EncodeString(NamePatronymic),
+                Birthday,
+                DatabaseUtils.EncodeString(AddressSubject),
+                DatabaseUtils.EncodeString(AddressCity),
+                DatabaseUtils.EncodeString(AddressStreet),
+                DatabaseUtils.EncodeString(AddressBuilding),
+                DatabaseUtils.EncodeString(AddressApartment),
+                DatabaseUtils.EncodeString(Workplace),
+                DatabaseUtils.EncodeString(Position),
+                DatabaseUtils.EncodeString(Phone),
+                DatabaseUtils.EncodeString(Notes),
+                LastInvite
+            };
+        }
+
+        public override void FromStrArray(string[] strArray)
+        {
+            NameFirst = DatabaseUtils.DecodeString(strArray[0]);
+            NameLast = DatabaseUtils.DecodeString(strArray[1]);
+            NamePatronymic = DatabaseUtils.DecodeString(strArray[2]);
+            Birthday = strArray[3];
+            AddressSubject = DatabaseUtils.DecodeString(strArray[4]);
+            AddressCity = DatabaseUtils.DecodeString(strArray[5]);
+            AddressStreet = DatabaseUtils.DecodeString(strArray[6]);
+            AddressBuilding = DatabaseUtils.DecodeString(strArray[7]);
+            AddressApartment = DatabaseUtils.DecodeString(strArray[8]);
+            Workplace = DatabaseUtils.DecodeString(strArray[9]);
+            Position = DatabaseUtils.DecodeString(strArray[10]);
+            Phone = DatabaseUtils.DecodeString(strArray[11]);
+            Notes = DatabaseUtils.DecodeString(strArray[12]);
+            LastInvite = strArray[13];
+        }
+
+        public override string GetTableName()
+        {
+            return StomaDB.CLIENT_TABLE;
+        }
+
+        public override string[] GetRows()
+        {
+            return StomaDB.CLIENT_ROWS;
+        }
+    }
+
     public abstract class DatabaseIterator : IEnumerable
 	{
 		protected SQLiteDataReader m_reader;
@@ -103,7 +169,10 @@ namespace Stoma2
 
         abstract protected DataFields GetData();
 
-        abstract public void Save();
+        public void Save()
+        {
+            StomaDB.Instance.NonQuery(StomaDB.UpdateGen(GetData().GetTableName(), DatabaseRecord.ID_ROW, ID, GetData().GetRows(), GetData().ToStrArray()));
+        }
 
         public void Delete()
         {
@@ -135,103 +204,29 @@ namespace Stoma2
 		{
             return String.Format("{0} {1} {2}", data.LastName, data.FirstName, data.Patronymic);
 		}
-
-		public override void Save()
-		{
-            StomaDB.Instance.NonQuery(StomaDB.UpdateGen(data.GetTableName(), DatabaseRecord.ID_ROW, ID, data.GetRows(), data.ToStrArray()));
-		}
 	}
 
     public class ClientRecord : DatabaseRecord
     {
         protected override DataFields GetData()
         {
-            throw new NotImplementedException();
+            return data;
         }
 
         private static readonly string TABLE_NAME = StomaDB.CLIENT_TABLE;
 
-        public ClientRecord(Int64 id, string name_first, string name_last, string name_patronymic, string birthday,
-            string address_subject, string address_city, string address_street, string address_building, string address_apartment,
-            string workplace, string position, string phone, string notes, string last_invite)
+        public ClientRecord(Int64 id, string[] data)
             : base(id)
         {
-            NameFirst = DatabaseUtils.DecodeString(name_first);
-            NameLast = DatabaseUtils.DecodeString(name_last);
-            NamePatronymic = DatabaseUtils.DecodeString(name_patronymic);
-            Birthday = DatabaseUtils.DecodeString(birthday);
-            AddressSubject = DatabaseUtils.DecodeString(address_subject);
-            AddressCity = DatabaseUtils.DecodeString(address_city);
-            AddressStreet = DatabaseUtils.DecodeString(address_street);
-            AddressBuilding = DatabaseUtils.DecodeString(address_building);
-            AddressApartment = DatabaseUtils.DecodeString(address_apartment);
-            Workplace = DatabaseUtils.DecodeString(workplace);
-            Position = DatabaseUtils.DecodeString(position);
-            Phone = DatabaseUtils.DecodeString(phone);
-            Notes = DatabaseUtils.DecodeString(notes);
-            LastInvite = DatabaseUtils.DecodeString(last_invite);
+            this.data = new ClientFields();
+            this.data.FromStrArray(data);
         }
 
-        public static void Create(string name_first, string name_last, string name_patronymic, string birthday,
-            string address_subject, string address_city, string address_street, string address_building, string address_apartment,
-            string workplace, string position, string phone, string notes, string last_invite)
-        {
-            StomaDB.Instance.NonQuery(StomaDB.InsertGen(TABLE_NAME, StomaDB.CLIENT_ROWS, new string[] {
-                DatabaseUtils.EncodeString(name_first),
-				DatabaseUtils.EncodeString(name_last),
-				DatabaseUtils.EncodeString(name_patronymic),
-				DatabaseUtils.EncodeString(birthday),
-				DatabaseUtils.EncodeString(address_subject),
-				DatabaseUtils.EncodeString(address_city),
-				DatabaseUtils.EncodeString(address_street),
-				DatabaseUtils.EncodeString(address_building),
-				DatabaseUtils.EncodeString(address_apartment),
-				DatabaseUtils.EncodeString(workplace),
-				DatabaseUtils.EncodeString(position),
-				DatabaseUtils.EncodeString(phone),
-				DatabaseUtils.EncodeString(notes),
-				DatabaseUtils.EncodeString(last_invite)
-            }));
-        }
-
-        public string NameFirst { get; set; }
-        public string NameLast { get; set; }
-        public string NamePatronymic { get; set; }
-        public string Birthday { get; set; }
-        public string AddressSubject { get; set; }
-        public string AddressCity { get; set; }
-        public string AddressStreet { get; set; }
-        public string AddressBuilding { get; set; }
-        public string AddressApartment { get; set; }
-        public string Workplace { get; set; }
-        public string Position { get; set; }
-        public string Phone { get; set; }
-        public string Notes { get; set; }
-        public string LastInvite { get; set; }
+        public ClientFields data;
 
         public string GetFullName()
         {
-            return String.Format("{0} {1} {2}", NameLast, NameFirst, NamePatronymic);
-        }
-
-        public override void Save()
-        {
-            StomaDB.Instance.NonQuery(StomaDB.UpdateGen(TABLE_NAME, StomaDB.CLIENT_ROWS_ALL[0], ID, StomaDB.CLIENT_ROWS, new string[] {
-                DatabaseUtils.EncodeString(NameFirst),
-                DatabaseUtils.EncodeString(NameLast),
-                DatabaseUtils.EncodeString(NamePatronymic),
-                DatabaseUtils.EncodeString(Birthday),
-                DatabaseUtils.EncodeString(AddressSubject),
-                DatabaseUtils.EncodeString(AddressCity),
-                DatabaseUtils.EncodeString(AddressStreet),
-                DatabaseUtils.EncodeString(AddressBuilding),
-                DatabaseUtils.EncodeString(AddressApartment),
-                DatabaseUtils.EncodeString(Workplace),
-                DatabaseUtils.EncodeString(Position),
-                DatabaseUtils.EncodeString(Phone),
-                DatabaseUtils.EncodeString(Notes),
-                DatabaseUtils.EncodeString(LastInvite)
-            }));
+            return String.Format("{0} {1} {2}", data.NameLast, data.NameFirst, data.NamePatronymic);
         }
     }
 
@@ -261,9 +256,9 @@ namespace Stoma2
         {
             while (m_reader.Read())
             {
-                yield return new ClientRecord(m_reader.GetInt64(0), m_reader.GetString(1), m_reader.GetString(2), m_reader.GetString(3), m_reader.GetString(4),
+                yield return new ClientRecord(m_reader.GetInt64(0), new string[] { m_reader.GetString(1), m_reader.GetString(2), m_reader.GetString(3), m_reader.GetString(4),
                     m_reader.GetString(5), m_reader.GetString(6), m_reader.GetString(7), m_reader.GetString(8), m_reader.GetString(9),
-                    m_reader.GetString(10), m_reader.GetString(11), m_reader.GetString(12), m_reader.GetString(13), m_reader.GetString(14));
+                    m_reader.GetString(10), m_reader.GetString(11), m_reader.GetString(12), m_reader.GetString(13), m_reader.GetString(14) });
             }
         }
     }
