@@ -22,10 +22,14 @@ namespace Stoma2
 
         private void button7_Click(object sender, EventArgs e)
         {
-            var form = new NewPatient();
-            form.Text = "Редактирование пациента";
-			form.btnApply.Text = "Сохранить";
-            form.ShowDialog(this);
+            NewPatient form = new NewPatient();
+            form.RecordForEditing = (ClientRecord)patientListView.SelectedItems[0].Tag;
+            form.ShowDialog();
+
+            if (form.BaseModified)
+            {
+                UpdatePatientList();
+            }
         }
 
 		private void btnOk_Click(object sender, EventArgs e)

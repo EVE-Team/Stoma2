@@ -13,6 +13,7 @@ namespace Stoma2
 	public partial class NewPatient : Form
 	{
         private bool m_baseModified = false;
+        public ClientRecord RecordForEditing = null;
 
         public NewPatient()
 		{
@@ -50,26 +51,28 @@ namespace Stoma2
 				cmbDay.Items.Add(i.ToString());
 			}
 			//
-		}
+
+            if (RecordForEditing != null)
+            {
+                Text = "Редактировать пациента";
+                btnApply.Text = "Сохранить";
+                FieldsToFormData(RecordForEditing.Data);
+            }
+        }
 
 		private void button8_Click(object sender, EventArgs e)
 		{
-            ClientFields f = new ClientFields();
-            f.NameFirst = nameFirstBox.Text;
-            f.NameLast = nameLastBox.Text;
-            f.NamePatronymic = patronymicBox.Text;
-            //f.Birthday
-            f.AddressSubject = addressSubjectBox.Text;
-            f.AddressCity = addressCityBox.Text;
-            f.AddressStreet = addressStreetBox.Text;
-            f.AddressBuilding = addressBuildingBox.Text;
-            f.AddressApartment = addressApartmentBox.Text;
-            f.Workplace = workplaceBox.Text;
-            f.Position = positionBox.Text;
-            f.Phone = phoneBox.Text;
-            f.Notes = notesBox.Text;
-            //f.LastInvite
-            f.Create();
+            if (RecordForEditing == null)
+            {
+                ClientFields newRecord = new ClientFields();
+                FormDataToFields(newRecord);
+                newRecord.Create();
+            }
+            else
+            {
+                FormDataToFields(RecordForEditing.Data);
+                RecordForEditing.Save();
+            }
 
             m_baseModified = true;
 			Close();
@@ -84,5 +87,41 @@ namespace Stoma2
         {
             get { return m_baseModified; }
         }
-	}
+
+        private void FormDataToFields(ClientFields fields)
+        {
+            fields.NameFirst = nameFirstBox.Text;
+            fields.NameLast = nameLastBox.Text;
+            fields.NamePatronymic = patronymicBox.Text;
+            //fields.Birthday
+            fields.AddressSubject = addressSubjectBox.Text;
+            fields.AddressCity = addressCityBox.Text;
+            fields.AddressStreet = addressStreetBox.Text;
+            fields.AddressBuilding = addressBuildingBox.Text;
+            fields.AddressApartment = addressApartmentBox.Text;
+            fields.Workplace = workplaceBox.Text;
+            fields.Position = positionBox.Text;
+            fields.Phone = phoneBox.Text;
+            fields.Notes = notesBox.Text;
+            //fields.LastInvite
+        }
+
+        private void FieldsToFormData(ClientFields fields)
+        {
+            nameFirstBox.Text = fields.NameFirst;
+            nameLastBox.Text = fields.NameLast;
+            patronymicBox.Text = fields.NamePatronymic;
+            //fields.Birthday
+            addressSubjectBox.Text = fields.AddressSubject;
+            addressCityBox.Text = fields.AddressCity;
+            addressStreetBox.Text = fields.AddressStreet;
+            addressBuildingBox.Text = fields.AddressBuilding;
+            addressApartmentBox.Text = fields.AddressApartment;
+            workplaceBox.Text = fields.Workplace;
+            positionBox.Text = fields.Position;
+            phoneBox.Text = fields.Phone;
+            notesBox.Text = fields.Notes;
+            //fields.LastInvite
+        }
+    }
 }
