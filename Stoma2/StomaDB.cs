@@ -10,16 +10,79 @@ using System.Windows.Forms;
 
 namespace Stoma2
 {
+    public class TableInfo
+    {
+        public readonly string table;
+        public readonly string[] rows;
+        public readonly string[] types;
+        public readonly int rowCount;
+
+        public TableInfo(string table, string[] rows, string[] types)
+        {
+            this.table = table;
+            this.rows = rows;
+            this.types = types;
+
+            if (rows.Length != types.Length)
+            {
+                throw new Exception("Wrong data");
+            }
+
+            rowCount = rows.Length;
+
+            if (rowCount == 0)
+            {
+                throw new Exception("Insufficient data amount");
+            }
+        }
+    }
+
+    public class TableInfoHolder
+    {
+        public static readonly string ID_ROW = "id";
+
+        public static readonly TableInfo DOCTOR = new TableInfo(
+            "doctors",
+            new string[] { "name_first", "name_last", "name_patronymic", "speciality" },
+            new string[] { "TEXT NOT NULL", "TEXT NOT NULL", "TEXT", "TEXT" }
+        );
+
+        public static readonly TableInfo CLIENT = new TableInfo(
+            "clients",
+            new string[] {
+                "name_first", "name_last", "name_patronymic", "birthday",
+                "address_subject", "address_city", "address_street", "address_building", "address_apartment",
+                "workplace", "position", "phone", "notes", "last_invite"
+            },
+            new string[] {
+                "TEXT NOT NULL", "TEXT NOT NULL", "TEXT", "DATE", 
+                "TEXT", "TEXT", "TEXT", "TEXT", "TEXT", 
+                "TEXT", "TEXT", "TEXT", "TEXT", "DATE"
+            }
+        );
+
+        public static readonly TableInfo SERVICE_LIST = new TableInfo(
+            "service_list",
+            new string[] { "name", "price", "category_id" },
+            new string[] { "TEXT NOT NULL", "INTEGER NOT NULL", "INTEGER REFERENCES categories(id)" }
+        );
+
+        public static readonly TableInfo CATEGORY = new TableInfo(
+            "categories",
+            new string[] { "name" },
+            new string[] { "TEXT NOT NULL" }
+        );
+    }
+
     public abstract class DataFields
     {
         abstract public object[] ToStrArray();
         abstract public void FromStrArray(object[] strArray);
-        abstract public string GetTableName();
-        abstract public string[] GetRows();
+        abstract public TableInfo GetTableInfo();
 
         public void Create()
         {
-            StomaDB.Instance.NonQuery(StomaDB.InsertGen(GetTableName(), GetRows(), ToStrArray()));
+            StomaDB.Instance.NonQuery(StomaDB.InsertGen(GetTableInfo(), ToStrArray()));
         }
     }
 
@@ -48,14 +111,9 @@ namespace Stoma2
             Speciality = strArray[3].ToString();
         }
 
-        public override string GetTableName()
+        public override TableInfo GetTableInfo()
         {
-            return StomaDB.DOCTOR_TABLE;
-        }
-
-        public override string[] GetRows()
-        {
-            return StomaDB.DOCTOR_ROWS;
+            return TableInfoHolder.DOCTOR;
         }
     }
 
@@ -114,14 +172,9 @@ namespace Stoma2
             LastInvite = strArray[13].ToString();
         }
 
-        public override string GetTableName()
+        public override TableInfo GetTableInfo()
         {
-            return StomaDB.CLIENT_TABLE;
-        }
-
-        public override string[] GetRows()
-        {
-            return StomaDB.CLIENT_ROWS;
+            return TableInfoHolder.CLIENT;
         }
     }
 
@@ -152,14 +205,9 @@ namespace Stoma2
             CategoryId = (Int64)strArray[2];
         }
 
-        public override string GetTableName()
+        public override TableInfo GetTableInfo()
         {
-            return StomaDB.SERVICE_LIST_TABLE;
-        }
-
-        public override string[] GetRows()
-        {
-            return StomaDB.SERVICE_LIST_ROWS;
+            return TableInfoHolder.SERVICE_LIST;
         }
     }
 
@@ -179,14 +227,9 @@ namespace Stoma2
             Name = strArray[0].ToString();
         }
 
-        public override string GetTableName()
+        public override TableInfo GetTableInfo()
         {
-            return StomaDB.CATEGORY_TABLE;
-        }
-
-        public override string[] GetRows()
-        {
-            return StomaDB.CATEGORY_ROWS;
+            return TableInfoHolder.CATEGORY;
         }
     }
 
@@ -257,8 +300,6 @@ namespace Stoma2
 
 	public abstract class DatabaseRecord
 	{
-        public static readonly string ID_ROW = "id";
-
 		// every record has an ID
 		private Int64 m_record_id;
 		public Int64 ID { get { return m_record_id; } }
@@ -276,12 +317,12 @@ namespace Stoma2
 
         public void Save()
         {
-            StomaDB.Instance.NonQuery(StomaDB.UpdateGen(data.GetTableName(), ID_ROW, ID, data.GetRows(), data.ToStrArray()));
+            StomaDB.Instance.NonQuery(StomaDB.UpdateGen(data.GetTableInfo(), ID, data.ToStrArray()));
         }
 
         public void Delete()
         {
-            StomaDB.Instance.NonQuery("DELETE FROM " + data.GetTableName() + " WHERE " + ID_ROW + "=" + ID + ";");
+            StomaDB.Instance.NonQuery("DELETE FROM " + data.GetTableInfo().table + " WHERE " + TableInfoHolder.ID_ROW + "=" + ID + ";");
         }
 	}
 
@@ -376,7 +417,7 @@ namespace Stoma2
     public class DoctorIterator : DatabaseIterator
 	{
 		public DoctorIterator(string search_query = "")
-            : base(StomaDB.DOCTOR_TABLE, search_query, Utils.SliceArray(StomaDB.DOCTOR_ROWS, new int[] { 0, 1, 2 }))
+            : base(TableInfoHolder.DOCTOR.table, search_query, Utils.SliceArray(TableInfoHolder.DOCTOR.rows, new int[] { 0, 1, 2 }))
 		{}
 
         protected override DatabaseRecordFactory.Type GetFactoryType()
@@ -393,7 +434,7 @@ namespace Stoma2
     public class ClientIterator : DatabaseIterator
     {
         public ClientIterator(string search_query = "")
-            : base(StomaDB.CLIENT_TABLE, search_query, Utils.SliceArray(StomaDB.CLIENT_ROWS, new int[] { 0, 1, 2 }))
+            : base(TableInfoHolder.CLIENT.table, search_query, Utils.SliceArray(TableInfoHolder.CLIENT.rows, new int[] { 0, 1, 2 }))
         {}
 
         protected override DatabaseRecordFactory.Type GetFactoryType()
@@ -410,7 +451,7 @@ namespace Stoma2
     public class ServiceListIterator : DatabaseIterator
     {
         public ServiceListIterator(Int64 categoryId)
-            : base(StomaDB.SERVICE_LIST_TABLE, "", null, StomaDB.SERVICE_LIST_ROWS[2] + "=" + categoryId)
+            : base(TableInfoHolder.SERVICE_LIST.table, "", null, TableInfoHolder.SERVICE_LIST.rows[2] + "=" + categoryId)
         {}
 
         protected override DatabaseRecordFactory.Type GetFactoryType()
@@ -427,7 +468,7 @@ namespace Stoma2
     public class CategoryIterator : DatabaseIterator
     {
         public CategoryIterator()
-            : base(StomaDB.CATEGORY_TABLE, "", null)
+            : base(TableInfoHolder.CATEGORY.table, "", null)
         {}
 
         protected override DatabaseRecordFactory.Type GetFactoryType()
@@ -556,30 +597,6 @@ namespace Stoma2
 
     public class StomaDB : IDisposable
     {
-        public static readonly string DOCTOR_TABLE = "doctors";
-        public static readonly string[] DOCTOR_ROWS = new string[] { "name_first", "name_last", "name_patronymic", "speciality" };
-        public static readonly string[] DOCTOR_TYPES = new string[] { "TEXT NOT NULL", "TEXT NOT NULL", "TEXT", "TEXT" };
-
-        public static readonly string CLIENT_TABLE = "clients";
-        public static readonly string[] CLIENT_ROWS = new string[] {
-            "name_first", "name_last", "name_patronymic", "birthday",
-            "address_subject", "address_city", "address_street", "address_building", "address_apartment",
-            "workplace", "position", "phone", "notes", "last_invite"
-        };
-        public static readonly string[] CLIENT_TYPES = new string[] {
-            "TEXT NOT NULL", "TEXT NOT NULL", "TEXT", "DATE", 
-            "TEXT", "TEXT", "TEXT", "TEXT", "TEXT", 
-            "TEXT", "TEXT", "TEXT", "TEXT", "DATE"
-        };
-
-        public static readonly string SERVICE_LIST_TABLE = "service_list";
-        public static readonly string[] SERVICE_LIST_ROWS = new string[] { "name", "price", "category_id" };
-        public static readonly string[] SERVICE_LIST_TYPES = new string[] { "TEXT NOT NULL", "INTEGER NOT NULL", "INTEGER REFERENCES categories(id)" };
-
-        public static readonly string CATEGORY_TABLE = "categories";
-        public static readonly string[] CATEGORY_ROWS = new string[] { "name" };
-        public static readonly string[] CATEGORY_TYPES = new string[] { "TEXT NOT NULL" };
-
         private static StomaDB instance = null;
 
         public static StomaDB Instance
@@ -631,10 +648,10 @@ namespace Stoma2
 
             if (newDB)
             {
-                NonQuery(CreateGen(CLIENT_TABLE, CLIENT_ROWS, CLIENT_TYPES));
-                NonQuery(CreateGen(DOCTOR_TABLE, DOCTOR_ROWS, DOCTOR_TYPES));
-                NonQuery(CreateGen(CATEGORY_TABLE, CATEGORY_ROWS, CATEGORY_TYPES));
-                NonQuery(CreateGen(SERVICE_LIST_TABLE, SERVICE_LIST_ROWS, SERVICE_LIST_TYPES));
+                NonQuery(CreateGen(TableInfoHolder.CLIENT));
+                NonQuery(CreateGen(TableInfoHolder.DOCTOR));
+                NonQuery(CreateGen(TableInfoHolder.CATEGORY));
+                NonQuery(CreateGen(TableInfoHolder.SERVICE_LIST));
             }
         }
 
@@ -655,52 +672,39 @@ namespace Stoma2
             return command.ExecuteReader();
         }
 
-        private static string CreateGen(string tableName, string[] rows, string[] types)
+        private static string CreateGen(TableInfo info)
         {
-            if (rows.Length != types.Length)
-                throw new Exception("Incorrect data");
+            StringBuilder result = new StringBuilder("CREATE TABLE " + info.table + " (");
+            result.Append(TableInfoHolder.ID_ROW + " INTEGER PRIMARY KEY");
 
-            int length = rows.Length;
-
-            if (length == 0)
-                throw new Exception("No data");
-
-            StringBuilder result = new StringBuilder("CREATE TABLE " + tableName + " (");
-            result.Append(DatabaseRecord.ID_ROW + " INTEGER PRIMARY KEY");
-
-            for (int i = 0; i < length; ++i)
+            for (int i = 0; i < info.rowCount; ++i)
             {
                 result.Append(",");
-                result.Append(rows[i] + " " + types[i]);
+                result.Append(info.rows[i] + " " + info.types[i]);
             }
 
             result.Append(");");
             return result.ToString();
         }
 
-        public static string InsertGen(string tableName, string[] rows, object[] values)
+        public static string InsertGen(TableInfo info, object[] values)
         {
-            if (rows.Length != values.Length)
+            if (info.rowCount != values.Length)
                 throw new Exception("Incorrect data");
 
-            int length = rows.Length;
+            StringBuilder result = new StringBuilder("INSERT INTO " + info.table + " (");
 
-            if (length == 0)
-                throw new Exception("No data");
-
-            StringBuilder result = new StringBuilder("INSERT INTO " + tableName + " (");
-
-            for (int i = 0; i < length; ++i)
+            for (int i = 0; i < info.rowCount; ++i)
             {
                 if (i != 0)
                     result.Append(",");
 
-                result.Append("'" + rows[i] + "'");
+                result.Append("'" + info.rows[i] + "'");
             }
 
             result.Append(") VALUES (");
 
-            for (int i = 0; i < length; ++i)
+            for (int i = 0; i < info.rowCount; ++i)
             {
                 if (i != 0)
                     result.Append(",");
@@ -712,27 +716,22 @@ namespace Stoma2
             return result.ToString();
         }
 
-        public static string UpdateGen(string tableName, string idRow, Int64 id, string[] rows, object[] values)
+        public static string UpdateGen(TableInfo info, Int64 id, object[] values)
         {
-            if (rows.Length != values.Length)
+            if (info.rowCount != values.Length)
                 throw new Exception("Incorrect data");
 
-            int length = rows.Length;
+            StringBuilder result = new StringBuilder("UPDATE " + info.table + " SET ");
 
-            if (length == 0)
-                throw new Exception("No data");
-
-            StringBuilder result = new StringBuilder("UPDATE " + tableName + " SET ");
-
-            for (int i = 0; i < length; ++i)
+            for (int i = 0; i < info.rowCount; ++i)
             {
                 if (i != 0)
                     result.Append(",");
 
-                result.Append(rows[i] + "='" + values[i] + "'");
+                result.Append(info.rows[i] + "='" + values[i] + "'");
             }
 
-            result.Append(" WHERE " + idRow + "=" + id + ";");
+            result.Append(" WHERE " + TableInfoHolder.ID_ROW + "=" + id + ";");
             return result.ToString();
         }
     }
