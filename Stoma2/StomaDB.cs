@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Stoma2
 {
-    public class TableInfo
+    public abstract class TableInfo
     {
         public readonly string table;
         public readonly string[] rows;
@@ -35,43 +35,90 @@ namespace Stoma2
                 throw new Exception("Insufficient data amount");
             }
         }
+
+        abstract public DatabaseRecord CreateDatabaseRecord(Int64 id, object[] data);
+    }
+
+    public class DoctorTableInfo : TableInfo
+    {
+        public DoctorTableInfo()
+            : base(
+                "doctors",
+                new string[] { "name_first", "name_last", "name_patronymic", "speciality" },
+                new string[] { "TEXT NOT NULL", "TEXT NOT NULL", "TEXT", "TEXT" }
+            )
+        {}
+
+        public override DatabaseRecord CreateDatabaseRecord(Int64 id, object[] data)
+        {
+            return new DoctorRecord(id, data);
+        }
+    }
+
+    public class ClientTableInfo : TableInfo
+    {
+        public ClientTableInfo()
+            : base(
+                "clients",
+                new string[] {
+                    "name_first", "name_last", "name_patronymic", "birthday",
+                    "address_subject", "address_city", "address_street", "address_building", "address_apartment",
+                    "workplace", "position", "phone", "notes", "last_invite"
+                },
+                new string[] {
+                    "TEXT NOT NULL", "TEXT NOT NULL", "TEXT", "DATE", 
+                    "TEXT", "TEXT", "TEXT", "TEXT", "TEXT", 
+                    "TEXT", "TEXT", "TEXT", "TEXT", "DATE"
+                }
+            )
+        {}
+
+        public override DatabaseRecord CreateDatabaseRecord(Int64 id, object[] data)
+        {
+            return new ClientRecord(id, data);
+        }
+    }
+
+    public class ServiceListTableInfo : TableInfo
+    {
+        public ServiceListTableInfo()
+            : base(
+                "service_list",
+                new string[] { "name", "price", "category_id" },
+                new string[] { "TEXT NOT NULL", "INTEGER NOT NULL", "INTEGER REFERENCES categories(id)" }
+            )
+        {}
+
+        public override DatabaseRecord CreateDatabaseRecord(Int64 id, object[] data)
+        {
+            return new ServiceListRecord(id, data);
+        }
+    }
+
+    public class CategoryTableInfo : TableInfo
+    {
+        public CategoryTableInfo()
+            : base(
+                "categories",
+                new string[] { "name" },
+                new string[] { "TEXT NOT NULL" }
+            )
+        {}
+
+        public override DatabaseRecord CreateDatabaseRecord(Int64 id, object[] data)
+        {
+            return new CategoryRecord(id, data);
+        }
     }
 
     public class TableInfoHolder
     {
         public static readonly string ID_ROW = "id";
 
-        public static readonly TableInfo DOCTOR = new TableInfo(
-            "doctors",
-            new string[] { "name_first", "name_last", "name_patronymic", "speciality" },
-            new string[] { "TEXT NOT NULL", "TEXT NOT NULL", "TEXT", "TEXT" }
-        );
-
-        public static readonly TableInfo CLIENT = new TableInfo(
-            "clients",
-            new string[] {
-                "name_first", "name_last", "name_patronymic", "birthday",
-                "address_subject", "address_city", "address_street", "address_building", "address_apartment",
-                "workplace", "position", "phone", "notes", "last_invite"
-            },
-            new string[] {
-                "TEXT NOT NULL", "TEXT NOT NULL", "TEXT", "DATE", 
-                "TEXT", "TEXT", "TEXT", "TEXT", "TEXT", 
-                "TEXT", "TEXT", "TEXT", "TEXT", "DATE"
-            }
-        );
-
-        public static readonly TableInfo SERVICE_LIST = new TableInfo(
-            "service_list",
-            new string[] { "name", "price", "category_id" },
-            new string[] { "TEXT NOT NULL", "INTEGER NOT NULL", "INTEGER REFERENCES categories(id)" }
-        );
-
-        public static readonly TableInfo CATEGORY = new TableInfo(
-            "categories",
-            new string[] { "name" },
-            new string[] { "TEXT NOT NULL" }
-        );
+        public static readonly TableInfo DOCTOR = new DoctorTableInfo();
+        public static readonly TableInfo CLIENT = new ClientTableInfo();
+        public static readonly TableInfo SERVICE_LIST = new ServiceListTableInfo();
+        public static readonly TableInfo CATEGORY = new CategoryTableInfo();
     }
 
     public abstract class DataFields
@@ -267,7 +314,7 @@ namespace Stoma2
         {
             while (m_reader.Read())
             {
-                yield return DatabaseRecordFactory.Create(GetFactoryType(), m_reader.GetInt64(0), GetDataArray(GetDataColumnCount()));
+                yield return GetTableInfo().CreateDatabaseRecord(m_reader.GetInt64(0), GetDataArray(GetTableInfo().rowCount));
             }
         }
 
@@ -294,8 +341,7 @@ namespace Stoma2
             return result.ToArray();
         }
 
-        abstract protected DatabaseRecordFactory.Type GetFactoryType();
-        abstract protected int GetDataColumnCount();
+        abstract protected TableInfo GetTableInfo();
     }
 
 	public abstract class DatabaseRecord
@@ -392,42 +438,15 @@ namespace Stoma2
         public CategoryFields Data { get { return (CategoryFields)data; } }
     }
 
-    public class DatabaseRecordFactory
-    {
-        public enum Type { DOCTOR, CLIENT, SERVICE_LIST, CATEGORY };
-
-        public static DatabaseRecord Create(Type type, Int64 id, object[] data)
-        {
-            switch (type)
-            {
-                case Type.DOCTOR:
-                    return new DoctorRecord(id, data);
-                case Type.CLIENT:
-                    return new ClientRecord(id, data);
-                case Type.SERVICE_LIST:
-                    return new ServiceListRecord(id, data);
-                case Type.CATEGORY:
-                    return new CategoryRecord(id, data);
-                default:
-                    throw new Exception("Unknown type");
-            }
-        }
-    }
-
     public class DoctorIterator : DatabaseIterator
 	{
 		public DoctorIterator(string search_query = "")
             : base(TableInfoHolder.DOCTOR.table, search_query, Utils.SliceArray(TableInfoHolder.DOCTOR.rows, new int[] { 0, 1, 2 }))
 		{}
 
-        protected override DatabaseRecordFactory.Type GetFactoryType()
+        protected override TableInfo GetTableInfo()
         {
-            return DatabaseRecordFactory.Type.DOCTOR;
-        }
-
-        protected override int GetDataColumnCount()
-        {
-            return 4;
+            return TableInfoHolder.DOCTOR;
         }
 	}
 
@@ -437,14 +456,9 @@ namespace Stoma2
             : base(TableInfoHolder.CLIENT.table, search_query, Utils.SliceArray(TableInfoHolder.CLIENT.rows, new int[] { 0, 1, 2 }))
         {}
 
-        protected override DatabaseRecordFactory.Type GetFactoryType()
+        protected override TableInfo GetTableInfo()
         {
-            return DatabaseRecordFactory.Type.CLIENT;
-        }
-
-        protected override int GetDataColumnCount()
-        {
-            return 14;
+            return TableInfoHolder.CLIENT;
         }
     }
 
@@ -454,14 +468,9 @@ namespace Stoma2
             : base(TableInfoHolder.SERVICE_LIST.table, "", null, TableInfoHolder.SERVICE_LIST.rows[2] + "=" + categoryId)
         {}
 
-        protected override DatabaseRecordFactory.Type GetFactoryType()
+        protected override TableInfo GetTableInfo()
         {
-            return DatabaseRecordFactory.Type.SERVICE_LIST;
-        }
-
-        protected override int GetDataColumnCount()
-        {
-            return 3;
+            return TableInfoHolder.SERVICE_LIST;
         }
     }
 
@@ -471,14 +480,9 @@ namespace Stoma2
             : base(TableInfoHolder.CATEGORY.table, "", null)
         {}
 
-        protected override DatabaseRecordFactory.Type GetFactoryType()
+        protected override TableInfo GetTableInfo()
         {
-            return DatabaseRecordFactory.Type.CATEGORY;
-        }
-
-        protected override int GetDataColumnCount()
-        {
-            return 1;
+            return TableInfoHolder.CATEGORY;
         }
     }
 
