@@ -93,7 +93,20 @@ namespace Stoma2
             fields.NameFirst = nameFirstBox.Text;
             fields.NameLast = nameLastBox.Text;
             fields.NamePatronymic = patronymicBox.Text;
-            //fields.Birthday
+
+            try
+            {
+                fields.Birthday = new DateTime(
+                    Int32.Parse(cmbYear.Text),
+                    cmbMonth.SelectedIndex + 1,
+                    Int32.Parse(cmbDay.Text)
+                );
+            }
+            catch (Exception)
+            {
+                fields.Birthday = DateTime.MinValue;
+            }
+
             fields.AddressSubject = addressSubjectBox.Text;
             fields.AddressCity = addressCityBox.Text;
             fields.AddressStreet = addressStreetBox.Text;
@@ -103,7 +116,6 @@ namespace Stoma2
             fields.Position = positionBox.Text;
             fields.Phone = phoneBox.Text;
             fields.Notes = notesBox.Text;
-            //fields.LastInvite
         }
 
         private void FieldsToFormData(ClientFields fields)
@@ -111,7 +123,14 @@ namespace Stoma2
             nameFirstBox.Text = fields.NameFirst;
             nameLastBox.Text = fields.NameLast;
             patronymicBox.Text = fields.NamePatronymic;
-            //fields.Birthday
+
+            if (fields.Birthday != DateTime.MinValue)
+            {
+                cmbYear.Text = fields.Birthday.Year.ToString();
+                cmbMonth.SelectedIndex = fields.Birthday.Month - 1;
+                cmbDay.Text = fields.Birthday.Day.ToString();
+            }
+
             addressSubjectBox.Text = fields.AddressSubject;
             addressCityBox.Text = fields.AddressCity;
             addressStreetBox.Text = fields.AddressStreet;
@@ -121,7 +140,6 @@ namespace Stoma2
             positionBox.Text = fields.Position;
             phoneBox.Text = fields.Phone;
             notesBox.Text = fields.Notes;
-            //fields.LastInvite
         }
     }
 }

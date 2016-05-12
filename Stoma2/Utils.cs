@@ -45,5 +45,17 @@ namespace Stoma2
         {
             return obj.GetType().FullName == "System.Int64";
         }
+
+        public static string DateToString(DateTime date)
+        {
+            if (date != DateTime.MinValue)
+            {
+                return date.ToString("d");
+            }
+            else
+            {
+                return "";
+            }
+        }
     }
 }
