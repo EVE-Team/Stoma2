@@ -24,20 +24,14 @@ namespace Stoma2
 		{
 			if (RecordForEditing == null)
 			{
-                DoctorFields f = new DoctorFields();
-                f.FirstName = nameFirstBox.Text;
-                f.LastName = nameLastBox.Text;
-                f.Patronymic = patronymicBox.Text;
-                f.Speciality = specialityBox.Text;
-                f.Create();
+                DoctorFields newRecord = new DoctorFields();
+                FormDataToFields(newRecord);
+                newRecord.Create();
 			}
 			else
 			{
-                RecordForEditing.Data.FirstName = nameFirstBox.Text;
-                RecordForEditing.Data.LastName = nameLastBox.Text;
-                RecordForEditing.Data.Patronymic = patronymicBox.Text;
-                RecordForEditing.Data.Speciality = specialityBox.Text;
-				RecordForEditing.Save();
+                FormDataToFields(RecordForEditing.Data);
+                RecordForEditing.Save();
 			}
 
             m_baseModified = true;
@@ -60,12 +54,24 @@ namespace Stoma2
 			{
 				Text = "Редактировать доктора";
 				btnApply.Text = "Сохранить";
-
-                nameFirstBox.Text = RecordForEditing.Data.FirstName;
-                nameLastBox.Text = RecordForEditing.Data.LastName;
-                patronymicBox.Text = RecordForEditing.Data.Patronymic;
-                specialityBox.Text = RecordForEditing.Data.Speciality;
+                FieldsToFormData(RecordForEditing.Data);
 			}
 		}
+
+        private void FormDataToFields(DoctorFields fields)
+        {
+            fields.FirstName = nameFirstBox.Text;
+            fields.LastName = nameLastBox.Text;
+            fields.Patronymic = patronymicBox.Text;
+            fields.Speciality = specialityBox.Text;
+        }
+
+        private void FieldsToFormData(DoctorFields fields)
+        {
+            nameFirstBox.Text = fields.FirstName;
+            nameLastBox.Text = fields.LastName;
+            patronymicBox.Text = fields.Patronymic;
+            specialityBox.Text = fields.Speciality;
+        }
     }
 }
