@@ -111,6 +111,28 @@ namespace Stoma2
         }
     }
 
+    public class AppointmentTableInfo : TableInfo
+    {
+        public AppointmentTableInfo()
+            : base(
+                "appointments",
+                new string[] {
+                    "date", "diagnosis","tooth","doctor_id",
+                    "client_id"
+                },
+                new string[] {
+                    "DATE", "TEXT NOT NULL", "INTEGER NOT NULL", "INTEGER REFERENCES doctors(id)", 
+                    "INTEGER REFERENCES clients(id)"
+                }
+            )
+        { }
+
+        public override DatabaseRecord CreateDatabaseRecord(Int64 id, object[] data)
+        {
+            return new AppointmentRecord(id, data);
+        }
+    }
+
     public class TableInfoHolder
     {
         public static readonly string ID_ROW = "id";
@@ -119,6 +141,7 @@ namespace Stoma2
         public static readonly TableInfo CLIENT = new ClientTableInfo();
         public static readonly TableInfo SERVICE_LIST = new ServiceListTableInfo();
         public static readonly TableInfo CATEGORY = new CategoryTableInfo();
+        public static readonly TableInfo APPOINTMENT = new AppointmentTableInfo();
     }
 
     public abstract class DataFields
@@ -285,6 +308,45 @@ namespace Stoma2
         }
     }
 
+    public class AppointmentFields : DataFields
+    {
+        public DateTime Date { get; set; }
+        public string Diagnosis { get; set; }
+        public Int64 Tooth { get; set; }
+        public Int64 DoctorId { get; set; }
+        public Int64 ClientId { get; set; }
+
+        public override object[] ToStrArray()
+        {
+            return new object[] {
+                Date.ToString(),
+                Diagnosis,
+                Tooth,
+                DoctorId,
+                ClientId                
+            };
+        }
+
+        public override void FromStrArray(object[] strArray)
+        {
+            if (!Utils.IsInt64(strArray[2]) || !Utils.IsInt64(strArray[3]) || !Utils.IsInt64(strArray[4]))
+            {
+                throw new Exception("Type mismatch");
+            }
+
+            Date = DateTime.Parse(strArray[0].ToString());
+            Diagnosis = strArray[1].ToString();
+            Tooth = (Int64)strArray[2];
+            DoctorId = (Int64)strArray[3];
+            ClientId = (Int64)strArray[4];
+        }
+
+        public override TableInfo GetTableInfo()
+        {
+            return TableInfoHolder.APPOINTMENT;
+        }
+    }
+
     public abstract class DatabaseIterator : IEnumerable
 	{
 		protected SQLiteDataReader m_reader;
@@ -441,6 +503,20 @@ namespace Stoma2
         {}
 
         public CategoryFields Data { get { return (CategoryFields)data; } }
+    }
+
+    public class AppointmentRecord : DatabaseRecord
+    {
+        protected override DataFields CreateData()
+        {
+            return new AppointmentFields();
+        }
+
+        public AppointmentRecord(Int64 id, object[] data)
+            : base(id, data)
+        { }
+
+        public AppointmentFields Data { get { return (AppointmentFields)data; } }
     }
 
     public class DoctorIterator : DatabaseIterator

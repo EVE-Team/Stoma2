@@ -15,6 +15,22 @@ namespace Stoma2
 		public MonthlyReport()
 		{
 			InitializeComponent();
+            UpdateReportListView();
 		}
+
+        private void UpdateReportListView()
+        {
+            reportListView.Items.Clear();
+
+            foreach (DoctorRecord rec in StomaDB.GetDoctors())
+            {
+                var item = new ListViewItem(new string[] {
+                    rec.Data.LastName,
+					"0"
+                });
+                item.Tag = rec;
+                reportListView.Items.Add(item);
+            }
+        }
 	}
 }
