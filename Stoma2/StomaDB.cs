@@ -284,9 +284,9 @@ namespace Stoma2
 	{
 		protected SQLiteDataReader m_reader;
 
-        public DatabaseIterator(string table_name, string search_query, string[] search_columns, string additional_where_statement = "1")
+        public DatabaseIterator(string search_query, string[] search_columns, string additional_where_statement = "1")
 		{
-			string query = "SELECT * FROM " + DatabaseUtils.SanitizeString(table_name) + " WHERE (";
+			string query = "SELECT * FROM " + GetTableInfo().table + " WHERE (";
 
             if (search_query.Length > 0)
             {
@@ -314,15 +314,15 @@ namespace Stoma2
         {
             while (m_reader.Read())
             {
-                yield return GetTableInfo().CreateDatabaseRecord(m_reader.GetInt64(0), GetDataArray(GetTableInfo().rowCount));
+                yield return GetTableInfo().CreateDatabaseRecord(m_reader.GetInt64(0), GetDataArray());
             }
         }
 
-        protected object[] GetDataArray(int count)
+        protected object[] GetDataArray()
         {
             List<object> result = new List<object>();
 
-            for (int i = 1; i <= count; ++i)
+            for (int i = 1; i <= GetTableInfo().rowCount; ++i)
             {
                 // Do not remove this workaround yet
                 // http://stackoverflow.com/questions/11414399/sqlite-throwing-a-string-not-recognized-as-a-valid-datetime
@@ -441,7 +441,7 @@ namespace Stoma2
     public class DoctorIterator : DatabaseIterator
 	{
 		public DoctorIterator(string search_query = "")
-            : base(TableInfoHolder.DOCTOR.table, search_query, Utils.SliceArray(TableInfoHolder.DOCTOR.rows, new int[] { 0, 1, 2 }))
+            : base(search_query, Utils.SliceArray(TableInfoHolder.DOCTOR.rows, new int[] { 0, 1, 2 }))
 		{}
 
         protected override TableInfo GetTableInfo()
@@ -453,7 +453,7 @@ namespace Stoma2
     public class ClientIterator : DatabaseIterator
     {
         public ClientIterator(string search_query = "")
-            : base(TableInfoHolder.CLIENT.table, search_query, Utils.SliceArray(TableInfoHolder.CLIENT.rows, new int[] { 0, 1, 2 }))
+            : base(search_query, Utils.SliceArray(TableInfoHolder.CLIENT.rows, new int[] { 0, 1, 2 }))
         {}
 
         protected override TableInfo GetTableInfo()
@@ -465,7 +465,7 @@ namespace Stoma2
     public class ServiceListIterator : DatabaseIterator
     {
         public ServiceListIterator(Int64 categoryId)
-            : base(TableInfoHolder.SERVICE_LIST.table, "", null, TableInfoHolder.SERVICE_LIST.rows[2] + "=" + categoryId)
+            : base("", null, TableInfoHolder.SERVICE_LIST.rows[2] + "=" + categoryId)
         {}
 
         protected override TableInfo GetTableInfo()
@@ -477,7 +477,7 @@ namespace Stoma2
     public class CategoryIterator : DatabaseIterator
     {
         public CategoryIterator()
-            : base(TableInfoHolder.CATEGORY.table, "", null)
+            : base("", null)
         {}
 
         protected override TableInfo GetTableInfo()
