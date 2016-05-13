@@ -133,8 +133,10 @@ namespace Stoma2
 
         private void btnAdd_Click(object sender, EventArgs e)
 		{
-            var form = new NewTreatment(null);
+            AppointmentRecord rec = (AppointmentRecord) appointmentListView.SelectedItems[0].Tag;
+            var form = new NewTreatment(rec);
 			form.ShowDialog(this);
+            UpdateTreatmentList();
 		}
 
         private void btnAddAppointment_Click(object sender, EventArgs e)
