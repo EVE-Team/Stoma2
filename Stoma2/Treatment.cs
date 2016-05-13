@@ -13,22 +13,19 @@ namespace Stoma2
 {
 	public partial class Treatment : Form
 	{
-        private ClientRecord clientRecord = null;
+        private ClientRecord clientRecord;
 
 		public Treatment()
 		{
 			InitializeComponent();
-            OnClientUpdate();
 		}
 
         public void SetClient(ClientRecord clientRecord)
         {
             this.clientRecord = clientRecord;
-            OnClientUpdate();
-        }
 
-        private void OnClientUpdate()
-        {
+            //----------
+
             if (clientRecord != null)
             {
                 patientFIO.Text = clientRecord.GetFullName();
@@ -36,6 +33,28 @@ namespace Stoma2
             else
             {
                 patientFIO.Text = "вообще хз кого";
+            }
+
+            //----------
+
+            UpdateAppointmentList();
+            btnAddAppointment.Enabled = (clientRecord != null);
+        }
+
+        private void UpdateAppointmentList()
+        {
+            appointmentListView.Items.Clear();
+
+            if (clientRecord != null)
+            {
+                foreach (AppointmentRecord rec in StomaDB.GetAppointments(clientRecord))
+                {
+                    var item = new ListViewItem(new string[] {
+                        Utils.DateToString(rec.Data.Date)
+                    });
+                    item.Tag = rec;
+                    appointmentListView.Items.Add(item);
+                }
             }
         }
 
@@ -49,6 +68,7 @@ namespace Stoma2
         {
             var form = new NewAppointment(clientRecord);
             form.ShowDialog(this);
+            UpdateAppointmentList();
         }
 
         private void btnPrint_Click(object sender, EventArgs e)

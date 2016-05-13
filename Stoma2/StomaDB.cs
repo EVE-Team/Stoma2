@@ -630,6 +630,18 @@ namespace Stoma2
         }
     }
 
+    public class AppointmentIterator : DatabaseIterator
+    {
+        public AppointmentIterator(ClientRecord client)
+            : base("", null, TableInfoHolder.APPOINTMENT.rows[4] + "=" + client.ID)
+        {}
+
+        protected override TableInfo GetTableInfo()
+        {
+            return TableInfoHolder.APPOINTMENT;
+        }
+    }
+
     public class DatabaseUtils
 	{
 		public static string SanitizeString(string str)
@@ -780,6 +792,11 @@ namespace Stoma2
         public static CategoryIterator GetCategories()
         {
             return new CategoryIterator();
+        }
+
+        public static AppointmentIterator GetAppointments(ClientRecord client)
+        {
+            return new AppointmentIterator(client);
         }
 
         public StomaDB()

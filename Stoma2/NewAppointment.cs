@@ -34,6 +34,7 @@ namespace Stoma2
             newRecord.Tooth = Int64.Parse(txtTooth.Text);
             newRecord.DoctorId = doctorRecords[doctorCategory.SelectedIndex].ID;
             newRecord.ClientId = clientRecord.ID;
+            newRecord.Create();
 			Close();
 		}
 
