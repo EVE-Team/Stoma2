@@ -13,6 +13,8 @@ namespace Stoma2
 {
 	public partial class Treatment : Form
 	{
+        public ClientRecord clientRecord = null;
+
 		public Treatment()
 		{
 			InitializeComponent();
@@ -20,14 +22,14 @@ namespace Stoma2
 
         private void btnAdd_Click(object sender, EventArgs e)
 		{
-			var form = new NewTreatment();
+            var form = new NewTreatment(null);
 			form.ShowDialog(this);
 		}
 
         private void btnAddAppointment_Click(object sender, EventArgs e)
         {
-            /*var form = new NewAppointment();
-            form.ShowDialog(this);*/
+            var form = new NewAppointment(clientRecord);
+            form.ShowDialog(this);
         }
 
         private void btnPrint_Click(object sender, EventArgs e)

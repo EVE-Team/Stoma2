@@ -13,18 +13,12 @@ namespace Stoma2
 	public partial class NewAppointment : Form
 	{
         private List<DoctorRecord> doctorRecords = new List<DoctorRecord>();
-        private Int64 patientId;
+        private ClientRecord clientRecord;
 
-        public NewAppointment(Int64 patientId)
+        public NewAppointment(ClientRecord clientRecord)
 		{
 			InitializeComponent();
-            this.patientId = patientId;
-		}
-
-		private void btnNewPatient_Click(object sender, EventArgs e)
-		{
-			var form = new NewPatient();
-			form.ShowDialog(this);
+            this.clientRecord = clientRecord;
 		}
 
 		private void btnCancel_Click(object sender, EventArgs e)
@@ -34,6 +28,12 @@ namespace Stoma2
 
 		private void btnAdd_Click(object sender, EventArgs e)
 		{
+            AppointmentFields newRecord = new AppointmentFields();
+            newRecord.Date = DateTime.Now;
+            newRecord.Diagnosis = diagnosisTextBox.Text;
+            newRecord.Tooth = Int64.Parse(txtTooth.Text);
+            newRecord.DoctorId = doctorRecords[doctorCategory.SelectedIndex].ID;
+            newRecord.ClientId = clientRecord.ID;
 			Close();
 		}
 

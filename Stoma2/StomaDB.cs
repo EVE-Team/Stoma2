@@ -85,7 +85,7 @@ namespace Stoma2
             : base(
                 "service_list",
                 new string[] { "name", "price", "category_id" },
-                new string[] { "TEXT NOT NULL", "INTEGER NOT NULL", "INTEGER REFERENCES categories(id)" }
+                new string[] { "TEXT NOT NULL", "INTEGER NOT NULL", "INTEGER REFERENCES " + TableInfoHolder.CATEGORY.table + "(id)" }
             )
         {}
 
@@ -117,19 +117,39 @@ namespace Stoma2
             : base(
                 "appointments",
                 new string[] {
-                    "date", "diagnosis","tooth","doctor_id",
-                    "client_id"
+                    "date", "diagnosis", "tooth", "doctor_id", "client_id"
                 },
                 new string[] {
-                    "DATE", "TEXT NOT NULL", "INTEGER NOT NULL", "INTEGER REFERENCES doctors(id)", 
-                    "INTEGER REFERENCES clients(id)"
+                    "DATE", "TEXT NOT NULL", "INTEGER NOT NULL",
+                    "INTEGER REFERENCES " + TableInfoHolder.DOCTOR.table + "(id)",
+                    "INTEGER REFERENCES " + TableInfoHolder.CLIENT.table + "(id)"
                 }
             )
-        { }
+        {}
 
         public override DatabaseRecord CreateDatabaseRecord(Int64 id, object[] data)
         {
             return new AppointmentRecord(id, data);
+        }
+    }
+
+    public class TreatmentTableInfo : TableInfo
+    {
+        public TreatmentTableInfo()
+            : base(
+                "treatments",
+                new string[] { "service_id", "visit_id", "count" },
+                new string[] {
+                    "INTEGER REFERENCES " + TableInfoHolder.SERVICE_LIST.table + "(id)",
+                    "INTEGER REFERENCES " + TableInfoHolder.APPOINTMENT.table + "(id)",
+                    "INTEGER NOT NULL"
+                }
+            )
+        {}
+
+        public override DatabaseRecord CreateDatabaseRecord(Int64 id, object[] data)
+        {
+            return new TreatmentRecord(id, data);
         }
     }
 
@@ -139,9 +159,10 @@ namespace Stoma2
 
         public static readonly TableInfo DOCTOR = new DoctorTableInfo();
         public static readonly TableInfo CLIENT = new ClientTableInfo();
-        public static readonly TableInfo SERVICE_LIST = new ServiceListTableInfo();
         public static readonly TableInfo CATEGORY = new CategoryTableInfo();
+        public static readonly TableInfo SERVICE_LIST = new ServiceListTableInfo();
         public static readonly TableInfo APPOINTMENT = new AppointmentTableInfo();
+        public static readonly TableInfo TREATMENT = new TreatmentTableInfo();
     }
 
     public abstract class DataFields
@@ -347,6 +368,34 @@ namespace Stoma2
         }
     }
 
+    public class TreatmentFields : DataFields
+    {
+        public Int64 ServiceId { get; set; }
+        public Int64 VisitId { get; set; }
+        public Int64 Count { get; set; }
+
+        public override object[] ToStrArray()
+        {
+            return new object[] {
+                ServiceId,
+                VisitId,
+                Count
+            };
+        }
+
+        public override void FromStrArray(object[] strArray)
+        {
+            ServiceId = (Int64)strArray[0];
+            VisitId = (Int64)strArray[1];
+            Count = (Int64)strArray[2];
+        }
+
+        public override TableInfo GetTableInfo()
+        {
+            return TableInfoHolder.TREATMENT;
+        }
+    }
+
     public abstract class DatabaseIterator : IEnumerable
 	{
 		protected SQLiteDataReader m_reader;
@@ -514,9 +563,23 @@ namespace Stoma2
 
         public AppointmentRecord(Int64 id, object[] data)
             : base(id, data)
-        { }
+        {}
 
         public AppointmentFields Data { get { return (AppointmentFields)data; } }
+    }
+
+    public class TreatmentRecord : DatabaseRecord
+    {
+        protected override DataFields CreateData()
+        {
+            return new TreatmentFields();
+        }
+
+        public TreatmentRecord(Int64 id, object[] data)
+            : base(id, data)
+        {}
+
+        public TreatmentFields Data { get { return (TreatmentFields)data; } }
     }
 
     public class DoctorIterator : DatabaseIterator
@@ -737,6 +800,8 @@ namespace Stoma2
                 NonQuery(CreateGen(TableInfoHolder.DOCTOR));
                 NonQuery(CreateGen(TableInfoHolder.CATEGORY));
                 NonQuery(CreateGen(TableInfoHolder.SERVICE_LIST));
+                NonQuery(CreateGen(TableInfoHolder.APPOINTMENT));
+                NonQuery(CreateGen(TableInfoHolder.TREATMENT));
             }
         }
 

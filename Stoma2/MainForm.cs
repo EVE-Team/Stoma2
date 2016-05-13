@@ -87,8 +87,9 @@ namespace Stoma2
 			rbAppointment.Checked = true;
 		}
 
-        public void goToTreatment(string patientName)
+        public void goToTreatment(ClientRecord client)
         {
+            ((Treatment)treatmentForm).clientRecord = client;
             rbTreatment.Checked = true;
         }
 

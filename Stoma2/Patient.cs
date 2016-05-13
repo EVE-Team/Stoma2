@@ -15,9 +15,8 @@ namespace Stoma2
 		public Patient()
 		{
 			InitializeComponent();
-            UpdatePatientList();
-
             Utils.SetPanelForm(pnlPatientInfo, Utils.SetupForm(new PatientInfo()));
+            UpdatePatientList();
 		}
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -57,9 +56,16 @@ namespace Stoma2
                 item.Tag = rec;
                 patientListView.Items.Add(item);
             }
+
+            patientListView_SelectedIndexChanged();
         }
 
         private void patientListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            patientListView_SelectedIndexChanged();
+        }
+
+        private void patientListView_SelectedIndexChanged()
         {
             PatientInfo piForm = (PatientInfo)Utils.GetPanelForm(pnlPatientInfo);
 
@@ -68,7 +74,7 @@ namespace Stoma2
                 piForm.ClearInfo();
                 btnEdit.Enabled = false;
                 btnDelete.Enabled = false;
-                //btnAddAppointment.Enabled = false;
+                toTreatmentBtn.Enabled = false;
                 return;
             }
 
@@ -76,7 +82,7 @@ namespace Stoma2
             piForm.SetInfo(rec);
             btnEdit.Enabled = true;
             btnDelete.Enabled = true;
-            //btnAddAppointment.Enabled = true;
+            toTreatmentBtn.Enabled = true;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -96,11 +102,14 @@ namespace Stoma2
             //string t = textBox.Text.ToString();
             //ListViewItem.ListViewSubItemCollection temp = patientListView.FocusedItem.SubItems;
 
-            if (patientListView.SelectedItems.Count != 0)
+            /*if (patientListView.SelectedItems.Count != 0)
             {
                 string patient = pnlPatientInfo.Controls[0].Controls[0].Text.ToString();
                 Program.mainForm.goToTreatment(patient);
-            }
+            }*/
+
+            ClientRecord rec = (ClientRecord)patientListView.SelectedItems[0].Tag;
+            Program.mainForm.goToTreatment(rec);
         }
 
         private void searchBox_TextChanged(object sender, EventArgs e)
