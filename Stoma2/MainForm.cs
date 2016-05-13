@@ -24,10 +24,10 @@ namespace Stoma2
 		public static extern bool ReleaseCapture();
 
 		// Panel forms
-        Control patientForm = Utils.SetupForm(new Patient());
-        Control treatmentForm = Utils.SetupForm(new Treatment());
-        Control inviteForm = Utils.SetupForm(new Invite());
-        Control otherForm = Utils.SetupForm(new Other());
+        Patient patientForm = Utils.SetupForm(new Patient());
+        Treatment treatmentForm = Utils.SetupForm(new Treatment());
+        Invite inviteForm = Utils.SetupForm(new Invite());
+        Other otherForm = Utils.SetupForm(new Other());
 		//
 
 		public MainForm()

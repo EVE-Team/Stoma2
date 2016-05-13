@@ -8,7 +8,7 @@ namespace Stoma2
 {
     class Utils
     {
-        public static Control SetupForm(Form form)
+        public static T SetupForm<T>(T form) where T : Form
         {
             form.TopLevel = false;
             form.Dock = DockStyle.Fill;

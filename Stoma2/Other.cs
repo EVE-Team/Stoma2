@@ -12,11 +12,11 @@ namespace Stoma2
 {
 	public partial class Other : Form
 	{
-		Control priceListForm = Utils.SetupForm(new PriceList());
-        Control reportForm = Utils.SetupForm(new MonthlyReport());
-        Control doctorForm = Utils.SetupForm(new Doctor());
-        Control backupForm = Utils.SetupForm(new BackUp());
-        Control visitForm = Utils.SetupForm(new Visit());
+        PriceList priceListForm = Utils.SetupForm(new PriceList());
+        MonthlyReport reportForm = Utils.SetupForm(new MonthlyReport());
+        Doctor doctorForm = Utils.SetupForm(new Doctor());
+        BackUp backupForm = Utils.SetupForm(new BackUp());
+        Visit visitForm = Utils.SetupForm(new Visit());
 
 		public Other()
 		{
