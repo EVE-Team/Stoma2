@@ -12,14 +12,15 @@ namespace Stoma2
 {
 	public partial class NewTreatment : Form
 	{
-        private AppointmentRecord appointment;
+        public AppointmentRecord appointment;
+        public TreatmentRecord editRecord;
+
         private List<CategoryRecord> categoryRecords = new List<CategoryRecord>();
         private List<ServiceListRecord> serviceListRecords = new List<ServiceListRecord>();
 
-        public NewTreatment(AppointmentRecord appointment)
+        public NewTreatment()
 		{
 			InitializeComponent();
-            this.appointment = appointment;
 
             foreach (CategoryRecord rec in StomaDB.GetCategories())
             {
@@ -28,17 +29,64 @@ namespace Stoma2
             }
         }
 
+        private void NewTreatment_Load(object sender, EventArgs e)
+        {
+            if (editRecord != null)
+            {
+                Text = "Редактировать работу";
+                btnOk.Text = "Сохранить";
+
+                FieldsToFormData(editRecord.Data);
+            }
+        }
+
 		private void btnOk_Click(object sender, EventArgs e)
 		{
-            TreatmentFields newRecord = new TreatmentFields();
-            newRecord.ServiceId = serviceListRecords[cbService.SelectedIndex].ID;
-            newRecord.VisitId = appointment.ID;
-            newRecord.Count = Convert.ToInt64(countNum.Value);
-            newRecord.Create();
-			Close();
+            if (editRecord == null)
+            {
+                TreatmentFields newRecord = new TreatmentFields();
+                newRecord.VisitId = appointment.ID;
+                FormDataToFields(newRecord);
+                newRecord.Create();
+            }
+            else
+            {
+                FormDataToFields(editRecord.Data);
+                editRecord.Save();
+            }
+
+            Close();
 		}
 
-		private void btnCancel_Click(object sender, EventArgs e)
+        private void FormDataToFields(TreatmentFields fields)
+        {
+            fields.ServiceId = serviceListRecords[cbService.SelectedIndex].ID;
+            fields.Count = Convert.ToInt64(countNum.Value);
+        }
+
+        private void FieldsToFormData(TreatmentFields fields)
+        {
+            Int64 catId = StomaDB.Instance.GetCategoryIdByServiceId(fields.ServiceId);
+            cbCategory.SelectedIndex = GetIndexOfRecord(categoryRecords, catId);
+            cbService.SelectedIndex = GetIndexOfRecord(serviceListRecords, fields.ServiceId);
+
+            countNum.Value = fields.Count;
+        }
+
+        private static int GetIndexOfRecord<T>(List<T> list, Int64 id) where T : DatabaseRecord
+        {
+            for (int i = 0; i < list.Count; ++i)
+            {
+                if (list[i].ID == id)
+                {
+                    return i;
+                }
+            }
+
+            throw new Exception("Record not found");
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
 		{
 			Close();
 		}

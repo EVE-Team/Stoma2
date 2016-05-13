@@ -168,6 +168,7 @@
             this.Name = "NewTreatment";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Новая работа";
+            this.Load += new System.EventHandler(this.NewTreatment_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.NewTreatment_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.countNum)).EndInit();
             this.ResumeLayout(false);

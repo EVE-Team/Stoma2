@@ -769,17 +769,21 @@ namespace Stoma2
 
     public class StomaDB : IDisposable
     {
+        private static object lockObj = new Object();
         private static StomaDB instance = null;
 
         public static StomaDB Instance
         {
             get
             {
-                if (instance == null)
+                lock (lockObj)
                 {
-                    instance = new StomaDB();
+                    if (instance == null)
+                    {
+                        instance = new StomaDB();
+                    }
+                    return instance;
                 }
-                return instance;
             }
         }
 
@@ -799,6 +803,19 @@ namespace Stoma2
         public static ServiceListIterator GetServiceList(Int64 categoryId)
         {
             return new ServiceListIterator(categoryId);
+        }
+
+        public Int64 GetCategoryIdByServiceId(Int64 id)
+        {
+            SQLiteDataReader reader = Query("SELECT " + TableInfoHolder.CATEGORY.table + ".id FROM " +
+                TableInfoHolder.SERVICE_LIST.table + " INNER JOIN " + TableInfoHolder.CATEGORY.table +
+                " ON " + TableInfoHolder.CATEGORY.table + ".id = category_id" +
+                " WHERE " + TableInfoHolder.SERVICE_LIST.table + ".id = " + id + ";");
+
+            if (!reader.Read())
+                throw new Exception("No items found");
+
+            return reader.GetInt64(0);
         }
 
         public static CategoryIterator GetCategories()
