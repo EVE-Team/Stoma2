@@ -13,12 +13,31 @@ namespace Stoma2
 {
 	public partial class Treatment : Form
 	{
-        public ClientRecord clientRecord = null;
+        private ClientRecord clientRecord = null;
 
 		public Treatment()
 		{
 			InitializeComponent();
+            OnClientUpdate();
 		}
+
+        public void SetClient(ClientRecord clientRecord)
+        {
+            this.clientRecord = clientRecord;
+            OnClientUpdate();
+        }
+
+        private void OnClientUpdate()
+        {
+            if (clientRecord != null)
+            {
+                patientFIO.Text = clientRecord.GetFullName();
+            }
+            else
+            {
+                patientFIO.Text = "вообще хз кого";
+            }
+        }
 
         private void btnAdd_Click(object sender, EventArgs e)
 		{

@@ -89,7 +89,7 @@ namespace Stoma2
 
         public void goToTreatment(ClientRecord client)
         {
-            ((Treatment)treatmentForm).clientRecord = client;
+            ((Treatment)treatmentForm).SetClient(client);
             rbTreatment.Checked = true;
         }
 
