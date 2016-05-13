@@ -56,6 +56,79 @@ namespace Stoma2
                     appointmentListView.Items.Add(item);
                 }
             }
+
+            appointmentListView_SelectedIndexChanged();
+        }
+
+        private void appointmentListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            appointmentListView_SelectedIndexChanged();
+        }
+
+        private void appointmentListView_SelectedIndexChanged()
+        {
+            if (appointmentListView.SelectedItems.Count == 0)
+            {
+                doctorTextBox.Clear();
+                diagnosisTextBox.Clear();
+                toothtextBox.Clear();
+
+                btnAdd.Enabled = false;
+            }
+            else
+            {
+                AppointmentRecord rec = (AppointmentRecord) appointmentListView.SelectedItems[0].Tag;
+                doctorTextBox.Text = rec.Data.DoctorId.ToString();
+                diagnosisTextBox.Text = rec.Data.Diagnosis;
+                toothtextBox.Text = rec.Data.Tooth.ToString();
+
+                btnAdd.Enabled = true;
+            }
+
+            UpdateTreatmentList();
+        }
+
+        private void UpdateTreatmentList()
+        {
+            treatmentListView.Items.Clear();
+
+            if (appointmentListView.SelectedItems.Count == 1)
+            {
+                AppointmentRecord apRec = (AppointmentRecord) appointmentListView.SelectedItems[0].Tag;
+
+                foreach (TreatmentRecord rec in StomaDB.GetTreatments(apRec))
+                {
+                    var item = new ListViewItem(new string[] {
+                        rec.Data.ServiceId.ToString(),
+                        rec.Data.ServiceId.ToString(),
+					    rec.Data.Count.ToString(),
+                        "not ready yet"
+                    });
+                    item.Tag = rec;
+                    treatmentListView.Items.Add(item);
+                }
+            }
+
+            treatmentListView_SelectedIndexChanged();
+        }
+
+        private void treatmentListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            treatmentListView_SelectedIndexChanged();
+        }
+
+        private void treatmentListView_SelectedIndexChanged()
+        {
+            if (treatmentListView.SelectedItems.Count == 0)
+            {
+                btnEdit.Enabled = false;
+                btnDelete.Enabled = false;
+            }
+            else
+            {
+                btnEdit.Enabled = true;
+                btnDelete.Enabled = true;
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -80,7 +153,7 @@ namespace Stoma2
                 return;
             }
 
-            ListView.ListViewItemCollection workList = visitListView.Items;
+            ListView.ListViewItemCollection workList = treatmentListView.Items;
             if (workList.Count == 0)
             {
                 MessageBox.Show("Выберите дату приема из списка.", "Ошибка");
@@ -114,16 +187,16 @@ namespace Stoma2
 
             Word.Table wordTable = winApp.ActiveDocument.Tables[1];
 
-            for (int i = 0; i < visitListView.Items.Count; ++i)
+            for (int i = 0; i < treatmentListView.Items.Count; ++i)
             {
                 wordTable.Rows.Add();
             }
 
-            for (int i = 0; i < visitListView.Items.Count; ++i)
+            for (int i = 0; i < treatmentListView.Items.Count; ++i)
             {
                 if (i == 0)
                 {
-                    ListViewItem t = visitListView.Items[i];
+                    ListViewItem t = treatmentListView.Items[i];
                     ListViewItem.ListViewSubItemCollection subt = t.SubItems;
                     Word.Row currentRow = wordTable.Rows[i+2];
                     for (int j = 1; j < currentRow.Cells.Count + 1; ++j)
@@ -158,7 +231,7 @@ namespace Stoma2
                 }
                 else
                 {
-                    ListViewItem t = visitListView.Items[i];
+                    ListViewItem t = treatmentListView.Items[i];
                     ListViewItem.ListViewSubItemCollection subt = t.SubItems;
                     Word.Row currentRow = wordTable.Rows[i + 2];
 

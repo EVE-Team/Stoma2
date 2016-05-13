@@ -49,7 +49,7 @@
             this.patientFIO = new System.Windows.Forms.TextBox();
             this.costLabel = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.visitListView = new System.Windows.Forms.ListView();
+            this.treatmentListView = new System.Windows.Forms.ListView();
             this.columnHeader21 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader22 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader23 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -129,32 +129,33 @@
             this.label6.TabIndex = 38;
             this.label6.Text = "Общая стоимость:";
             // 
-            // visitListView
+            // treatmentListView
             // 
-            this.visitListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.treatmentListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.visitListView.BackColor = System.Drawing.Color.White;
-            this.visitListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.visitListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.treatmentListView.BackColor = System.Drawing.Color.White;
+            this.treatmentListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.treatmentListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader21,
             this.columnHeader22,
             this.columnHeader23,
             this.columnHeader24});
-            this.visitListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.visitListView.FullRowSelect = true;
-            this.visitListView.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            this.treatmentListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.treatmentListView.FullRowSelect = true;
+            this.treatmentListView.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1,
             listViewItem2,
             listViewItem3});
-            this.visitListView.Location = new System.Drawing.Point(11, 59);
-            this.visitListView.MultiSelect = false;
-            this.visitListView.Name = "visitListView";
-            this.visitListView.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.visitListView.Size = new System.Drawing.Size(739, 334);
-            this.visitListView.TabIndex = 36;
-            this.visitListView.UseCompatibleStateImageBehavior = false;
-            this.visitListView.View = System.Windows.Forms.View.Details;
+            this.treatmentListView.Location = new System.Drawing.Point(11, 59);
+            this.treatmentListView.MultiSelect = false;
+            this.treatmentListView.Name = "treatmentListView";
+            this.treatmentListView.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.treatmentListView.Size = new System.Drawing.Size(739, 334);
+            this.treatmentListView.TabIndex = 36;
+            this.treatmentListView.UseCompatibleStateImageBehavior = false;
+            this.treatmentListView.View = System.Windows.Forms.View.Details;
+            this.treatmentListView.SelectedIndexChanged += new System.EventHandler(this.treatmentListView_SelectedIndexChanged);
             // 
             // columnHeader21
             // 
@@ -280,7 +281,7 @@
             this.groupBox2.Controls.Add(this.btnEdit);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.btnDelete);
-            this.groupBox2.Controls.Add(this.visitListView);
+            this.groupBox2.Controls.Add(this.treatmentListView);
             this.groupBox2.Controls.Add(this.btnPrint);
             this.groupBox2.Location = new System.Drawing.Point(298, 1);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(0);
@@ -382,6 +383,7 @@
             this.appointmentListView.TabIndex = 44;
             this.appointmentListView.UseCompatibleStateImageBehavior = false;
             this.appointmentListView.View = System.Windows.Forms.View.Details;
+            this.appointmentListView.SelectedIndexChanged += new System.EventHandler(this.appointmentListView_SelectedIndexChanged);
             // 
             // columnHeader1
             // 
@@ -453,7 +455,7 @@
 		private System.Windows.Forms.Button btnDelete;
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.Button btnEdit;
-        private System.Windows.Forms.ListView visitListView;
+        private System.Windows.Forms.ListView treatmentListView;
 		private System.Windows.Forms.ColumnHeader columnHeader21;
 		private System.Windows.Forms.ColumnHeader columnHeader22;
 		private System.Windows.Forms.ColumnHeader columnHeader23;
