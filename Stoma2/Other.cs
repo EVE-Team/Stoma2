@@ -22,25 +22,25 @@ namespace Stoma2
 		{
 			InitializeComponent();
 
-			radioButton7_CheckedChanged(null, null);
+            rbPriceList_CheckedChanged(null, null);
 		}
 
-		private void radioButton7_CheckedChanged(object sender, EventArgs e)
+        private void rbPriceList_CheckedChanged(object sender, EventArgs e)
 		{
             Utils.SetPanelForm(pnlContent, priceListForm);
 		}
 
-		private void radioButton9_CheckedChanged(object sender, EventArgs e)
+        private void rbDoctors_CheckedChanged(object sender, EventArgs e)
 		{
             Utils.SetPanelForm(pnlContent, doctorForm);
 		}
 
-		private void radioButton11_CheckedChanged(object sender, EventArgs e)
+        private void rbDoctorReport_CheckedChanged(object sender, EventArgs e)
 		{
             Utils.SetPanelForm(pnlContent, reportForm);
 		}
 
-		private void radioButton10_CheckedChanged(object sender, EventArgs e)
+        private void rbBackup_CheckedChanged(object sender, EventArgs e)
 		{
             Utils.SetPanelForm(pnlContent, backupForm);
 		}

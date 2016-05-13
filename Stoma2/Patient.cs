@@ -20,7 +20,7 @@ namespace Stoma2
             Utils.SetPanelForm(pnlPatientInfo, Utils.SetupForm(new PatientInfo()));
 		}
 
-        private void button7_Click(object sender, EventArgs e)
+        private void btnEdit_Click(object sender, EventArgs e)
         {
             NewPatient form = new NewPatient();
             form.RecordForEditing = (ClientRecord)patientListView.SelectedItems[0].Tag;
@@ -32,7 +32,7 @@ namespace Stoma2
             }
         }
 
-		private void btnOk_Click(object sender, EventArgs e)
+		private void btnAdd_Click(object sender, EventArgs e)
 		{
 			var form = new NewPatient();
 			form.ShowDialog(this);
@@ -86,7 +86,7 @@ namespace Stoma2
             UpdatePatientList();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void toTreatmentBtn_Click(object sender, EventArgs e)
         {
             //Program.mainForm.goToTreatment();
             //Control.ControlCollection col = pnlPatientInfo.Controls[0].Controls[0].Text.ToString();

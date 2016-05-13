@@ -18,13 +18,13 @@ namespace Stoma2
 			InitializeComponent();
 		}
 
-		private void button8_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
 		{
 			var form = new NewTreatment();
 			form.ShowDialog(this);
 		}
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnAddAppointment_Click(object sender, EventArgs e)
         {
             /*var form = new NewAppointment();
             form.ShowDialog(this);*/

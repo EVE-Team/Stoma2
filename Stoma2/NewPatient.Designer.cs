@@ -154,7 +154,7 @@
             this.btnApply.Text = "Добавить";
             this.btnApply.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnApply.UseVisualStyleBackColor = false;
-            this.btnApply.Click += new System.EventHandler(this.button8_Click);
+            this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 
             // label24
             // 

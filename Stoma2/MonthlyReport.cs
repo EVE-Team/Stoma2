@@ -25,7 +25,7 @@ namespace Stoma2
             foreach (DoctorRecord rec in StomaDB.GetDoctors())
             {
                 var item = new ListViewItem(new string[] {
-                    rec.Data.LastName,
+                    rec.GetFullName(),
 					"0"
                 });
                 item.Tag = rec;

@@ -79,7 +79,7 @@
             this.rbDoctorReport.TabIndex = 22;
             this.rbDoctorReport.Text = "Отчет по врачам";
             this.rbDoctorReport.UseVisualStyleBackColor = false;
-            this.rbDoctorReport.CheckedChanged += new System.EventHandler(this.radioButton11_CheckedChanged);
+            this.rbDoctorReport.CheckedChanged += new System.EventHandler(this.rbDoctorReport_CheckedChanged);
             // 
             // rbBackup
             // 
@@ -103,7 +103,7 @@
             this.rbBackup.TabIndex = 21;
             this.rbBackup.Text = "Резервное копирование";
             this.rbBackup.UseVisualStyleBackColor = false;
-            this.rbBackup.CheckedChanged += new System.EventHandler(this.radioButton10_CheckedChanged);
+            this.rbBackup.CheckedChanged += new System.EventHandler(this.rbBackup_CheckedChanged);
             // 
             // rbVisits
             // 
@@ -149,7 +149,7 @@
             this.rbDoctors.TabIndex = 20;
             this.rbDoctors.Text = "Врачи";
             this.rbDoctors.UseVisualStyleBackColor = false;
-            this.rbDoctors.CheckedChanged += new System.EventHandler(this.radioButton9_CheckedChanged);
+            this.rbDoctors.CheckedChanged += new System.EventHandler(this.rbDoctors_CheckedChanged);
             // 
             // rbPriceList
             // 
@@ -173,7 +173,7 @@
             this.rbPriceList.TabStop = true;
             this.rbPriceList.Text = "Прайс-лист";
             this.rbPriceList.UseVisualStyleBackColor = false;
-            this.rbPriceList.CheckedChanged += new System.EventHandler(this.radioButton7_CheckedChanged);
+            this.rbPriceList.CheckedChanged += new System.EventHandler(this.rbPriceList_CheckedChanged);
             // 
             // groupBox2
             // 

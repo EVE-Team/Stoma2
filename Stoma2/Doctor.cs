@@ -18,7 +18,7 @@ namespace Stoma2
             UpdateDoctorList();
 		}
 
-        private void button8_Click(object sender, EventArgs e)
+        private void addBtn_Click(object sender, EventArgs e)
         {
             NewDoctor form = new NewDoctor();
             form.ShowDialog();
@@ -29,7 +29,7 @@ namespace Stoma2
             }
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void editBtn_Click(object sender, EventArgs e)
         {
             NewDoctor form = new NewDoctor();
 			form.RecordForEditing = (DoctorRecord)doctorListView.SelectedItems[0].Tag;

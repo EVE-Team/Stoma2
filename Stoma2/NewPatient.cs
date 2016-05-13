@@ -60,7 +60,7 @@ namespace Stoma2
             }
         }
 
-		private void button8_Click(object sender, EventArgs e)
+		private void btnApply_Click(object sender, EventArgs e)
 		{
             if (RecordForEditing == null)
             {

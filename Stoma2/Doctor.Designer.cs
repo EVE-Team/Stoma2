@@ -203,7 +203,7 @@
 			this.addBtn.Text = "Добавить";
 			this.addBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			this.addBtn.UseVisualStyleBackColor = false;
-			this.addBtn.Click += new System.EventHandler(this.button8_Click);
+            this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
 			// 
 			// editBtn
 			// 
@@ -224,7 +224,7 @@
 			this.editBtn.Text = "Редактировать";
 			this.editBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			this.editBtn.UseVisualStyleBackColor = false;
-			this.editBtn.Click += new System.EventHandler(this.button7_Click);
+            this.editBtn.Click += new System.EventHandler(this.editBtn_Click);
 			// 
 			// delBtn
 			// 

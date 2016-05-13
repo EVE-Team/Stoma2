@@ -153,7 +153,7 @@
             this.btnEdit.Text = "Редактировать";
             this.btnEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEdit.UseVisualStyleBackColor = false;
-            this.btnEdit.Click += new System.EventHandler(this.button7_Click);
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnDelete
             // 
@@ -193,7 +193,7 @@
             this.btnAdd.Text = "Добавить";
             this.btnAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAdd.UseVisualStyleBackColor = false;
-            this.btnAdd.Click += new System.EventHandler(this.btnOk_Click);
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // button1
             // 
@@ -231,7 +231,7 @@
             this.toTreatmentBtn.Text = "Перейти к лечению";
             this.toTreatmentBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.toTreatmentBtn.UseVisualStyleBackColor = false;
-            this.toTreatmentBtn.Click += new System.EventHandler(this.button2_Click);
+            this.toTreatmentBtn.Click += new System.EventHandler(this.toTreatmentBtn_Click);
             // 
             // Patient
             // 

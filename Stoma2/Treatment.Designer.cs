@@ -307,7 +307,7 @@
             this.btnAdd.Text = "Добавить";
             this.btnAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAdd.UseVisualStyleBackColor = false;
-            this.btnAdd.Click += new System.EventHandler(this.button8_Click);
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnEdit
             // 
@@ -404,7 +404,7 @@
             this.btnAddAppointment.TabIndex = 72;
             this.btnAddAppointment.Text = "Добавить прием";
             this.btnAddAppointment.UseVisualStyleBackColor = false;
-            this.btnAddAppointment.Click += new System.EventHandler(this.button1_Click);
+            this.btnAddAppointment.Click += new System.EventHandler(this.btnAddAppointment_Click);
             // 
             // patientLabel
             // 
