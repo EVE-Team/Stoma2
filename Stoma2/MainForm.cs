@@ -30,7 +30,18 @@ namespace Stoma2
         Other otherForm = Utils.SetupForm(new Other());
 		//
 
-		public MainForm()
+        public void OnDoctorUpdate()
+        {
+            otherForm.OnDoctorUpdate();
+        }
+
+        public void OnClientUpdate()
+        {
+            patientForm.UpdatePatientList();
+            treatmentForm.SetClient(null);
+        }
+
+        public MainForm()
 		{
 			InitializeComponent();
 
@@ -65,6 +76,9 @@ namespace Stoma2
 
 			// New appointment selected by default
 			rbAppointment_CheckedChanged(null, null);
+
+            OnDoctorUpdate();
+            OnClientUpdate();
 		}
 
 		private void rbOther_CheckedChanged(object sender, EventArgs e)

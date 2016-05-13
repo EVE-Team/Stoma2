@@ -18,7 +18,13 @@ namespace Stoma2
         BackUp backupForm = Utils.SetupForm(new BackUp());
         Visit visitForm = Utils.SetupForm(new Visit());
 
-		public Other()
+        public void OnDoctorUpdate()
+        {
+            doctorForm.UpdateDoctorList();
+            reportForm.UpdateReportListView();
+        }
+
+        public Other()
 		{
 			InitializeComponent();
 

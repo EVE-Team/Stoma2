@@ -15,7 +15,6 @@ namespace Stoma2
 		public Doctor()
 		{
 			InitializeComponent();
-            UpdateDoctorList();
 		}
 
         private void addBtn_Click(object sender, EventArgs e)
@@ -25,7 +24,7 @@ namespace Stoma2
 
             if (form.BaseModified)
             {
-                UpdateDoctorList();
+                Program.mainForm.OnDoctorUpdate();
             }
         }
 
@@ -37,11 +36,11 @@ namespace Stoma2
 
 			if (form.BaseModified)
 			{
-				UpdateDoctorList();
+                Program.mainForm.OnDoctorUpdate();
 			}
         }
 
-        private void UpdateDoctorList()
+        public void UpdateDoctorList()
         {
             doctorListView.Items.Clear();
 
@@ -54,9 +53,16 @@ namespace Stoma2
 				item.Tag = rec;
 				doctorListView.Items.Add(item);
 			}
+
+            doctorListView_SelectedIndexChanged();
         }
 
         private void doctorListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            doctorListView_SelectedIndexChanged();
+        }
+
+        private void doctorListView_SelectedIndexChanged()
         {
             if (doctorListView.SelectedItems.Count == 0)
             {
@@ -81,7 +87,7 @@ namespace Stoma2
         {
 			DoctorRecord rec = (DoctorRecord)doctorListView.SelectedItems[0].Tag;
 			rec.Delete();
-            UpdateDoctorList();
+            Program.mainForm.OnDoctorUpdate();
         }
 
 		private void searchBox_TextChanged(object sender, EventArgs e)

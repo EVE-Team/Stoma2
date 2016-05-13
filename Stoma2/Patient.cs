@@ -16,7 +16,6 @@ namespace Stoma2
 		{
 			InitializeComponent();
             Utils.SetPanelForm(pnlPatientInfo, Utils.SetupForm(new PatientInfo()));
-            UpdatePatientList();
 		}
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -27,7 +26,7 @@ namespace Stoma2
 
             if (form.BaseModified)
             {
-                UpdatePatientList();
+                Program.mainForm.OnClientUpdate();
             }
         }
 
@@ -38,12 +37,11 @@ namespace Stoma2
 
             if (form.BaseModified)
             {
-                UpdatePatientList();
+                Program.mainForm.OnClientUpdate();
             }
-
 		}
 
-        private void UpdatePatientList()
+        public void UpdatePatientList()
         {
             patientListView.Items.Clear();
 
@@ -89,7 +87,7 @@ namespace Stoma2
         {
             ClientRecord rec = (ClientRecord)patientListView.SelectedItems[0].Tag;
             rec.Delete();
-            UpdatePatientList();
+            Program.mainForm.OnClientUpdate();
         }
 
         private void toTreatmentBtn_Click(object sender, EventArgs e)

@@ -18,7 +18,7 @@ namespace Stoma2
             UpdateReportListView();
 		}
 
-        private void UpdateReportListView()
+        public void UpdateReportListView()
         {
             reportListView.Items.Clear();
 
