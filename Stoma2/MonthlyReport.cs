@@ -21,14 +21,13 @@ namespace Stoma2
         public void UpdateReportListView()
         {
             reportListView.Items.Clear();
-
-            foreach (DoctorRecord rec in StomaDB.GetDoctors())
+            var reader = StomaDB.Instance.GetDoctorAndAmountOfPatients();
+            while (reader.Read())
             {
                 var item = new ListViewItem(new string[] {
-                    rec.GetFullName(),
-					"0"
+                    DatabaseUtils.DecodeString(reader["name_last"].ToString()),
+                    reader["amount_patients"].ToString()
                 });
-                item.Tag = rec;
                 reportListView.Items.Add(item);
             }
         }
