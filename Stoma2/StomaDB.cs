@@ -818,6 +818,17 @@ namespace Stoma2
             return reader.GetInt64(0);
         }
 
+
+        public SQLiteDataReader GetDoctorAndAmountOfPatients()
+        {
+            SQLiteDataReader reader = Query("SELECT " + TableInfoHolder.DOCTOR.table + ".name_last, COUNT(client_id) AS amount_patients FROM " +
+                TableInfoHolder.DOCTOR.table + " LEFT JOIN " + "(SELECT * FROM " + TableInfoHolder.APPOINTMENT.table +" GROUP BY client_id, doctor_id)" +
+                " ON " + TableInfoHolder.DOCTOR.table + ".id = doctor_id" +
+                " GROUP BY name_last;");
+            //"WHERE strftime('%m', appointments.date) = strftime('%m',DATE()) ");
+            return reader;
+        }
+
         public static CategoryIterator GetCategories()
         {
             return new CategoryIterator();
