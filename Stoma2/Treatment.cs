@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 using Word = Microsoft.Office.Interop.Word;
 
 namespace Stoma2
@@ -50,7 +51,7 @@ namespace Stoma2
                 foreach (AppointmentRecord rec in StomaDB.GetAppointments(clientRecord))
                 {
                     var item = new ListViewItem(new string[] {
-                        Utils.DateToString(rec.Data.Date)
+                       rec.Data.Date
                     });
                     item.Tag = rec;
                     appointmentListView.Items.Add(item);
@@ -177,8 +178,8 @@ namespace Stoma2
                 return;
             }
 
-            //Здесь укажите свой путь до файла
-            object filePath = "C:\\Users\\EugeneDolgushev\\Documents\\GitHub\\Stoma2\\Stoma2\\bin\\Debug\\Example.docx";
+            //Здесь укажите свой путь до файла           
+            object filePath = Directory.GetCurrentDirectory() + "\\Example.docx";
             object falseValue = false;
             object trueValue = true;
             object missing = Type.Missing;

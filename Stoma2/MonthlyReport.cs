@@ -23,10 +23,10 @@ namespace Stoma2
             reportListView.Items.Clear();
             var reader = StomaDB.Instance.GetDoctorAndAmountOfPatients();
             while (reader.Read())
-            {
-                var item = new ListViewItem(new string[] {
+            {                
+                var item = new ListViewItem(new string[] {                    
                     DatabaseUtils.DecodeString(reader["name_last"].ToString()),
-                    reader["amount_patients"].ToString()
+                    reader["amount_patients"].ToString()                   
                 });
                 reportListView.Items.Add(item);
             }

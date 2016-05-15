@@ -329,9 +329,10 @@ namespace Stoma2
         }
     }
 
+
     public class AppointmentFields : DataFields
     {
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
         public string Diagnosis { get; set; }
         public Int64 Tooth { get; set; }
         public Int64 DoctorId { get; set; }
@@ -340,7 +341,7 @@ namespace Stoma2
         public override object[] ToStrArray()
         {
             return new object[] {
-                Date.ToString(),
+                Date,
                 Diagnosis,
                 Tooth,
                 DoctorId,
@@ -355,7 +356,7 @@ namespace Stoma2
                 throw new Exception("Type mismatch");
             }
 
-            Date = DateTime.Parse(strArray[0].ToString());
+            Date = strArray[0].ToString();
             Diagnosis = strArray[1].ToString();
             Tooth = (Int64)strArray[2];
             DoctorId = (Int64)strArray[3];
@@ -818,14 +819,21 @@ namespace Stoma2
             return reader.GetInt64(0);
         }
 
+        public String GetCurrentTimestamp()
+        {
+            SQLiteDataReader reader = Query("SELECT DateTime('now') as now;");
+            return reader["now"].ToString();
+        }
+
 
         public SQLiteDataReader GetDoctorAndAmountOfPatients()
-        {
-            SQLiteDataReader reader = Query("SELECT " + TableInfoHolder.DOCTOR.table + ".name_last, COUNT(client_id) AS amount_patients FROM " +
-                TableInfoHolder.DOCTOR.table + " LEFT JOIN " + "(SELECT * FROM " + TableInfoHolder.APPOINTMENT.table +" GROUP BY client_id, doctor_id)" +
-                " ON " + TableInfoHolder.DOCTOR.table + ".id = doctor_id" +
+        {           
+           SQLiteDataReader reader = Query("SELECT " + TableInfoHolder.DOCTOR.table + ".name_last, COUNT(client_id) AS amount_patients  FROM " +
+                TableInfoHolder.DOCTOR.table + " LEFT JOIN " +
+                "(SELECT * FROM " + TableInfoHolder.APPOINTMENT.table + " WHERE strftime('%m', date) = strftime('%m', date()) " + 
+                "AND strftime('%Y', date) = strftime('%Y', date()) GROUP BY client_id, doctor_id)"
+                 + " ON " + TableInfoHolder.DOCTOR.table + ".id = doctor_id" +
                 " GROUP BY name_last;");
-            //"WHERE strftime('%m', appointments.date) = strftime('%m',DATE()) ");
             return reader;
         }
 
