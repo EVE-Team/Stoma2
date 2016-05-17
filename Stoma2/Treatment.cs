@@ -92,22 +92,27 @@ namespace Stoma2
         private void UpdateTreatmentList()
         {
             treatmentListView.Items.Clear();
+            costLabel.Text = "";
 
             if (appointmentListView.SelectedItems.Count == 1)
             {
-                AppointmentRecord apRec = (AppointmentRecord) appointmentListView.SelectedItems[0].Tag;
+                AppointmentRecord apRec = (AppointmentRecord)appointmentListView.SelectedItems[0].Tag;
+                Int64 totalPrice = 0;
 
                 foreach (TreatmentRecord rec in StomaDB.GetTreatments(apRec))
                 {
                     var item = new ListViewItem(new string[] {
-                        rec.Data.ServiceId.ToString(),
-                        rec.Data.ServiceId.ToString(),
+                        rec.serviceData.Name,
+                        rec.serviceData.Price.ToString(),
 					    rec.Data.Count.ToString(),
-                        "not ready yet"
+                        rec.GetTotalPrice().ToString()
                     });
                     item.Tag = rec;
                     treatmentListView.Items.Add(item);
+                    totalPrice += rec.GetTotalPrice();
                 }
+
+                costLabel.Text = totalPrice + " рублей";
             }
 
             treatmentListView_SelectedIndexChanged();

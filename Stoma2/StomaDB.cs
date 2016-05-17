@@ -627,9 +627,24 @@ namespace Stoma2
 
         public TreatmentRecord(Int64 id, object[] data)
             : base(id, data)
-        {}
+        {
+            serviceData = new ServiceData();
+        }
 
         public TreatmentFields Data { get { return (TreatmentFields)data; } }
+
+        public class ServiceData
+        {
+            public string Name { get; set; }
+            public Int64 Price { get; set; }
+        };
+
+        public ServiceData serviceData;
+
+        public Int64 GetTotalPrice()
+        {
+            return serviceData.Price * Data.Count;
+        }
     }
 
     public class DoctorIterator : DatabaseIterator
@@ -685,8 +700,8 @@ namespace Stoma2
         public AppointmentIterator(ClientRecord client)
         {
             Init("SELECT * FROM " + TableInfoHolder.APPOINTMENT.table + " INNER JOIN " + TableInfoHolder.DOCTOR.table +
-            " ON " + TableInfoHolder.APPOINTMENT.rows[3] + " = " + TableInfoHolder.DOCTOR.FullIdRowName() +
-            " WHERE " + TableInfoHolder.APPOINTMENT.rows[4] + " = " + client.ID + ";");
+                " ON " + TableInfoHolder.APPOINTMENT.rows[3] + " = " + TableInfoHolder.DOCTOR.FullIdRowName() +
+                " WHERE " + TableInfoHolder.APPOINTMENT.rows[4] + " = " + client.ID + ";");
         }
 
         protected override TableInfo GetTableInfo()
@@ -707,12 +722,23 @@ namespace Stoma2
     public class TreatmentIterator : DatabaseIterator
     {
         public TreatmentIterator(AppointmentRecord appointment)
-            : base("", null, TableInfoHolder.TREATMENT.rows[1] + "=" + appointment.ID)
-        {}
+        {
+            Init("SELECT * FROM " + TableInfoHolder.TREATMENT.table + " INNER JOIN " + TableInfoHolder.SERVICE_LIST.table +
+                " ON " + TableInfoHolder.TREATMENT.rows[0] + " = " + TableInfoHolder.SERVICE_LIST.FullIdRowName() +
+                " WHERE " + TableInfoHolder.TREATMENT.rows[1] + "=" + appointment.ID + ";");
+        }
 
         protected override TableInfo GetTableInfo()
         {
             return TableInfoHolder.TREATMENT;
+        }
+
+        protected override void AfterCreateEnumerator(object enumerator)
+        {
+            base.AfterCreateEnumerator(enumerator);
+            TreatmentRecord rec = (TreatmentRecord)enumerator;
+            rec.serviceData.Name = m_reader[TableInfoHolder.SERVICE_LIST.rows[0]].ToString();
+            rec.serviceData.Price = (Int64)m_reader[TableInfoHolder.SERVICE_LIST.rows[1]];
         }
     }
 
