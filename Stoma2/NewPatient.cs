@@ -96,15 +96,15 @@ namespace Stoma2
 
             try
             {
-                fields.Birthday = new DateTime(
+                fields.Birthday = (new DateTime(
                     Int32.Parse(cmbYear.Text),
                     cmbMonth.SelectedIndex + 1,
                     Int32.Parse(cmbDay.Text)
-                );
+                )).ToString("yyyy-MM-dd HH:mm");
             }
             catch (Exception)
             {
-                fields.Birthday = DateTime.MinValue;
+                fields.Birthday = DateTime.MinValue.ToString("yyyy-MM-dd HH:mm");
             }
 
             fields.AddressSubject = addressSubjectBox.Text;
@@ -124,11 +124,11 @@ namespace Stoma2
             nameLastBox.Text = fields.NameLast;
             patronymicBox.Text = fields.NamePatronymic;
 
-            if (fields.Birthday != DateTime.MinValue)
+            if (fields.Birthday != DateTime.MinValue.ToString("yyyy-MM-dd HH:mm"))
             {
-                cmbYear.Text = fields.Birthday.Year.ToString();
-                cmbMonth.SelectedIndex = fields.Birthday.Month - 1;
-                cmbDay.Text = fields.Birthday.Day.ToString();
+                cmbYear.Text = DateTime.Parse(fields.Birthday).Year.ToString();
+                cmbMonth.SelectedIndex = DateTime.Parse(fields.Birthday).Month - 1;
+                cmbDay.Text = DateTime.Parse(fields.Birthday).Day.ToString();
             }
 
             addressSubjectBox.Text = fields.AddressSubject;

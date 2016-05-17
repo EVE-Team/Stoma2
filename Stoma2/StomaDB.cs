@@ -223,7 +223,7 @@ namespace Stoma2
         public string NameFirst { get; set; }
         public string NameLast { get; set; }
         public string NamePatronymic { get; set; }
-        public DateTime Birthday { get; set; }
+        public string Birthday { get; set; }
         public string AddressSubject { get; set; }
         public string AddressCity { get; set; }
         public string AddressStreet { get; set; }
@@ -233,11 +233,11 @@ namespace Stoma2
         public string Position { get; set; }
         public string Phone { get; set; }
         public string Notes { get; set; }
-        public DateTime LastInvite { get; set; }
+        public string LastInvite { get; set; }
 
         public ClientFields()
         {
-            LastInvite = DateTime.MinValue;
+            LastInvite = DateTime.MinValue.ToString("yyyy-MM-dd HH:mm");
         }
 
         public override object[] ToStrArray()
@@ -246,7 +246,7 @@ namespace Stoma2
                 DatabaseUtils.EncodeString(NameFirst),
                 DatabaseUtils.EncodeString(NameLast),
                 DatabaseUtils.EncodeString(NamePatronymic),
-                Birthday.ToString(),
+                Birthday,
                 AddressSubject,
                 AddressCity,
                 AddressStreet,
@@ -256,7 +256,7 @@ namespace Stoma2
                 Position,
                 Phone,
                 Notes,
-                LastInvite.ToString()
+                LastInvite
             };
         }
 
@@ -265,7 +265,7 @@ namespace Stoma2
             NameFirst = DatabaseUtils.DecodeString(strArray[0].ToString());
             NameLast = DatabaseUtils.DecodeString(strArray[1].ToString());
             NamePatronymic = DatabaseUtils.DecodeString(strArray[2].ToString());
-            Birthday = DateTime.Parse(strArray[3].ToString());
+            Birthday = strArray[3].ToString();
             AddressSubject = strArray[4].ToString();
             AddressCity = strArray[5].ToString();
             AddressStreet = strArray[6].ToString();
@@ -275,7 +275,7 @@ namespace Stoma2
             Position = strArray[10].ToString();
             Phone = strArray[11].ToString();
             Notes = strArray[12].ToString();
-            LastInvite = DateTime.Parse(strArray[13].ToString());
+            LastInvite = strArray[13].ToString();
         }
 
         public override TableInfo GetTableInfo()
@@ -413,7 +413,7 @@ namespace Stoma2
 
         protected void Init(string query)
         {
-            m_reader = StomaDB.Instance.Query(query);
+            m_reader = StomaDB.Instance.Query(query);            
         }
 
         public IEnumerator GetEnumerator()
@@ -851,6 +851,12 @@ namespace Stoma2
 			}
 			return result;
 		}
+
+        public static string GetCurrentTimestamp()
+        {
+            return DateTime.Now.ToString("yyyy-MM-dd HH:mm");
+        }
+
 	}
 
 	// -=-=-=-=-=-=-=-=-=-=-=-
@@ -904,13 +910,7 @@ namespace Stoma2
                 throw new Exception("No items found");
 
             return reader.GetInt64(0);
-        }
-
-        public String GetCurrentTimestamp()
-        {
-            SQLiteDataReader reader = Query("SELECT DateTime('now') as now;");
-            return reader["now"].ToString();
-        }
+        }        
 
 
         public SQLiteDataReader GetDoctorAndAmountOfPatients()
