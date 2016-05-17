@@ -36,6 +36,16 @@ namespace Stoma2
             }
         }
 
+        public string FullIdRowName()
+        {
+            return table + "." + TableInfoHolder.ID_ROW;
+        }
+
+        public string FullRowName(int rowInd)
+        {
+            return table + "." + rows[rowInd];
+        }
+
         abstract public DatabaseRecord CreateDatabaseRecord(Int64 id, object[] data);
     }
 
@@ -808,10 +818,10 @@ namespace Stoma2
 
         public Int64 GetCategoryIdByServiceId(Int64 id)
         {
-            SQLiteDataReader reader = Query("SELECT " + TableInfoHolder.CATEGORY.table + ".id FROM " +
+            SQLiteDataReader reader = Query("SELECT " + TableInfoHolder.CATEGORY.FullIdRowName() + " FROM " +
                 TableInfoHolder.SERVICE_LIST.table + " INNER JOIN " + TableInfoHolder.CATEGORY.table +
-                " ON " + TableInfoHolder.CATEGORY.table + ".id = category_id" +
-                " WHERE " + TableInfoHolder.SERVICE_LIST.table + ".id = " + id + ";");
+                " ON " + TableInfoHolder.CATEGORY.FullIdRowName() + " = " + TableInfoHolder.SERVICE_LIST.rows[2] +
+                " WHERE " + TableInfoHolder.SERVICE_LIST.FullIdRowName() + " = " + id + ";");
 
             if (!reader.Read())
                 throw new Exception("No items found");
