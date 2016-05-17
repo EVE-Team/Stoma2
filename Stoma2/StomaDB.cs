@@ -838,11 +838,11 @@ namespace Stoma2
 
         public SQLiteDataReader GetDoctorAndAmountOfPatients()
         {           
-           SQLiteDataReader reader = Query("SELECT " + TableInfoHolder.DOCTOR.table + ".name_last, COUNT(client_id) AS amount_patients  FROM " +
+            SQLiteDataReader reader = Query("SELECT " + TableInfoHolder.DOCTOR.FullRowName(1) + ", COUNT(client_id) AS amount_patients  FROM " +
                 TableInfoHolder.DOCTOR.table + " LEFT JOIN " +
                 "(SELECT * FROM " + TableInfoHolder.APPOINTMENT.table + " WHERE strftime('%m', date) = strftime('%m', date()) " + 
                 "AND strftime('%Y', date) = strftime('%Y', date()) GROUP BY client_id, doctor_id)"
-                 + " ON " + TableInfoHolder.DOCTOR.table + ".id = doctor_id" +
+                 + " ON " + TableInfoHolder.DOCTOR.FullIdRowName() + " = doctor_id" +
                 " GROUP BY name_last;");
             return reader;
         }
