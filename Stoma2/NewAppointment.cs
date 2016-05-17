@@ -29,7 +29,7 @@ namespace Stoma2
 		private void btnAdd_Click(object sender, EventArgs e)
 		{
             AppointmentFields newRecord = new AppointmentFields();
-            newRecord.Date = StomaDB.Instance.GetCurrentTimestamp();
+            newRecord.Date = DatabaseUtils.GetCurrentTimestamp();
             newRecord.Diagnosis = diagnosisTextBox.Text;
             newRecord.Tooth = Int64.Parse(txtTooth.Text);
             newRecord.DoctorId = doctorRecords[doctorCategory.SelectedIndex].ID;

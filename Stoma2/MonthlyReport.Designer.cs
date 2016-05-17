@@ -125,6 +125,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MonthlyReport";
             this.Text = "MonthlyReport";
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.MonthlyReport_Paint);
             this.ResumeLayout(false);
 
 		}
