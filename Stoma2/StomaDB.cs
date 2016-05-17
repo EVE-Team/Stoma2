@@ -407,13 +407,34 @@ namespace Stoma2
         }
     }
 
-    public abstract class DatabaseIterator : IEnumerable
-	{
-		protected SQLiteDataReader m_reader;
+    public abstract class AbstractDatabaseIterator : IEnumerable
+    {
+        protected SQLiteDataReader m_reader;
+
+        protected void Init(string query)
+        {
+            m_reader = StomaDB.Instance.Query(query);
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            while (m_reader.Read())
+            {
+                yield return CreateEnumerator();
+            }
+        }
+
+        abstract protected object CreateEnumerator();
+    }
+
+    public abstract class DatabaseIterator : AbstractDatabaseIterator
+    {
+        public DatabaseIterator()
+        {}
 
         public DatabaseIterator(string search_query, string[] search_columns, string additional_where_statement = "1")
-		{
-			string query = "SELECT * FROM " + GetTableInfo().table + " WHERE (";
+        {
+            string query = "SELECT * FROM " + GetTableInfo().table + " WHERE (";
 
             if (search_query.Length > 0)
             {
@@ -434,16 +455,18 @@ namespace Stoma2
 
             query += ") AND (" + additional_where_statement + ");";
 
-            m_reader = StomaDB.Instance.Query(query);
-		}
-
-        public IEnumerator GetEnumerator()
-        {
-            while (m_reader.Read())
-            {
-                yield return GetTableInfo().CreateDatabaseRecord(m_reader.GetInt64(0), GetDataArray());
-            }
+            Init(query);
         }
+
+        protected override object CreateEnumerator()
+        {
+            object enumerator = GetTableInfo().CreateDatabaseRecord(m_reader.GetInt64(0), GetDataArray());
+            AfterCreateEnumerator(enumerator);
+            return enumerator;
+        }
+
+        virtual protected void AfterCreateEnumerator(object enumerator)
+        {}
 
         protected object[] GetDataArray()
         {
@@ -574,9 +597,25 @@ namespace Stoma2
 
         public AppointmentRecord(Int64 id, object[] data)
             : base(id, data)
-        {}
+        {
+            doctorData = new DoctorData();
+        }
 
         public AppointmentFields Data { get { return (AppointmentFields)data; } }
+
+        public class DoctorData
+        {
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
+            public string Patronymic { get; set; }
+
+            public string GetFullName()
+            {
+                return String.Format("{0} {1} {2}", LastName, FirstName, Patronymic);
+            }
+        };
+
+        public DoctorData doctorData;
     }
 
     public class TreatmentRecord : DatabaseRecord
@@ -644,12 +683,24 @@ namespace Stoma2
     public class AppointmentIterator : DatabaseIterator
     {
         public AppointmentIterator(ClientRecord client)
-            : base("", null, TableInfoHolder.APPOINTMENT.rows[4] + "=" + client.ID)
-        {}
+        {
+            Init("SELECT * FROM " + TableInfoHolder.APPOINTMENT.table + " INNER JOIN " + TableInfoHolder.DOCTOR.table +
+            " ON " + TableInfoHolder.APPOINTMENT.rows[3] + " = " + TableInfoHolder.DOCTOR.FullIdRowName() +
+            " WHERE " + TableInfoHolder.APPOINTMENT.rows[4] + " = " + client.ID + ";");
+        }
 
         protected override TableInfo GetTableInfo()
         {
             return TableInfoHolder.APPOINTMENT;
+        }
+
+        protected override void AfterCreateEnumerator(object enumerator)
+        {
+            base.AfterCreateEnumerator(enumerator);
+            AppointmentRecord rec = (AppointmentRecord)enumerator;
+            rec.doctorData.FirstName = DatabaseUtils.DecodeString(m_reader[TableInfoHolder.DOCTOR.rows[0]].ToString());
+            rec.doctorData.LastName = DatabaseUtils.DecodeString(m_reader[TableInfoHolder.DOCTOR.rows[1]].ToString());
+            rec.doctorData.Patronymic = DatabaseUtils.DecodeString(m_reader[TableInfoHolder.DOCTOR.rows[2]].ToString());
         }
     }
 

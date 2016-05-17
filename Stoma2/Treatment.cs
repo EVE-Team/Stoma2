@@ -79,7 +79,7 @@ namespace Stoma2
             else
             {
                 AppointmentRecord rec = (AppointmentRecord) appointmentListView.SelectedItems[0].Tag;
-                doctorTextBox.Text = rec.Data.DoctorId.ToString();
+                doctorTextBox.Text = rec.doctorData.GetFullName();
                 diagnosisTextBox.Text = rec.Data.Diagnosis;
                 toothtextBox.Text = rec.Data.Tooth.ToString();
 
