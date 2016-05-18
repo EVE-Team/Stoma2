@@ -75,6 +75,7 @@ namespace Stoma2
                 toothtextBox.Clear();
 
                 btnAdd.Enabled = false;
+                btnPrint.Enabled = false;
             }
             else
             {
@@ -84,6 +85,7 @@ namespace Stoma2
                 toothtextBox.Text = rec.Data.Tooth.ToString();
 
                 btnAdd.Enabled = true;
+                btnPrint.Enabled = true;
             }
 
             UpdateTreatmentList();
