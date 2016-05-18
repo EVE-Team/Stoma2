@@ -237,7 +237,7 @@ namespace Stoma2
 
         public ClientFields()
         {
-            LastInvite = DateTime.MinValue.ToString("yyyy-MM-dd HH:mm");
+            LastInvite = string.Empty;
         }
 
         public override object[] ToStrArray()
@@ -850,13 +850,7 @@ namespace Stoma2
 				}
 			}
 			return result;
-		}
-
-        public static string GetCurrentTimestamp()
-        {
-            return DateTime.Now.ToString("yyyy-MM-dd HH:mm");
-        }
-
+		} 
 	}
 
 	// -=-=-=-=-=-=-=-=-=-=-=-

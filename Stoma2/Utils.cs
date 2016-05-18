@@ -58,4 +58,14 @@ namespace Stoma2
             }
         }
     }
+
+    class DateUtils
+    {
+        public static readonly string DATE_FORMAT = "yyyy-MM-dd HH:mm";
+        
+        public static string GetCurrentTimestamp()
+        {
+            return DateTime.Now.ToString(DATE_FORMAT);
+        }
+    }
 }
