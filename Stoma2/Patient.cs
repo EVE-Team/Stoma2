@@ -49,7 +49,8 @@ namespace Stoma2
             {
                 var item = new ListViewItem(new string[] {
                     rec.Data.NameLast,
-					rec.Data.NameFirst
+					rec.Data.NameFirst,
+                    rec.Data.NamePatronymic
                 });
                 item.Tag = rec;
                 patientListView.Items.Add(item);

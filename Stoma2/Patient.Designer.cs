@@ -41,6 +41,7 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.toTreatmentBtn = new System.Windows.Forms.Button();
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
@@ -88,7 +89,8 @@
             this.patientListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.patientListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
-            this.columnHeader2});
+            this.columnHeader2,
+            this.columnHeader3});
             this.patientListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.patientListView.FullRowSelect = true;
             this.patientListView.Location = new System.Drawing.Point(10, 66);
@@ -103,7 +105,7 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "Фамилия";
-            this.columnHeader1.Width = 99;
+            this.columnHeader1.Width = 105;
             // 
             // columnHeader2
             // 
@@ -233,6 +235,11 @@
             this.toTreatmentBtn.UseVisualStyleBackColor = false;
             this.toTreatmentBtn.Click += new System.EventHandler(this.toTreatmentBtn_Click);
             // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Отчество";
+            this.columnHeader3.Width = 100;
+            // 
             // Patient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -272,5 +279,6 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button toTreatmentBtn;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
 	}
 }
