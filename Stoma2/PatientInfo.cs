@@ -32,7 +32,10 @@ namespace Stoma2
         public void SetInfo(ClientRecord rec)
         {
             nameTextBox.Text = rec.GetFullName();
-            birthdayTextBox.Text = rec.Data.Birthday.Substring(0,10);
+            if (rec.Data.Birthday != string.Empty)
+            {
+                birthdayTextBox.Text = rec.Data.Birthday.Substring(0, 10);
+            }           
             phoneTextBox.Text = rec.Data.Phone;
 
             addressTextBox.Text = rec.Data.AddressSubject + ", " +
