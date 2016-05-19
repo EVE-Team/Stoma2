@@ -742,6 +742,42 @@ namespace Stoma2
         }
     }
 
+    public class ReportRecord
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Patronymic { get; set; }
+        public Int64 PatientAmount { get; set; }
+
+        public string GetFullName()
+        {
+            return String.Format("{0} {1} {2}", LastName, FirstName, Patronymic);
+        }
+    }
+
+    public class ReportIterator : AbstractDatabaseIterator
+    {
+        public ReportIterator()
+        {
+            Init("SELECT " + TableInfoHolder.DOCTOR.FullRowName(0) + "," + TableInfoHolder.DOCTOR.FullRowName(1) + "," + TableInfoHolder.DOCTOR.FullRowName(2) + ", COUNT(client_id) AS amount_patients  FROM " +
+                TableInfoHolder.DOCTOR.table + " LEFT JOIN " +
+                "(SELECT * FROM " + TableInfoHolder.APPOINTMENT.table + " WHERE strftime('%m', date) = strftime('%m', date()) " +
+                "AND strftime('%Y', date) = strftime('%Y', date()) GROUP BY client_id, doctor_id)"
+                 + " ON " + TableInfoHolder.DOCTOR.FullIdRowName() + " = doctor_id" +
+                " GROUP BY name_last;");
+        }
+
+        protected override object CreateEnumerator()
+        {
+            ReportRecord result = new ReportRecord();
+            result.FirstName = DatabaseUtils.DecodeString(m_reader[TableInfoHolder.DOCTOR.rows[0]].ToString());
+            result.LastName = DatabaseUtils.DecodeString(m_reader[TableInfoHolder.DOCTOR.rows[1]].ToString());
+            result.Patronymic = DatabaseUtils.DecodeString(m_reader[TableInfoHolder.DOCTOR.rows[2]].ToString());
+            result.PatientAmount = (Int64)m_reader["amount_patients"];
+            return result;
+        }
+    }
+
     public class DatabaseUtils
 	{
 		public static string SanitizeString(string str)
@@ -904,18 +940,12 @@ namespace Stoma2
                 throw new Exception("No items found");
 
             return reader.GetInt64(0);
-        }        
+        }
 
 
-        public SQLiteDataReader GetDoctorAndAmountOfPatients()
-        {           
-            SQLiteDataReader reader = Query("SELECT " + TableInfoHolder.DOCTOR.FullRowName(1) + ", COUNT(client_id) AS amount_patients  FROM " +
-                TableInfoHolder.DOCTOR.table + " LEFT JOIN " +
-                "(SELECT * FROM " + TableInfoHolder.APPOINTMENT.table + " WHERE strftime('%m', date) = strftime('%m', date()) " + 
-                "AND strftime('%Y', date) = strftime('%Y', date()) GROUP BY client_id, doctor_id)"
-                 + " ON " + TableInfoHolder.DOCTOR.FullIdRowName() + " = doctor_id" +
-                " GROUP BY name_last;");
-            return reader;
+        public static ReportIterator GetDoctorAndAmountOfPatients()
+        {
+            return new ReportIterator();
         }
 
         public static CategoryIterator GetCategories()
