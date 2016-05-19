@@ -445,7 +445,7 @@ namespace Stoma2
                         query += " OR ";
                     }
 
-                    query += search_columns[i] + " LIKE '%" + DatabaseUtils.EncodeString(search_query) + "%'";
+					query += search_columns[i] + " LIKE '%" + DatabaseUtils.SanitizeString(DatabaseUtils.EncodeString(search_query)) + "%'";
                 }
             }
             else
@@ -780,10 +780,11 @@ namespace Stoma2
 
     public class DatabaseUtils
 	{
+		// Call before concatenating any string to an SQL query
 		public static string SanitizeString(string str)
 		{
-			// should also remove ' ; "
-			return str.Trim();
+			// Trim spaces and escape single quote
+			return str.Trim().Replace("'", "''");
 		}
 
 		static Dictionary<char, string> translit = new Dictionary<char, string>
@@ -839,8 +840,6 @@ namespace Stoma2
 
 		public static string EncodeString(string russian)
 		{
-			russian = SanitizeString(russian);
-
 			string result = "";
 			foreach (char ch in russian)
 			{
@@ -1040,7 +1039,7 @@ namespace Stoma2
                 if (i != 0)
                     result.Append(",");
 
-                result.Append("'" + values[i] + "'");
+				result.Append("'" + DatabaseUtils.SanitizeString(values[i].ToString()) + "'");
             }
 
             result.Append(");");
@@ -1059,7 +1058,7 @@ namespace Stoma2
                 if (i != 0)
                     result.Append(",");
 
-                result.Append(info.rows[i] + "='" + values[i] + "'");
+                result.Append(info.rows[i] + "='" + DatabaseUtils.SanitizeString(values[i].ToString()) + "'");
             }
 
             result.Append(" WHERE " + TableInfoHolder.ID_ROW + "=" + id + ";");
