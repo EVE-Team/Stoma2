@@ -12,11 +12,50 @@ namespace Stoma2
 {
 	public partial class Invite : Form
 	{
+
+        private static readonly String DEFAULT_TEXT_FOR_LABEL_NUMBER_OF_PATIENT = " пациента ожидают повторного приглашения";
 		public Invite()
 		{
 			InitializeComponent();
 
             Utils.SetPanelForm(pnlPatientInfo, Utils.SetupForm(new PatientInfo()));
+            UpdatePatientListView();
 		}
+
+        private void UpdatePatientListView()
+        {
+            patientListView.Items.Clear();
+            int numberOfPatients = 0;
+            foreach (ClientRecord rec in StomaDB.GetPatientsToInvite())
+            {
+                numberOfPatients++;
+                var item = new ListViewItem(new string[] {
+                    rec.Data.NameLast,
+                    rec.Data.NameFirst,
+                    rec.Data.NamePatronymic,
+                    rec.Data.Phone
+                });
+                item.Tag = rec;
+                patientListView.Items.Add(item);
+            }
+            lblNumberOfPatient.Text = numberOfPatients.ToString() + DEFAULT_TEXT_FOR_LABEL_NUMBER_OF_PATIENT;
+        }
+
+        private void patientListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            PatientInfo piForm = (PatientInfo)Utils.GetPanelForm(pnlPatientInfo);
+
+            if (patientListView.SelectedItems.Count == 0)
+            {
+                piForm.ClearInfo();
+                btnMarkAsInvited.Enabled = false;
+                return;
+            }
+
+            ClientRecord rec = (ClientRecord)patientListView.SelectedItems[0].Tag;
+            piForm.SetInfo(rec);
+            btnMarkAsInvited.Enabled = true;
+        }
 	}
 }

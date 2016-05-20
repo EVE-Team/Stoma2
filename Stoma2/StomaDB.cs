@@ -778,6 +778,23 @@ namespace Stoma2
         }
     }
 
+
+    public class PatientsToInviteIterator : DatabaseIterator
+    {
+        public PatientsToInviteIterator()
+        {
+            Init("SELECT * FROM " + TableInfoHolder.CLIENT.table
+                + " WHERE " + "strftime('%m', last_invite) < date('now','-6 month');");
+        }
+
+        protected override TableInfo GetTableInfo()
+        {
+            return TableInfoHolder.CLIENT;
+        }
+    }
+
+
+
     public class DatabaseUtils
 	{
 		// Call before concatenating any string to an SQL query
@@ -945,6 +962,11 @@ namespace Stoma2
         public static ReportIterator GetDoctorAndAmountOfPatients()
         {
             return new ReportIterator();
+        }
+
+        public static PatientsToInviteIterator GetPatientsToInvite()
+        {
+            return new PatientsToInviteIterator();
         }
 
         public static CategoryIterator GetCategories()
