@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using Word = Microsoft.Office.Interop.Word;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+
 
 namespace Stoma2
 {
@@ -171,6 +174,8 @@ namespace Stoma2
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
+            float minimumRowHeight = 20;
+
             ListView.SelectedListViewItemCollection selectedRow = appointmentListView.SelectedItems;
             if (selectedRow.Count == 0)
             {
@@ -185,105 +190,197 @@ namespace Stoma2
                 return;
             }
 
-            //Здесь укажите свой путь до файла           
-            object filePath = Directory.GetCurrentDirectory() + "\\Example.docx";
-            object falseValue = false;
-            object trueValue = true;
-            object missing = Type.Missing;
+            Document document = new Document(PageSize.A4, 30f, 0, 20, 50);
+            PdfWriter writer = PdfWriter.GetInstance(document, new FileStream("result.pdf", FileMode.Create));
 
-			Word.Application winApp;
+            //русская локализация
+            BaseFont baseFont = BaseFont.CreateFont(@"C:\Users\EugeneDolgushev\Desktop\TIMCYR.TTF", System.Text.Encoding.GetEncoding(1251).BodyName, true);
+            iTextSharp.text.Font font = new iTextSharp.text.Font(baseFont, 14f, iTextSharp.text.Font.NORMAL);
+            iTextSharp.text.Font font1 = new iTextSharp.text.Font(baseFont, 12f, iTextSharp.text.Font.NORMAL);
+            iTextSharp.text.Font font2 = new iTextSharp.text.Font(baseFont, 12f, iTextSharp.text.Font.BOLD);
+            
+            document.Open();
 
-			try
-			{
-				winApp = new Word.Application();
-			}
-			catch (System.Runtime.InteropServices.COMException)
-			{
-				MessageBox.Show(this, "Для работы данной функции необходимо наличие Microsoft Word", "Ошибка",
-					MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-				return;
-			}
+            Paragraph header = new Paragraph("Чек об оказании стоматологических услуг от " + DateUtils.GetCurrentTimestamp() + " г.", font);
+            header.Alignment = Element.ALIGN_CENTER;
 
-            Word.Document wordApp = new Word.Document();
-            wordApp = winApp.Documents.Open(ref filePath, ref missing, ref trueValue,
-                ref missing, ref missing, ref missing, ref missing, ref missing,
-                ref missing, ref missing, ref missing, ref missing, ref missing,
-                ref missing, ref missing, ref missing);
+            document.Add(header);
 
-            Word.Table wordTable = winApp.ActiveDocument.Tables[1];
+            Paragraph empty = new Paragraph("\n");
+            document.Add(empty);
 
-            for (int i = 0; i < treatmentListView.Items.Count; ++i)
-            {
-                wordTable.Rows.Add();
-            }
+            iTextSharp.text.Image gif = iTextSharp.text.Image.GetInstance("newMainInfo.png");
+            gif.Alignment = Element.ALIGN_LEFT;
+            document.Add(gif);
+            document.Add(empty);
 
-            for (int i = 0; i < treatmentListView.Items.Count; ++i)
-            {
-                if (i == 0)
-                {
-                    ListViewItem t = treatmentListView.Items[i];
-                    ListViewItem.ListViewSubItemCollection subt = t.SubItems;
-                    Word.Row currentRow = wordTable.Rows[i+2];
-                    for (int j = 1; j < currentRow.Cells.Count + 1; ++j)
-                    {
-                        if (j == 1)
-                        {
-                            currentRow.Cells[j].Range.Text = toothtextBox.Text.ToString();
-                            continue;
-                        } else if (j == 2)
-                        {
-                            currentRow.Cells[j].Range.Text = diagnosisTextBox.Text.ToString();
-                            continue;
-                        } else if (j == 3)
-                        {
-                            ListViewItem.ListViewSubItem r = subt[j - 3];
-                            string wrest = r.Text;
-                            currentRow.Cells[j].Range.Text = r.Text;
-                            Console.Write(wrest);
-                        } else if (j == 4)
-                        {
-                            ListViewItem.ListViewSubItem r = subt[j - 3];
-                            ListViewItem.ListViewSubItem r1 = subt[j - 2];
-                            string wrest = r.Text + r1.Text;
-                            currentRow.Cells[j].Range.Text = r.Text + " * " + r1.Text;
-                        } else if (j == 5)
-                        {
-                            ListViewItem.ListViewSubItem r1 = subt[j - 2];
-                            string wrest = r1.Text;
-                            currentRow.Cells[j].Range.Text = r1.Text;
-                        }
-                    }
-                }
-                else
-                {
-                    ListViewItem t = treatmentListView.Items[i];
-                    ListViewItem.ListViewSubItemCollection subt = t.SubItems;
-                    Word.Row currentRow = wordTable.Rows[i + 2];
+            PdfPTable table = new PdfPTable(5);
+            table.HorizontalAlignment = Element.ALIGN_CENTER;
+            
 
-                    for (int j = 3; j < currentRow.Cells.Count + 1; ++j)
-                    {
-                        if (j == 3)
-                        {
-                            ListViewItem.ListViewSubItem r = subt[j - 3];
-                            string wrest = r.Text;
-                            currentRow.Cells[j].Range.Text = r.Text;
-                            Console.Write(wrest);
-                        } else if (j == 4)
-                        {
-                            ListViewItem.ListViewSubItem r = subt[j - 3];
-                            ListViewItem.ListViewSubItem r1 = subt[j - 2];
-                            string wrest = r.Text + r1.Text;
-                            currentRow.Cells[j].Range.Text = r.Text + " * " + r1.Text;
-                        } else if (j == 5)
-                        {
-                            ListViewItem.ListViewSubItem r1 = subt[j - 2];
-                            string wrest = r1.Text;
-                            currentRow.Cells[j].Range.Text = r1.Text;
-                        }
-                    }
-                }
-            }
-            winApp.Visible = true;
+            PdfPCell cell = new PdfPCell(new Phrase("Дата приема: ", font1));
+            cell.VerticalAlignment = PdfPCell.ALIGN_CENTER;
+            cell.MinimumHeight = minimumRowHeight;
+            cell.BorderWidth = 0.1f;
+            cell.Colspan = 1;
+            table.AddCell(cell);
+            
+            cell = new PdfPCell(new Phrase(DateUtils.GetCurrentTimestamp()));
+            cell.BorderWidth = 0.1f;
+            cell.Colspan = 4;
+            table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("Пациент: ", font1));
+            cell.MinimumHeight = minimumRowHeight;
+            cell.BorderWidth = 0.1f;
+            cell.Colspan = 1;
+            table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase(patientFIO.Text.ToString(), font1));
+            cell.BorderWidth = 0.1f;
+            cell.Colspan = 4;
+            table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("Врач: ", font1));
+            cell.MinimumHeight = minimumRowHeight;
+            cell.BorderWidth = 0.1f;
+            cell.Colspan = 1;
+            table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase(doctorTextBox.Text.ToString(), font1));
+            cell.BorderWidth = 0.1f;
+            cell.Colspan = 4;
+            table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("Диагноз: ", font1));
+            cell.MinimumHeight = minimumRowHeight;
+            cell.BorderWidth = 0.1f;
+            cell.Colspan = 1;
+            table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase(diagnosisTextBox.Text.ToString(), font1));
+            cell.BorderWidth = 0.1f;
+            cell.Colspan = 4;
+            table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("Номер зуба: ", font2));
+            cell.MinimumHeight = minimumRowHeight;
+            cell.BorderWidth = 0.1f;
+            cell.Colspan = 1;
+            table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase(toothtextBox.Text.ToString(), font1));
+            cell.BorderWidth = 0.1f;
+            cell.Colspan = 4;
+            table.AddCell(cell);
+
+            document.Add(table);
+
+            document.Close();
+            writer.Close();
+
+        
+
+
+            ////Здесь укажите свой путь до файла           
+            //object filePath = Directory.GetCurrentDirectory() + "\\Example.docx";
+            //object falseValue = false;
+            //object trueValue = true;
+            //object missing = Type.Missing;
+
+            //Word.Application winApp;
+
+            //try
+            //{
+            //    winApp = new Word.Application();
+            //}
+            //catch (System.Runtime.InteropServices.COMException)
+            //{
+            //    MessageBox.Show(this, "Для работы данной функции необходимо наличие Microsoft Word", "Ошибка",
+            //        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            //    return;
+            //}
+
+            //Word.Document wordApp = new Word.Document();
+            //wordApp = winApp.Documents.Open(ref filePath, ref missing, ref trueValue,
+            //    ref missing, ref missing, ref missing, ref missing, ref missing,
+            //    ref missing, ref missing, ref missing, ref missing, ref missing,
+            //    ref missing, ref missing, ref missing);
+
+            //Word.Table wordTable = winApp.ActiveDocument.Tables[1];
+
+            //for (int i = 0; i < treatmentListView.Items.Count; ++i)
+            //{
+            //    wordTable.Rows.Add();
+            //}
+
+            //for (int i = 0; i < treatmentListView.Items.Count; ++i)
+            //{
+            //    if (i == 0)
+            //    {
+            //        ListViewItem t = treatmentListView.Items[i];
+            //        ListViewItem.ListViewSubItemCollection subt = t.SubItems;
+            //        Word.Row currentRow = wordTable.Rows[i+2];
+            //        for (int j = 1; j < currentRow.Cells.Count + 1; ++j)
+            //        {
+            //            if (j == 1)
+            //            {
+            //                currentRow.Cells[j].Range.Text = toothtextBox.Text.ToString();
+            //                continue;
+            //            } else if (j == 2)
+            //            {
+            //                currentRow.Cells[j].Range.Text = diagnosisTextBox.Text.ToString();
+            //                continue;
+            //            } else if (j == 3)
+            //            {
+            //                ListViewItem.ListViewSubItem r = subt[j - 3];
+            //                string wrest = r.Text;
+            //                currentRow.Cells[j].Range.Text = r.Text;
+            //                Console.Write(wrest);
+            //            } else if (j == 4)
+            //            {
+            //                ListViewItem.ListViewSubItem r = subt[j - 3];
+            //                ListViewItem.ListViewSubItem r1 = subt[j - 2];
+            //                string wrest = r.Text + r1.Text;
+            //                currentRow.Cells[j].Range.Text = r.Text + " * " + r1.Text;
+            //            } else if (j == 5)
+            //            {
+            //                ListViewItem.ListViewSubItem r1 = subt[j - 2];
+            //                string wrest = r1.Text;
+            //                currentRow.Cells[j].Range.Text = r1.Text;
+            //            }
+            //        }
+            //    }
+            //    else
+            //    {
+            //        ListViewItem t = treatmentListView.Items[i];
+            //        ListViewItem.ListViewSubItemCollection subt = t.SubItems;
+            //        Word.Row currentRow = wordTable.Rows[i + 2];
+
+            //        for (int j = 3; j < currentRow.Cells.Count + 1; ++j)
+            //        {
+            //            if (j == 3)
+            //            {
+            //                ListViewItem.ListViewSubItem r = subt[j - 3];
+            //                string wrest = r.Text;
+            //                currentRow.Cells[j].Range.Text = r.Text;
+            //                Console.Write(wrest);
+            //            } else if (j == 4)
+            //            {
+            //                ListViewItem.ListViewSubItem r = subt[j - 3];
+            //                ListViewItem.ListViewSubItem r1 = subt[j - 2];
+            //                string wrest = r.Text + r1.Text;
+            //                currentRow.Cells[j].Range.Text = r.Text + " * " + r1.Text;
+            //            } else if (j == 5)
+            //            {
+            //                ListViewItem.ListViewSubItem r1 = subt[j - 2];
+            //                string wrest = r1.Text;
+            //                currentRow.Cells[j].Range.Text = r1.Text;
+            //            }
+            //        }
+            //    }
+            //}
+            //winApp.Visible = true;
         }
 	}
 }
