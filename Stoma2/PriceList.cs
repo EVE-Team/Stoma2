@@ -125,7 +125,27 @@ namespace Stoma2
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            Int64 id = categoryRecords[categoryListBox.SelectedIndex].ID;
+            NewService form = new NewService(id);
+            form.RecordForEditing = (ServiceListRecord)serviceListView.SelectedItems[0].Tag;
+            form.ShowDialog();
 
+            if (form.BaseModified)
+            {
+                UpdateServiceList();
+            }
+        }
+
+        private void btnEditCat_Click(object sender, EventArgs e)
+        {
+            NewCategory form = new NewCategory();
+            form.RecordForEditing = (CategoryRecord)categoryListBox.SelectedItems[0];
+            form.ShowDialog();
+
+            if (form.BaseModified)
+            {
+                UpdateCategoryList();
+            }
         }
 	}
 }

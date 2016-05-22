@@ -28,19 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.categoryNameTxt = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnApply = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // textBox1
+            // categoryNameTxt
             // 
-            this.textBox1.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.textBox1.Location = new System.Drawing.Point(149, 9);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(374, 23);
-            this.textBox1.TabIndex = 0;
+            this.categoryNameTxt.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.categoryNameTxt.Location = new System.Drawing.Point(149, 9);
+            this.categoryNameTxt.Name = "categoryNameTxt";
+            this.categoryNameTxt.Size = new System.Drawing.Size(374, 23);
+            this.categoryNameTxt.TabIndex = 0;
             // 
             // btnCancel
             // 
@@ -97,13 +97,14 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnApply);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.categoryNameTxt);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "NewCategory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавить новую категорию";
+            this.Load += new System.EventHandler(this.Form_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -111,7 +112,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox categoryNameTxt;
         private System.Windows.Forms.Button btnCancel;
         public System.Windows.Forms.Button btnApply;
         private System.Windows.Forms.Label label1;

@@ -28,13 +28,13 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem(new string[] {
             "Анестезия",
             "150 р"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem(new string[] {
             "Удаление зуба",
             "300 р"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem(new string[] {
             "Протезирование",
             "500 р"}, -1);
             this.serviceListView = new System.Windows.Forms.ListView();
@@ -66,9 +66,9 @@
             this.serviceListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.serviceListView.FullRowSelect = true;
             this.serviceListView.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3});
+            listViewItem4,
+            listViewItem5,
+            listViewItem6});
             this.serviceListView.Location = new System.Drawing.Point(12, 20);
             this.serviceListView.MultiSelect = false;
             this.serviceListView.Name = "serviceListView";
@@ -214,6 +214,7 @@
             this.btnEditCat.TabIndex = 73;
             this.btnEditCat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEditCat.UseVisualStyleBackColor = false;
+            this.btnEditCat.Click += new System.EventHandler(this.btnEditCat_Click);
             // 
             // groupBox1
             // 

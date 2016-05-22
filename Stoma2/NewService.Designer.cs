@@ -28,35 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.serviceNameTxt = new System.Windows.Forms.TextBox();
+            this.servicePrice = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnApply = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.servicePrice)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox1
+            // serviceNameTxt
             // 
-            this.textBox1.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.textBox1.Location = new System.Drawing.Point(130, 9);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(378, 23);
-            this.textBox1.TabIndex = 0;
+            this.serviceNameTxt.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.serviceNameTxt.Location = new System.Drawing.Point(130, 9);
+            this.serviceNameTxt.Name = "serviceNameTxt";
+            this.serviceNameTxt.Size = new System.Drawing.Size(378, 23);
+            this.serviceNameTxt.TabIndex = 0;
             // 
-            // numericUpDown1
+            // servicePrice
             // 
-            this.numericUpDown1.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.numericUpDown1.Location = new System.Drawing.Point(130, 39);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.servicePrice.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.servicePrice.Location = new System.Drawing.Point(130, 39);
+            this.servicePrice.Maximum = new decimal(new int[] {
             1000000,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(378, 23);
-            this.numericUpDown1.TabIndex = 1;
+            this.servicePrice.Name = "servicePrice";
+            this.servicePrice.Size = new System.Drawing.Size(378, 23);
+            this.servicePrice.TabIndex = 1;
             // 
             // label1
             // 
@@ -124,14 +124,15 @@
             this.Controls.Add(this.btnApply);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.servicePrice);
+            this.Controls.Add(this.serviceNameTxt);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "NewService";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавить новую услугу";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.Load += new System.EventHandler(this.Form_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.servicePrice)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -139,8 +140,8 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.TextBox serviceNameTxt;
+        private System.Windows.Forms.NumericUpDown servicePrice;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnCancel;
