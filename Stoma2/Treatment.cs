@@ -223,8 +223,13 @@ namespace Stoma2
             CreateTreatmentInformationTable(treatmentInformationTable, patientFIO.Text.ToString(), 4);
             CreateTreatmentInformationTable(treatmentInformationTable, "Врач: ", 1);
             CreateTreatmentInformationTable(treatmentInformationTable, doctorTextBox.Text.ToString(), 4);
-            CreateTreatmentInformationTable(treatmentInformationTable, "Диагноз: ", 1);
-            CreateTreatmentInformationTable(treatmentInformationTable, diagnosisTextBox.Text.ToString(), 4);
+
+            if (diagnosisTextBox.Text.ToString() != "")
+            {
+                CreateTreatmentInformationTable(treatmentInformationTable, "Диагноз: ", 1);
+                CreateTreatmentInformationTable(treatmentInformationTable, diagnosisTextBox.Text.ToString(), 4);
+            }
+            
             CreateTreatmentInformationTable(treatmentInformationTable, "Зуб: ", 1);
             CreateTreatmentInformationTable(treatmentInformationTable, toothtextBox.Text.ToString(), 4);
 
