@@ -122,5 +122,10 @@ namespace Stoma2
             rec.Delete();
             UpdateServiceList();
         }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+
+        }
 	}
 }

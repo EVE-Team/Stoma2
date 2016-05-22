@@ -17,11 +17,16 @@ namespace Stoma2
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnApply_Click(object sender, EventArgs e)
         {
             CategoryFields f = new CategoryFields();
             f.Name = textBox1.Text;
             f.Create();
+            Close();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
             Close();
         }
     }
