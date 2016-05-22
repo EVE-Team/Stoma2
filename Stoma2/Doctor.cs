@@ -48,7 +48,9 @@ namespace Stoma2
 			{
 				var item = new ListViewItem(new string[] {
                     rec.Data.LastName,
-					rec.Data.FirstName
+					rec.Data.FirstName,
+                    rec.Data.Patronymic,
+                    rec.Data.Speciality
                 });
 				item.Tag = rec;
 				doctorListView.Items.Add(item);
@@ -66,18 +68,11 @@ namespace Stoma2
         {
             if (doctorListView.SelectedItems.Count == 0)
             {
-                doctorName.Clear();
-                doctorSpeciality.Clear();
-
                 editBtn.Enabled = false;
                 delBtn.Enabled = false;
 
                 return;
             }
-
-			DoctorRecord rec = (DoctorRecord)doctorListView.SelectedItems[0].Tag;
-			doctorName.Text = rec.GetFullName();
-            doctorSpeciality.Text = rec.Data.Speciality;
 
             editBtn.Enabled = true;
             delBtn.Enabled = true;
