@@ -11,6 +11,7 @@ using System.IO;
 using Word = Microsoft.Office.Interop.Word;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using System.Diagnostics;
 
 
 namespace Stoma2
@@ -256,6 +257,7 @@ namespace Stoma2
 
             document.Close();
             writer.Close();
+            Process.Start("Firefox", "result.pdf");
         }
 
         private void CreateTreatmentInformationTable(PdfPTable treatmentInformationTable, string cellValue, int colspan)
