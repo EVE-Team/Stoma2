@@ -17,6 +17,14 @@ namespace Stoma2
 {
 	public partial class Treatment : Form
 	{
+        //русская локализация Times New Roman
+        private static BaseFont baseFont = BaseFont.CreateFont(@"TIMCYR.TTF", System.Text.Encoding.GetEncoding(1251).BodyName, true);
+        private iTextSharp.text.Font font = new iTextSharp.text.Font(baseFont, 14f, iTextSharp.text.Font.NORMAL);
+        private iTextSharp.text.Font font1 = new iTextSharp.text.Font(baseFont, 12f, iTextSharp.text.Font.NORMAL);
+        private iTextSharp.text.Font font2 = new iTextSharp.text.Font(baseFont, 12f, iTextSharp.text.Font.BOLD);
+
+        private float minimumRowHeight = 20;
+
         private ClientRecord clientRecord;
 
 		public Treatment()
@@ -174,16 +182,14 @@ namespace Stoma2
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            float minimumRowHeight = 20;
-
-            ListView.SelectedListViewItemCollection selectedRow = appointmentListView.SelectedItems;
+            var selectedRow = appointmentListView.SelectedItems;
             if (selectedRow.Count == 0)
             {
                 MessageBox.Show("Выберите дату приема из списка.", "Ошибка");
                 return;
             }
 
-            ListView.ListViewItemCollection workList = treatmentListView.Items;
+            var workList = treatmentListView.Items;
             if (workList.Count == 0)
             {
                 MessageBox.Show("Выберите дату приема из списка.", "Ошибка");
@@ -193,12 +199,6 @@ namespace Stoma2
             Document document = new Document(PageSize.A4, 30f, 0, 20, 50);
             PdfWriter writer = PdfWriter.GetInstance(document, new FileStream("result.pdf", FileMode.Create));
 
-            //русская локализация
-            BaseFont baseFont = BaseFont.CreateFont(@"C:\Users\EugeneDolgushev\Desktop\TIMCYR.TTF", System.Text.Encoding.GetEncoding(1251).BodyName, true);
-            iTextSharp.text.Font font = new iTextSharp.text.Font(baseFont, 14f, iTextSharp.text.Font.NORMAL);
-            iTextSharp.text.Font font1 = new iTextSharp.text.Font(baseFont, 12f, iTextSharp.text.Font.NORMAL);
-            iTextSharp.text.Font font2 = new iTextSharp.text.Font(baseFont, 12f, iTextSharp.text.Font.BOLD);
-            
             document.Open();
 
             Paragraph header = new Paragraph("Чек об оказании стоматологических услуг от " + DateUtils.GetCurrentTimestamp() + " г.", font);
@@ -214,173 +214,111 @@ namespace Stoma2
             document.Add(gif);
             document.Add(empty);
 
-            PdfPTable table = new PdfPTable(5);
-            table.HorizontalAlignment = Element.ALIGN_CENTER;
-            
+            PdfPTable treatmentInformationTable = new PdfPTable(5);
+            treatmentInformationTable.HorizontalAlignment = Element.ALIGN_CENTER;
 
-            PdfPCell cell = new PdfPCell(new Phrase("Дата приема: ", font1));
-            cell.VerticalAlignment = PdfPCell.ALIGN_CENTER;
-            cell.MinimumHeight = minimumRowHeight;
-            cell.BorderWidth = 0.1f;
-            cell.Colspan = 1;
-            table.AddCell(cell);
-            
-            cell = new PdfPCell(new Phrase(DateUtils.GetCurrentTimestamp()));
-            cell.BorderWidth = 0.1f;
-            cell.Colspan = 4;
-            table.AddCell(cell);
+            CreateTreatmentInformationTable(treatmentInformationTable, "Дата приема: ", 1);
+            CreateTreatmentInformationTable(treatmentInformationTable, appointmentListView.SelectedItems[0].SubItems[0].Text, 4);
+            CreateTreatmentInformationTable(treatmentInformationTable, "Пациент: ", 1);
+            CreateTreatmentInformationTable(treatmentInformationTable, patientFIO.Text.ToString(), 4);
+            CreateTreatmentInformationTable(treatmentInformationTable, "Врач: ", 1);
+            CreateTreatmentInformationTable(treatmentInformationTable, doctorTextBox.Text.ToString(), 4);
+            CreateTreatmentInformationTable(treatmentInformationTable, "Диагноз: ", 1);
+            CreateTreatmentInformationTable(treatmentInformationTable, diagnosisTextBox.Text.ToString(), 4);
+            CreateTreatmentInformationTable(treatmentInformationTable, "Зуб: ", 1);
+            CreateTreatmentInformationTable(treatmentInformationTable, toothtextBox.Text.ToString(), 4);
 
-            cell = new PdfPCell(new Phrase("Пациент: ", font1));
-            cell.MinimumHeight = minimumRowHeight;
-            cell.BorderWidth = 0.1f;
-            cell.Colspan = 1;
-            table.AddCell(cell);
+            document.Add(treatmentInformationTable);
 
-            cell = new PdfPCell(new Phrase(patientFIO.Text.ToString(), font1));
-            cell.BorderWidth = 0.1f;
-            cell.Colspan = 4;
-            table.AddCell(cell);
+            document.Add(empty);
+            document.Add(empty);
 
-            cell = new PdfPCell(new Phrase("Врач: ", font1));
-            cell.MinimumHeight = minimumRowHeight;
-            cell.BorderWidth = 0.1f;
-            cell.Colspan = 1;
-            table.AddCell(cell);
+            PdfPTable treatmentTable = new PdfPTable(9);
+            treatmentTable.HorizontalAlignment = Element.ALIGN_CENTER;
 
-            cell = new PdfPCell(new Phrase(doctorTextBox.Text.ToString(), font1));
-            cell.BorderWidth = 0.1f;
-            cell.Colspan = 4;
-            table.AddCell(cell);
+            CreateTreatmentTableHeader(treatmentTable);
+            CreateTreatmentTableBase(treatmentTable);
+  
+            document.Add(treatmentTable);
 
-            cell = new PdfPCell(new Phrase("Диагноз: ", font1));
-            cell.MinimumHeight = minimumRowHeight;
-            cell.BorderWidth = 0.1f;
-            cell.Colspan = 1;
-            table.AddCell(cell);
+            document.Add(empty);
+            document.Add(empty);
 
-            cell = new PdfPCell(new Phrase(diagnosisTextBox.Text.ToString(), font1));
-            cell.BorderWidth = 0.1f;
-            cell.Colspan = 4;
-            table.AddCell(cell);
+            Paragraph footer = new Paragraph("С лечением согласен, с возможными осложнениями ознакомлен: _____________ ", font);
+            footer.Alignment = Element.ALIGN_CENTER;
 
-            cell = new PdfPCell(new Phrase("Номер зуба: ", font2));
-            cell.MinimumHeight = minimumRowHeight;
-            cell.BorderWidth = 0.1f;
-            cell.Colspan = 1;
-            table.AddCell(cell);
-
-            cell = new PdfPCell(new Phrase(toothtextBox.Text.ToString(), font1));
-            cell.BorderWidth = 0.1f;
-            cell.Colspan = 4;
-            table.AddCell(cell);
-
-            document.Add(table);
+            document.Add(footer);
 
             document.Close();
             writer.Close();
+        }
 
-        
+        private void CreateTreatmentInformationTable(PdfPTable treatmentInformationTable, string cellValue, int colspan)
+        {
+            PdfPCell cell = new PdfPCell(new Phrase(cellValue, font1));
+            cell.VerticalAlignment = PdfPCell.ALIGN_CENTER;
+            cell.MinimumHeight = minimumRowHeight;
+            cell.BorderWidth = 0.1f;
+            cell.Colspan = colspan;
+            treatmentInformationTable.AddCell(cell);
+        }
 
+        private void CreateTreatmentTableHeader(PdfPTable treatmentTable)
+        {
+            CreateTreatmentTableHeaderCell(treatmentTable, "Услуга", 5);
+            CreateTreatmentTableHeaderCell(treatmentTable, "Цена за ед.", 2);
+            CreateTreatmentTableHeaderCell(treatmentTable, "Кол-во", 1);
+            CreateTreatmentTableHeaderCell(treatmentTable, "Сумма", 1);
+        }
 
-            ////Здесь укажите свой путь до файла           
-            //object filePath = Directory.GetCurrentDirectory() + "\\Example.docx";
-            //object falseValue = false;
-            //object trueValue = true;
-            //object missing = Type.Missing;
+        private void CreateTreatmentTableHeaderCell(PdfPTable treatmentTable, string cellValue, int colspan)
+        {
+            PdfPCell treatmentTableHeader = new PdfPCell(new Phrase(cellValue, font));
+            treatmentTableHeader.BorderWidth = 0.1f;
+            treatmentTableHeader.Colspan = colspan;
+            treatmentTable.AddCell(treatmentTableHeader);
+        }
 
-            //Word.Application winApp;
+        private void CreateTreatmentTableBase(PdfPTable treatmentTable)
+        {
+            for (int i = 0; i < treatmentListView.Items.Count; ++i)
+            {
+                for (int j = 0; j < treatmentListView.Items[i].SubItems.Count; ++j)
+                {
+                    var treatmentItem = treatmentListView.Items[i].SubItems[j];
+                    if (j == 0)
+                    {
+                        CreateTreatmentTableBaseCell(treatmentTable, treatmentItem.Text, 5);
+                        continue;
+                    }
+                    if (j == 1)
+                    {
+                        CreateTreatmentTableBaseCell(treatmentTable, treatmentItem.Text, 2);
+                        continue;
+                    }
+                    else
+                    {
+                        CreateTreatmentTableBaseCell(treatmentTable, treatmentItem.Text, 1);
+                    }
+                }
+            }
 
-            //try
-            //{
-            //    winApp = new Word.Application();
-            //}
-            //catch (System.Runtime.InteropServices.COMException)
-            //{
-            //    MessageBox.Show(this, "Для работы данной функции необходимо наличие Microsoft Word", "Ошибка",
-            //        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //    return;
-            //}
+            CreateTreatmentTableBaseCell(treatmentTable, " ", 5);
+            CreateTreatmentTableBaseCell(treatmentTable, " ", 2);
+            CreateTreatmentTableBaseCell(treatmentTable, " ", 1);
+            CreateTreatmentTableBaseCell(treatmentTable, " ", 1);
+            CreateTreatmentTableBaseCell(treatmentTable, " ", 5);
+            CreateTreatmentTableBaseCell(treatmentTable, "К оплате:", 2);
+            CreateTreatmentTableBaseCell(treatmentTable, " ", 1);
+            CreateTreatmentTableBaseCell(treatmentTable, costLabel.Text, 1);
+        }
 
-            //Word.Document wordApp = new Word.Document();
-            //wordApp = winApp.Documents.Open(ref filePath, ref missing, ref trueValue,
-            //    ref missing, ref missing, ref missing, ref missing, ref missing,
-            //    ref missing, ref missing, ref missing, ref missing, ref missing,
-            //    ref missing, ref missing, ref missing);
-
-            //Word.Table wordTable = winApp.ActiveDocument.Tables[1];
-
-            //for (int i = 0; i < treatmentListView.Items.Count; ++i)
-            //{
-            //    wordTable.Rows.Add();
-            //}
-
-            //for (int i = 0; i < treatmentListView.Items.Count; ++i)
-            //{
-            //    if (i == 0)
-            //    {
-            //        ListViewItem t = treatmentListView.Items[i];
-            //        ListViewItem.ListViewSubItemCollection subt = t.SubItems;
-            //        Word.Row currentRow = wordTable.Rows[i+2];
-            //        for (int j = 1; j < currentRow.Cells.Count + 1; ++j)
-            //        {
-            //            if (j == 1)
-            //            {
-            //                currentRow.Cells[j].Range.Text = toothtextBox.Text.ToString();
-            //                continue;
-            //            } else if (j == 2)
-            //            {
-            //                currentRow.Cells[j].Range.Text = diagnosisTextBox.Text.ToString();
-            //                continue;
-            //            } else if (j == 3)
-            //            {
-            //                ListViewItem.ListViewSubItem r = subt[j - 3];
-            //                string wrest = r.Text;
-            //                currentRow.Cells[j].Range.Text = r.Text;
-            //                Console.Write(wrest);
-            //            } else if (j == 4)
-            //            {
-            //                ListViewItem.ListViewSubItem r = subt[j - 3];
-            //                ListViewItem.ListViewSubItem r1 = subt[j - 2];
-            //                string wrest = r.Text + r1.Text;
-            //                currentRow.Cells[j].Range.Text = r.Text + " * " + r1.Text;
-            //            } else if (j == 5)
-            //            {
-            //                ListViewItem.ListViewSubItem r1 = subt[j - 2];
-            //                string wrest = r1.Text;
-            //                currentRow.Cells[j].Range.Text = r1.Text;
-            //            }
-            //        }
-            //    }
-            //    else
-            //    {
-            //        ListViewItem t = treatmentListView.Items[i];
-            //        ListViewItem.ListViewSubItemCollection subt = t.SubItems;
-            //        Word.Row currentRow = wordTable.Rows[i + 2];
-
-            //        for (int j = 3; j < currentRow.Cells.Count + 1; ++j)
-            //        {
-            //            if (j == 3)
-            //            {
-            //                ListViewItem.ListViewSubItem r = subt[j - 3];
-            //                string wrest = r.Text;
-            //                currentRow.Cells[j].Range.Text = r.Text;
-            //                Console.Write(wrest);
-            //            } else if (j == 4)
-            //            {
-            //                ListViewItem.ListViewSubItem r = subt[j - 3];
-            //                ListViewItem.ListViewSubItem r1 = subt[j - 2];
-            //                string wrest = r.Text + r1.Text;
-            //                currentRow.Cells[j].Range.Text = r.Text + " * " + r1.Text;
-            //            } else if (j == 5)
-            //            {
-            //                ListViewItem.ListViewSubItem r1 = subt[j - 2];
-            //                string wrest = r1.Text;
-            //                currentRow.Cells[j].Range.Text = r1.Text;
-            //            }
-            //        }
-            //    }
-            //}
-            //winApp.Visible = true;
+        private void CreateTreatmentTableBaseCell(PdfPTable treatmentTable, string cellValue, int colspan)
+        {
+            PdfPCell treatmentTableBaseCell = new PdfPCell(new Phrase(cellValue, font1));
+            treatmentTableBaseCell.BorderWidth = 0.1f;
+            treatmentTableBaseCell.Colspan = colspan;
+            treatmentTable.AddCell(treatmentTableBaseCell);
         }
 	}
 }
