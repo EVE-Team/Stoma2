@@ -784,7 +784,7 @@ namespace Stoma2
         public PatientsToInviteIterator()
         {
             Init("SELECT * FROM " + TableInfoHolder.CLIENT.table
-                + " WHERE " + "strftime('%m', last_invite) < date('now','-6 month');");
+                + " WHERE " + "last_invite < date('now','-6 month');");
         }
 
         protected override TableInfo GetTableInfo()
@@ -956,6 +956,24 @@ namespace Stoma2
                 throw new Exception("No items found");
 
             return reader.GetInt64(0);
+        }
+
+        public static void MarkAsInvited(Int64 id)
+        {
+            string date = DateUtils.GetCurrentTimestamp();
+            StomaDB.Instance.NonQuery("UPDATE " + TableInfoHolder.CLIENT.table + " SET " +
+                "last_invite = " + "'" + DatabaseUtils.SanitizeString(date) + "'" +
+                " WHERE " + TableInfoHolder.CLIENT.FullIdRowName() + " = " + id.ToString() + ";");
+        }
+
+        public  bool HavePatientsToInvite()
+        {
+            SQLiteDataReader reader = Query("SELECT COUNT(id) as number_patients FROM " + TableInfoHolder.CLIENT.table
+               + " WHERE " + "last_invite < date('now','-6 month');");
+            if (!reader.Read())
+                throw new Exception("No items found");
+            Int64 number = reader.GetInt64(0);
+            return number > 0;
         }
 
 

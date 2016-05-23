@@ -47,17 +47,19 @@ namespace Stoma2
 
 			// Draw invite count
 			var bitmap = new Bitmap(100, 100);
-			using (var graphics = Graphics.FromImage(bitmap))
-			{
-				var icon = Stoma2.Properties.Resources.bell;
-				graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-				graphics.DrawImage(icon, (rbInvite.Width - icon.Width) / 2, 10, 64, 64);
-				var notification = new Rectangle(60, 50, 25, 25);
-				graphics.FillEllipse(new SolidBrush(Color.White), notification);
-				graphics.DrawEllipse(new Pen(Color.Black, 2), notification);
-				graphics.DrawString("3", rbInvite.Font, new SolidBrush(Color.Black),
-					new Point(notification.Location.X + 5, notification.Location.Y + 1));
-			}
+
+            using (var graphics = Graphics.FromImage(bitmap))
+            {
+                var icon = Stoma2.Properties.Resources.bell;
+                graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                graphics.DrawImage(icon, (rbInvite.Width - icon.Width) / 2, 10, 64, 64);
+                if (StomaDB.Instance.HavePatientsToInvite())
+                {
+                    var notification = new Rectangle(60, 50, 20, 20);
+                    graphics.FillEllipse(new SolidBrush(Color.FromArgb(69,119,168)), notification);
+                }                
+            }
+            			
 			rbInvite.BackgroundImage = bitmap;
 			rbInvite.BackgroundImageLayout = ImageLayout.Tile;
 			//

@@ -35,12 +35,12 @@
             this.patientListView = new System.Windows.Forms.ListView();
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader27 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.rectangleShape3 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.btnMarkAsInvited = new System.Windows.Forms.Button();
             this.pnlPatientInfo = new System.Windows.Forms.Panel();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // lblNumberOfPatient
@@ -91,6 +91,16 @@
             this.columnHeader27.Text = "Имя";
             this.columnHeader27.Width = 100;
             // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Отчество";
+            this.columnHeader1.Width = 100;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Телефон";
+            this.columnHeader2.Width = 120;
+            // 
             // rectangleShape3
             // 
             this.rectangleShape3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -131,6 +141,7 @@
             this.btnMarkAsInvited.Text = "Отметить как приглашенного";
             this.btnMarkAsInvited.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnMarkAsInvited.UseVisualStyleBackColor = false;
+            this.btnMarkAsInvited.Click += new System.EventHandler(this.btnMarkAsInvited_Click);
             // 
             // pnlPatientInfo
             // 
@@ -141,16 +152,6 @@
             this.pnlPatientInfo.Name = "pnlPatientInfo";
             this.pnlPatientInfo.Size = new System.Drawing.Size(391, 397);
             this.pnlPatientInfo.TabIndex = 8;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Отчество";
-            this.columnHeader1.Width = 100;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Телефон";
-            this.columnHeader2.Width = 120;
             // 
             // Invite
             // 

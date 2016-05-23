@@ -20,6 +20,7 @@ namespace Stoma2
 
             Utils.SetPanelForm(pnlPatientInfo, Utils.SetupForm(new PatientInfo()));
             UpdatePatientListView();
+            btnMarkAsInvited.Enabled = false;
 		}
 
         private void UpdatePatientListView()
@@ -56,6 +57,14 @@ namespace Stoma2
             ClientRecord rec = (ClientRecord)patientListView.SelectedItems[0].Tag;
             piForm.SetInfo(rec);
             btnMarkAsInvited.Enabled = true;
+        }
+
+        private void btnMarkAsInvited_Click(object sender, EventArgs e)
+        {
+            ClientRecord rec = (ClientRecord)patientListView.SelectedItems[0].Tag;
+            StomaDB.MarkAsInvited(rec.ID);
+            UpdatePatientListView();
+            btnMarkAsInvited.Enabled = false;
         }
 	}
 }
