@@ -100,7 +100,7 @@ namespace Stoma2
                     Int32.Parse(cmbYear.Text),
                     cmbMonth.SelectedIndex + 1,
                     Int32.Parse(cmbDay.Text)
-                )).ToString(DateUtils.DATE_FORMAT);
+                )).ToString(DateUtils.BIRTHDAY_DATE_FORMAT);
             }
             catch (Exception)
             {

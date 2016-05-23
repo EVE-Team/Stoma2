@@ -63,7 +63,7 @@ namespace Stoma2
                 foreach (AppointmentRecord rec in StomaDB.GetAppointments(clientRecord))
                 {
                     var item = new ListViewItem(new string[] {
-                       rec.Data.Date
+                       DateUtils.ToExternalDateFormat(rec.Data.Date)
                     });
                     item.Tag = rec;
                     appointmentListView.Items.Add(item);

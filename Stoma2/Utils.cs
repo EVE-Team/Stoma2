@@ -61,11 +61,27 @@ namespace Stoma2
 
     class DateUtils
     {
-        public static readonly string DATE_FORMAT = "yyyy-MM-dd HH:mm";
+        public static readonly string INNER_DATE_FORMAT = "yyyy-MM-dd HH:mm";
+        public static readonly string EXTERNAL_DATE_FORMAT = "dd-MM-yyyy HH:mm";
+        public static readonly string BIRTHDAY_DATE_FORMAT = "dd-MM-yyyy";
         
         public static string GetCurrentTimestamp()
         {
-            return DateTime.Now.ToString(DATE_FORMAT);
+            return DateTime.Now.ToString(INNER_DATE_FORMAT);
+        }
+
+        public static string ToExternalDateFormat(string date)
+        {
+            string res;
+            try
+            {
+                res = DateTime.Parse(date).ToString(EXTERNAL_DATE_FORMAT);
+            }
+            catch (Exception)
+            {
+                res = "";
+            }
+            return res;
         }
     }
 }

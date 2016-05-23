@@ -32,10 +32,7 @@ namespace Stoma2
         public void SetInfo(ClientRecord rec)
         {
             nameTextBox.Text = rec.GetFullName();
-            if (rec.Data.Birthday != string.Empty)
-            {
-                birthdayTextBox.Text = rec.Data.Birthday.Substring(0, 10);
-            }           
+            birthdayTextBox.Text = rec.Data.Birthday;
             phoneTextBox.Text = rec.Data.Phone;
 
             addressTextBox.Text = rec.Data.AddressSubject + ", " +
@@ -46,7 +43,7 @@ namespace Stoma2
 
             workplaceTextBox.Text = rec.Data.Workplace;
             positionTextBox.Text = rec.Data.Position;
-            lastInviteTextBox.Text = rec.Data.LastInvite;
+            lastInviteTextBox.Text = DateUtils.ToExternalDateFormat(rec.Data.LastInvite);
             notesTextBox.Text = rec.Data.Notes;
         }
 	}
