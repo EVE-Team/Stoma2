@@ -45,7 +45,7 @@ namespace Stoma2
             }
             else
             {
-                patientFIO.Text = "вообще хз кого";
+                patientFIO.Text = "";
             }
 
             //----------
