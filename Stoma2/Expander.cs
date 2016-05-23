@@ -142,11 +142,41 @@ namespace Stoma2
 		#endregion
 	}
 
+	public class LabelWithoutCopyTextOnDoubleClick : Label
+	{
+		static readonly int WM_LBUTTONDCLICK = 0x203;
+		private string m_clipboardText = null;
+		
+		protected override void OnDoubleClick(System.EventArgs e)
+		{
+			if (m_clipboardText != null)
+			{
+				Clipboard.SetData(DataFormats.Text, m_clipboardText);
+				m_clipboardText = null;
+				base.OnDoubleClick(e);
+			}
+		}
+		
+		protected override void WndProc(ref System.Windows.Forms.Message m)
+		{
+			if (m.Msg == WM_LBUTTONDCLICK)
+			{
+				IDataObject d = Clipboard.GetDataObject();
+				if (d.GetDataPresent(DataFormats.Text))
+				{
+					m_clipboardText = (string)d.GetData(DataFormats.Text);
+				}
+			}
+
+			base.WndProc(ref m);
+		}
+	}
+
 	public static class ExpanderHelper
 	{
 		public static Label CreateLabelHeader(Expander expander, string text, Color backColor, Image collapsedImage = null, Image expandedImage = null, int height = 25, Font font = null)
 		{
-			Label headerLabel = new Label();
+			LabelWithoutCopyTextOnDoubleClick headerLabel = new LabelWithoutCopyTextOnDoubleClick();
 			headerLabel.Text = text;
 			headerLabel.AutoSize = false;
 			headerLabel.Height = height;
