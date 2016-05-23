@@ -33,7 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="itextsharp">
-      <HintPath>..\..\..\..\Desktop\itextsharp-all-5.5.9\itextsharp.dll</HintPath>
+      <HintPath>.\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp.xtra">
       <HintPath>..\..\..\..\Desktop\itextsharp-all-5.5.9\itextsharp.xtra.dll</HintPath>

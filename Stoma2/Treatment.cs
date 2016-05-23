@@ -257,7 +257,7 @@ namespace Stoma2
 
             document.Close();
             writer.Close();
-            Process.Start("Firefox", "result.pdf");
+			System.Diagnostics.Process.Start("result.pdf");
         }
 
         private void CreateTreatmentInformationTable(PdfPTable treatmentInformationTable, string cellValue, int colspan)
