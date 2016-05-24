@@ -141,5 +141,11 @@ namespace Stoma2
             phoneBox.Text = fields.Phone;
             notesBox.Text = fields.Notes;
         }
+
+        private void NewPatient_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.DrawRectangle(new Pen(Color.Red, 2), new Rectangle(nameLastBox.Location.X - 1, nameLastBox.Location.Y - 3,
+                nameLastBox.Size.Width + 2, nameLastBox.Size.Height + 5));
+        }
     }
 }
