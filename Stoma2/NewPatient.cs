@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace Stoma2
 {
@@ -62,6 +63,13 @@ namespace Stoma2
 
 		private void btnApply_Click(object sender, EventArgs e)
 		{
+            var name = nameLastBox.Text;
+            //regular expression to check name,surname and patronymic
+            if (!Regex.IsMatch(name, @"^[\p{L}\p{M}' \.\-]+$"))
+            {
+                Console.WriteLine(name);
+            }
+
             if (RecordForEditing == null)
             {
                 ClientFields newRecord = new ClientFields();
