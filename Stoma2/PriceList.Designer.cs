@@ -191,7 +191,7 @@
             this.btnDelCat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnDelCat.ForeColor = System.Drawing.Color.White;
             this.btnDelCat.Image = global::Stoma2.Properties.Resources.trash;
-            this.btnDelCat.Location = new System.Drawing.Point(106, 339);
+            this.btnDelCat.Location = new System.Drawing.Point(125, 339);
             this.btnDelCat.Name = "btnDelCat";
             this.btnDelCat.Size = new System.Drawing.Size(40, 40);
             this.btnDelCat.TabIndex = 74;
@@ -208,7 +208,7 @@
             this.btnEditCat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnEditCat.ForeColor = System.Drawing.Color.White;
             this.btnEditCat.Image = global::Stoma2.Properties.Resources.pencil;
-            this.btnEditCat.Location = new System.Drawing.Point(60, 339);
+            this.btnEditCat.Location = new System.Drawing.Point(70, 339);
             this.btnEditCat.Name = "btnEditCat";
             this.btnEditCat.Size = new System.Drawing.Size(40, 40);
             this.btnEditCat.TabIndex = 73;
@@ -285,6 +285,6 @@
 		private System.Windows.Forms.Button btnDelCat;
 		private System.Windows.Forms.Button btnEditCat;
 		private System.Windows.Forms.GroupBox groupBox1;
-		private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox2;
 	}
 }
