@@ -87,8 +87,13 @@ namespace Stoma2
 
         private void btnDelCat_Click(object sender, EventArgs e)
         {
-            categoryRecords[categoryListBox.SelectedIndex].Delete();
-            UpdateCategoryList();
+            if (MessageBox.Show("Вы действительно хотите удалить категорию" +
+                "(вместе с ней удалятся связанные услуги)?",
+                "Удаление категории", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+            {
+                categoryRecords[categoryListBox.SelectedIndex].Delete();
+                UpdateCategoryList();
+            }
         }
 
         private void serviceListView_SelectedIndexChanged(object sender, EventArgs e)
