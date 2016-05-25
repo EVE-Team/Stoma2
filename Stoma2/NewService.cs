@@ -33,6 +33,7 @@ namespace Stoma2
             {
                 ServiceListFields newRecord = new ServiceListFields();
                 FormDataToFields(newRecord);
+                newRecord.CategoryId = id;
                 newRecord.Create();
             }
             else
