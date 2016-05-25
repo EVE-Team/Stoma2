@@ -139,7 +139,7 @@ namespace Stoma2
         private void btnEditCat_Click(object sender, EventArgs e)
         {
             NewCategory form = new NewCategory();
-            form.RecordForEditing = (CategoryRecord)categoryListBox.SelectedItems[0];
+            form.RecordForEditing = (CategoryRecord)categoryRecords[categoryListBox.SelectedIndex];
             form.ShowDialog();
 
             if (form.BaseModified)

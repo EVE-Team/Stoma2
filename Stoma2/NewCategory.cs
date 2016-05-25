@@ -57,7 +57,7 @@ namespace Stoma2
         {
             if (RecordForEditing != null)
             {
-                Text = "Редактировать пациента";
+                Text = "Редактировать категорию";
                 btnApply.Text = "Сохранить";
                 FieldsToFormData(RecordForEditing.Data);
             }
