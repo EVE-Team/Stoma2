@@ -25,12 +25,23 @@ namespace Stoma2
         private iTextSharp.text.Font font2 = new iTextSharp.text.Font(baseFont, 12f, iTextSharp.text.Font.BOLD);
 
         private float minimumRowHeight = 20;
+        private ContextMenu appointmentMenu;
 
         private ClientRecord clientRecord;
 
 		public Treatment()
 		{
 			InitializeComponent();
+            appointmentMenu = new ContextMenu();
+            MenuItem appointmentMenuEdit = new MenuItem("Редактировать");
+            MenuItem appointmentMenuDelete = new MenuItem("Удалить");
+            appointmentMenuEdit.Click += new EventHandler(appointmentMenuEdit_Click);
+            appointmentMenuDelete.Click += new EventHandler(appointmentMenuDelete_Click);
+
+            appointmentMenu.MenuItems.Add(appointmentMenuEdit);
+            appointmentMenu.MenuItems.Add(appointmentMenuDelete);
+
+            appointmentListView.ContextMenu = appointmentMenu;
 		}
 
         public void SetClient(ClientRecord clientRecord)
@@ -326,6 +337,31 @@ namespace Stoma2
             treatmentTableBaseCell.BorderWidth = 0.1f;
             treatmentTableBaseCell.Colspan = colspan;
             treatmentTable.AddCell(treatmentTableBaseCell);
+        }
+
+        private void appointmentListView_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                var selectedRow = appointmentListView.SelectedItems;
+                if (selectedRow.Count == 0)
+                {
+                    appointmentListView.ContextMenu = null;
+                    return;
+                }
+                appointmentListView.ContextMenu = appointmentMenu;
+                appointmentListView.ContextMenu.Show(appointmentListView, new Point(e.X, e.Y));
+            }
+        }
+
+        private void appointmentMenuDelete_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void appointmentMenuEdit_Click(object sender, EventArgs e)
+        {
+            
         }
 	}
 }
