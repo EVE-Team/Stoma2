@@ -39,6 +39,16 @@ namespace Stoma2
                 item.Tag = rec;
                 patientListView.Items.Add(item);
             }
+            try
+            {
+                if (numberOfPatients == 0)
+                {
+                    Program.mainForm.DrawInviteImage();
+                }
+            }
+            catch (NullReferenceException)
+            {
+            }
             lblNumberOfPatient.Text = numberOfPatients.ToString() + DEFAULT_TEXT_FOR_LABEL_NUMBER_OF_PATIENT;
         }
 

@@ -966,7 +966,7 @@ namespace Stoma2
                 " WHERE " + TableInfoHolder.CLIENT.FullIdRowName() + " = " + id.ToString() + ";");
         }
 
-        public  bool HavePatientsToInvite()
+        public bool HavePatientsToInvite()
         {
             SQLiteDataReader reader = Query("SELECT COUNT(id) as number_patients FROM " + TableInfoHolder.CLIENT.table
                + " WHERE " + "last_invite < date('now','-6 month');");
