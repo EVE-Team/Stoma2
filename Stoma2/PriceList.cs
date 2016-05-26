@@ -12,12 +12,15 @@ namespace Stoma2
 {
 	public partial class PriceList : Form
 	{
-        private List<CategoryRecord> categoryRecords = new List<CategoryRecord>();
-
         public PriceList()
 		{
 			InitializeComponent();
             UpdateCategoryList();
+
+			if (cmbCategory.Items.Count > 0)
+			{
+				cmbCategory.SelectedIndex = 0;
+			}
         }
 
         private void btnAddCat_Click(object sender, EventArgs e)
@@ -26,16 +29,59 @@ namespace Stoma2
             UpdateCategoryList();
         }
 
+		class CategoryItem : object
+		{
+			public CategoryItem(CategoryRecord rec)
+			{
+				m_rec = rec;
+				Text = rec.Data.Name;
+			}
+
+			public string Text { get; set; }
+
+			public CategoryRecord Record { get { return m_rec; } }
+			private CategoryRecord m_rec;
+
+			public override string ToString()
+			{
+				return Text;
+			}
+		}
+
         private void UpdateCategoryList()
         {
-            categoryListBox.Items.Clear();
-            categoryRecords.Clear();
+			Int64 selectedID = -1;
+			if (cmbCategory.SelectedIndex >= 0)
+			{
+				selectedID = (cmbCategory.SelectedItem as CategoryItem).Record.ID;
+			}
 
+            cmbCategory.Items.Clear();
+
+			var items = new List<CategoryItem>();
             foreach (CategoryRecord rec in StomaDB.GetCategories())
             {
-                categoryListBox.Items.Add(rec.Data.Name);
-                categoryRecords.Add(rec);
-            }
+				items.Add(new CategoryItem(rec));
+			}
+			items.Sort(Comparer<CategoryItem>.Create((i1, i2) => i1.Text.CompareTo(i2.Text)));
+
+			bool itemSelected = false;
+			for (int index = 0; index < items.Count; index++)
+			{
+				var item = items[index];
+
+				cmbCategory.Items.Add(item);
+				if (item.Record.ID == selectedID)
+				{
+					cmbCategory.SelectedIndex = index;
+					itemSelected = true;
+				}
+			}
+
+			if (!itemSelected && cmbCategory.Items.Count > 0)
+			{
+				cmbCategory.SelectedIndex = 0;
+			}
 
             CategoryListOnIndexChange();
         }
@@ -44,10 +90,10 @@ namespace Stoma2
         {
             serviceListView.Items.Clear();
 
-            if (categoryListBox.SelectedIndex >= 0)
+			if (cmbCategory.SelectedIndex >= 0)
             {
-                Int64 id = categoryRecords[categoryListBox.SelectedIndex].ID;
-
+				Int64 id = (cmbCategory.SelectedItem as CategoryItem).Record.ID;
+				
                 foreach (ServiceListRecord rec in StomaDB.GetServiceList(id))
                 {
                     var item = new ListViewItem(new string[] {
@@ -62,24 +108,19 @@ namespace Stoma2
             ServiceListOnIndexChange();
         }
 
-        private void categoryListBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            CategoryListOnIndexChange();
-        }
-
         private void CategoryListOnIndexChange()
         {
-            if (categoryListBox.SelectedItems.Count == 0)
+			if (cmbCategory.SelectedIndex >= 0)
+			{
+				btnEditCat.Enabled = true;
+				btnDelCat.Enabled = true;
+				btnAdd.Enabled = true;
+			}
+			else
             {
                 btnEditCat.Enabled = false;
                 btnDelCat.Enabled = false;
                 btnAdd.Enabled = false;
-            }
-            else
-            {
-                btnEditCat.Enabled = true;
-                btnDelCat.Enabled = true;
-                btnAdd.Enabled = true;
             }
 
             UpdateServiceList();
@@ -87,11 +128,12 @@ namespace Stoma2
 
         private void btnDelCat_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Вы действительно хотите удалить категорию" +
-                "(вместе с ней удалятся связанные услуги)?",
-                "Удаление категории", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+            if (MessageBox.Show("Вы действительно хотите удалить категорию?\n" +
+                "(вместе с ней будут удалены связанные услуги)",
+                "Удаление категории", MessageBoxButtons.YesNo,
+				MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
             {
-                categoryRecords[categoryListBox.SelectedIndex].Delete();
+				(cmbCategory.SelectedItem as CategoryItem).Record.Delete();
                 UpdateCategoryList();
             }
         }
@@ -116,7 +158,7 @@ namespace Stoma2
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            Int64 id = categoryRecords[categoryListBox.SelectedIndex].ID;
+			Int64 id = (cmbCategory.SelectedItem as CategoryItem).Record.ID;
             new NewService(id).ShowDialog();
             UpdateServiceList();
         }
@@ -130,7 +172,7 @@ namespace Stoma2
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            Int64 id = categoryRecords[categoryListBox.SelectedIndex].ID;
+			Int64 id = (cmbCategory.SelectedItem as CategoryItem).Record.ID;
             NewService form = new NewService(id);
             form.RecordForEditing = (ServiceListRecord)serviceListView.SelectedItems[0].Tag;
             form.ShowDialog();
@@ -144,7 +186,7 @@ namespace Stoma2
         private void btnEditCat_Click(object sender, EventArgs e)
         {
             NewCategory form = new NewCategory();
-            form.RecordForEditing = (CategoryRecord)categoryRecords[categoryListBox.SelectedIndex];
+			form.RecordForEditing = (cmbCategory.SelectedItem as CategoryItem).Record;
             form.ShowDialog();
 
             if (form.BaseModified)
@@ -152,5 +194,29 @@ namespace Stoma2
                 UpdateCategoryList();
             }
         }
+
+		private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			CategoryListOnIndexChange();
+		}
+
+		private void serviceListView_Resize(object sender, EventArgs e)
+		{
+			serviceListView.Columns[0].Width = serviceListView.Width - 100;
+		}
+
+		private void PriceList_Shown(object sender, EventArgs e)
+		{
+			Refresh();
+		}
+
+		private void groupBox2_Paint(object sender, PaintEventArgs e)
+		{
+			e.Graphics.DrawRectangle(new Pen(Color.Black, 1),
+				new Rectangle(cmbCategory.Location.X - 1,
+					cmbCategory.Location.Y - 1,
+					cmbCategory.Size.Width + 1,
+					cmbCategory.Size.Height + 1));
+		}
 	}
 }
