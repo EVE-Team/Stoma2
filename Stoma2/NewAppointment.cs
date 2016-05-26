@@ -27,17 +27,19 @@ namespace Stoma2
 		}
 
 		private void btnAdd_Click(object sender, EventArgs e)
-		{
-            AppointmentFields newRecord = new AppointmentFields();
-            newRecord.Date = DateUtils.GetCurrentTimestamp();
-            newRecord.Diagnosis = diagnosisTextBox.Text;
-            newRecord.Tooth = Int64.Parse(txtTooth.Text);
-            newRecord.DoctorId = doctorRecords[doctorCategory.SelectedIndex].ID;
+		{              
             if (clientRecord != null)
             {
+                AppointmentFields newRecord = new AppointmentFields();
+                FormDataToFields(newRecord);
                 newRecord.ClientId = clientRecord.ID;
-            }           
-            newRecord.Create();
+                newRecord.Create();
+            }
+            else
+            {
+                FormDataToFields(EditRecord.Data);
+                EditRecord.Save();
+            }                   
 			Close();
 		}
 
@@ -51,10 +53,19 @@ namespace Stoma2
             if (EditRecord != null)
             {
                 this.Text = "Редактирование приема";
+                btnAdd.Text = "Сохранить";
                 diagnosisTextBox.Text = EditRecord.Data.Diagnosis;
                 txtTooth.Text = EditRecord.Data.Tooth.ToString();
                 doctorCategory.SelectedIndex = (int)EditRecord.Data.DoctorId - 1;
             }
+        }
+
+        private void FormDataToFields(AppointmentFields fields)
+        {
+            fields.Date = DateUtils.GetCurrentTimestamp();
+            fields.Diagnosis = diagnosisTextBox.Text;
+            fields.Tooth = Int64.Parse(txtTooth.Text);
+            fields.DoctorId = doctorRecords[doctorCategory.SelectedIndex].ID;
         }
 	}
 }

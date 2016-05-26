@@ -214,7 +214,7 @@ namespace Stoma2
 
             document.Open();
 
-            Paragraph header = new Paragraph("Чек об оказании стоматологических услуг от " + DateUtils.GetCurrentTimestamp() + " г.", font);
+            Paragraph header = new Paragraph("Чек об оказании стоматологических услуг от " + DateUtils.ToExternalDateFormat(DateUtils.GetCurrentTimestamp()) + " г.", font);
             header.Alignment = Element.ALIGN_CENTER;
 
             document.Add(header);
