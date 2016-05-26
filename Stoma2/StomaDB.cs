@@ -132,7 +132,7 @@ namespace Stoma2
                 new string[] {
                     "DATE", "TEXT NOT NULL", "INTEGER NOT NULL",
                     "INTEGER REFERENCES " + TableInfoHolder.DOCTOR.table + "(id)",
-                    "INTEGER REFERENCES " + TableInfoHolder.CLIENT.table + "(id)"
+                    "INTEGER REFERENCES " + TableInfoHolder.CLIENT.table + "(id) ON DELETE CASCADE"
                 }
             )
         {}
@@ -151,7 +151,7 @@ namespace Stoma2
                 new string[] { "service_id", "visit_id", "count" },
                 new string[] {
                     "INTEGER REFERENCES " + TableInfoHolder.SERVICE_LIST.table + "(id)",
-                    "INTEGER REFERENCES " + TableInfoHolder.APPOINTMENT.table + "(id)",
+                    "INTEGER REFERENCES " + TableInfoHolder.APPOINTMENT.table + "(id) ON DELETE CASCADE",
                     "INTEGER NOT NULL"
                 }
             )
@@ -1023,6 +1023,8 @@ namespace Stoma2
                 NonQuery(CreateGen(TableInfoHolder.APPOINTMENT));
                 NonQuery(CreateGen(TableInfoHolder.TREATMENT));
             }
+
+            NonQuery("PRAGMA foreign_keys = ON");
         }
 
         public void Dispose()
