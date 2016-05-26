@@ -32,6 +32,7 @@ namespace Stoma2
             {
                 AppointmentFields newRecord = new AppointmentFields();
                 FormDataToFields(newRecord);
+                newRecord.Date = DateUtils.GetCurrentTimestamp();
                 newRecord.ClientId = clientRecord.ID;
                 newRecord.Create();
             }
@@ -61,8 +62,7 @@ namespace Stoma2
         }
 
         private void FormDataToFields(AppointmentFields fields)
-        {
-            fields.Date = DateUtils.GetCurrentTimestamp();
+        {            
             fields.Diagnosis = diagnosisTextBox.Text;
             fields.Tooth = Int64.Parse(txtTooth.Text);
             fields.DoctorId = doctorRecords[doctorCategory.SelectedIndex].ID;

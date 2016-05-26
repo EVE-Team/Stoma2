@@ -74,7 +74,7 @@ namespace Stoma2
                 foreach (AppointmentRecord rec in StomaDB.GetAppointments(clientRecord))
                 {
                     var item = new ListViewItem(new string[] {
-                       DateUtils.ToExternalDateFormat(rec.Data.Date)
+                       DateUtils.ToDateFormat(rec.Data.Date, DateUtils.EXTERNAL_DATE_FORMAT)
                     });
                     item.Tag = rec;
                     appointmentListView.Items.Add(item);
@@ -214,7 +214,8 @@ namespace Stoma2
 
             document.Open();
 
-            Paragraph header = new Paragraph("Чек об оказании стоматологических услуг от " + DateUtils.ToExternalDateFormat(DateUtils.GetCurrentTimestamp()) + " г.", font);
+            Paragraph header = new Paragraph("Чек об оказании стоматологических услуг от " 
+                + DateUtils.ToDateFormat(DateUtils.GetCurrentTimestamp(), DateUtils.WITHOUT_TIME_DATE_FORMAT) + " г.", font);
             header.Alignment = Element.ALIGN_CENTER;
 
             document.Add(header);

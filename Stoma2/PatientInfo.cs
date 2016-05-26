@@ -43,7 +43,7 @@ namespace Stoma2
 
             workplaceTextBox.Text = rec.Data.Workplace;
             positionTextBox.Text = rec.Data.Position;
-            lastInviteTextBox.Text = DateUtils.ToExternalDateFormat(rec.Data.LastInvite);
+            lastInviteTextBox.Text = DateUtils.ToDateFormat(rec.Data.LastInvite, DateUtils.EXTERNAL_DATE_FORMAT);
             notesTextBox.Text = rec.Data.Notes;
         }
 	}
