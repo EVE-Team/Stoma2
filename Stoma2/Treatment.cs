@@ -187,7 +187,8 @@ namespace Stoma2
 
         private void btnAddAppointment_Click(object sender, EventArgs e)
         {
-            var form = new NewAppointment(clientRecord);
+            var form = new NewAppointment();
+            form.clientRecord = clientRecord;
             form.ShowDialog(this);
             UpdateAppointmentList();
         }
@@ -368,7 +369,10 @@ namespace Stoma2
 
         private void appointmentMenuEdit_Click(object sender, EventArgs e)
         {
-            
+            var form = new NewAppointment();
+            form.EditRecord = (AppointmentRecord)appointmentListView.SelectedItems[0].Tag;
+            form.ShowDialog(this);
+            UpdateAppointmentList();           
         }
 	}
 }

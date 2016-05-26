@@ -13,12 +13,12 @@ namespace Stoma2
 	public partial class NewAppointment : Form
 	{
         private List<DoctorRecord> doctorRecords = new List<DoctorRecord>();
-        private ClientRecord clientRecord;
+        public ClientRecord clientRecord = null;
+        public AppointmentRecord EditRecord = null; 
 
-        public NewAppointment(ClientRecord clientRecord)
+        public NewAppointment()
 		{
-			InitializeComponent();
-            this.clientRecord = clientRecord;
+			InitializeComponent();           
 		}
 
 		private void btnCancel_Click(object sender, EventArgs e)
@@ -33,7 +33,10 @@ namespace Stoma2
             newRecord.Diagnosis = diagnosisTextBox.Text;
             newRecord.Tooth = Int64.Parse(txtTooth.Text);
             newRecord.DoctorId = doctorRecords[doctorCategory.SelectedIndex].ID;
-            newRecord.ClientId = clientRecord.ID;
+            if (clientRecord != null)
+            {
+                newRecord.ClientId = clientRecord.ID;
+            }           
             newRecord.Create();
 			Close();
 		}
@@ -44,6 +47,13 @@ namespace Stoma2
             {
                 doctorCategory.Items.Add(rec.GetFullName());
                 doctorRecords.Add(rec);
+            }
+            if (EditRecord != null)
+            {
+                this.Text = "Редактирование приема";
+                diagnosisTextBox.Text = EditRecord.Data.Diagnosis;
+                txtTooth.Text = EditRecord.Data.Tooth.ToString();
+                doctorCategory.SelectedIndex = (int)EditRecord.Data.DoctorId - 1;
             }
         }
 	}
