@@ -62,7 +62,7 @@
             listViewItem3});
             this.reportListView.Location = new System.Drawing.Point(12, 12);
             this.reportListView.Name = "reportListView";
-            this.reportListView.Size = new System.Drawing.Size(692, 271);
+            this.reportListView.Size = new System.Drawing.Size(601, 482);
             this.reportListView.TabIndex = 5;
             this.reportListView.UseCompatibleStateImageBehavior = false;
             this.reportListView.View = System.Windows.Forms.View.Details;
@@ -118,7 +118,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(877, 295);
+            this.ClientSize = new System.Drawing.Size(877, 506);
             this.Controls.Add(this.copyToClipboardBtn);
             this.Controls.Add(this.printBtn);
             this.Controls.Add(this.reportListView);
@@ -136,6 +136,6 @@
 		private System.Windows.Forms.ColumnHeader columnHeader18;
 		private System.Windows.Forms.ColumnHeader columnHeader19;
 		private System.Windows.Forms.Button printBtn;
-		private System.Windows.Forms.Button copyToClipboardBtn;
+        private System.Windows.Forms.Button copyToClipboardBtn;
 	}
 }
