@@ -94,8 +94,8 @@ namespace Stoma2
         public ServiceListTableInfo()
             : base(
                 "service_list",
-                new string[] { "name", "price", "category_id" },
-                new string[] { "TEXT NOT NULL", "INTEGER NOT NULL", "INTEGER REFERENCES " + TableInfoHolder.CATEGORY.table + "(id)" }
+                new string[] { "name", "price", "category_id", "obsolete" },
+                new string[] { "TEXT NOT NULL", "INTEGER NOT NULL", "INTEGER REFERENCES " + TableInfoHolder.CATEGORY.table + "(id)", "INTEGER NOT NULL" }
             )
         {}
 
@@ -289,13 +289,15 @@ namespace Stoma2
         public string Name { get; set; }
         public Int64 Price { get; set; }
         public Int64 CategoryId { get; set; }
+        public int obsolete { get; set; }
 
         public override object[] ToStrArray()
         {
             return new object[] {
                 Name,
                 Price,
-                CategoryId
+                CategoryId,
+                obsolete,
             };
         }
 
@@ -309,6 +311,7 @@ namespace Stoma2
             Name = strArray[0].ToString();
             Price = (Int64)strArray[1];
             CategoryId = (Int64)strArray[2];
+            obsolete = 1;
         }
 
         public override TableInfo GetTableInfo()
@@ -562,6 +565,8 @@ namespace Stoma2
 
     public class ServiceListRecord : DatabaseRecord
     {
+        public int obsolete;
+
         protected override DataFields CreateData()
         {
             return new ServiceListFields();
@@ -673,8 +678,8 @@ namespace Stoma2
 
     public class ServiceListIterator : DatabaseIterator
     {
-        public ServiceListIterator(Int64 categoryId)
-            : base("", null, TableInfoHolder.SERVICE_LIST.rows[2] + "=" + categoryId)
+        public ServiceListIterator(Int64 categoryId, int obsolete)
+            : base("", null, TableInfoHolder.SERVICE_LIST.rows[2] + "=" + categoryId + " AND obsolete = " + obsolete.ToString())
         {}
 
         protected override TableInfo GetTableInfo()
@@ -940,9 +945,9 @@ namespace Stoma2
             return new ClientIterator(search);
         }
 
-        public static ServiceListIterator GetServiceList(Int64 categoryId)
+        public static ServiceListIterator GetServiceList(Int64 categoryId, int obsolete)
         {
-            return new ServiceListIterator(categoryId);
+            return new ServiceListIterator(categoryId, obsolete);
         }
 
         public Int64 GetCategoryIdByServiceId(Int64 id)

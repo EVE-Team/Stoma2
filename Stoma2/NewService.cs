@@ -34,11 +34,17 @@ namespace Stoma2
                 ServiceListFields newRecord = new ServiceListFields();
                 FormDataToFields(newRecord);
                 newRecord.CategoryId = id;
+                newRecord.obsolete = 0;
                 newRecord.Create();
             }
             else
             {
-                FormDataToFields(RecordForEditing.Data);
+                ServiceListFields newRecord = new ServiceListFields();
+                FormDataToFields(newRecord);
+                newRecord.CategoryId = id;
+                newRecord.obsolete = 0;
+                newRecord.Create();
+                RecordForEditing.obsolete = 1;
                 RecordForEditing.Save();
             }
 

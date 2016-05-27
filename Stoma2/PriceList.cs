@@ -94,7 +94,7 @@ namespace Stoma2
             {
 				Int64 id = (cmbCategory.SelectedItem as CategoryItem).Record.ID;
 				
-                foreach (ServiceListRecord rec in StomaDB.GetServiceList(id))
+                foreach (ServiceListRecord rec in StomaDB.GetServiceList(id, 0))
                 {
                     var item = new ListViewItem(new string[] {
                         rec.Data.Name,
@@ -166,7 +166,10 @@ namespace Stoma2
         private void btnRemove_Click(object sender, EventArgs e)
         {
             ServiceListRecord rec = (ServiceListRecord)serviceListView.SelectedItems[0].Tag;
-            rec.Delete();
+
+            ServiceListFields recData = rec.Data;
+            recData.obsolete = 1;
+            rec.Save();
             UpdateServiceList();
         }
 

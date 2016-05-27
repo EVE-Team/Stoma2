@@ -106,7 +106,7 @@ namespace Stoma2
             {
                 CategoryRecord catRec = categoryRecords[cbCategory.SelectedIndex];
 
-                foreach (ServiceListRecord rec in StomaDB.GetServiceList(catRec.ID))
+                foreach (ServiceListRecord rec in StomaDB.GetServiceList(catRec.ID, 0))
                 {
                     cbService.Items.Add(rec.Data.Name);
                     serviceListRecords.Add(rec);
