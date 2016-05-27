@@ -209,7 +209,7 @@ namespace Stoma2
                 return;
             }
 
-            Document document = new Document(PageSize.A4, 30f, 0, 20, 50);
+            Document document = new Document(PageSize.A4, 10f, 10f, 20f, 20f);
             PdfWriter writer = PdfWriter.GetInstance(document, new FileStream("result.pdf", FileMode.Create));
 
             document.Open();
@@ -277,6 +277,7 @@ namespace Stoma2
         {
             PdfPCell cell = new PdfPCell(new Phrase(cellValue, font1));
             cell.VerticalAlignment = PdfPCell.ALIGN_CENTER;
+            cell.PaddingLeft = 2f;
             cell.MinimumHeight = minimumRowHeight;
             cell.BorderWidth = 0.1f;
             cell.Colspan = colspan;
@@ -294,8 +295,11 @@ namespace Stoma2
         private void CreateTreatmentTableHeaderCell(PdfPTable treatmentTable, string cellValue, int colspan)
         {
             PdfPCell treatmentTableHeader = new PdfPCell(new Phrase(cellValue, font));
+            treatmentTableHeader.VerticalAlignment = PdfPCell.ALIGN_CENTER;
             treatmentTableHeader.BorderWidth = 0.1f;
+            treatmentTableHeader.MinimumHeight = minimumRowHeight;
             treatmentTableHeader.Colspan = colspan;
+            treatmentTableHeader.PaddingLeft = 2f;
             treatmentTable.AddCell(treatmentTableHeader);
         }
 
@@ -337,6 +341,9 @@ namespace Stoma2
         {
             PdfPCell treatmentTableBaseCell = new PdfPCell(new Phrase(cellValue, font1));
             treatmentTableBaseCell.BorderWidth = 0.1f;
+            treatmentTableBaseCell.VerticalAlignment = PdfPCell.ALIGN_CENTER;
+            treatmentTableBaseCell.MinimumHeight = minimumRowHeight;
+            treatmentTableBaseCell.PaddingLeft = 2f;
             treatmentTableBaseCell.Colspan = colspan;
             treatmentTable.AddCell(treatmentTableBaseCell);
         }
