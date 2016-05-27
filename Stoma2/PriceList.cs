@@ -133,7 +133,11 @@ namespace Stoma2
                 "Удаление категории", MessageBoxButtons.YesNo,
 				MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
             {
-				(cmbCategory.SelectedItem as CategoryItem).Record.Delete();
+                CategoryItem rec = (CategoryItem)cmbCategory.SelectedItem;
+                CategoryRecord recData = rec.Record;
+                CategoryFields data = recData.Data;
+                data.obsolete = 1;
+                recData.Save();
                 UpdateCategoryList();
             }
         }

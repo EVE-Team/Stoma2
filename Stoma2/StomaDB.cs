@@ -110,8 +110,8 @@ namespace Stoma2
         public CategoryTableInfo()
             : base(
                 "categories",
-                new string[] { "name" },
-                new string[] { "TEXT NOT NULL" }
+                new string[] { "name", "obsolete" },
+                new string[] { "TEXT NOT NULL", "INTEGER NOT NULL" }
             )
         {}
 
@@ -322,18 +322,22 @@ namespace Stoma2
 
     public class CategoryFields : DataFields
     {
+        public int obsolete { get; set; }
+
         public string Name { get; set; }
 
         public override object[] ToStrArray()
         {
             return new object[] {
-                Name
+                Name,
+                obsolete,
             };
         }
 
         public override void FromStrArray(object[] strArray)
         {
             Name = strArray[0].ToString();
+            obsolete = 1;
         }
 
         public override TableInfo GetTableInfo()
@@ -581,6 +585,8 @@ namespace Stoma2
 
     public class CategoryRecord : DatabaseRecord
     {
+        public int obsolete;
+
         protected override DataFields CreateData()
         {
             return new CategoryFields();
@@ -691,7 +697,7 @@ namespace Stoma2
     public class CategoryIterator : DatabaseIterator
     {
         public CategoryIterator()
-            : base("", null)
+            : base("", null, TableInfoHolder.CATEGORY.rows[1] + "=" + 0)
         {}
 
         protected override TableInfo GetTableInfo()
