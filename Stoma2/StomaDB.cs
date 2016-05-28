@@ -54,8 +54,8 @@ namespace Stoma2
         public DoctorTableInfo()
             : base(
                 "doctors",
-                new string[] { "name_first", "name_last", "name_patronymic", "speciality" },
-                new string[] { "TEXT NOT NULL", "TEXT NOT NULL", "TEXT", "TEXT" }
+                new string[] { "name_first", "name_last", "name_patronymic", "speciality", "obsolete" },
+                new string[] { "TEXT NOT NULL", "TEXT NOT NULL", "TEXT", "TEXT", "INTEGER NOT NULL" }
             )
         {}
 
@@ -193,6 +193,7 @@ namespace Stoma2
         public string LastName { get; set; }
         public string Patronymic { get; set; }
         public string Speciality { get; set; }
+        public int obsolete { get; set; }
 
         public override object[] ToStrArray()
         {
@@ -200,7 +201,8 @@ namespace Stoma2
                 DatabaseUtils.EncodeString(FirstName),
                 DatabaseUtils.EncodeString(LastName),
 				DatabaseUtils.EncodeString(Patronymic),
-				Speciality
+				Speciality,
+                obsolete
             };
         }
 
@@ -210,6 +212,7 @@ namespace Stoma2
             LastName = DatabaseUtils.DecodeString(strArray[1].ToString());
             Patronymic = DatabaseUtils.DecodeString(strArray[2].ToString());
             Speciality = strArray[3].ToString();
+            obsolete = 1;
         }
 
         public override TableInfo GetTableInfo()
@@ -531,6 +534,8 @@ namespace Stoma2
 
 	public class DoctorRecord : DatabaseRecord
 	{
+        public int obsolete;
+
         protected override DataFields CreateData()
         {
             return new DoctorFields();
@@ -661,7 +666,7 @@ namespace Stoma2
     public class DoctorIterator : DatabaseIterator
 	{
 		public DoctorIterator(string search_query = "")
-            : base(search_query, Utils.SliceArray(TableInfoHolder.DOCTOR.rows, new int[] { 0, 1, 2 }))
+            : base(search_query, Utils.SliceArray(TableInfoHolder.DOCTOR.rows, new int[] { 0, 1, 2, 3}), "obsolete = 0")
 		{}
 
         protected override TableInfo GetTableInfo()

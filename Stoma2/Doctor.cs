@@ -81,7 +81,11 @@ namespace Stoma2
         private void delBtn_Click(object sender, EventArgs e)
         {
 			DoctorRecord rec = (DoctorRecord)doctorListView.SelectedItems[0].Tag;
-			rec.Delete();
+            DoctorFields data = rec.Data;
+            data.obsolete = 1;
+            rec.Save();
+			//rec.Delete();
+
             Program.mainForm.OnDoctorUpdate();
         }
 
