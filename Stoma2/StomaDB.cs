@@ -943,7 +943,7 @@ namespace Stoma2
             }
         }
 
-        private static readonly string DB_FILE_NAME = "Stoma2.db";
+        public static readonly string DB_FILE_NAME = "Stoma2.db";
         private readonly SQLiteConnection m_dbConnection;
 
 		public static DoctorIterator GetDoctors(string search = "")
@@ -1041,6 +1041,8 @@ namespace Stoma2
             }
 
             NonQuery("PRAGMA foreign_keys = ON");
+
+			BackupManager.Instance.PerformBackup();
         }
 
         public void Dispose()

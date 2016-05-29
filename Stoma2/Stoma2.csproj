@@ -67,6 +67,7 @@
     <Compile Include="Accordion.Designer.cs">
       <DependentUpon>Accordion.cs</DependentUpon>
     </Compile>
+    <Compile Include="BackupManager.cs" />
     <Compile Include="NewDoctor.cs">
       <SubType>Form</SubType>
     </Compile>
