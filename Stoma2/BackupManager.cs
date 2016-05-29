@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Globalization;
+using System.Windows.Forms;
 
 namespace Stoma2
 {
@@ -59,18 +60,6 @@ namespace Stoma2
 			return Path.Combine(BackupDirectory, fileName);
 		}
 
-		public class BackupRestoreException : Exception
-		{
-			public BackupRestoreException(string backupName)
-				: base("Restarting application to restore backup")
-			{
-				m_backupName = backupName;
-			}
-
-			private string m_backupName;
-			public string BackupName { get { return m_backupName; } }
-		}
-
 		public class BackupInfo
 		{
 			public string FileName { get { return m_fileName; } }
@@ -96,7 +85,8 @@ namespace Stoma2
 
 			public void Restore()
 			{
-				throw new BackupRestoreException(m_fileName);
+				Program.backupToRestore = m_fileName;
+				Program.mainForm.Close();
 			}
 
 			public void Remove()

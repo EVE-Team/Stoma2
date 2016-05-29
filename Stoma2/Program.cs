@@ -10,6 +10,7 @@ namespace Stoma2
 	static class Program
 	{
 		public static MainForm mainForm;
+		public static string backupToRestore = null;
 
         /// <summary>
 		/// The main entry point for the application.
@@ -25,17 +26,20 @@ namespace Stoma2
 			{
 				restartApp = false;
 
-				try
 				{
 					mainForm = new MainForm();
 					Application.Run(mainForm);
-					BackupManager.Instance.PerformBackup();
 				}
-				catch (BackupManager.BackupRestoreException ex)
+
+				if (backupToRestore != null)
 				{
 					restartApp = true;
-
-					File.Copy(ex.BackupName, StomaDB.DB_FILE_NAME, true);
+					File.Copy(backupToRestore, StomaDB.DB_FILE_NAME, true);
+					backupToRestore = null;
+				}
+				else
+				{
+					BackupManager.Instance.PerformBackup();
 				}
 			} while (restartApp);
 		}

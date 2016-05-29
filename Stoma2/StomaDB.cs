@@ -1048,6 +1048,7 @@ namespace Stoma2
         public void Dispose()
         {
             m_dbConnection.Close();
+			instance = null;
         }
 
         public int NonQuery(string query)
