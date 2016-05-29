@@ -136,7 +136,7 @@ namespace Stoma2
                 CategoryItem rec = (CategoryItem)cmbCategory.SelectedItem;
                 CategoryRecord recData = rec.Record;
                 CategoryFields data = recData.Data;
-                data.obsolete = 1;
+                data.Obsolete = true;
                 recData.Save();
                 UpdateCategoryList();
             }
@@ -172,7 +172,7 @@ namespace Stoma2
             ServiceListRecord rec = (ServiceListRecord)serviceListView.SelectedItems[0].Tag;
 
             ServiceListFields recData = rec.Data;
-            recData.obsolete = 1;
+            recData.Obsolete = true;
             rec.Save();
             UpdateServiceList();
         }

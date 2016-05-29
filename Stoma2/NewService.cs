@@ -12,14 +12,15 @@ namespace Stoma2
 {
     public partial class NewService : Form
     {
-        private Int64 id;
         public ServiceListRecord RecordForEditing = null;
+
+		private Int64 m_categoryID;
         private bool m_baseModified = false;
 
-        public NewService(Int64 id)
+		public NewService(Int64 categoryID)
         {
             InitializeComponent();
-            this.id = id;
+			m_categoryID = categoryID;
         }
 
         public bool BaseModified
@@ -33,18 +34,11 @@ namespace Stoma2
             {
                 ServiceListFields newRecord = new ServiceListFields();
                 FormDataToFields(newRecord);
-                newRecord.CategoryId = id;
-                newRecord.obsolete = 0;
                 newRecord.Create();
             }
             else
             {
-                ServiceListFields newRecord = new ServiceListFields();
-                FormDataToFields(newRecord);
-                newRecord.CategoryId = id;
-                newRecord.obsolete = 0;
-                newRecord.Create();
-                RecordForEditing.obsolete = 1;
+				FormDataToFields(RecordForEditing.Data);
                 RecordForEditing.Save();
             }
 
@@ -63,7 +57,7 @@ namespace Stoma2
             {
                 Text = "Редактировать услугу";
                 btnApply.Text = "Сохранить";
-                FieldsToFormData(RecordForEditing.Data);
+				FormFieldsToData(RecordForEditing.Data);
             }
         }
 
@@ -71,9 +65,10 @@ namespace Stoma2
         {
             fields.Name = serviceNameTxt.Text;
             fields.Price = (long)servicePrice.Value;
+			fields.CategoryId = m_categoryID;
         }
 
-        private void FieldsToFormData(ServiceListFields fields)
+		private void FormFieldsToData(ServiceListFields fields)
         {
             serviceNameTxt.Text = fields.Name;
             servicePrice.Value = fields.Price;

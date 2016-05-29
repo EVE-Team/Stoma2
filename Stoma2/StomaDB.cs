@@ -193,7 +193,7 @@ namespace Stoma2
         public string LastName { get; set; }
         public string Patronymic { get; set; }
         public string Speciality { get; set; }
-        public int obsolete { get; set; }
+        public bool Obsolete { get; set; }
 
         public override object[] ToStrArray()
         {
@@ -202,7 +202,7 @@ namespace Stoma2
                 DatabaseUtils.EncodeString(LastName),
 				DatabaseUtils.EncodeString(Patronymic),
 				Speciality,
-                obsolete
+                Convert.ToInt32(Obsolete)
             };
         }
 
@@ -212,7 +212,7 @@ namespace Stoma2
             LastName = DatabaseUtils.DecodeString(strArray[1].ToString());
             Patronymic = DatabaseUtils.DecodeString(strArray[2].ToString());
             Speciality = strArray[3].ToString();
-            obsolete = 1;
+			Obsolete = Convert.ToBoolean(strArray[4]);
         }
 
         public override TableInfo GetTableInfo()
@@ -292,7 +292,7 @@ namespace Stoma2
         public string Name { get; set; }
         public Int64 Price { get; set; }
         public Int64 CategoryId { get; set; }
-        public int obsolete { get; set; }
+        public bool Obsolete { get; set; }
 
         public override object[] ToStrArray()
         {
@@ -300,13 +300,13 @@ namespace Stoma2
                 Name,
                 Price,
                 CategoryId,
-                obsolete,
+                Convert.ToInt32(Obsolete),
             };
         }
 
         public override void FromStrArray(object[] strArray)
         {
-            if (!Utils.IsInt64(strArray[1]) || !Utils.IsInt64(strArray[2]))
+			if (!Utils.IsInt64(strArray[1]) || !Utils.IsInt64(strArray[2]))
             {
                 throw new Exception("Type mismatch");
             }
@@ -314,7 +314,7 @@ namespace Stoma2
             Name = strArray[0].ToString();
             Price = (Int64)strArray[1];
             CategoryId = (Int64)strArray[2];
-            obsolete = 1;
+			Obsolete = Convert.ToBoolean(strArray[3]);
         }
 
         public override TableInfo GetTableInfo()
@@ -325,22 +325,21 @@ namespace Stoma2
 
     public class CategoryFields : DataFields
     {
-        public int obsolete { get; set; }
-
         public string Name { get; set; }
+		public bool Obsolete { get; set; }
 
         public override object[] ToStrArray()
         {
             return new object[] {
                 Name,
-                obsolete,
+                Convert.ToInt32(Obsolete),
             };
         }
 
         public override void FromStrArray(object[] strArray)
         {
             Name = strArray[0].ToString();
-            obsolete = 1;
+			Obsolete = Convert.ToBoolean(strArray[1]);
         }
 
         public override TableInfo GetTableInfo()
@@ -534,8 +533,6 @@ namespace Stoma2
 
 	public class DoctorRecord : DatabaseRecord
 	{
-        public int obsolete;
-
         protected override DataFields CreateData()
         {
             return new DoctorFields();
@@ -574,8 +571,6 @@ namespace Stoma2
 
     public class ServiceListRecord : DatabaseRecord
     {
-        public int obsolete;
-
         protected override DataFields CreateData()
         {
             return new ServiceListFields();
@@ -590,8 +585,6 @@ namespace Stoma2
 
     public class CategoryRecord : DatabaseRecord
     {
-        public int obsolete;
-
         protected override DataFields CreateData()
         {
             return new CategoryFields();

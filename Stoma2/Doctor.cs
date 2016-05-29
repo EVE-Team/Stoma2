@@ -82,9 +82,8 @@ namespace Stoma2
         {
 			DoctorRecord rec = (DoctorRecord)doctorListView.SelectedItems[0].Tag;
             DoctorFields data = rec.Data;
-            data.obsolete = 1;
+            data.Obsolete = true;
             rec.Save();
-			//rec.Delete();
 
             Program.mainForm.OnDoctorUpdate();
         }
