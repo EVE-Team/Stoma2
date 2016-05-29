@@ -84,6 +84,7 @@
 			this.offloadBtn.Text = "Скопировить на внешний носитель";
 			this.offloadBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			this.offloadBtn.UseVisualStyleBackColor = false;
+			this.offloadBtn.Click += new System.EventHandler(this.offloadBtn_Click);
 			// 
 			// restoreBtn
 			// 

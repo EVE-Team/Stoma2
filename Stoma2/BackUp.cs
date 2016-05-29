@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Stoma2
 {
@@ -47,6 +48,20 @@ namespace Stoma2
 		private void restoreBtn_Click(object sender, EventArgs e)
 		{
 			(backupListView.SelectedItems[0].Tag as BackupManager.BackupInfo).Restore();
+		}
+
+		private void offloadBtn_Click(object sender, EventArgs e)
+		{
+			var folderBrowserDialog = new FolderBrowserDialog();
+			folderBrowserDialog.Description = "Выберите каталог, куда необходимо скопировать программу";
+			folderBrowserDialog.RootFolder = Environment.SpecialFolder.MyComputer;
+			folderBrowserDialog.SelectedPath = Directory.GetDirectoryRoot(Environment.CurrentDirectory);
+			folderBrowserDialog.ShowNewFolderButton = true;
+
+			if (folderBrowserDialog.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
+			{
+				BackupManager.Instance.PerformFullBackup(folderBrowserDialog.SelectedPath);
+			}
 		}
 	}
 }

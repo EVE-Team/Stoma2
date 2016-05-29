@@ -31,12 +31,12 @@ namespace Stoma2
 		private static readonly int MAXIMUM_NUMBER_OF_BACKUPS = 30;
 		private static readonly string BACKUP_DIRECTORY_NAME = "Backup";
 
-		private string BackupDirectory;
+		private string ProgramDirectory, BackupDirectory;
 
 		public BackupManager()
 		{
-			string current_directory = Path.GetDirectoryName(System.Windows.Forms.Application.ExecutablePath);
-			BackupDirectory = Path.Combine(current_directory, BACKUP_DIRECTORY_NAME);
+			ProgramDirectory = Path.GetDirectoryName(System.Windows.Forms.Application.ExecutablePath);
+			BackupDirectory = Path.Combine(ProgramDirectory, BACKUP_DIRECTORY_NAME);
 			if (!Directory.Exists(BackupDirectory))
 			{
 				Directory.CreateDirectory(BackupDirectory);
@@ -155,6 +155,13 @@ namespace Stoma2
 
 			result.Sort(Comparer<BackupInfo>.Create((i1, i2) => i2.BackupDate.CompareTo(i1.BackupDate)));
 			return result;
+		}
+
+		// Copy entire proogram directory (executable, database, backups)
+		// to destinationDirectory
+		public void PerformFullBackup(string destinationDirectory)
+		{
+			Utils.DirectoryCopy(ProgramDirectory, Path.Combine(destinationDirectory, "Stoma"), true);
 		}
 	}
 }
