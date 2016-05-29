@@ -180,6 +180,12 @@
       <DependentUpon>Treatment.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils.cs" />
+    <Compile Include="ValidatedTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ValidatedTextBox.Designer.cs">
+      <DependentUpon>ValidatedTextBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Visit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -243,6 +249,9 @@
     </Compile>
     <EmbeddedResource Include="Treatment.resx">
       <DependentUpon>Treatment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ValidatedTextBox.resx">
+      <DependentUpon>ValidatedTextBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Visit.resx">
       <DependentUpon>Visit.cs</DependentUpon>

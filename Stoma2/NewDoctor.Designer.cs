@@ -28,35 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-			this.patronymicBox = new System.Windows.Forms.TextBox();
-			this.nameFirstBox = new System.Windows.Forms.TextBox();
 			this.label10 = new System.Windows.Forms.Label();
 			this.label9 = new System.Windows.Forms.Label();
 			this.label8 = new System.Windows.Forms.Label();
-			this.nameLastBox = new System.Windows.Forms.TextBox();
-			this.specialityBox = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.btnApply = new System.Windows.Forms.Button();
 			this.btnCancel = new System.Windows.Forms.Button();
+			this.specialityBox = new Stoma2.ValidatedTextBox();
+			this.patronymicBox = new Stoma2.ValidatedTextBox();
+			this.nameFirstBox = new Stoma2.ValidatedTextBox();
+			this.nameLastBox = new Stoma2.ValidatedTextBox();
 			this.SuspendLayout();
-			// 
-			// patronymicBox
-			// 
-			this.patronymicBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.patronymicBox.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.patronymicBox.Location = new System.Drawing.Point(109, 80);
-			this.patronymicBox.Name = "patronymicBox";
-			this.patronymicBox.Size = new System.Drawing.Size(254, 23);
-			this.patronymicBox.TabIndex = 71;
-			// 
-			// nameFirstBox
-			// 
-			this.nameFirstBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.nameFirstBox.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.nameFirstBox.Location = new System.Drawing.Point(109, 42);
-			this.nameFirstBox.Name = "nameFirstBox";
-			this.nameFirstBox.Size = new System.Drawing.Size(254, 23);
-			this.nameFirstBox.TabIndex = 70;
 			// 
 			// label10
 			// 
@@ -87,24 +69,6 @@
 			this.label8.Size = new System.Drawing.Size(61, 16);
 			this.label8.TabIndex = 67;
 			this.label8.Text = "Фамилия";
-			// 
-			// nameLastBox
-			// 
-			this.nameLastBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.nameLastBox.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.nameLastBox.Location = new System.Drawing.Point(109, 4);
-			this.nameLastBox.Name = "nameLastBox";
-			this.nameLastBox.Size = new System.Drawing.Size(254, 23);
-			this.nameLastBox.TabIndex = 66;
-			// 
-			// specialityBox
-			// 
-			this.specialityBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.specialityBox.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.specialityBox.Location = new System.Drawing.Point(109, 118);
-			this.specialityBox.Name = "specialityBox";
-			this.specialityBox.Size = new System.Drawing.Size(254, 23);
-			this.specialityBox.TabIndex = 73;
 			// 
 			// label1
 			// 
@@ -153,6 +117,46 @@
 			this.btnCancel.UseVisualStyleBackColor = false;
 			this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
 			// 
+			// specialityBox
+			// 
+			this.specialityBox.BackColor = System.Drawing.Color.White;
+			this.specialityBox.BorderColor = System.Drawing.Color.Black;
+			this.specialityBox.BorderWidth = 2;
+			this.specialityBox.Location = new System.Drawing.Point(109, 118);
+			this.specialityBox.Name = "specialityBox";
+			this.specialityBox.Size = new System.Drawing.Size(254, 23);
+			this.specialityBox.TabIndex = 73;
+			// 
+			// patronymicBox
+			// 
+			this.patronymicBox.BackColor = System.Drawing.Color.White;
+			this.patronymicBox.BorderColor = System.Drawing.Color.Black;
+			this.patronymicBox.BorderWidth = 2;
+			this.patronymicBox.Location = new System.Drawing.Point(109, 80);
+			this.patronymicBox.Name = "patronymicBox";
+			this.patronymicBox.Size = new System.Drawing.Size(254, 23);
+			this.patronymicBox.TabIndex = 71;
+			// 
+			// nameFirstBox
+			// 
+			this.nameFirstBox.BackColor = System.Drawing.Color.White;
+			this.nameFirstBox.BorderColor = System.Drawing.Color.Black;
+			this.nameFirstBox.BorderWidth = 2;
+			this.nameFirstBox.Location = new System.Drawing.Point(109, 42);
+			this.nameFirstBox.Name = "nameFirstBox";
+			this.nameFirstBox.Size = new System.Drawing.Size(254, 23);
+			this.nameFirstBox.TabIndex = 70;
+			// 
+			// nameLastBox
+			// 
+			this.nameLastBox.BackColor = System.Drawing.Color.White;
+			this.nameLastBox.BorderColor = System.Drawing.Color.Black;
+			this.nameLastBox.BorderWidth = 2;
+			this.nameLastBox.Location = new System.Drawing.Point(109, 4);
+			this.nameLastBox.Name = "nameLastBox";
+			this.nameLastBox.Size = new System.Drawing.Size(254, 23);
+			this.nameLastBox.TabIndex = 66;
+			// 
 			// NewDoctor
 			// 
 			this.AcceptButton = this.btnApply;
@@ -185,13 +189,13 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox patronymicBox;
-        private System.Windows.Forms.TextBox nameFirstBox;
+		private ValidatedTextBox patronymicBox;
+		private ValidatedTextBox nameFirstBox;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox nameLastBox;
-        private System.Windows.Forms.TextBox specialityBox;
+		private ValidatedTextBox nameLastBox;
+		private ValidatedTextBox specialityBox;
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.Button btnApply;
 		private System.Windows.Forms.Button btnCancel;

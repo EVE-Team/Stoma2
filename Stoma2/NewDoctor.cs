@@ -18,10 +18,24 @@ namespace Stoma2
         public NewDoctor()
         {
             InitializeComponent();
+			nameFirstBox.ValidationType = ValidatedTextBox.EValidationType.Name;
+			nameLastBox.ValidationType = ValidatedTextBox.EValidationType.Name;
+			patronymicBox.ValidationType = ValidatedTextBox.EValidationType.NoValidation;
+			specialityBox.ValidationType = ValidatedTextBox.EValidationType.NoValidation;
         }
 
 		private void btnApply_Click(object sender, EventArgs e)
 		{
+			if (!nameFirstBox.Validate() ||
+				!nameLastBox.Validate() ||
+				!patronymicBox.Validate() ||
+				!specialityBox.Validate())
+			{
+				MessageBox.Show(this, "Пожалуйста, исправьте ошибки в полях, помеченных красным, прежде чем применять изменения",
+					"Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				return;
+			}
+
 			if (RecordForEditing == null)
 			{
                 DoctorFields newRecord = new DoctorFields();
