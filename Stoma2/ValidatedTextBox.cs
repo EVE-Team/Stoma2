@@ -13,6 +13,8 @@ namespace Stoma2
 {
 	public partial class ValidatedTextBox : UserControl
 	{
+		private static readonly int TEXTBOX_MARGIN = 1;
+
 		public ValidatedTextBox()
 		{
 			InitializeComponent();
@@ -24,10 +26,16 @@ namespace Stoma2
 			UpdateTextBoxPosition();
 		}
 
+		private int TotalWidth
+		{
+			get { return m_borderWidth + TEXTBOX_MARGIN; }
+		}
+
 		private void UpdateTextBoxPosition()
 		{
-			txtText.Location = new Point(m_borderWidth, m_borderWidth);
-			txtText.Size = new Size(Width - m_borderWidth * 2, Height - m_borderWidth * 2);
+			txtText.Location = new Point(TotalWidth, TotalWidth);
+			txtText.Size = new Size(Width - TotalWidth * 2,
+				Height - TotalWidth * 2);
 		}
 
 		override public string Text
@@ -67,10 +75,10 @@ namespace Stoma2
 
 		private void ValidatedTextBox_Paint(object sender, PaintEventArgs e)
 		{
-			float half = m_borderWidth / 2;
+			float half = TotalWidth / 2;
 			e.Graphics.DrawRectangle(new Pen(BorderColor, BorderWidth),
 				half, half,
-				txtText.Size.Width + m_borderWidth, txtText.Size.Height + m_borderWidth);
+				txtText.Size.Width + TotalWidth, txtText.Size.Height + TotalWidth + 1);
 		}
 
 		public enum EValidationType
