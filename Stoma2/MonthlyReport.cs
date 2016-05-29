@@ -15,14 +15,14 @@ namespace Stoma2
 		public MonthlyReport()
 		{
 			InitializeComponent();
-            UpdateReportListView();
+            UpdateReportListView("", "");
             monthReport.Checked = true;
 		}
 
-        public void UpdateReportListView()
+        public void UpdateReportListView(string begin, string end)
         {
             reportListView.Items.Clear();
-            foreach (ReportRecord rec in StomaDB.GetDoctorAndAmountOfPatients())
+            foreach (ReportRecord rec in StomaDB.GetDoctorAndAmountOfPatients(begin, end))
             {
                 var item = new ListViewItem(new string[] {
                     rec.GetFullName(),
@@ -34,7 +34,7 @@ namespace Stoma2
 
         private void MonthlyReport_Paint(object sender, PaintEventArgs e)
         {
-            UpdateReportListView();
+            //UpdateReportListView("", "");
         }
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
@@ -54,22 +54,34 @@ namespace Stoma2
             if (monthReport.Checked)
             {
                 DateTime firstDayOfMonth = new DateTime(dateTimePicker1.Value.Year, dateTimePicker1.Value.Month, 1);
-                DateTime lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+                string fisrtDay = firstDayOfMonth.ToString(DateUtils.INNER_DATE_FORMAT);
+                string lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1).ToString(DateUtils.INNER_DATE_FORMAT);
+
+                UpdateReportListView(fisrtDay, lastDayOfMonth);
+
                 return;
             }
             if (yearReport.Checked)
             {
                 DateTime firstDayOfYear = new DateTime(dateTimePicker1.Value.Year, 1, 1);
+                string fisrtDay = firstDayOfYear.ToString(DateUtils.INNER_DATE_FORMAT);
                 DateTime lastDayOfYear = firstDayOfYear.AddYears(1).AddDays(-1);
+                string lastDay = lastDayOfYear.ToString(DateUtils.INNER_DATE_FORMAT);
+
+                UpdateReportListView(fisrtDay, lastDay);
+
                 return;
             }
             if (changingReport.Checked)
             {
                 DateTime firstDayOfReport = dateTimePicker1.Value;
+                string fisrtDay = firstDayOfReport.ToString(DateUtils.INNER_DATE_FORMAT);
                 DateTime lastDayOfReport = dateTimePicker2.Value;
+                string lastDay = lastDayOfReport.ToString(DateUtils.INNER_DATE_FORMAT);
 
                 if (firstDayOfReport < lastDayOfReport)
                 {
+                    UpdateReportListView(fisrtDay, lastDay);
                     return;
                 }
 

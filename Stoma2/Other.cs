@@ -21,7 +21,7 @@ namespace Stoma2
         public void OnDoctorUpdate()
         {
             doctorForm.UpdateDoctorList();
-            reportForm.UpdateReportListView();
+            reportForm.UpdateReportListView("", "");
         }
 
         public Other()

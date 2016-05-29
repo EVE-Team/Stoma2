@@ -773,12 +773,12 @@ namespace Stoma2
 
     public class ReportIterator : AbstractDatabaseIterator
     {
-        public ReportIterator()
+        public ReportIterator(string begin, string end)
         {
             Init("SELECT " + TableInfoHolder.DOCTOR.FullRowName(0) + "," + TableInfoHolder.DOCTOR.FullRowName(1) + "," + TableInfoHolder.DOCTOR.FullRowName(2) + ", COUNT(client_id) AS amount_patients  FROM " +
                 TableInfoHolder.DOCTOR.table + " LEFT JOIN " +
-                "(SELECT * FROM " + TableInfoHolder.APPOINTMENT.table + " WHERE strftime('%m', date) = strftime('%m', date()) " +
-                "AND strftime('%Y', date) = strftime('%Y', date()) GROUP BY client_id, doctor_id)"
+                "(SELECT * FROM " + TableInfoHolder.APPOINTMENT.table + " WHERE (date >= '" + begin + "')" + 
+                "AND (date <= '" + end + "') " + "GROUP BY client_id, doctor_id)"
                  + " ON " + TableInfoHolder.DOCTOR.FullIdRowName() + " = doctor_id" +
                 " GROUP BY name_last;");
         }
@@ -993,9 +993,9 @@ namespace Stoma2
         }
 
 
-        public static ReportIterator GetDoctorAndAmountOfPatients()
+        public static ReportIterator GetDoctorAndAmountOfPatients(string begin, string end)
         {
-            return new ReportIterator();
+            return new ReportIterator(begin, end);
         }
 
         public static PatientsToInviteIterator GetPatientsToInvite()
