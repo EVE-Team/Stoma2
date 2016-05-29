@@ -205,8 +205,11 @@ namespace Stoma2
             var workList = treatmentListView.Items;
             if (workList.Count == 0)
             {
-                MessageBox.Show("Выберите дату приема из списка.", "Ошибка");
-                return;
+                if (MessageBox.Show("Вы действительно хотите распечатать пустой прием?",
+                "Печать", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == System.Windows.Forms.DialogResult.No)
+                {
+                    return;
+                }
             }
 
             Document document = new Document(PageSize.A4, 10f, 10f, 20f, 20f);
