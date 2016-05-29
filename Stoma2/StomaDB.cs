@@ -1041,8 +1041,6 @@ namespace Stoma2
             }
 
             NonQuery("PRAGMA foreign_keys = ON");
-
-			BackupManager.Instance.PerformBackup();
         }
 
         public void Dispose()
