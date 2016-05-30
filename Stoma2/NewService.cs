@@ -20,6 +20,9 @@ namespace Stoma2
 		public NewService(Int64 categoryID)
         {
             InitializeComponent();
+			Utils.SetFontForTextBoxes(this);
+			serviceNameTxt.ValidationType = ValidatedTextBox.EValidationType.NotEmpty;
+
 			m_categoryID = categoryID;
         }
 
@@ -30,6 +33,12 @@ namespace Stoma2
 
         private void btnApply_Click(object sender, EventArgs e)
         {
+			if (!serviceNameTxt.Validate())
+			{
+				Utils.ShowInvalidDataWarning(this);
+				return;
+			}
+
             if (RecordForEditing == null)
             {
                 ServiceListFields newRecord = new ServiceListFields();
