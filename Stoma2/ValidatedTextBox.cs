@@ -85,7 +85,9 @@ namespace Stoma2
 		{
 			NoValidation,
 			NotEmpty,
-			Name
+			Name,
+			Integer,
+			Tooth
 		}
 
 		public EValidationType ValidationType;
@@ -104,6 +106,13 @@ namespace Stoma2
 					break;
 				case EValidationType.Name:
 					result = Regex.IsMatch(Text, @"^[\p{L}\p{M}' \.\-]+$");
+					break;
+				case EValidationType.Integer:
+					int tmp;
+					result = int.TryParse(Text, out tmp);
+					break;
+				case EValidationType.Tooth:
+					result = int.TryParse(Text, out tmp) && (tmp > 0 && tmp < 50);
 					break;
 			}
 

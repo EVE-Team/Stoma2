@@ -18,7 +18,9 @@ namespace Stoma2
 
         public NewAppointment()
 		{
-			InitializeComponent();           
+			InitializeComponent();
+			diagnosisTextBox.ValidationType = ValidatedTextBox.EValidationType.NoValidation;
+			txtTooth.ValidationType = ValidatedTextBox.EValidationType.Tooth;
 		}
 
 		private void btnCancel_Click(object sender, EventArgs e)
@@ -27,7 +29,15 @@ namespace Stoma2
 		}
 
 		private void btnAdd_Click(object sender, EventArgs e)
-		{              
+		{
+			if (!diagnosisTextBox.Validate() ||
+				!txtTooth.Validate() ||
+				doctorCategory.SelectedIndex < 0)
+			{
+				Utils.ShowInvalidDataWarning(this);
+				return;
+			}
+
             if (clientRecord != null)
             {
                 AppointmentFields newRecord = new AppointmentFields();
@@ -51,6 +61,12 @@ namespace Stoma2
                 doctorCategory.Items.Add(rec.GetFullName());
                 doctorRecords.Add(rec);
             }
+
+			if (doctorCategory.Items.Count > 0)
+			{
+				doctorCategory.SelectedIndex = 0;
+			}
+
             if (EditRecord != null)
             {
                 this.Text = "Редактирование приема";
