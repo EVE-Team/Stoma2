@@ -31,7 +31,6 @@
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.rbDoctorReport = new System.Windows.Forms.RadioButton();
 			this.rbBackup = new System.Windows.Forms.RadioButton();
-			this.rbVisits = new System.Windows.Forms.RadioButton();
 			this.rbDoctors = new System.Windows.Forms.RadioButton();
 			this.rbPriceList = new System.Windows.Forms.RadioButton();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -46,7 +45,6 @@
             | System.Windows.Forms.AnchorStyles.Left)));
 			this.groupBox1.Controls.Add(this.rbDoctorReport);
 			this.groupBox1.Controls.Add(this.rbBackup);
-			this.groupBox1.Controls.Add(this.rbVisits);
 			this.groupBox1.Controls.Add(this.rbDoctors);
 			this.groupBox1.Controls.Add(this.rbPriceList);
 			this.groupBox1.Location = new System.Drawing.Point(5, 0);
@@ -73,7 +71,7 @@
 			this.rbDoctorReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.rbDoctorReport.ForeColor = System.Drawing.Color.White;
 			this.rbDoctorReport.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-			this.rbDoctorReport.Location = new System.Drawing.Point(10, 151);
+			this.rbDoctorReport.Location = new System.Drawing.Point(10, 107);
 			this.rbDoctorReport.Name = "rbDoctorReport";
 			this.rbDoctorReport.Size = new System.Drawing.Size(169, 38);
 			this.rbDoctorReport.TabIndex = 22;
@@ -97,35 +95,13 @@
 			this.rbBackup.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.rbBackup.ForeColor = System.Drawing.Color.White;
 			this.rbBackup.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-			this.rbBackup.Location = new System.Drawing.Point(10, 195);
+			this.rbBackup.Location = new System.Drawing.Point(10, 151);
 			this.rbBackup.Name = "rbBackup";
 			this.rbBackup.Size = new System.Drawing.Size(169, 61);
 			this.rbBackup.TabIndex = 21;
 			this.rbBackup.Text = "Резервное копирование";
 			this.rbBackup.UseVisualStyleBackColor = false;
 			this.rbBackup.CheckedChanged += new System.EventHandler(this.rbBackup_CheckedChanged);
-			// 
-			// rbVisits
-			// 
-			this.rbVisits.Appearance = System.Windows.Forms.Appearance.Button;
-			this.rbVisits.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(74)))), ((int)(((byte)(73)))));
-			this.rbVisits.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-			this.rbVisits.CheckAlign = System.Drawing.ContentAlignment.BottomRight;
-			this.rbVisits.FlatAppearance.BorderSize = 0;
-			this.rbVisits.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(140)))), ((int)(((byte)(255)))));
-			this.rbVisits.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-			this.rbVisits.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-			this.rbVisits.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.rbVisits.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.rbVisits.ForeColor = System.Drawing.Color.White;
-			this.rbVisits.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-			this.rbVisits.Location = new System.Drawing.Point(10, 107);
-			this.rbVisits.Name = "rbVisits";
-			this.rbVisits.Size = new System.Drawing.Size(169, 38);
-			this.rbVisits.TabIndex = 23;
-			this.rbVisits.Text = "Приёмы";
-			this.rbVisits.UseVisualStyleBackColor = false;
-			this.rbVisits.CheckedChanged += new System.EventHandler(this.rbVisits_CheckedChanged);
 			// 
 			// rbDoctors
 			// 
@@ -222,6 +198,5 @@
 		private System.Windows.Forms.RadioButton rbPriceList;
 		private System.Windows.Forms.GroupBox groupBox2;
 		private System.Windows.Forms.Panel pnlContent;
-		private System.Windows.Forms.RadioButton rbVisits;
 	}
 }
