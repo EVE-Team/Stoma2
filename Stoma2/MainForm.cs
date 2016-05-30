@@ -116,6 +116,16 @@ namespace Stoma2
 
 		private void rbTreatment_CheckedChanged(object sender, EventArgs e)
 		{
+			if (!treatmentForm.IsClientAssigned() && rbTreatment.Checked == true)
+			{
+				rbAppointment.Select();
+				MessageBox.Show(this,
+					"Выберите пациента во вкладке \"Пациенты\" прежде чем приступать к редактированию приемов",
+					"Предупреждение",
+					MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				return;
+			}
+
             Utils.SetPanelForm(pnlContent, treatmentForm);
 		}
 

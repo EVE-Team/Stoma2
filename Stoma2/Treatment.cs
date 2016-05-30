@@ -65,6 +65,11 @@ namespace Stoma2
             btnAddAppointment.Enabled = (clientRecord != null);
         }
 
+		public bool IsClientAssigned()
+		{
+			return clientRecord != null;
+		}
+
         private void UpdateAppointmentList()
         {
             appointmentListView.Items.Clear();
