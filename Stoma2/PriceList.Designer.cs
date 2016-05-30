@@ -65,6 +65,7 @@
             this.columnHeader26});
 			this.serviceListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.serviceListView.FullRowSelect = true;
+			this.serviceListView.HideSelection = false;
 			this.serviceListView.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1,
             listViewItem2,
@@ -262,6 +263,7 @@
 			this.Name = "PriceList";
 			this.Text = "PriceList";
 			this.Shown += new System.EventHandler(this.PriceList_Shown);
+			this.Paint += new System.Windows.Forms.PaintEventHandler(this.PriceList_Paint);
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox2.ResumeLayout(false);
 			this.ResumeLayout(false);

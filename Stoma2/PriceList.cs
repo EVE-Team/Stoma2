@@ -225,5 +225,10 @@ namespace Stoma2
 					cmbCategory.Size.Width + 1,
 					cmbCategory.Size.Height + 1));
 		}
+
+		private void PriceList_Paint(object sender, PaintEventArgs e)
+		{
+			Utils.DrawBorderAroundControl(e.Graphics, cmbCategory);
+		}
 	}
 }

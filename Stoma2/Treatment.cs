@@ -385,5 +385,13 @@ namespace Stoma2
             form.ShowDialog(this);
             UpdateAppointmentList();           
         }
+
+		private void treatmentListView_Resize(object sender, EventArgs e)
+		{
+			treatmentListView.Columns[0].Width = treatmentListView.Width -
+				treatmentListView.Columns[1].Width -
+				treatmentListView.Columns[2].Width -
+				treatmentListView.Columns[3].Width - 5;
+		}
 	}
 }
