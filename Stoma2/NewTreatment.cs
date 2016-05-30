@@ -93,8 +93,9 @@ namespace Stoma2
 
 		private void NewTreatment_Paint(object sender, PaintEventArgs e)
 		{
-			e.Graphics.DrawRectangle(new Pen(Color.Black), new Rectangle(cbCategory.Location.X - 1, cbCategory.Location.Y - 1,
-				cbCategory.Size.Width + 1, cbCategory.Size.Height + 1));
+			var gr = e.Graphics;
+			Utils.DrawBorderAroundControl(gr, cbCategory);
+			Utils.DrawBorderAroundControl(gr, cbService);
 		}
 
         private void cbCategory_SelectedIndexChanged(object sender, EventArgs e)
@@ -112,6 +113,18 @@ namespace Stoma2
                     serviceListRecords.Add(rec);
                 }
             }
+
+			UpdateAcceptButtonState();
         }
+
+		private void UpdateAcceptButtonState()
+		{
+			btnOk.Enabled = (cbCategory.SelectedIndex >= 0) && (cbService.SelectedIndex >= 0);
+		}
+
+		private void cbService_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			UpdateAcceptButtonState();
+		}
 	}
 }

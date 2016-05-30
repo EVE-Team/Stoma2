@@ -136,6 +136,13 @@ namespace Stoma2
 				}
 			}
 		}
+
+		public static void DrawBorderAroundControl(Graphics gr, Control ctrl)
+		{
+			gr.DrawRectangle(new Pen(Color.Black),
+				new Rectangle(ctrl.Location.X - 1, ctrl.Location.Y - 1,
+				ctrl.Size.Width + 1, ctrl.Size.Height + 1));
+		}
     }
 
     class DateUtils
