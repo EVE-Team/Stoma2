@@ -242,16 +242,17 @@
 			// 
 			// cmbDay
 			// 
+			this.cmbDay.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cmbDay.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.cmbDay.FormattingEnabled = true;
 			this.cmbDay.Location = new System.Drawing.Point(306, 10);
 			this.cmbDay.Name = "cmbDay";
 			this.cmbDay.Size = new System.Drawing.Size(60, 24);
 			this.cmbDay.TabIndex = 77;
-			this.cmbDay.Text = "День";
 			// 
 			// cmbMonth
 			// 
+			this.cmbMonth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cmbMonth.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.cmbMonth.FormattingEnabled = true;
 			this.cmbMonth.Items.AddRange(new object[] {
@@ -271,18 +272,17 @@
 			this.cmbMonth.Name = "cmbMonth";
 			this.cmbMonth.Size = new System.Drawing.Size(111, 24);
 			this.cmbMonth.TabIndex = 76;
-			this.cmbMonth.Text = "Месяц";
 			// 
 			// cmbYear
 			// 
 			this.cmbYear.DisplayMember = "Год";
+			this.cmbYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cmbYear.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.cmbYear.FormattingEnabled = true;
 			this.cmbYear.Location = new System.Drawing.Point(112, 10);
 			this.cmbYear.Name = "cmbYear";
 			this.cmbYear.Size = new System.Drawing.Size(71, 24);
 			this.cmbYear.TabIndex = 75;
-			this.cmbYear.Text = "Год";
 			// 
 			// label12
 			// 

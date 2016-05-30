@@ -55,6 +55,10 @@ namespace Stoma2
 			{
 				cmbDay.Items.Add(i.ToString());
 			}
+
+			cmbYear.SelectedIndex = 0;
+			cmbMonth.SelectedIndex = 0;
+			cmbDay.SelectedIndex = 0;
 			//
 
             if (RecordForEditing != null)
@@ -137,12 +141,18 @@ namespace Stoma2
             nameLastBox.Text = fields.NameLast;
             patronymicBox.Text = fields.NamePatronymic;
 
-            if (fields.Birthday != string.Empty)
-            {
-                cmbYear.Text = DateTime.Parse(fields.Birthday).Year.ToString();
-                cmbMonth.SelectedIndex = DateTime.Parse(fields.Birthday).Month - 1;
-                cmbDay.Text = DateTime.Parse(fields.Birthday).Day.ToString();
-            }
+			if (fields.Birthday != string.Empty)
+			{
+				cmbYear.Text = DateTime.Parse(fields.Birthday).Year.ToString();
+				cmbMonth.SelectedIndex = DateTime.Parse(fields.Birthday).Month - 1;
+				cmbDay.Text = DateTime.Parse(fields.Birthday).Day.ToString();
+			}
+			else
+			{
+				cmbYear.SelectedIndex = 0;
+				cmbMonth.SelectedIndex = 0;
+				cmbDay.SelectedIndex = 0;
+			}
 
             addressSubjectBox.Text = fields.AddressSubject;
             addressCityBox.Text = fields.AddressCity;
