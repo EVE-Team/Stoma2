@@ -84,5 +84,13 @@ namespace Stoma2
             fields.Tooth = Int64.Parse(txtTooth.Text);
             fields.DoctorId = doctorRecords[doctorCategory.SelectedIndex].ID;
         }
+
+		private void pictureBox1_Paint(object sender, PaintEventArgs e)
+		{
+			e.Graphics.DrawRectangle(new Pen(Color.Black),
+				new Rectangle(doctorCategory.Location.X - 1 - pictureBox1.Location.X,
+					doctorCategory.Location.Y - 1 - pictureBox1.Location.Y,
+				doctorCategory.Size.Width + 1, doctorCategory.Size.Height + 1));
+		}
 	}
 }

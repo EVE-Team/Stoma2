@@ -368,9 +368,10 @@ namespace Stoma2
 
         private void appointmentMenuDelete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Вы действительно хотите удалить прием " +
+            if (MessageBox.Show(this, "Вы действительно хотите удалить прием " +
                 "(вместе с ним удалятся все работы)?",
-                "Удаление приема", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                "Удаление приема", MessageBoxButtons.YesNo,
+				MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
             {
                 AppointmentRecord rec = (AppointmentRecord)appointmentListView.SelectedItems[0].Tag;
                 rec.Delete();

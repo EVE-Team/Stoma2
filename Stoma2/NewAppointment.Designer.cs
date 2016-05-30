@@ -28,27 +28,17 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.diagnosisTextBox = new Stoma2.ValidatedTextBox();
 			this.label32 = new System.Windows.Forms.Label();
 			this.label31 = new System.Windows.Forms.Label();
 			this.btnAdd = new System.Windows.Forms.Button();
 			this.btnCancel = new System.Windows.Forms.Button();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
-			this.txtTooth = new Stoma2.ValidatedTextBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.doctorCategory = new System.Windows.Forms.ComboBox();
+			this.txtTooth = new Stoma2.ValidatedTextBox();
+			this.diagnosisTextBox = new Stoma2.ValidatedTextBox();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
-			// 
-			// diagnosisTextBox
-			// 
-			this.diagnosisTextBox.BackColor = System.Drawing.Color.White;
-			this.diagnosisTextBox.BorderColor = System.Drawing.Color.DarkGray;
-			this.diagnosisTextBox.BorderWidth = 2;
-			this.diagnosisTextBox.Location = new System.Drawing.Point(147, 213);
-			this.diagnosisTextBox.Name = "diagnosisTextBox";
-			this.diagnosisTextBox.Size = new System.Drawing.Size(277, 23);
-			this.diagnosisTextBox.TabIndex = 41;
 			// 
 			// label32
 			// 
@@ -115,16 +105,7 @@
 			this.pictureBox1.Size = new System.Drawing.Size(510, 239);
 			this.pictureBox1.TabIndex = 78;
 			this.pictureBox1.TabStop = false;
-			// 
-			// txtTooth
-			// 
-			this.txtTooth.BackColor = System.Drawing.Color.White;
-			this.txtTooth.BorderColor = System.Drawing.Color.DarkGray;
-			this.txtTooth.BorderWidth = 2;
-			this.txtTooth.Location = new System.Drawing.Point(147, 253);
-			this.txtTooth.Name = "txtTooth";
-			this.txtTooth.Size = new System.Drawing.Size(277, 23);
-			this.txtTooth.TabIndex = 80;
+			this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
 			// 
 			// label1
 			// 
@@ -145,6 +126,26 @@
 			this.doctorCategory.Name = "doctorCategory";
 			this.doctorCategory.Size = new System.Drawing.Size(277, 21);
 			this.doctorCategory.TabIndex = 81;
+			// 
+			// txtTooth
+			// 
+			this.txtTooth.BackColor = System.Drawing.Color.White;
+			this.txtTooth.BorderColor = System.Drawing.Color.DarkGray;
+			this.txtTooth.BorderWidth = 2;
+			this.txtTooth.Location = new System.Drawing.Point(147, 253);
+			this.txtTooth.Name = "txtTooth";
+			this.txtTooth.Size = new System.Drawing.Size(277, 23);
+			this.txtTooth.TabIndex = 80;
+			// 
+			// diagnosisTextBox
+			// 
+			this.diagnosisTextBox.BackColor = System.Drawing.Color.White;
+			this.diagnosisTextBox.BorderColor = System.Drawing.Color.DarkGray;
+			this.diagnosisTextBox.BorderWidth = 2;
+			this.diagnosisTextBox.Location = new System.Drawing.Point(147, 213);
+			this.diagnosisTextBox.Name = "diagnosisTextBox";
+			this.diagnosisTextBox.Size = new System.Drawing.Size(277, 23);
+			this.diagnosisTextBox.TabIndex = 41;
 			// 
 			// NewAppointment
 			// 
