@@ -19,6 +19,10 @@ namespace Stoma2
         public NewPatient()
 		{
 			InitializeComponent();
+			Utils.SetFontForTextBoxes(this);
+			nameFirstBox.ValidationType = ValidatedTextBox.EValidationType.Name;
+			nameLastBox.ValidationType = ValidatedTextBox.EValidationType.Name;
+			patronymicBox.ValidationType = ValidatedTextBox.EValidationType.NoValidation;
 		}
 
 		private void FirstAppointment_Load(object sender, EventArgs e)
@@ -63,12 +67,13 @@ namespace Stoma2
 
 		private void btnApply_Click(object sender, EventArgs e)
 		{
-            var name = nameLastBox.Text;
-            //regular expression to check name,surname and patronymic
-            if (!Regex.IsMatch(name, @"^[\p{L}\p{M}' \.\-]+$"))
-            {
-                Console.WriteLine(name);
-            }
+			if (!nameFirstBox.Validate() ||
+				!nameLastBox.Validate() ||
+				!patronymicBox.Validate())
+			{
+				Utils.ShowInvalidDataWarning(this);
+				return;
+			}
 
             if (RecordForEditing == null)
             {
@@ -148,12 +153,6 @@ namespace Stoma2
             positionBox.Text = fields.Position;
             phoneBox.Text = fields.Phone;
             notesBox.Text = fields.Notes;
-        }
-
-        private void NewPatient_Paint(object sender, PaintEventArgs e)
-        {
-            e.Graphics.DrawRectangle(new Pen(Color.Red, 2), new Rectangle(nameLastBox.Location.X - 1, nameLastBox.Location.Y - 3,
-                nameLastBox.Size.Width + 2, nameLastBox.Size.Height + 5));
         }
     }
 }

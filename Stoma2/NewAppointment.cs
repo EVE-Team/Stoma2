@@ -19,6 +19,7 @@ namespace Stoma2
         public NewAppointment()
 		{
 			InitializeComponent();
+			Utils.SetFontForTextBoxes(this);
 			diagnosisTextBox.ValidationType = ValidatedTextBox.EValidationType.NoValidation;
 			txtTooth.ValidationType = ValidatedTextBox.EValidationType.Tooth;
 		}

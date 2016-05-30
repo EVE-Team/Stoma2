@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Drawing;
 
 namespace Stoma2
 {
@@ -118,6 +119,22 @@ namespace Stoma2
 		{
 			MessageBox.Show(parent, "Пожалуйста, исправьте ошибки в полях, помеченных красным, прежде чем применять изменения",
 					"Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+		}
+
+		public static void SetFontForTextBoxes(Form form)
+		{
+			var font = new Font("Tahoma", 10);
+			foreach (Control control in form.Controls)
+			{
+				if (control is ValidatedTextBox)
+				{
+					ValidatedTextBox textBox = (ValidatedTextBox)control;
+					if (textBox != null)
+					{
+						textBox.Font = font;
+					}
+				}
+			}
 		}
     }
 

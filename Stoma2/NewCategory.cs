@@ -18,6 +18,7 @@ namespace Stoma2
         public NewCategory()
         {
             InitializeComponent();
+			Utils.SetFontForTextBoxes(this);
 			categoryNameTxt.ValidationType = ValidatedTextBox.EValidationType.NotEmpty;
         }
 

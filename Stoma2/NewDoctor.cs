@@ -18,6 +18,7 @@ namespace Stoma2
         public NewDoctor()
         {
             InitializeComponent();
+			Utils.SetFontForTextBoxes(this);
 			nameFirstBox.ValidationType = ValidatedTextBox.EValidationType.Name;
 			nameLastBox.ValidationType = ValidatedTextBox.EValidationType.Name;
 			patronymicBox.ValidationType = ValidatedTextBox.EValidationType.NoValidation;
