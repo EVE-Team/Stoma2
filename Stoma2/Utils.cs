@@ -113,6 +113,12 @@ namespace Stoma2
 				}
 			}
 		}
+
+		public static void ShowInvalidDataWarning(IWin32Window parent)
+		{
+			MessageBox.Show(parent, "Пожалуйста, исправьте ошибки в полях, помеченных красным, прежде чем применять изменения",
+					"Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+		}
     }
 
     class DateUtils

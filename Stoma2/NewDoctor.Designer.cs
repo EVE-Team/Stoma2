@@ -120,7 +120,7 @@
 			// specialityBox
 			// 
 			this.specialityBox.BackColor = System.Drawing.Color.White;
-			this.specialityBox.BorderColor = System.Drawing.Color.Black;
+			this.specialityBox.BorderColor = System.Drawing.Color.DarkGray;
 			this.specialityBox.BorderWidth = 2;
 			this.specialityBox.Location = new System.Drawing.Point(109, 118);
 			this.specialityBox.Name = "specialityBox";
@@ -130,7 +130,7 @@
 			// patronymicBox
 			// 
 			this.patronymicBox.BackColor = System.Drawing.Color.White;
-			this.patronymicBox.BorderColor = System.Drawing.Color.Black;
+			this.patronymicBox.BorderColor = System.Drawing.Color.DarkGray;
 			this.patronymicBox.BorderWidth = 2;
 			this.patronymicBox.Location = new System.Drawing.Point(109, 80);
 			this.patronymicBox.Name = "patronymicBox";
@@ -140,7 +140,7 @@
 			// nameFirstBox
 			// 
 			this.nameFirstBox.BackColor = System.Drawing.Color.White;
-			this.nameFirstBox.BorderColor = System.Drawing.Color.Black;
+			this.nameFirstBox.BorderColor = System.Drawing.Color.DarkGray;
 			this.nameFirstBox.BorderWidth = 2;
 			this.nameFirstBox.Location = new System.Drawing.Point(109, 42);
 			this.nameFirstBox.Name = "nameFirstBox";
@@ -150,7 +150,7 @@
 			// nameLastBox
 			// 
 			this.nameLastBox.BackColor = System.Drawing.Color.White;
-			this.nameLastBox.BorderColor = System.Drawing.Color.Black;
+			this.nameLastBox.BorderColor = System.Drawing.Color.DarkGray;
 			this.nameLastBox.BorderWidth = 2;
 			this.nameLastBox.Location = new System.Drawing.Point(109, 4);
 			this.nameLastBox.Name = "nameLastBox";

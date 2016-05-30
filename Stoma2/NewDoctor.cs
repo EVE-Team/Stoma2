@@ -31,8 +31,7 @@ namespace Stoma2
 				!patronymicBox.Validate() ||
 				!specialityBox.Validate())
 			{
-				MessageBox.Show(this, "Пожалуйста, исправьте ошибки в полях, помеченных красным, прежде чем применять изменения",
-					"Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				Utils.ShowInvalidDataWarning(this);
 				return;
 			}
 

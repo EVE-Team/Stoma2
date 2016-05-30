@@ -18,10 +18,17 @@ namespace Stoma2
         public NewCategory()
         {
             InitializeComponent();
+			categoryNameTxt.ValidationType = ValidatedTextBox.EValidationType.NotEmpty;
         }
 
         private void btnApply_Click(object sender, EventArgs e)
         {
+			if (!categoryNameTxt.Validate())
+			{
+				Utils.ShowInvalidDataWarning(this);
+				return;
+			}
+
             if (RecordForEditing == null)
             {
                 CategoryFields newRecord = new CategoryFields();
