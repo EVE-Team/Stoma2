@@ -12,7 +12,6 @@ namespace Stoma2
 {
 	public partial class NewAppointment : Form
 	{
-        private List<DoctorRecord> doctorRecords = new List<DoctorRecord>();
         public ClientRecord clientRecord = null;
         public AppointmentRecord EditRecord = null; 
 
@@ -39,7 +38,7 @@ namespace Stoma2
 				return;
 			}
 
-            if (clientRecord != null)
+			if (EditRecord == null)
             {
                 AppointmentFields newRecord = new AppointmentFields();
                 FormDataToFields(newRecord);
@@ -55,40 +54,85 @@ namespace Stoma2
 			Close();
 		}
 
-        private void NewAppointment_Load(object sender, EventArgs e)
-        {
-            foreach (DoctorRecord rec in StomaDB.GetDoctors())
-            {
-                doctorCategory.Items.Add(rec.GetFullName());
-                doctorRecords.Add(rec);
-            }
-
-			if (doctorCategory.Items.Count > 0)
+		class DoctorItem : object
+		{
+			public DoctorItem(DoctorRecord rec)
 			{
-				doctorCategory.SelectedIndex = 0;
+				m_rec = rec;
+				Text = rec.GetFullName();
 			}
 
-            if (EditRecord != null)
+			public string Text { get; set; }
+
+			public DoctorRecord Record { get { return m_rec; } }
+			private DoctorRecord m_rec;
+
+			public override string ToString()
+			{
+				return Text;
+			}
+		}
+
+        private void NewAppointment_Load(object sender, EventArgs e)
+        {
+			Int64 doctorId = EditRecord != null ? EditRecord.Data.DoctorId : -1;
+
+			var doctors = new List<DoctorItem>();
+			bool doctorAdded = false;
+            foreach (DoctorRecord rec in StomaDB.GetDoctors())
             {
-                this.Text = "Редактирование приема";
-                btnAdd.Text = "Сохранить";
-                btnAdd.Size = new Size(133, 41);
-                diagnosisTextBox.Text = EditRecord.Data.Diagnosis;
-                txtTooth.Text = EditRecord.Data.Tooth.ToString();
-                doctorCategory.SelectedIndex = (int)EditRecord.Data.DoctorId - 1;
+				doctors.Add(new DoctorItem(rec));
+				if (doctorId == rec.ID)
+				{
+					doctorAdded = true;
+				}
             }
+			
+			if (doctorId != -1 && !doctorAdded)
+			{
+				doctors.Add(new DoctorItem(StomaDB.Instance.GetDoctorById(doctorId)));
+			}
+
+			doctors.Sort(Comparer<DoctorItem>.Create((i1, i2) => i1.Text.CompareTo(i2.Text)));
+
+			foreach (var item in doctors)
+			{
+				doctorCategory.Items.Add(item);
+				if (item.Record.ID == doctorId)
+				{
+					doctorCategory.SelectedIndex = doctorCategory.Items.Count - 1;
+				}
+			}
+
+			if (EditRecord != null)
+			{
+				this.Text = "Редактирование приема";
+				btnAdd.Text = "Сохранить";
+				btnAdd.Size = new Size(133, 41);
+
+				diagnosisTextBox.Text = EditRecord.Data.Diagnosis;
+				txtTooth.Text = EditRecord.Data.Tooth.ToString();
+			}
+			else
+			{
+				if (doctorCategory.Items.Count > 0)
+				{
+					doctorCategory.SelectedIndex = 0;
+				}
+			}
         }
 
         private void FormDataToFields(AppointmentFields fields)
         {            
             fields.Diagnosis = diagnosisTextBox.Text;
             fields.Tooth = Int64.Parse(txtTooth.Text);
-            fields.DoctorId = doctorRecords[doctorCategory.SelectedIndex].ID;
+			fields.DoctorId = (doctorCategory.SelectedItem as DoctorItem).Record.ID;
         }
 
 		private void pictureBox1_Paint(object sender, PaintEventArgs e)
 		{
-			e.Graphics.DrawRectangle(new Pen(Color.Black),
+			Color borderColor = doctorCategory.Items.Count > 0 ? Color.Black : Color.Red;
+			e.Graphics.DrawRectangle(new Pen(borderColor),
 				new Rectangle(doctorCategory.Location.X - 1 - pictureBox1.Location.X,
 					doctorCategory.Location.Y - 1 - pictureBox1.Location.Y,
 				doctorCategory.Size.Width + 1, doctorCategory.Size.Height + 1));

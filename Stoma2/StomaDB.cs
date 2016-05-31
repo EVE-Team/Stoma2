@@ -1054,6 +1054,19 @@ namespace Stoma2
             return command.ExecuteReader();
         }
 
+		public DoctorRecord GetDoctorById(Int64 id)
+		{
+			var result = Query("SELECT * FROM doctors WHERE id=" + id.ToString());
+			result.Read();
+			return new DoctorRecord(result.GetInt64(0), new object[] {
+				result.GetString(1),
+				result.GetString(2),
+				result.GetString(3),
+				result.GetString(4),
+				result.GetInt32(5)
+			});
+		}
+
         private static string CreateGen(TableInfo info)
         {
             StringBuilder result = new StringBuilder("CREATE TABLE " + info.table + " (");
