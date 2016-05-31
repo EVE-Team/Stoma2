@@ -222,7 +222,7 @@ namespace Stoma2
 
             document.Open();
 
-            Paragraph header = new Paragraph("Чек об оказании стоматологических услуг от " 
+            Paragraph header = new Paragraph("Акт об оказании стоматологических услуг от " 
                 + DateUtils.ToDateFormat(DateUtils.GetCurrentTimestamp(), DateUtils.WITHOUT_TIME_DATE_FORMAT) + " г.", font);
             header.Alignment = Element.ALIGN_CENTER;
 
@@ -232,7 +232,7 @@ namespace Stoma2
             document.Add(empty);
 
             iTextSharp.text.Image gif = iTextSharp.text.Image.GetInstance("newMainInfo.png");
-            gif.Alignment = Element.ALIGN_LEFT;
+            gif.Alignment = Element.ALIGN_CENTER;
             document.Add(gif);
             document.Add(empty);
 

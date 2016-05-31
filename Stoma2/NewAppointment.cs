@@ -19,7 +19,7 @@ namespace Stoma2
 		{
 			InitializeComponent();
 			Utils.SetFontForTextBoxes(this);
-			diagnosisTextBox.ValidationType = ValidatedTextBox.EValidationType.NoValidation;
+			//diagnosisTextBox.ValidationType = ValidatedTextBox.EValidationType.NoValidation;
 			txtTooth.ValidationType = ValidatedTextBox.EValidationType.Tooth;
 		}
 
@@ -30,7 +30,7 @@ namespace Stoma2
 
 		private void btnAdd_Click(object sender, EventArgs e)
 		{
-			if (!diagnosisTextBox.Validate() ||
+			if (diagnosisTextBox.Text == "" ||
 				!txtTooth.Validate() ||
 				doctorCategory.SelectedIndex < 0)
 			{
@@ -139,5 +139,10 @@ namespace Stoma2
 					doctorCategory.Location.Y - 1 - pictureBox1.Location.Y,
 				doctorCategory.Size.Width + 1, doctorCategory.Size.Height + 1));
 		}
+
+        private void NewAppointment_Paint(object sender, PaintEventArgs e)
+        {
+            Utils.DrawBorderAroundControl(e.Graphics, diagnosisTextBox);
+        }
 	}
 }
