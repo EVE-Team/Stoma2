@@ -45,6 +45,8 @@ namespace Stoma2
                 newRecord.Date = DateUtils.GetCurrentTimestamp();
                 newRecord.ClientId = clientRecord.ID;
                 newRecord.Create();
+
+				StomaDB.MarkAsInvited(clientRecord.ID);
             }
             else
             {
