@@ -72,6 +72,7 @@ namespace Stoma2
             {
                 this.Text = "Редактирование приема";
                 btnAdd.Text = "Сохранить";
+                btnAdd.Size = new Size(133, 41);
                 diagnosisTextBox.Text = EditRecord.Data.Diagnosis;
                 txtTooth.Text = EditRecord.Data.Tooth.ToString();
                 doctorCategory.SelectedIndex = (int)EditRecord.Data.DoctorId - 1;
