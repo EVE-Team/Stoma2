@@ -35,6 +35,7 @@ namespace Stoma2
             {
                 Text = "Редактировать работу";
                 btnOk.Text = "Сохранить";
+				btnOk.Size = new Size(134, 37);
 
                 FieldsToFormData(editRecord.Data);
             }
@@ -67,23 +68,32 @@ namespace Stoma2
         private void FieldsToFormData(TreatmentFields fields)
         {
             Int64 catId = StomaDB.Instance.GetCategoryIdByServiceId(fields.ServiceId);
-            cbCategory.SelectedIndex = GetIndexOfRecord(categoryRecords, catId);
-            cbService.SelectedIndex = GetIndexOfRecord(serviceListRecords, fields.ServiceId);
+
+			int index = 0;
+			if (cbCategory.Items.Count > 0 && GetIndexOfRecord(categoryRecords, catId, ref index))
+			{
+				cbCategory.SelectedIndex = index;
+			}
+			if (cbService.Items.Count > 0 && GetIndexOfRecord(serviceListRecords, fields.ServiceId, ref index))
+			{
+				cbService.SelectedIndex = index;
+			}
 
             countNum.Value = fields.Count;
         }
 
-        private static int GetIndexOfRecord<T>(List<T> list, Int64 id) where T : DatabaseRecord
+        private static bool GetIndexOfRecord<T>(List<T> list, Int64 id, ref int result) where T : DatabaseRecord
         {
             for (int i = 0; i < list.Count; ++i)
             {
                 if (list[i].ID == id)
                 {
-                    return i;
+					result = i;
+                    return true;
                 }
             }
 
-            throw new Exception("Record not found");
+			return false;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
