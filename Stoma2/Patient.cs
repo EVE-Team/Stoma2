@@ -16,6 +16,7 @@ namespace Stoma2
 		{
 			InitializeComponent();
             Utils.SetPanelForm(pnlPatientInfo, Utils.SetupForm(new PatientInfo()));
+			searchBox.TextChanged += searchBox_TextChanged;
 		}
 
         private void btnEdit_Click(object sender, EventArgs e)

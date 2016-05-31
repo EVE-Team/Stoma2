@@ -15,6 +15,7 @@ namespace Stoma2
 		public Doctor()
 		{
 			InitializeComponent();
+			searchBox.TextChanged += searchBox_TextChanged;
 		}
 
         private void addBtn_Click(object sender, EventArgs e)

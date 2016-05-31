@@ -173,6 +173,12 @@
     <Compile Include="TextBoxEx.Designer.cs">
       <DependentUpon>TextBoxEx.cs</DependentUpon>
     </Compile>
+    <Compile Include="SearchBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SearchBar.Designer.cs">
+      <DependentUpon>SearchBar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Treatment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -247,6 +253,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SearchBar.resx">
+      <DependentUpon>SearchBar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Treatment.resx">
       <DependentUpon>Treatment.cs</DependentUpon>
     </EmbeddedResource>
