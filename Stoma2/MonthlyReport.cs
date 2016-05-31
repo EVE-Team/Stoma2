@@ -55,7 +55,7 @@ namespace Stoma2
             {
                 DateTime firstDayOfMonth = new DateTime(dateTimePicker1.Value.Year, dateTimePicker1.Value.Month, 1);
                 string fisrtDay = firstDayOfMonth.ToString(DateUtils.INNER_DATE_FORMAT);
-                string lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1).ToString(DateUtils.INNER_DATE_FORMAT);
+                string lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(0).ToString(DateUtils.INNER_DATE_FORMAT);
 
                 UpdateReportListView(fisrtDay, lastDayOfMonth);
 
