@@ -99,20 +99,6 @@ namespace Stoma2
 
         private void toTreatmentBtn_Click(object sender, EventArgs e)
         {
-            //Program.mainForm.goToTreatment();
-            //Control.ControlCollection col = pnlPatientInfo.Controls[0].Controls[0].Text.ToString();
-            //Control panel = col[0];
-            //Control.ControlCollection col1 = panel.Controls;
-            //Control textBox = col1[0];
-            //string t = textBox.Text.ToString();
-            //ListViewItem.ListViewSubItemCollection temp = patientListView.FocusedItem.SubItems;
-
-            /*if (patientListView.SelectedItems.Count != 0)
-            {
-                string patient = pnlPatientInfo.Controls[0].Controls[0].Text.ToString();
-                Program.mainForm.goToTreatment(patient);
-            }*/
-
             ClientRecord rec = (ClientRecord)patientListView.SelectedItems[0].Tag;
             Program.mainForm.goToTreatment(rec);
         }

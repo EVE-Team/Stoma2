@@ -12,8 +12,8 @@ namespace Stoma2
 {
 	public partial class Invite : Form
 	{
-
         private static readonly String DEFAULT_TEXT_FOR_LABEL_NUMBER_OF_PATIENT = " пациента ожидают повторного приглашения";
+
 		public Invite()
 		{
 			InitializeComponent();
@@ -54,7 +54,6 @@ namespace Stoma2
 
         private void patientListView_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             PatientInfo piForm = (PatientInfo)Utils.GetPanelForm(pnlPatientInfo);
 
             if (patientListView.SelectedItems.Count == 0)
@@ -71,10 +70,14 @@ namespace Stoma2
 
         private void btnMarkAsInvited_Click(object sender, EventArgs e)
         {
-            ClientRecord rec = (ClientRecord)patientListView.SelectedItems[0].Tag;
-            StomaDB.MarkAsInvited(rec.ID);
+			foreach (ListViewItem item in patientListView.SelectedItems)
+			{
+				ClientRecord rec = (ClientRecord)item.Tag;
+				StomaDB.MarkAsInvited(rec.ID);
+			}
+
             UpdatePatientListView();
-            btnMarkAsInvited.Enabled = false;
+			btnMarkAsInvited.Enabled = false;
         }
 	}
 }

@@ -58,6 +58,7 @@
 			this.doctorListView.MultiSelect = false;
 			this.doctorListView.Name = "doctorListView";
 			this.doctorListView.Size = new System.Drawing.Size(587, 349);
+			this.doctorListView.Sorting = System.Windows.Forms.SortOrder.Ascending;
 			this.doctorListView.TabIndex = 22;
 			this.doctorListView.UseCompatibleStateImageBehavior = false;
 			this.doctorListView.View = System.Windows.Forms.View.Details;

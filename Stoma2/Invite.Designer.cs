@@ -28,9 +28,6 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
-            "Скаков",
-            "Михаил"}, -1);
 			this.lblNumberOfPatient = new System.Windows.Forms.Label();
 			this.patientListView = new System.Windows.Forms.ListView();
 			this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -72,11 +69,10 @@
 			this.patientListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.patientListView.FullRowSelect = true;
 			this.patientListView.HideSelection = false;
-			this.patientListView.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
 			this.patientListView.Location = new System.Drawing.Point(12, 65);
 			this.patientListView.Name = "patientListView";
 			this.patientListView.Size = new System.Drawing.Size(374, 396);
+			this.patientListView.Sorting = System.Windows.Forms.SortOrder.Ascending;
 			this.patientListView.TabIndex = 6;
 			this.patientListView.UseCompatibleStateImageBehavior = false;
 			this.patientListView.View = System.Windows.Forms.View.Details;

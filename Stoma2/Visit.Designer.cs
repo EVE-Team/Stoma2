@@ -28,18 +28,6 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
-            "10.03.2016",
-            "Галустян Михаил",
-            "Кариес"}, -1);
-			System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
-            "11.03.2016",
-            "Харламов Гарик",
-            "Кариес"}, -1);
-			System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
-            "12.03.2016",
-            "Батрудинов Тимур",
-            "Острый пульпит"}, -1);
 			this.visitListView = new System.Windows.Forms.ListView();
 			this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -69,10 +57,6 @@
 			this.visitListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.visitListView.FullRowSelect = true;
 			this.visitListView.HideSelection = false;
-			this.visitListView.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3});
 			this.visitListView.Location = new System.Drawing.Point(10, 72);
 			this.visitListView.Name = "visitListView";
 			this.visitListView.Size = new System.Drawing.Size(701, 337);

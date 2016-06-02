@@ -28,22 +28,6 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
-            "Пломба \"светового отверждения\" \"Витример\"",
-            "1200",
-            "1",
-            "1200"}, -1);
-			System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
-            "Отбеливание \"Opalescence Boost\"",
-            "400",
-            "1",
-            "400"}, -1);
-			System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
-            "Анестезия \"Артикаин\"",
-            "150",
-            "1",
-            "150"}, -1);
-			System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("25.06.2016");
 			this.rectangleShape6 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
 			this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
 			this.costLabel = new System.Windows.Forms.Label();
@@ -104,7 +88,7 @@
 			this.costLabel.Name = "costLabel";
 			this.costLabel.Size = new System.Drawing.Size(179, 20);
 			this.costLabel.TabIndex = 40;
-			this.costLabel.Text = "1750 рублей";
+			this.costLabel.Text = "0 рублей";
 			this.costLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
 			// label6
@@ -132,10 +116,6 @@
 			this.treatmentListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.treatmentListView.FullRowSelect = true;
 			this.treatmentListView.HideSelection = false;
-			this.treatmentListView.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3});
 			this.treatmentListView.Location = new System.Drawing.Point(11, 59);
 			this.treatmentListView.MultiSelect = false;
 			this.treatmentListView.Name = "treatmentListView";
@@ -200,7 +180,6 @@
 			this.toothtextBox.ReadOnly = true;
 			this.toothtextBox.Size = new System.Drawing.Size(262, 20);
 			this.toothtextBox.TabIndex = 46;
-			this.toothtextBox.Text = "25";
 			// 
 			// label3
 			// 
@@ -225,7 +204,6 @@
 			this.diagnosisTextBox.ReadOnly = true;
 			this.diagnosisTextBox.Size = new System.Drawing.Size(262, 20);
 			this.diagnosisTextBox.TabIndex = 44;
-			this.diagnosisTextBox.Text = "Кариес";
 			// 
 			// doctorTextBox
 			// 
@@ -367,8 +345,6 @@
             this.columnHeader1});
 			this.appointmentListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.appointmentListView.HideSelection = false;
-			this.appointmentListView.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem4});
 			this.appointmentListView.Location = new System.Drawing.Point(5, 60);
 			this.appointmentListView.MultiSelect = false;
 			this.appointmentListView.Name = "appointmentListView";

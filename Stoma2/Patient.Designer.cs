@@ -70,6 +70,7 @@
 			this.patientListView.MultiSelect = false;
 			this.patientListView.Name = "patientListView";
 			this.patientListView.Size = new System.Drawing.Size(381, 287);
+			this.patientListView.Sorting = System.Windows.Forms.SortOrder.Ascending;
 			this.patientListView.TabIndex = 20;
 			this.patientListView.UseCompatibleStateImageBehavior = false;
 			this.patientListView.View = System.Windows.Forms.View.Details;
