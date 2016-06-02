@@ -489,7 +489,14 @@ namespace Stoma2
                 string type = m_reader.GetDataTypeName(i);
                 if (type == "DATE")
                 {
-                    result.Add(m_reader.GetString(i));
+                    try
+                    {
+                        result.Add(m_reader.GetString(i));
+                    }
+                    catch (Exception)
+                    {
+                        result.Add("");
+                    }
                 }
                 else
                 {
