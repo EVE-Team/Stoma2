@@ -19,7 +19,6 @@ namespace Stoma2
 		{
 			InitializeComponent();
 			Utils.SetFontForTextBoxes(this);
-			//diagnosisTextBox.ValidationType = ValidatedTextBox.EValidationType.NoValidation;
 			txtTooth.ValidationType = ValidatedTextBox.EValidationType.Tooth;
 		}
 
@@ -30,13 +29,21 @@ namespace Stoma2
 
 		private void btnAdd_Click(object sender, EventArgs e)
 		{
-			if (diagnosisTextBox.Text == "" ||
-				!txtTooth.Validate() ||
+			// validation
+			if (cmbDiagnosis.Text == "")
+			{
+				cmbDiagnosisBorder = Color.Red;
+				Refresh();
+			}
+
+			if (!txtTooth.Validate() ||
+				cmbDiagnosis.Text == "" ||
 				doctorCategory.SelectedIndex < 0)
 			{
 				Utils.ShowInvalidDataWarning(this);
 				return;
 			}
+			//
 
 			if (EditRecord == null)
             {
@@ -112,7 +119,7 @@ namespace Stoma2
 				btnAdd.Text = "Сохранить";
 				btnAdd.Size = new Size(133, 41);
 
-				diagnosisTextBox.Text = EditRecord.Data.Diagnosis;
+				cmbDiagnosis.Text = EditRecord.Data.Diagnosis;
 				txtTooth.Text = EditRecord.Data.Tooth.ToString();
 			}
 			else
@@ -126,23 +133,40 @@ namespace Stoma2
 
         private void FormDataToFields(AppointmentFields fields)
         {            
-            fields.Diagnosis = diagnosisTextBox.Text;
+            fields.Diagnosis = cmbDiagnosis.Text;
             fields.Tooth = Int64.Parse(txtTooth.Text);
 			fields.DoctorId = (doctorCategory.SelectedItem as DoctorItem).Record.ID;
         }
 
 		private void pictureBox1_Paint(object sender, PaintEventArgs e)
 		{
-			Color borderColor = doctorCategory.Items.Count > 0 ? Color.Black : Color.Red;
+			Color borderColor = doctorCategory.Items.Count > 0 ? Color.Green : Color.Red;
 			e.Graphics.DrawRectangle(new Pen(borderColor),
 				new Rectangle(doctorCategory.Location.X - 1 - pictureBox1.Location.X,
 					doctorCategory.Location.Y - 1 - pictureBox1.Location.Y,
 				doctorCategory.Size.Width + 1, doctorCategory.Size.Height + 1));
 		}
 
-        private void NewAppointment_Paint(object sender, PaintEventArgs e)
-        {
-            Utils.DrawBorderAroundControl(e.Graphics, diagnosisTextBox);
-        }
+		private Color cmbDiagnosisBorder = Color.DarkGray;
+		private void UpdateCmbDiagnosis()
+		{
+			cmbDiagnosisBorder = cmbDiagnosis.Text == "" ? Color.Red : Color.Green;
+			Refresh();
+		}
+
+		private void cmbDiagnosis_TextUpdate(object sender, EventArgs e)
+		{
+			UpdateCmbDiagnosis();
+		}
+
+		private void NewAppointment_Paint(object sender, PaintEventArgs e)
+		{
+			Utils.DrawBorderAroundControl(e.Graphics, cmbDiagnosis, cmbDiagnosisBorder);
+		}
+
+		private void cmbDiagnosis_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			UpdateCmbDiagnosis();
+		}
 	}
 }
