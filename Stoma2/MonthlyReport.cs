@@ -14,9 +14,9 @@ namespace Stoma2
 	{
 		public MonthlyReport()
 		{
-			InitializeComponent();
-            UpdateReportListView("", "");
+			InitializeComponent();            
             monthReport.Checked = true;
+            ShowReportForTheMonth();
 		}
 
         public void UpdateReportListView(string begin, string end)
@@ -53,42 +53,53 @@ namespace Stoma2
         {
             if (monthReport.Checked)
             {
-                DateTime firstDayOfMonth = new DateTime(dateTimePicker1.Value.Year, dateTimePicker1.Value.Month, 1);
-                string fisrtDay = firstDayOfMonth.ToString(DateUtils.INNER_DATE_FORMAT);
-                string lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(0).ToString(DateUtils.INNER_DATE_FORMAT);
-
-                UpdateReportListView(fisrtDay, lastDayOfMonth);
-
+                ShowReportForTheMonth();
                 return;
             }
             if (yearReport.Checked)
             {
-                DateTime firstDayOfYear = new DateTime(dateTimePicker1.Value.Year, 1, 1);
-                string fisrtDay = firstDayOfYear.ToString(DateUtils.INNER_DATE_FORMAT);
-                DateTime lastDayOfYear = firstDayOfYear.AddYears(1).AddDays(-1);
-                string lastDay = lastDayOfYear.ToString(DateUtils.INNER_DATE_FORMAT);
-
-                UpdateReportListView(fisrtDay, lastDay);
-
+                ShowReportForTheYear();
                 return;
             }
             if (changingReport.Checked)
             {
-                DateTime firstDayOfReport = dateTimePicker1.Value;
-                string fisrtDay = firstDayOfReport.ToString(DateUtils.INNER_DATE_FORMAT);
-                DateTime lastDayOfReport = dateTimePicker2.Value;
-                string lastDay = lastDayOfReport.ToString(DateUtils.INNER_DATE_FORMAT);
-
-                if (firstDayOfReport < lastDayOfReport)
-                {
-                    UpdateReportListView(fisrtDay, lastDay);
-                    return;
-                }
-
+                ShowReportForThePeriod();
                 return;
             }
         }
 
+        private void ShowReportForTheMonth()
+        {
+            DateTime firstDayOfMonth = new DateTime(dateTimePicker1.Value.Year, dateTimePicker1.Value.Month, 1);
+            string fisrtDay = firstDayOfMonth.ToString(DateUtils.INNER_DATE_FORMAT);
+            string lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddSeconds(-1).ToString(DateUtils.INNER_DATE_FORMAT);
+            UpdateReportListView(fisrtDay, lastDayOfMonth);
+        }
+
+
+        private void ShowReportForTheYear()
+        {
+            DateTime firstDayOfYear = new DateTime(dateTimePicker1.Value.Year, 1, 1);
+            string fisrtDay = firstDayOfYear.ToString(DateUtils.INNER_DATE_FORMAT);
+            DateTime lastDayOfYear = firstDayOfYear.AddYears(1).AddSeconds(-1);
+            string lastDay = lastDayOfYear.ToString(DateUtils.INNER_DATE_FORMAT);
+            UpdateReportListView(fisrtDay, lastDay);
+        }
+
+
+        private void ShowReportForThePeriod()
+        {
+            DateTime firstDayOfReport = dateTimePicker1.Value;
+            string fisrtDay = firstDayOfReport.ToString(DateUtils.INNER_DATE_FORMAT);
+            DateTime lastDayOfReport = dateTimePicker2.Value;
+            string lastDay = lastDayOfReport.AddDays(1).AddSeconds(-1).ToString(DateUtils.INNER_DATE_FORMAT);
+
+            if (firstDayOfReport < lastDayOfReport)
+            {
+                UpdateReportListView(fisrtDay, lastDay);
+                return;
+            }
+        }
         //private DateTime GetStartDateReportWeek(DateTime value)
         //{
         //    int diff = value.DayOfWeek - DayOfWeek.Monday;

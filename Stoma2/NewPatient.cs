@@ -133,6 +133,7 @@ namespace Stoma2
             fields.Position = positionBox.Text;
             fields.Phone = phoneBox.Text;
             fields.Notes = notesBox.Text;
+            fields.LastInvite = DateUtils.GetCurrentTimestamp();
         }
 
         private void FieldsToFormData(ClientFields fields)
