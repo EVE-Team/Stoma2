@@ -148,11 +148,12 @@ namespace Stoma2
         public TreatmentTableInfo()
             : base(
                 "treatments",
-                new string[] { "service_id", "visit_id", "count" },
+                new string[] { "service_id", "visit_id", "count", "service_notes" },
                 new string[] {
                     "INTEGER REFERENCES " + TableInfoHolder.SERVICE_LIST.table + "(id)",
                     "INTEGER REFERENCES " + TableInfoHolder.APPOINTMENT.table + "(id) ON DELETE CASCADE",
-                    "INTEGER NOT NULL"
+                    "INTEGER NOT NULL",
+                    "TEXT"
                 }
             )
         {}
@@ -393,13 +394,14 @@ namespace Stoma2
         public Int64 ServiceId { get; set; }
         public Int64 VisitId { get; set; }
         public Int64 Count { get; set; }
-
+        public string NotesToService { get; set; }
         public override object[] ToStrArray()
         {
             return new object[] {
                 ServiceId,
                 VisitId,
-                Count
+                Count,
+                NotesToService
             };
         }
 
@@ -408,6 +410,7 @@ namespace Stoma2
             ServiceId = (Int64)strArray[0];
             VisitId = (Int64)strArray[1];
             Count = (Int64)strArray[2];
+            NotesToService = strArray[3].ToString();
         }
 
         public override TableInfo GetTableInfo()

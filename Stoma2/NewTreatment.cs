@@ -63,6 +63,7 @@ namespace Stoma2
         {
             fields.ServiceId = serviceListRecords[cbService.SelectedIndex].ID;
             fields.Count = Convert.ToInt64(countNum.Value);
+            fields.NotesToService = tbNotesToService.Text;
         }
 
         private void FieldsToFormData(TreatmentFields fields)
@@ -80,6 +81,7 @@ namespace Stoma2
 			}
 
             countNum.Value = fields.Count;
+            tbNotesToService.Text = fields.NotesToService;
         }
 
         private static bool GetIndexOfRecord<T>(List<T> list, Int64 id, ref int result) where T : DatabaseRecord

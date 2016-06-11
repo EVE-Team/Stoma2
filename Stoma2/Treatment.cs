@@ -131,8 +131,10 @@ namespace Stoma2
 
                 foreach (TreatmentRecord rec in StomaDB.GetTreatments(apRec))
                 {
+                    string serviceName = rec.Data.NotesToService.Length > 0 ? 
+                        rec.serviceData.Name + '(' + rec.Data.NotesToService + ')' : rec.serviceData.Name;
                     var item = new ListViewItem(new string[] {
-                        rec.serviceData.Name,
+                        serviceName,
                         rec.serviceData.Price.ToString(),
 					    rec.Data.Count.ToString(),
                         rec.GetTotalPrice().ToString()
