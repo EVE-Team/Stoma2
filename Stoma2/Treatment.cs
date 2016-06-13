@@ -20,11 +20,11 @@ namespace Stoma2
 	{
         //русская локализация Times New Roman
         private static BaseFont baseFont = BaseFont.CreateFont(@"TIMCYR.TTF", System.Text.Encoding.GetEncoding(1251).BodyName, true);
-        private iTextSharp.text.Font font = new iTextSharp.text.Font(baseFont, 14f, iTextSharp.text.Font.NORMAL);
-        private iTextSharp.text.Font font1 = new iTextSharp.text.Font(baseFont, 12f, iTextSharp.text.Font.NORMAL);
+        private iTextSharp.text.Font font = new iTextSharp.text.Font(baseFont, 11f, iTextSharp.text.Font.NORMAL);
+        private iTextSharp.text.Font font1 = new iTextSharp.text.Font(baseFont, 11f, iTextSharp.text.Font.NORMAL);
         private iTextSharp.text.Font font2 = new iTextSharp.text.Font(baseFont, 12f, iTextSharp.text.Font.BOLD);
 
-        private float minimumRowHeight = 20;
+        private float minimumRowHeight = 15;
         private ContextMenu appointmentMenu;
 
         private ClientRecord clientRecord;
@@ -219,7 +219,9 @@ namespace Stoma2
                 }
             }
 
-            Document document = new Document(PageSize.A4, 10f, 10f, 20f, 20f);
+            double totalHeight = 0;
+
+            Document document = new Document(PageSize.A4, 10f, 10f, 0f, 0f);
             PdfWriter writer = PdfWriter.GetInstance(document, new FileStream("result.pdf", FileMode.Create));
 
             document.Open();
@@ -228,6 +230,7 @@ namespace Stoma2
                 + DateUtils.ToDateFormat(DateUtils.GetCurrentTimestamp(), DateUtils.WITHOUT_TIME_DATE_FORMAT) + " г.", font);
             header.Alignment = Element.ALIGN_CENTER;
 
+            //totalHeight;
             document.Add(header);
 
             Paragraph empty = new Paragraph("\n");
@@ -239,6 +242,7 @@ namespace Stoma2
             document.Add(empty);
 
             PdfPTable treatmentInformationTable = new PdfPTable(5);
+            
             treatmentInformationTable.HorizontalAlignment = Element.ALIGN_CENTER;
 
             CreateTreatmentInformationTable(treatmentInformationTable, "Дата приема: ", 1);
@@ -259,7 +263,7 @@ namespace Stoma2
 
             document.Add(treatmentInformationTable);
 
-            document.Add(empty);
+            //document.Add(empty);
             document.Add(empty);
 
             PdfPTable treatmentTable = new PdfPTable(9);
@@ -286,8 +290,7 @@ namespace Stoma2
         private void CreateTreatmentInformationTable(PdfPTable treatmentInformationTable, string cellValue, int colspan)
         {
             PdfPCell cell = new PdfPCell(new Phrase(cellValue, font1));
-            cell.VerticalAlignment = PdfPCell.ALIGN_CENTER;
-            cell.PaddingLeft = 2f;
+            cell.PaddingBottom = 5f;
             cell.MinimumHeight = minimumRowHeight;
             cell.BorderWidth = 0.1f;
             cell.Colspan = colspan;
@@ -305,11 +308,10 @@ namespace Stoma2
         private void CreateTreatmentTableHeaderCell(PdfPTable treatmentTable, string cellValue, int colspan)
         {
             PdfPCell treatmentTableHeader = new PdfPCell(new Phrase(cellValue, font));
-            treatmentTableHeader.VerticalAlignment = PdfPCell.ALIGN_CENTER;
             treatmentTableHeader.BorderWidth = 0.1f;
             treatmentTableHeader.MinimumHeight = minimumRowHeight;
             treatmentTableHeader.Colspan = colspan;
-            treatmentTableHeader.PaddingLeft = 2f;
+            treatmentTableHeader.PaddingBottom = 5f;
             treatmentTable.AddCell(treatmentTableHeader);
         }
 
@@ -351,9 +353,8 @@ namespace Stoma2
         {
             PdfPCell treatmentTableBaseCell = new PdfPCell(new Phrase(cellValue, font1));
             treatmentTableBaseCell.BorderWidth = 0.1f;
-            treatmentTableBaseCell.VerticalAlignment = PdfPCell.ALIGN_CENTER;
             treatmentTableBaseCell.MinimumHeight = minimumRowHeight;
-            treatmentTableBaseCell.PaddingLeft = 2f;
+            treatmentTableBaseCell.PaddingBottom = 5f;
             treatmentTableBaseCell.Colspan = colspan;
             treatmentTable.AddCell(treatmentTableBaseCell);
         }
