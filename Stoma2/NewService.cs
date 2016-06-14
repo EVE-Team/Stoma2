@@ -47,7 +47,11 @@ namespace Stoma2
             }
             else
             {
-				FormDataToFields(RecordForEditing.Data);
+                ServiceListFields newRecord = new ServiceListFields();
+                FormDataToFields(newRecord);
+                newRecord.Create();
+
+                RecordForEditing.Data.Obsolete = true;
                 RecordForEditing.Save();
             }
 
