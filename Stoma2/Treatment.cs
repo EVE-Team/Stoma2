@@ -222,66 +222,65 @@ namespace Stoma2
 
             document.Open();
 
-            for (int k = 0; k < 2; ++k)
-            {
-                Paragraph header = new Paragraph("Акт об оказании стоматологических услуг от "
+            Paragraph header = new Paragraph("Акт об оказании стоматологических услуг от "
                 + DateUtils.ToDateFormat(DateUtils.GetCurrentTimestamp(), DateUtils.WITHOUT_TIME_DATE_FORMAT) + " г.", font);
-                header.Alignment = Element.ALIGN_CENTER;
+            header.Alignment = Element.ALIGN_CENTER;
 
-                document.Add(header);
+            document.Add(header);
 
-                Paragraph empty = new Paragraph("\n");
+            Paragraph empty = new Paragraph("\n");
 
-                iTextSharp.text.Image gif = iTextSharp.text.Image.GetInstance("newMainInfo2.png");
-                gif.Alignment = Element.ALIGN_CENTER;
-                document.Add(gif);
-                document.Add(empty);
+            iTextSharp.text.Image gif = iTextSharp.text.Image.GetInstance("newMainInfo2.png");
+            gif.Alignment = Element.ALIGN_CENTER;
+            document.Add(gif);
+            document.Add(empty);
 
-                PdfPTable treatmentInformationTable = new PdfPTable(5);
+            PdfPTable treatmentInformationTable = new PdfPTable(5);
 
-                treatmentInformationTable.HorizontalAlignment = Element.ALIGN_CENTER;
+            treatmentInformationTable.HorizontalAlignment = Element.ALIGN_CENTER;
 
-                CreateTreatmentInformationTable(treatmentInformationTable, "Дата приема: ", 1);
-                CreateTreatmentInformationTable(treatmentInformationTable, appointmentListView.SelectedItems[0].SubItems[0].Text, 4);
-                CreateTreatmentInformationTable(treatmentInformationTable, "Пациент: ", 1);
-                CreateTreatmentInformationTable(treatmentInformationTable, patientFIO.Text.ToString(), 4);
-                CreateTreatmentInformationTable(treatmentInformationTable, "Врач: ", 1);
-                CreateTreatmentInformationTable(treatmentInformationTable, doctorTextBox.Text.ToString(), 4);
+            CreateTreatmentInformationTable(treatmentInformationTable, "Дата приема: ", 1);
+            CreateTreatmentInformationTable(treatmentInformationTable, appointmentListView.SelectedItems[0].SubItems[0].Text, 4);
+            CreateTreatmentInformationTable(treatmentInformationTable, "Пациент: ", 1);
+            CreateTreatmentInformationTable(treatmentInformationTable, patientFIO.Text.ToString(), 4);
+            CreateTreatmentInformationTable(treatmentInformationTable, "Врач: ", 1);
+            CreateTreatmentInformationTable(treatmentInformationTable, doctorTextBox.Text.ToString(), 4);
 
-                if (diagnosisTextBox.Text.ToString() != "")
-                {
-                    CreateTreatmentInformationTable(treatmentInformationTable, "Диагноз: ", 1);
-                    CreateTreatmentInformationTable(treatmentInformationTable, diagnosisTextBox.Text.ToString(), 4);
-                }
-
-                CreateTreatmentInformationTable(treatmentInformationTable, "Зуб: ", 1);
-                CreateTreatmentInformationTable(treatmentInformationTable, toothtextBox.Text.ToString(), 4);
-
-                document.Add(treatmentInformationTable);
-
-                document.Add(empty);
-
-                PdfPTable treatmentTable = new PdfPTable(4);
-                treatmentTable.HorizontalAlignment = Element.ALIGN_CENTER;
-                treatmentTable.TotalWidth = 460f;
-                treatmentTable.LockedWidth = true;
-
-                float[] widths = new float[] { 60, 12, 8, 9 };
-                treatmentTable.SetWidths(widths);
-
-                CreateTreatmentTableHeader(treatmentTable);
-                CreateTreatmentTableBase(treatmentTable);
-
-                document.Add(treatmentTable);
-
-                document.Add(empty);
-                document.Add(empty);
-
-                Paragraph footer = new Paragraph("С лечением согласен, с возможными осложнениями ознакомлен: _____________ ", font);
-                footer.Alignment = Element.ALIGN_CENTER;
-
-                document.Add(footer);
+            if (diagnosisTextBox.Text.ToString() != "")
+            {
+                CreateTreatmentInformationTable(treatmentInformationTable, "Диагноз: ", 1);
+                CreateTreatmentInformationTable(treatmentInformationTable, diagnosisTextBox.Text.ToString(), 4);
             }
+
+            CreateTreatmentInformationTable(treatmentInformationTable, "Зуб: ", 1);
+            CreateTreatmentInformationTable(treatmentInformationTable, toothtextBox.Text.ToString(), 4);
+
+            document.Add(treatmentInformationTable);
+
+            document.Add(empty);
+
+            PdfPTable treatmentTable = new PdfPTable(4);
+            treatmentTable.HorizontalAlignment = Element.ALIGN_CENTER;
+            treatmentTable.TotalWidth = 460f;
+            treatmentTable.LockedWidth = true;
+
+            float[] widths = new float[] { 60, 12, 8, 9 };
+            treatmentTable.SetWidths(widths);
+
+            CreateTreatmentTableHeader(treatmentTable);
+            CreateTreatmentTableBase(treatmentTable);
+
+            document.Add(treatmentTable);
+
+            Paragraph underline = new Paragraph("_____________________________________________________________________");
+            underline.Alignment = Element.ALIGN_CENTER;
+            document.Add(underline);
+            document.Add(empty);
+
+            Paragraph footer = new Paragraph("С лечением согласен, с возможными осложнениями ознакомлен: _____________ ", font);
+            footer.Alignment = Element.ALIGN_CENTER;
+
+            document.Add(footer);
 
             document.Close();
             writer.Close();
