@@ -403,5 +403,15 @@ namespace Stoma2
 				treatmentListView.Columns[2].Width -
 				treatmentListView.Columns[3].Width - 5;
 		}
+
+        private void btnEditAppointment_Click(object sender, EventArgs e)
+        {
+            appointmentMenuEdit_Click(sender, e);
+        }
+
+        private void btnDelAppointment_Click(object sender, EventArgs e)
+        {
+            appointmentMenuDelete_Click(sender, e);
+        }
 	}
 }
