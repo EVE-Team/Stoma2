@@ -174,10 +174,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbNotesToService.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbNotesToService.Location = new System.Drawing.Point(155, 113);
-            this.tbNotesToService.Multiline = true;
             this.tbNotesToService.Name = "tbNotesToService";
             this.tbNotesToService.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbNotesToService.Size = new System.Drawing.Size(399, 55);
+            this.tbNotesToService.Size = new System.Drawing.Size(399, 23);
             this.tbNotesToService.TabIndex = 82;
             // 
             // NewTreatment
