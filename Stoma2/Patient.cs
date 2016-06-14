@@ -108,5 +108,13 @@ namespace Stoma2
         {
             UpdatePatientList();
         }
+
+		private void patientListView_DoubleClick(object sender, EventArgs e)
+		{
+			if (patientListView.SelectedItems.Count > 0)
+			{
+				toTreatmentBtn_Click(sender, e);
+			}
+		}
 	}
 }
