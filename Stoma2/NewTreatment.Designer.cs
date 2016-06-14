@@ -83,6 +83,7 @@
             // 
             // btnCancel
             // 
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(83)))), ((int)(((byte)(79)))));
             this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(63)))), ((int)(((byte)(58)))));
             this.btnCancel.FlatAppearance.BorderSize = 2;
@@ -91,7 +92,7 @@
             this.btnCancel.ForeColor = System.Drawing.Color.White;
             this.btnCancel.Image = global::Stoma2.Properties.Resources.cancel;
             this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancel.Location = new System.Drawing.Point(294, 174);
+            this.btnCancel.Location = new System.Drawing.Point(436, 174);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(118, 37);
             this.btnCancel.TabIndex = 73;
@@ -132,24 +133,28 @@
             // 
             // cbCategory
             // 
+            this.cbCategory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbCategory.FormattingEnabled = true;
             this.cbCategory.Location = new System.Drawing.Point(154, 12);
             this.cbCategory.Name = "cbCategory";
-            this.cbCategory.Size = new System.Drawing.Size(259, 21);
+            this.cbCategory.Size = new System.Drawing.Size(401, 21);
             this.cbCategory.TabIndex = 79;
             this.cbCategory.SelectedIndexChanged += new System.EventHandler(this.cbCategory_SelectedIndexChanged);
             // 
             // cbService
             // 
+            this.cbService.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cbService.BackColor = System.Drawing.Color.White;
             this.cbService.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbService.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbService.FormattingEnabled = true;
             this.cbService.Location = new System.Drawing.Point(154, 44);
             this.cbService.Name = "cbService";
-            this.cbService.Size = new System.Drawing.Size(259, 21);
+            this.cbService.Size = new System.Drawing.Size(401, 21);
             this.cbService.TabIndex = 80;
             this.cbService.SelectedIndexChanged += new System.EventHandler(this.cbService_SelectedIndexChanged);
             // 
@@ -165,12 +170,14 @@
             // 
             // tbNotesToService
             // 
+            this.tbNotesToService.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbNotesToService.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbNotesToService.Location = new System.Drawing.Point(155, 113);
             this.tbNotesToService.Multiline = true;
             this.tbNotesToService.Name = "tbNotesToService";
             this.tbNotesToService.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbNotesToService.Size = new System.Drawing.Size(257, 55);
+            this.tbNotesToService.Size = new System.Drawing.Size(399, 55);
             this.tbNotesToService.TabIndex = 82;
             // 
             // NewTreatment
@@ -178,7 +185,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(424, 223);
+            this.ClientSize = new System.Drawing.Size(566, 223);
             this.Controls.Add(this.tbNotesToService);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cbService);
