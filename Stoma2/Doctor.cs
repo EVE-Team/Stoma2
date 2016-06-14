@@ -81,12 +81,17 @@ namespace Stoma2
 
         private void delBtn_Click(object sender, EventArgs e)
         {
-			DoctorRecord rec = (DoctorRecord)doctorListView.SelectedItems[0].Tag;
-            DoctorFields data = rec.Data;
-            data.Obsolete = true;
-            rec.Save();
+			if (MessageBox.Show("Вы действительно хотите удалить данного врача?",
+				"Удаление врача", MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+				MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
+			{
+				DoctorRecord rec = (DoctorRecord)doctorListView.SelectedItems[0].Tag;
+				DoctorFields data = rec.Data;
+				data.Obsolete = true;
+				rec.Save();
 
-            Program.mainForm.OnDoctorUpdate();
+				Program.mainForm.OnDoctorUpdate();
+			}
         }
 
 		private void searchBox_TextChanged(object sender, EventArgs e)

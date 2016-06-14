@@ -169,12 +169,17 @@ namespace Stoma2
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            ServiceListRecord rec = (ServiceListRecord)serviceListView.SelectedItems[0].Tag;
+			if (MessageBox.Show("Вы действительно хотите удалить данную услугу?",
+				"Удаление услуги", MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+				MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
+			{
+				ServiceListRecord rec = (ServiceListRecord)serviceListView.SelectedItems[0].Tag;
 
-            ServiceListFields recData = rec.Data;
-            recData.Obsolete = true;
-            rec.Save();
-            UpdateServiceList();
+				ServiceListFields recData = rec.Data;
+				recData.Obsolete = true;
+				rec.Save();
+				UpdateServiceList();
+			}
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
