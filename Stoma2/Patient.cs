@@ -12,11 +12,20 @@ namespace Stoma2
 {
 	public partial class Patient : Form
 	{
+        private ContextMenu ctxMenu;
 		public Patient()
 		{
 			InitializeComponent();
             Utils.SetPanelForm(pnlPatientInfo, Utils.SetupForm(new PatientInfo()));
 			searchBox.TextChanged += searchBox_TextChanged;
+
+            ctxMenu = new ContextMenu();
+            MenuItem patientMenuEdit = new MenuItem("Редактировать");
+            MenuItem patientMenuDelete = new MenuItem("Удалить");
+            patientMenuEdit.Click += new EventHandler(patientMenuEdit_Click);
+            patientMenuDelete.Click += new EventHandler(patientMenuDelete_Click);
+            ctxMenu.MenuItems.Add(patientMenuEdit);
+            ctxMenu.MenuItems.Add(patientMenuDelete);           
 		}
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -109,6 +118,7 @@ namespace Stoma2
             UpdatePatientList();
         }
 
+<<<<<<< HEAD
 		private void patientListView_DoubleClick(object sender, EventArgs e)
 		{
 			if (patientListView.SelectedItems.Count > 0)
@@ -116,5 +126,29 @@ namespace Stoma2
 				toTreatmentBtn_Click(sender, e);
 			}
 		}
+=======
+        private void patientListView_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {  
+                ListViewItem item = patientListView.GetItemAt(e.X, e.Y);
+                if (item != null)
+                {
+                    item.Selected = true;
+                    ctxMenu.Show(patientListView, e.Location);
+                }
+            }
+        }
+
+        private void patientMenuDelete_Click(object sender, EventArgs e)
+        {
+            btnDelete_Click(sender, e);
+        }
+
+        private void patientMenuEdit_Click(object sender, EventArgs e)
+        {
+            btnEdit_Click(sender, e);           
+        }
+>>>>>>> origin/master
 	}
 }
