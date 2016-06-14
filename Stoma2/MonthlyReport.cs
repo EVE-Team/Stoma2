@@ -100,24 +100,5 @@ namespace Stoma2
                 return;
             }
         }
-        //private DateTime GetStartDateReportWeek(DateTime value)
-        //{
-        //    int diff = value.DayOfWeek - DayOfWeek.Monday;
-        //    if (diff < 0)
-        //    {
-        //        diff += 7;
-        //    }
-        //    return value.AddDays(-1 * diff).Date;
-        //}
-
-        //private DateTime GetEndDateReportWeek(DateTime value)
-        //{
-        //    int diff = value.DayOfWeek - DayOfWeek.Sunday;
-        //    if (diff > 0)
-        //    {
-        //        diff -= 7;
-        //    }
-        //    return value.AddDays(-1 * diff).Date;
-        //}
-	}
+    }
 }
