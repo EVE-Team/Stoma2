@@ -33,16 +33,14 @@ namespace Stoma2
 		public Treatment()
 		{
 			InitializeComponent();
+
             appointmentMenu = new ContextMenu();
             MenuItem appointmentMenuEdit = new MenuItem("Редактировать");
             MenuItem appointmentMenuDelete = new MenuItem("Удалить");
             appointmentMenuEdit.Click += new EventHandler(appointmentMenuEdit_Click);
             appointmentMenuDelete.Click += new EventHandler(appointmentMenuDelete_Click);
-
             appointmentMenu.MenuItems.Add(appointmentMenuEdit);
             appointmentMenu.MenuItems.Add(appointmentMenuDelete);
-
-            appointmentListView.ContextMenu = appointmentMenu;
 		}
 
         public void SetClient(ClientRecord clientRecord)
@@ -368,14 +366,12 @@ namespace Stoma2
         {
             if (e.Button == MouseButtons.Right)
             {
-                var selectedRow = appointmentListView.SelectedItems;
-                if (selectedRow.Count == 0)
+                ListViewItem item = appointmentListView.GetItemAt(e.X, e.Y);
+                if (item != null)
                 {
-                    appointmentListView.ContextMenu = null;
-                    return;
+                    item.Selected = true;
+                    appointmentMenu.Show(appointmentListView, e.Location);
                 }
-                appointmentListView.ContextMenu = appointmentMenu;
-                appointmentListView.ContextMenu.Show(appointmentListView, new Point(e.X, e.Y));
             }
         }
 
