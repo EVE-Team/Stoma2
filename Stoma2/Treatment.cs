@@ -23,6 +23,7 @@ namespace Stoma2
         private iTextSharp.text.Font font = new iTextSharp.text.Font(baseFont, 11f, iTextSharp.text.Font.NORMAL);
         private iTextSharp.text.Font font1 = new iTextSharp.text.Font(baseFont, 11f, iTextSharp.text.Font.NORMAL);
         private iTextSharp.text.Font font2 = new iTextSharp.text.Font(baseFont, 12f, iTextSharp.text.Font.BOLD);
+        private iTextSharp.text.Font font3 = new iTextSharp.text.Font(baseFont, 6f, iTextSharp.text.Font.BOLD);
 
         private float minimumRowHeight = 15;
         private ContextMenu appointmentMenu;
@@ -233,7 +234,8 @@ namespace Stoma2
             iTextSharp.text.Image gif = iTextSharp.text.Image.GetInstance("newMainInfo2.png");
             gif.Alignment = Element.ALIGN_CENTER;
             document.Add(gif);
-            document.Add(empty);
+            Paragraph empty1 = new Paragraph("\n", font3);
+            document.Add(empty1);
 
             PdfPTable treatmentInformationTable = new PdfPTable(5);
 
@@ -339,12 +341,7 @@ namespace Stoma2
                 }
             }
 
-            CreateTreatmentTableBaseCell(treatmentTable, " ", 0);
-            CreateTreatmentTableBaseCell(treatmentTable, " ", 0);
-            CreateTreatmentTableBaseCell(treatmentTable, " ", 0);
-            CreateTreatmentTableBaseCell(treatmentTable, " ", 0);
-
-            PdfPCell treatmentTableBaseCell = new PdfPCell(new Phrase("К оплате: " + costLabel.Text, font1));
+            PdfPCell treatmentTableBaseCell = new PdfPCell(new Phrase("\nК оплате: " + costLabel.Text, font1));
             treatmentTableBaseCell.BorderWidth = 0.1f;
             treatmentTableBaseCell.MinimumHeight = minimumRowHeight;
             treatmentTableBaseCell.PaddingBottom = 5f;
