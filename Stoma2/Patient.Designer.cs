@@ -75,6 +75,7 @@
             this.patientListView.UseCompatibleStateImageBehavior = false;
             this.patientListView.View = System.Windows.Forms.View.Details;
             this.patientListView.SelectedIndexChanged += new System.EventHandler(this.patientListView_SelectedIndexChanged);
+            this.patientListView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.patientListView_MouseUp);
             // 
             // columnHeader1
             // 
