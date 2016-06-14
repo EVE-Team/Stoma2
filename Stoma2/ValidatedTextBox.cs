@@ -112,7 +112,7 @@ namespace Stoma2
 					result = int.TryParse(Text, out tmp);
 					break;
 				case EValidationType.Tooth:
-					result = int.TryParse(Text, out tmp) && (tmp > 0 && tmp < 50);
+					result = int.TryParse(Text, out tmp) && IsValidTooth(tmp);
 					break;
 			}
 
@@ -137,5 +137,18 @@ namespace Stoma2
 		{
 			Validate();
 		}
+
+        private bool IsValidTooth(int arg)
+        {
+            if (arg > 10 && arg < 49)
+            {               
+                int units = arg % 10;
+                if (0 < units && units < 9)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 	}
 }
