@@ -47,7 +47,13 @@ namespace Stoma2
 
 		private void restoreBtn_Click(object sender, EventArgs e)
 		{
-			(backupListView.SelectedItems[0].Tag as BackupManager.BackupInfo).Restore();
+			if (MessageBox.Show("Вы действительно хотите восстановить резервную копию?\n" +
+				"Все изменения, внесенные с момента создания резервной копии, будут потеряны",
+				"Восстановление резервной копии", MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+				MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
+			{
+				(backupListView.SelectedItems[0].Tag as BackupManager.BackupInfo).Restore();
+			}
 		}
 
 		private void offloadBtn_Click(object sender, EventArgs e)

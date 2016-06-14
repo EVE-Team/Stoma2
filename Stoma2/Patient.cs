@@ -87,9 +87,10 @@ namespace Stoma2
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Вы действительно хотите удалить пациента" +
-                "(вместе с ним удалятся все его приемы)?",
-                "Удаление пациента", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+            if (MessageBox.Show("Вы действительно хотите удалить пациента?\n" +
+                "(вместе с ним удалятся все его приемы)",
+                "Удаление пациента", MessageBoxButtons.YesNo,
+				MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
             {
                 ClientRecord rec = (ClientRecord)patientListView.SelectedItems[0].Tag;
                 rec.Delete();
