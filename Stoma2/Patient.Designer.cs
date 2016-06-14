@@ -63,7 +63,6 @@
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3});
-
 			this.patientListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.patientListView.FullRowSelect = true;
 			this.patientListView.HideSelection = false;
@@ -77,6 +76,7 @@
 			this.patientListView.View = System.Windows.Forms.View.Details;
 			this.patientListView.SelectedIndexChanged += new System.EventHandler(this.patientListView_SelectedIndexChanged);
 			this.patientListView.DoubleClick += new System.EventHandler(this.patientListView_DoubleClick);
+			this.patientListView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.patientListView_MouseUp);
 			// 
 			// columnHeader1
 			// 
