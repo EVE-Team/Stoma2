@@ -105,6 +105,8 @@ namespace Stoma2
 
                 btnAdd.Enabled = false;
                 btnPrint.Enabled = false;
+                btnDelAppointment.Enabled = false;
+                btnEditAppointment.Enabled = false;
             }
             else
             {
@@ -115,6 +117,8 @@ namespace Stoma2
 
                 btnAdd.Enabled = true;
                 btnPrint.Enabled = true;
+                btnDelAppointment.Enabled = true;
+                btnEditAppointment.Enabled = true;
             }
 
             UpdateTreatmentList();
