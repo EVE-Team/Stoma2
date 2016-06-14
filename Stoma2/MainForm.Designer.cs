@@ -51,7 +51,7 @@
             this.lblHeader.ForeColor = System.Drawing.Color.White;
             this.lblHeader.Location = new System.Drawing.Point(0, 0);
             this.lblHeader.Name = "lblHeader";
-            this.lblHeader.Size = new System.Drawing.Size(1016, 42);
+            this.lblHeader.Size = new System.Drawing.Size(1034, 42);
             this.lblHeader.TabIndex = 0;
             this.lblHeader.Text = "Жемчужина";
             this.lblHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -64,7 +64,7 @@
             this.lblSidePanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.lblSidePanel.Location = new System.Drawing.Point(0, 42);
             this.lblSidePanel.Name = "lblSidePanel";
-            this.lblSidePanel.Size = new System.Drawing.Size(100, 682);
+            this.lblSidePanel.Size = new System.Drawing.Size(100, 642);
             this.lblSidePanel.TabIndex = 2;
             // 
             // rbInvite
@@ -102,7 +102,7 @@
             this.btnMaximize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(101)))), ((int)(((byte)(179)))));
             this.btnMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMaximize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(88)))), ((int)(((byte)(140)))));
-            this.btnMaximize.Location = new System.Drawing.Point(932, 0);
+            this.btnMaximize.Location = new System.Drawing.Point(950, 0);
             this.btnMaximize.Name = "btnMaximize";
             this.btnMaximize.Size = new System.Drawing.Size(42, 42);
             this.btnMaximize.TabIndex = 24;
@@ -194,7 +194,7 @@
             this.btnMinimize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(101)))), ((int)(((byte)(179)))));
             this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinimize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(88)))), ((int)(((byte)(140)))));
-            this.btnMinimize.Location = new System.Drawing.Point(890, 0);
+            this.btnMinimize.Location = new System.Drawing.Point(908, 0);
             this.btnMinimize.Name = "btnMinimize";
             this.btnMinimize.Size = new System.Drawing.Size(42, 42);
             this.btnMinimize.TabIndex = 4;
@@ -223,7 +223,7 @@
             this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(67)))), ((int)(((byte)(67)))));
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(88)))), ((int)(((byte)(140)))));
-            this.btnClose.Location = new System.Drawing.Point(974, 0);
+            this.btnClose.Location = new System.Drawing.Point(992, 0);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(42, 42);
             this.btnClose.TabIndex = 1;
@@ -236,7 +236,7 @@
             this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContent.Location = new System.Drawing.Point(100, 42);
             this.pnlContent.Name = "pnlContent";
-            this.pnlContent.Size = new System.Drawing.Size(916, 682);
+            this.pnlContent.Size = new System.Drawing.Size(934, 642);
             this.pnlContent.TabIndex = 25;
             // 
             // MainForm
@@ -244,7 +244,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.ClientSize = new System.Drawing.Size(1016, 724);
+            this.ClientSize = new System.Drawing.Size(1034, 684);
             this.ControlBox = false;
             this.Controls.Add(this.pnlContent);
             this.Controls.Add(this.btnMaximize);
