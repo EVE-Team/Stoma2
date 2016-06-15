@@ -23,7 +23,7 @@ namespace Stoma2
         private iTextSharp.text.Font font = new iTextSharp.text.Font(baseFont, 11f, iTextSharp.text.Font.NORMAL);
         private iTextSharp.text.Font font1 = new iTextSharp.text.Font(baseFont, 11f, iTextSharp.text.Font.NORMAL);
         private iTextSharp.text.Font font2 = new iTextSharp.text.Font(baseFont, 12f, iTextSharp.text.Font.BOLD);
-        private iTextSharp.text.Font font3 = new iTextSharp.text.Font(baseFont, 6f, iTextSharp.text.Font.BOLD);
+        private iTextSharp.text.Font font3 = new iTextSharp.text.Font(baseFont, 4f, iTextSharp.text.Font.BOLD);
 
         private float minimumRowHeight = 15;
         private ContextMenu appointmentMenu;
@@ -225,19 +225,23 @@ namespace Stoma2
 
             document.Open();
 
+            Paragraph empty1 = new Paragraph("\n", font3);
+            document.Add(empty1);
+
+            iTextSharp.text.Image gif = iTextSharp.text.Image.GetInstance("newMainInfo2.png");
+            gif.Alignment = Element.ALIGN_CENTER;
+            document.Add(gif);
+
             Paragraph header = new Paragraph("Акт об оказании стоматологических услуг от "
                 + DateUtils.ToDateFormat(DateUtils.GetCurrentTimestamp(), DateUtils.WITHOUT_TIME_DATE_FORMAT) + " г.", font);
             header.Alignment = Element.ALIGN_CENTER;
 
             document.Add(header);
-
+            
             Paragraph empty = new Paragraph("\n");
-
-            iTextSharp.text.Image gif = iTextSharp.text.Image.GetInstance("newMainInfo2.png");
-            gif.Alignment = Element.ALIGN_CENTER;
-            document.Add(gif);
-            Paragraph empty1 = new Paragraph("\n", font3);
             document.Add(empty1);
+            
+            
 
             PdfPTable treatmentInformationTable = new PdfPTable(5);
 
