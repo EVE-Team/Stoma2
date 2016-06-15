@@ -127,10 +127,10 @@ namespace Stoma2
             : base(
                 "appointments",
                 new string[] {
-                    "date", "diagnosis", "tooth", "doctor_id", "client_id"
+                    "date", "diagnosis", "teeth", "doctor_id", "client_id"
                 },
                 new string[] {
-                    "DATE", "TEXT NOT NULL", "INTEGER NOT NULL",
+                    "DATE", "TEXT NOT NULL", "TEXT NOT NULL",
                     "INTEGER REFERENCES " + TableInfoHolder.DOCTOR.table + "(id)",
                     "INTEGER REFERENCES " + TableInfoHolder.CLIENT.table + "(id) ON DELETE CASCADE"
                 }
@@ -354,7 +354,7 @@ namespace Stoma2
     {
         public string Date { get; set; }
         public string Diagnosis { get; set; }
-        public Int64 Tooth { get; set; }
+        public string Teeth { get; set; }
         public Int64 DoctorId { get; set; }
         public Int64 ClientId { get; set; }
 
@@ -363,7 +363,7 @@ namespace Stoma2
             return new object[] {
                 Date,
                 Diagnosis,
-                Tooth,
+                Teeth,
                 DoctorId,
                 ClientId                
             };
@@ -371,14 +371,14 @@ namespace Stoma2
 
         public override void FromStrArray(object[] strArray)
         {
-            if (!Utils.IsInt64(strArray[2]) || !Utils.IsInt64(strArray[3]) || !Utils.IsInt64(strArray[4]))
+            if (!Utils.IsInt64(strArray[3]) || !Utils.IsInt64(strArray[4]))
             {
                 throw new Exception("Type mismatch");
             }
 
             Date = strArray[0].ToString();
             Diagnosis = strArray[1].ToString();
-            Tooth = (Int64)strArray[2];
+            Teeth = strArray[2].ToString();
             DoctorId = (Int64)strArray[3];
             ClientId = (Int64)strArray[4];
         }

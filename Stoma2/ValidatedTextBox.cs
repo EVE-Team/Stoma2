@@ -112,7 +112,7 @@ namespace Stoma2
 					result = int.TryParse(Text, out tmp);
 					break;
 				case EValidationType.Tooth:
-					result = int.TryParse(Text, out tmp) && IsValidTooth(tmp);
+                    result = ValidTeeth(Text);
 					break;
 			}
 
@@ -138,7 +138,7 @@ namespace Stoma2
 			Validate();
 		}
 
-        private bool IsValidTooth(int arg)
+        private static bool IsValidTooth(int arg)
         {
             if (arg > 10 && arg < 49)
             {               
@@ -150,5 +150,47 @@ namespace Stoma2
             }
             return false;
         }
-	}
+
+        private static bool IsValidTooth(string arg)
+        {
+            int tmp;
+            return int.TryParse(arg, out tmp) && IsValidTooth(tmp);
+        }
+
+        private static bool ValidTeethRange(string part)
+        {
+            string[] startEnd = part.Split('-');
+
+            if (startEnd.Length != 2)
+                return false;
+
+            if (!IsValidTooth(startEnd[0]) || !IsValidTooth(startEnd[1]))
+                return false;
+
+            return int.Parse(startEnd[0]) <= int.Parse(startEnd[1]);
+        }
+
+        private static bool ValidTeethPart(string part)
+        {
+            part = part.Trim();
+
+            if (IsValidTooth(part))
+                return true;
+
+            return ValidTeethRange(part);
+        }
+
+        private static bool ValidTeeth(string data)
+        {
+            string[] teethParts = data.Split(',');
+
+            foreach (string teethPart in teethParts)
+            {
+                if (!ValidTeethPart(teethPart))
+                    return false;
+            }
+
+            return true;
+        }
+    }
 }

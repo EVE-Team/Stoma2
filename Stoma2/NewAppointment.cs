@@ -120,7 +120,7 @@ namespace Stoma2
 				btnAdd.Size = new Size(133, 41);
 
 				cmbDiagnosis.Text = EditRecord.Data.Diagnosis;
-				txtTooth.Text = EditRecord.Data.Tooth.ToString();
+				txtTooth.Text = EditRecord.Data.Teeth;
 			}
 			else
 			{
@@ -134,7 +134,7 @@ namespace Stoma2
         private void FormDataToFields(AppointmentFields fields)
         {            
             fields.Diagnosis = cmbDiagnosis.Text;
-            fields.Tooth = Int64.Parse(txtTooth.Text);
+            fields.Teeth = txtTooth.Text;
 			fields.DoctorId = (doctorCategory.SelectedItem as DoctorItem).Record.ID;
         }
 

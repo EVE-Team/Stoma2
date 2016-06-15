@@ -111,7 +111,7 @@ namespace Stoma2
                 AppointmentRecord rec = (AppointmentRecord) appointmentListView.SelectedItems[0].Tag;
                 doctorTextBox.Text = rec.doctorData.GetFullName();
                 diagnosisTextBox.Text = rec.Data.Diagnosis;
-                toothtextBox.Text = rec.Data.Tooth.ToString();
+                toothtextBox.Text = rec.Data.Teeth;
 
                 btnAdd.Enabled = true;
                 btnPrint.Enabled = true;
